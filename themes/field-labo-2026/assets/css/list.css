@@ -1,3 +1,59 @@
+.f-inter-R {
+  font-family: "Inter",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.f-inter-M {
+  font-family: "Inter",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.f-inter-B {
+  font-family: "Inter",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.f-noto-T {
+  font-family: "Noto Sans JP",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 100;
+}
+
+.f-noto-R {
+  font-family: "Noto Sans JP",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.f-noto-M {
+  font-family: "Noto Sans JP",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.f-noto-SB {
+  font-family: "Inter",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.f-noto-B {
+  font-family: "Inter",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 900;
+}
+
 .note__wrapper {
   margin-inline: auto;
   padding-bottom: 200px;

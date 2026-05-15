@@ -1,64 +1,40 @@
-// WPで使用
 export default class LoadMore {
-  static #instance = null;
 
-  // element
-  list = document.querySelector('.js-load-list');
-  button = document.querySelector('.js-load-more');
-
-
-  constructor() {
-    if (LoadMore.#instance) {
-      return LoadMore.#instance;
-    }
-    LoadMore.#instance = this;
-  }
-
-  static getInstance() {
-    if (!LoadMore.#instance) {
-      LoadMore.#instance = new LoadMore();
-    }
-    return LoadMore.#instance;
+  constructor(){
+    this.mm = gsap.matchMedia();
+    this.mq_sp = `(max-width: 767px)`;
+    this.mq_pc = `(min-width: 768px)`;
+    this.cmd = { isPc: this.mq_pc, isSp: this.mq_sp };
   }
 
   init(){
-    console.log('load more init')
-    if (!this.list || !this.button) return;
+    this.loadMoreUi();
+  }
 
-    this.button.addEventListener('click', async () => {
-      const postType = this.list.dataset.postType;
-      const currentPage = Number(this.list.dataset.currentPage);
-      const nextPage = currentPage + 1;
-      const perPage = Number(this.list.dataset.perPage);
-      const maxPage = Number(this.list.dataset.maxPage);
+  loadMoreUi(){
+    console.log('loadMoreUi')
+    const wrapper = document.querySelector('.jsLoadMoreWrapper');
+      const container = document.querySelector(".jsLoadMoreContainer");
+      const btn = document.querySelector(".jsLoadMoreBtn");
 
-      this.button.disabled = true;
+       const step = 1000; // 1回で増やす高さ
+      let current = step;
+      // 初期表示の高さ（例：600px）
+      const limitHeight = 1000;
 
-      try {
-        const params = new URLSearchParams({
-          post_type: postType,
-          page: String(nextPage),
-          per_page: String(perPage),
-        });
+      const fullHeight = container.scrollHeight;
 
-        const response = await fetch(`/wp-json/field-labo/v1/archive?${params.toString()}`);
-        const data = await response.json();
+      wrapper.style.maxHeight = step + "px";
 
-        if (data.html) {
-          this.list.insertAdjacentHTML('beforeend', data.html);
-        }
+      btn.addEventListener("click", () => {
+        current += step;
 
-        this.list.dataset.currentPage = String(nextPage);
-
-        if (nextPage >= maxPage) {
-          this.button.remove();
+        if (current >= fullHeight) {
+          wrapper.style.maxHeight = fullHeight + "px";
+          btn.style.display = "none";
         } else {
-          this.button.disabled = false;
+          wrapper.style.maxHeight = current + "px";
         }
-      } catch (error) {
-        console.error(error);
-        this.button.disabled = false;
-      }
-    });
+      });
   }
 }

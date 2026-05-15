@@ -1,0 +1,64 @@
+@use '../_base/project' as *;
+@use '../_libs/maam/mixin' as *;
+@use '../_libs/maam/easings' as *;
+@use '../_libs/maam/breakpoint' as *;
+
+// FONTS
+// ------------------------------
+@mixin f-inter-R {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+@mixin f-inter-M {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+@mixin f-inter-B {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+@mixin f-noto-T {
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+@mixin f-noto-R {
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+@mixin f-noto-M {
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+@mixin f-noto-SB {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+@mixin f-noto-B {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.f-inter-R { @include f-inter-R; }
+.f-inter-M { @include f-inter-M; }
+.f-inter-B { @include f-inter-B; }
+.f-noto-T { @include f-noto-T; }
+.f-noto-R { @include f-noto-R; }
+.f-noto-M { @include f-noto-M; }
+.f-noto-SB { @include f-noto-SB; }
+.f-noto-B { @include f-noto-B; }

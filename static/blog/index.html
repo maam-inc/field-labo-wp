@@ -24,16 +24,43 @@
   </head>
   <body id="blog">
     <div class="wrapper" id="wrapper">
-      <header class="header" id="header">
-        <div class="btn-wrap hbg-menu__btn">
-          <button class="btn js-modalOpen" data-id="hbgModal">
-            <div class="inner">
-              <p>ボタン </p>
+      <header class="l-header" id="l-header">
+        <div class="l-header__inner"><a class="l-header__logo" href="#">
+            <h1>
+              <div class="c-logo white"></div>
+            </h1></a>
+          <nav class="l-header__nav f-inter-B"><a class="l-header__nav-list" href="#">BLOG & NOTE</a><a class="l-header__nav-list" href="#">PROJECTS</a><a class="l-header__nav-list" href="#">ABOUT & CONTACT</a></nav>
+          <button class="l-header__menu js-modalOpen" data-id="hbgModal">
+            <div class="l-header__menu-inner">
+              <div class="line"></div>
+              <div class="line"></div>
+              <div class="line"></div>
             </div>
           </button>
-        </div><a href="#">
-          <h1>FIELD LABO</h1></a>
+        </div>
       </header>
+      <div class="c-modal hbgModal" id="hbgModal">
+        <div class="c-modal__bg js-modalClose" data-id="hbgModal"></div>
+        <div class="c-modal__container">
+          <div class="c-modal__inner"><a class="c-modal__top" href="#">
+              <div class="c-modal__top-arrow"><img src="/themes/field-labo-2026/assets/images/common/icon-arrow-r.svg" alt="arrow"></div>
+              <p class="c-modal__top-text f-inter-B">top</p></a>
+            <button class="c-modal__btn js-modalClose" data-id="hbgModal">
+              <div class="btn-close"><img src="/themes/field-labo-2026/assets/images/common/icon-close.svg" alt="close"></div>
+            </button>
+            <div class="c-modal__logo">
+              <div class="c-logo black"></div>
+            </div>
+            <nav class="c-modal__nav"> <a class="f-inter-B" href="#">BLOG & NOTE</a><a class="f-inter-B" href="#">PROJECTS</a><a class="f-inter-B" href="#">ABOUT & CONTACT</a></nav>
+            <ul class="c-sns c-modal__sns">
+              <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-instagram.svg" alt="instagram"/></a></li>
+              <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-facebook.svg" alt="facebook"/></a></li>
+              <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-pinterest.svg" alt="pinterest"/></a></li>
+              <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-home.svg" alt="home"/></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <div class="blog" id="blog">
         <div class="blog__wrapper"> 
           <p class="blog__title">blog</p>
@@ -51,17 +78,27 @@
               <p class="summary">普段は主に個人邸リノベーションの仕事が多いのですがオフィスリノベーションも行っています。    </p></a></div>
         </div>
       </div>
-      <footer class="footer" id="footer">
-        <div class="footer__inner"><a href="http://field-labo.com/">
-            <h1 class="footer__logo">FILED LABO </h1></a>
-          <p class="footer__address">〒205-0014 東京都羽村市羽東2-2-3</p>
-          <p class="footer__email">shigeho.s@field-labo.com</p>
-          <p class="footer__copyright">© 2016 - FIELD LABO All Rights Reserved.</p>
+      <footer class="l-footer" id="l-footer">
+        <ul class="c-sns l-footer__sns type-footer">
+          <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-instagram.svg" alt="instagram"/></a></li>
+          <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-facebook.svg" alt="facebook"/></a></li>
+          <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-pinterest.svg" alt="pinterest"/></a></li>
+          <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-home.svg" alt="home"/></a></li>
+        </ul>
+        <p class="l-footer__copyright f-inter-B">©FIELD LABO  ALL RIGHTS RESERVED.</p>
+        <div class="l-footer__top">
+          <div class="c-toTop"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.595 33.595">
+<rect class="cls-2" width="33.595" height="33.595"/>
+<polygon class="cls-1" points="21.774 18.725 16.797 13.749 11.821 18.724 10.835 17.738 16.797 11.775 22.76 17.737 21.774 18.725"/>
+<rect class="cls-1" x="16.099" y="12.762" width="1.396" height="10.938"/>
+<rect class="cls-1" x="10.987" y="9.196" width="11.62" height="1.396"/>
+</svg>
+          </div>
         </div>
       </footer>
     </div>
-    <script src="/themes/field-labo-2026/assets/js/common.js"></script>
+    <script src="/themes/field-labo-2026/assets/js/static-common.js"></script>
     <script src="/themes/field-labo-2026/assets/js/static.js"></script>
-    <script src="/themes/field-labo-2026/assets/js/list.js"></script>
+    <script src="/themes/field-labo-2026/assets/js/static-list.js"></script>
   </body>
 </html>

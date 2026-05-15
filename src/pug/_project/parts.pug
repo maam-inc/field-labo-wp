@@ -1,6 +1,105 @@
-mixin c-breadcrumbs()
-  ul.c-breadcrumbs
-    li.c-breadcrumbs__item
-      span.c-breadcrumbs__page.f-inter-B about me & contact
-    li.c-breadcrumbs__item
-      a.c-breadcrumbs__page.f-inter-B(href="") faq
+//- パンくず
+mixin c-breadcrumbs(crumb, faq)
+  .c-breadcrumbs
+    -if(faq)
+      .c-breadcrumbs__item
+        a.c-breadcrumbs__page.f-inter-B(href="../about-contact/index.html") ABOUT & CONTACT
+      .c-breadcrumbs__item
+        h1.c-breadcrumbs__page.f-inter-B FAQ
+    -else
+      .c-breadcrumbs__item
+        h1.c-breadcrumbs__page.f-inter-B #{crumb}
+
+//- FIELD LABOのロゴ 
+mixin c-logo(bk)
+  -if(bk === true) 
+    .c-logo(class=`black`)
+  -else
+    .c-logo(class=`white`)
+
+//- SNS 
+mixin c-sns(className, footer)
+  ul.c-sns(class=className ? className : '' class=footer ? 'type-footer' : '')
+    li: a(href="#"): img(src=`${IMG_DIR}common/icon-instagram.svg` alt="instagram")
+    li: a(href="#"): img(src=`${IMG_DIR}common/icon-facebook.svg` alt="facebook")
+    li: a(href="#"): img(src=`${IMG_DIR}common/icon-pinterest.svg` alt="pinterest")
+    li: a(href="#"): img(src=`${IMG_DIR}common/icon-home.svg` alt="home")
+
+//- 上に戻るボタン
+mixin c-toTop 
+  .c-toTop
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.595 33.595">
+      <rect class="cls-2" width="33.595" height="33.595"/>
+      <polygon class="cls-1" points="21.774 18.725 16.797 13.749 11.821 18.724 10.835 17.738 16.797 11.775 22.76 17.737 21.774 18.725"/>
+      <rect class="cls-1" x="16.099" y="12.762" width="1.396" height="10.938"/>
+      <rect class="cls-1" x="10.987" y="9.196" width="11.62" height="1.396"/>
+    </svg>
+
+//- 切り替えのボタン
+mixin c-ctrl-btn(className)
+  .c-ctrl__prev.swiper-button-prev(class=className ? `${className}--prev` : ''): img(src=`${IMG_DIR}common/icon-prev.svg` alt="prev")
+  .c-ctrl__next.swiper-button-next(class=className ? `${className}--next` : ''): img(src=`${IMG_DIR}common/icon-next.svg` alt="next")
+
+//- モーダル開くアイコン
+mixin c-modalOpenIcon(dark)
+  -if(dark === true) 
+    .c-modalOpenIcon(class=`c-modalOpenIcon--dark`)
+  -else
+    .c-modalOpenIcon
+
+//- サムネイル
+mixin c-thumbnail(className, type, i, idx)
+  .c-thumbnail(class=className ? className : '')
+    //- フォトギャラリー
+    -if(type=='top')
+      .c-thumbnail__main_img: img(src=`${IMG_DIR}top/gallery${idx+1}.jpg`)
+      .c-thumbnail__text-wrapper
+        -if(i.ttlJp === true)
+          .c-thumbnail__title.f-noto-B: p!=i.title
+        -else
+          .c-thumbnail__title.f-inter-B: p!=i.title
+        .c-thumbnail__open: +c-modalOpenIcon(false)
+    //- 一覧ページ　
+    -else if(type==='projects' || type==='blog')
+      .c-thumbnail__main_img: img(src=`${IMG_DIR}${type}/main_img_${idx+1}.jpg`)
+      .c-thumbnail__text-wrapper
+        -if(i.ttlJp === true)
+          .c-thumbnail__title.f-noto-B: p!=i.title
+        -else
+          .c-thumbnail__title.f-inter-B: p!=i.title
+        .c-thumbnail__summary.f-noto-M: p!=i.summary
+    //- 記事埋め込みパーツ
+    -else if(type=='page')
+      .c-thumbnail__main_img: img(src=`${IMG_DIR}note/main_img_${i+1}.jpg`)
+      .c-thumbnail__text-wrapper
+        -if(i.ttlJp === true)
+          .c-thumbnail__title.f-noto-B: p!=i.title
+        -else
+          .c-thumbnail__title.f-inter-B: p!=i.title
+        .c-thumbnail__summary.f-noto-M: p!=i.summary
+        .c-thumbnail__viewmore
+          .c-thumbnail__viewmore-icon: img(src=`${IMG_DIR}common/icon-link.svg` alt="viewmore")
+          p.c-thumbnail__viewmore-text.f-inter-B view more
+
+//- TOPとFAQのモーダル
+//- ページ判別は data_meta.pug の page.id から行う（top → topModal, faq → faqModal）
+//- .c-modal__inner以下の中身は各ページの .data[data-post="X"] から
+//- UiManager.js の modalUi() が .js-modalContent に動的に挿入する
+mixin c-modal
+  .c-modal.commonModal#commonModal(class=`${page.id}Modal`)
+    .c-modal__bg.js-modalClose(data-id=`commonModal`)
+    .c-modal__container
+      .c-modal__wrapper
+        .c-modal__contents.is-over
+          .c-modal__inner-scrlWrap
+            .c-modal__inner(data-type=page.id)
+              .js-modalContent
+                //- ページ別の .data ブロックからここに innerHTML が差し込まれる
+
+              button.c-modal__bottom.js-modalClose(data-id=`commonModal`)
+                .c-modal__bottom-icon
+                p.c-modal__bottom-text.f-inter-B close
+
+          button.c-modal__btn.js-modalClose(data-id=`commonModal`)
+            .c-modal__btn-inner
+              .c-modal__btn-icon

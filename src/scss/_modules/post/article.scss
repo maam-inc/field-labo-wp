@@ -2,20 +2,6 @@
 @use 'sass:math';
 
 .article{
-  font-size: 1.4rem;
-
-  img {
-    height: auto;
-  }
-  .image-block {
-    width: 50%;
-    margin: 0 auto;
-  }
-
-  .article__contents > * {
-    margin: 2rem auto;
-  }
-
   &__wrapper{
     width: 800px;
     margin-inline: auto;

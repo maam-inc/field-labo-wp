@@ -1,20 +1,382 @@
 @use '../../_base/settings' as *;
 @use 'sass:math';
 
-// FONT系
-.f-inter-R { @include f-inter-R; }
-.f-inter-M { @include f-inter-M; }
-.f-inter-B { @include f-inter-B; }
-.f-noto-T { @include f-noto-T; }
-.f-noto-R { @include f-noto-R; }
-.f-noto-M { @include f-noto-M; }
-.f-noto-SB { @include f-noto-SB; }
-.f-noto-B { @include f-noto-B; }
 
-// 共通パーツ
 // 大枠
-.content { @include l-content; }
+.l-content { 
+  padding-block: vw(10) vw(74);
+  padding-inline: vw(10);
 
-// 要素
-.c-breadcrumbs { @include c-breadcrumbs; }
+  @include mq(pc) {
+    padding-block: 5px 74px;
+    padding-inline: 10px;
+    
+    &__wrapper {
+      width: 100%;
+      max-width: 990px;
+      margin-inline: auto;
+    }
+  }
+}
 
+// ーーーーーーーー要素ーーーーーーーー
+
+// パンくず
+.c-breadcrumbs { 
+  display: flex;
+  align-items: center;
+  gap: vw(55);
+  padding: vw(22) vw(34);
+  background-color: $bk;
+
+  &__item {
+    position: relative;
+
+    &:not(:first-of-type) {
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: vw(-30);
+        display: block;
+        width: vw(8);
+        height: vw(10);
+        background-color: $breadCrumbsArrow;
+        clip-path: polygon(0 0, 0 100%, 100% 50%);
+        translate: 0 -50%;
+      }
+    }
+  }
+
+  &__page {
+    font-size: vw(24);
+    color: $wh;
+    letter-spacing: -0.02em;
+  }
+
+  @include mq(pc) {
+    gap: 27px;
+    padding: 8px 22px;
+
+    &__item {
+      &:not(:first-of-type) {
+        &::before {
+          left: -15px;
+          width: 4px;
+          height: 6px;
+        }
+      }
+    }
+
+    &__page {
+      font-size: 12px;
+    }
+  }
+}
+
+// FIELD LABOのロゴ 
+.c-logo{
+  aspect-ratio: 272/55;
+  height: auto;
+  mask-image: url(../images/common/logo.svg);
+  -webkit-mask-image: url(../images/common/logo.svg);
+  mask-size: contain;
+  
+  &.black{ background-color: $bk;}
+  &.white{ background-color: $wh;}
+}
+
+// SNS 
+.c-sns{
+  display: flex;
+  justify-content: space-between;
+  width: vw(274);
+  margin-inline: auto;
+
+  li{
+    aspect-ratio: 1/1;
+    height: auto;
+    width: vw(34);
+
+    &:last-child{
+      aspect-ratio: 27/30;
+      width: vw(27);
+    }
+  }
+
+  &.type-footer{
+    margin-inline: inherit;
+    width: vw(201);
+
+    li{
+      width: vw(32);
+
+      &:last-child{
+        width: vw(25);
+      }
+    }
+  }
+
+  @include mq(pc){
+
+    &.type-footer{
+      width: 119px;
+
+      li{
+        width: 20px;
+
+        &:last-child{
+          width: 16px;
+        }
+      }
+    }
+  }
+}
+
+//- 上に戻るボタン
+.c-toTop{
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+
+  .cls-1 {
+    fill: #fff;
+  }
+
+  .cls-2 {
+    fill: #222;
+  }
+}
+
+//- 切り替えのボタン
+.c-ctrl__prev, .c-ctrl__next {
+  height: auto;
+  aspect-ratio: 1/1;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-top: 0;
+
+  &::after{
+    display: none;
+  }
+}
+
+//- モーダル開くアイコン
+.c-modalOpenIcon{
+  aspect-ratio: 1/1;
+  height: auto;
+  mask-image: url(../images/common/icon-open.svg);
+  -webkit-mask-image: url(../images/common/icon-open.svg);
+  mask-size: contain;
+  background-color: #888888;
+
+  &--dark{ background-color: #666666;}
+}
+
+// TOP＆FAQモーダル共通
+.commonModal{
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  position: absolute;
+  z-index: 200; 
+  
+  .c-modal{
+    &__bg{
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.9);
+    } 
+    
+    &__container{
+      position: absolute;
+      width: 100%;
+      // height: calc(100% - (vw(76) + vw(76)));
+      // top: vw(76);
+      height: 100vh;
+      top:0;
+      left:0;
+    }
+
+    &__wrapper{
+      position: relative;
+      width: 100%;
+      height: 100%;
+      // overflow-y: scroll;
+    }
+
+    &__contents{
+      position: absolute;
+      width: 100%;
+      height: auto;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      padding-top: vw(76);
+      
+      &.is-over{ //innerの高さがcontaierを超えたら
+        height: 100%;
+        top: 0;
+        transform: translateY(0%);
+
+        .c-modal__bottom{
+          display: block;
+          width: vw(750);
+          height: vw(113);
+          border-top: #333333 solid vw(2);
+          margin-left: vw(-20);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &-icon{
+            width: vw(12);
+            height: auto;
+            aspect-ratio: 1/1;
+            mask-image: url(../images/common/icon-close.svg);
+            -webkit-mask-image: url(../images/common/icon-close.svg);
+            mask-size: contain;
+            background: #888888;
+            margin-right: vw(16);
+          }
+
+          &-text{
+            color: #888888;
+            font-size: vw(20);
+          }
+        }
+
+        .c-modal__inner-scrlWrap{
+          overflow-y: scroll;
+          height: calc(100% - vw(76));
+        }
+      }
+    }
+
+    &__inner-scrlWrap{
+      height: auto;
+    }
+
+    &__inner{
+      position: relative;
+      width: 100%;
+      padding: vw(20);
+      background: $bk;
+    }
+
+    &__bottom{
+      display: none;
+    }
+
+    &__btn{
+      position: absolute;
+      top: vw(24);
+      right: vw(19);
+
+      &-inner{
+        width: vw(42);
+        height: auto;
+        aspect-ratio: 1;
+        border: vw(4) solid $bk;
+        box-sizing: border-box;
+        background: $wh;
+        display: flex;
+        justify-content: center;
+        align-items: center;        
+      }
+
+      &-icon{
+        width: vw(17);
+        height: auto;
+        aspect-ratio: 1;
+        mask-image: url(../images/common/icon-close.svg);
+        -webkit-mask-image: url(../images/common/icon-close.svg);
+        mask-size: contain;
+        background: $bk;
+      }
+
+    }
+  }
+}
+@include mq(pc){
+  .commonModal{
+    .c-modal{
+      &__container{
+        max-width: 990px;
+        left:50%;
+        translate: -50% ;
+      }
+
+      &__contents{
+        width: 100%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding-top: 0;
+
+        &.is-over{ //innerの高さがcontaierを超えたら
+        height: 100%;
+        top: 0;
+        transform: translate(-50%, 0%);
+
+          .c-modal__bottom{
+            max-width: 990px;
+            height: 95px;
+            border-top: #333333 solid 1px;
+            margin-left: -18px;
+            margin-bottom: -18px;
+
+            &-icon{
+              width: 7px;
+              margin-right: 10px;
+            }
+
+            &-text{
+              font-size: 12px;
+            }
+          }
+
+          .c-modal__inner-scrlWrap{
+            height: 100%;
+          }
+        }
+      }
+
+      &__inner{
+        padding: 18px;
+      }
+
+      &__bottom{
+        display: none;
+      }
+
+      &__btn{
+        top: 18px;
+        right: -35px;
+
+        &-inner{
+          width: 25px;
+          border: 2px solid $bk;
+        }
+
+        &-icon{
+          width: 10px;
+        }
+
+      }
+    }
+  }  
+}
+
+//- サムネイル
+.c-thumbnail{
+  background: $bk;
+
+  &__title{
+    color: $wh;
+  }
+
+  &__summary{
+    color: #888888;
+  }
+}

@@ -1,0 +1,25 @@
+extends ../../../_layout/layout
+include ../../../_project/parts
+include ../../../_project/svg
+
+
+block data
+  include ../../../_data/data_project
+  include ../../../_data/data_meta
+  -page = article
+
+block head
+
+block content
+  .wrapper#wrapper
+    include ../../../_modules/common/header
+    include ../../../_modules/post/content
+    include ../../../_modules/common/footer
+
+
+block script
+  //- script(src=`../../${JS_DIR}static-project.js`)
+
+
+
+

@@ -1,34 +1,38 @@
-header.header#header
-  .btn-wrap.hbg-menu__btn
-    button.btn.js-modalOpen(data-id='hbgModal')
-      .inner
-        p ボタン 
+//- header.l-header#l-header.is-content --- headerが見えなくなったら ---
+header.l-header#l-header
+  .l-header__inner
+    a.l-header__logo(href="#"): h1: +c-logo('')
+    nav.l-header__nav.f-inter-B
+      a.l-header__nav-list(href="#") BLOG & NOTE
+      a.l-header__nav-list(href="#") PROJECTS
+      a.l-header__nav-list(href="#") ABOUT & CONTACT
 
-  a(href="#"): h1 FIELD LABO
+    button.l-header__menu.js-modalOpen(data-id='hbgModal')
+      .l-header__menu-inner
+        .line
+        .line
+        .line
 
-//- .modal.hbgModal#hbgModal
-//-   .modal__bg.js-modalClose(data-id="hbgModal")
-//-     .modal__container
-//-       .modal__contents
-//-         .modal__wrapper  
-//-           .modal__inner
-//-             button.modal__btn.js-modalClose(data-id="hbgModal")
-//-               .btn-close ×
-//-             a.modal__contact(href="#")
-//-               p.modal__contact-text contact 
-//-               .modal__contact-arrow →
-            
-//-             nav.modal__nav 
-//-               a(href="#") Top
-//-               a(href="#") Project
-//-               a(href="#") Note
-//-               a(href="#") About
-//-               a(href="#") FAQ
-            
-//-             ul.modal__sns 
-//-               li
-//-                 a(href="#") Instagram
-//-               li
-//-                 a(href="#") Pinterest
-//-               li
-//-                 a(href="#") Facebook
+//- HBGメニュー　
+.c-modal.hbgModal#hbgModal
+  .c-modal__bg.js-modalClose(data-id="hbgModal")
+  .c-modal__container
+    //- ↓↓↓↓↓↓↓↓↓↓↓中身ここから↓↓↓↓↓↓↓↓↓↓↓
+    .c-modal__inner
+      a.c-modal__top(href="#")
+        .c-modal__top-arrow: img(src=`${IMG_DIR}common/icon-arrow-r.svg` alt="arrow")
+        p.c-modal__top-text.f-inter-B top
+      button.c-modal__btn.js-modalClose(data-id="hbgModal")
+        .btn-close: img(src=`${IMG_DIR}common/icon-close.svg` alt="close")
+
+      .c-modal__logo: +c-logo(true)        
+      
+      nav.c-modal__nav 
+        a.f-inter-B(href="#") BLOG & NOTE
+        a.f-inter-B(href="#") PROJECTS
+        a.f-inter-B(href="#") ABOUT & CONTACT
+      
+      +c-sns('c-modal__sns', '')
+
+
+

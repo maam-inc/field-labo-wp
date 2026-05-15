@@ -13,8 +13,6 @@ html(lang="ja")
 
     link(href=`${CSS_DIR}common.css` rel='stylesheet' type='text/css')
     link(href=`${CSS_DIR}${page.type}.css` rel='stylesheet' type='text/css')
-    //- link(href=`${CSS_DIR}common.css?${now.getTime()}` rel='stylesheet' type='text/css')
-    //- link(href=`${CSS_DIR}${page.type}.css?${now.getTime()}` rel='stylesheet' type='text/css')
     block css
     .
       <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,10 +22,7 @@ html(lang="ja")
   body(id=`${page.id}`)
     block content
 
-    script(src=`${JS_DIR}common.js`)
+    script(src=`${JS_DIR}static-common.js`)
     script(src=`${JS_DIR}static.js`)
-    script(src=`${JS_DIR}${page.type}.js`)
-    //- script(src=`${JS_DIR}common.js?${now.getTime()}`)
-    //- script(src=`${JS_DIR}static.js?${now.getTime()}`)
-    //- script(src=`${JS_DIR}${page.type}.js?${now.getTime()}`)
+    script(src=`${JS_DIR}static-${page.type}.js`)
     block script

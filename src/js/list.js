@@ -10,7 +10,7 @@ if(!window.ScrollTrigger) window.ScrollTrigger = ScrollTrigger;
 gsap.registerPlugin(ScrollToPlugin);
 gsap.registerPlugin(ScrollTrigger);
 
-import LoadMore from './_modules/LoadMore';
+import LoadMore from './_modules/wp-loadmore';
 
 const domContentLoaded = () => {
   console.log("[list.js]domContentLoaded")

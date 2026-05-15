@@ -24,132 +24,310 @@
   </head>
   <body id="faq">
     <div class="wrapper" id="wrapper">
-      <header class="header" id="header">
-        <div class="btn-wrap hbg-menu__btn">
-          <button class="btn js-modalOpen" data-id="hbgModal">
-            <div class="inner">
-              <p>ボタン </p>
+      <header class="l-header" id="l-header">
+        <div class="l-header__inner"><a class="l-header__logo" href="#">
+            <h1>
+              <div class="c-logo white"></div>
+            </h1></a>
+          <nav class="l-header__nav f-inter-B"><a class="l-header__nav-list" href="#">BLOG & NOTE</a><a class="l-header__nav-list" href="#">PROJECTS</a><a class="l-header__nav-list" href="#">ABOUT & CONTACT</a></nav>
+          <button class="l-header__menu js-modalOpen" data-id="hbgModal">
+            <div class="l-header__menu-inner">
+              <div class="line"></div>
+              <div class="line"></div>
+              <div class="line"></div>
             </div>
           </button>
-        </div><a href="#">
-          <h1>FIELD LABO</h1></a>
+        </div>
       </header>
+      <div class="c-modal hbgModal" id="hbgModal">
+        <div class="c-modal__bg js-modalClose" data-id="hbgModal"></div>
+        <div class="c-modal__container">
+          <div class="c-modal__inner"><a class="c-modal__top" href="#">
+              <div class="c-modal__top-arrow"><img src="/themes/field-labo-2026/assets/images/common/icon-arrow-r.svg" alt="arrow"></div>
+              <p class="c-modal__top-text f-inter-B">top</p></a>
+            <button class="c-modal__btn js-modalClose" data-id="hbgModal">
+              <div class="btn-close"><img src="/themes/field-labo-2026/assets/images/common/icon-close.svg" alt="close"></div>
+            </button>
+            <div class="c-modal__logo">
+              <div class="c-logo black"></div>
+            </div>
+            <nav class="c-modal__nav"> <a class="f-inter-B" href="#">BLOG & NOTE</a><a class="f-inter-B" href="#">PROJECTS</a><a class="f-inter-B" href="#">ABOUT & CONTACT</a></nav>
+            <ul class="c-sns c-modal__sns">
+              <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-instagram.svg" alt="instagram"/></a></li>
+              <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-facebook.svg" alt="facebook"/></a></li>
+              <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-pinterest.svg" alt="pinterest"/></a></li>
+              <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-home.svg" alt="home"/></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <main class="content">
         <div class="content__wrapper">
-          <ul class="c-breadcrumbs">
-            <li class="c-breadcrumbs__item"><span class="c-breadcrumbs__page f-inter-B">about me & contact</span></li>
-            <li class="c-breadcrumbs__item"><a class="c-breadcrumbs__page f-inter-B" href="">faq</a></li>
-          </ul>
+          <div class="c-breadcrumbs">
+            <div class="c-breadcrumbs__item"><a class="c-breadcrumbs__page f-inter-B" href="../about-contact/index.html">ABOUT & CONTACT</a></div>
+            <div class="c-breadcrumbs__item">
+              <h1 class="c-breadcrumbs__page f-inter-B">FAQ</h1>
+            </div>
+          </div>
           <div class="faq modalOpenBg" id="faq">
-            <div class="faq__wrapper"> 
+            <div class="faq__wrapper">
               <div class="faq__title-group">
                 <h2 class="faq__title f-inter-B">faq</h2>
-                <p class="faq__text f-noto-T">
-                   フィールドラボのリノベーションについて<br class="sp">よくある質問形式にまとめてみました。</p>
+                <p class="faq__text f-noto-T">フィールドラボのリノベーションについて<br class="sp">よくある質問形式にまとめてみました。</p>
               </div>
               <div class="faq__items">
                 <div class="faq__item">
                   <div class="question">
-                    <button class="question__button js-modalOpen" data-id="faqModal" data-post="">
+                    <button class="question__button js-modalOpen" data-id="commonModal" data-post="faq-0">
                       <p class="question__text f-noto-T">他のリノベーション会社との違いは何でしょうか？</p><span class="question__icon"></span>
                     </button>
                   </div>
                 </div>
                 <div class="faq__item">
                   <div class="question">
-                    <button class="question__button js-modalOpen" data-id="faqModal" data-post="">
+                    <button class="question__button js-modalOpen" data-id="commonModal" data-post="faq-1">
                       <p class="question__text f-noto-T">他のリノベーション会社との違いは何でしょうか？</p><span class="question__icon"></span>
                     </button>
                   </div>
                 </div>
                 <div class="faq__item">
                   <div class="question">
-                    <button class="question__button js-modalOpen" data-id="faqModal" data-post="">
+                    <button class="question__button js-modalOpen" data-id="commonModal" data-post="faq-2">
                       <p class="question__text f-noto-T">他のリノベーション会社との違いは何でしょうか？</p><span class="question__icon"></span>
                     </button>
                   </div>
                 </div>
                 <div class="faq__item">
                   <div class="question">
-                    <button class="question__button js-modalOpen" data-id="faqModal" data-post="">
+                    <button class="question__button js-modalOpen" data-id="commonModal" data-post="faq-3">
                       <p class="question__text f-noto-T">他のリノベーション会社との違いは何でしょうか？</p><span class="question__icon"></span>
                     </button>
                   </div>
                 </div>
               </div>
-              <div class="faq__return"><a class="faq__return-link" href="/about"> 
+              <div class="faq__return"><a class="faq__return-link" href="/about">
                   <div class="icon"></div>
                   <div class="text f-inter-B">about & contact</div></a></div>
             </div>
           </div>
         </div>
       </main>
-      <div class="modal faqModal" id="faqModal">
-        <div class="modal__bg js-modalClose" data-post="faqModal"></div>
-        <div class="modal__container">
-          <div class="modal__contents">
-            <div class="modal__wrapper"> 
-              <div class="modal__inner">
-                <p class="question">他のリノベーション会社との違いは何でしょうか？</p>
-                <div class="full_img"><img src="../assets/images/project/full_img.jpg">
+      <div class="c-modal commonModal faqModal" id="commonModal">
+        <div class="c-modal__bg js-modalClose" data-id="commonModal"></div>
+        <div class="c-modal__container">
+          <div class="c-modal__wrapper">
+            <div class="c-modal__contents is-over">
+              <div class="c-modal__inner-scrlWrap">
+                <div class="c-modal__inner" data-type="faq">
+                  <div class="js-modalContent"></div>
+                  <button class="c-modal__bottom js-modalClose" data-id="commonModal">
+                    <div class="c-modal__bottom-icon"></div>
+                    <p class="c-modal__bottom-text f-inter-B">close</p>
+                  </button>
+                </div>
+              </div>
+              <button class="c-modal__btn js-modalClose" data-id="commonModal">
+                <div class="c-modal__btn-inner">
+                  <div class="c-modal__btn-icon"></div>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+            <div class="data" data-post="faq-0" hidden>
+              <p class="question">他のリノベーション会社との違いは何でしょうか？</p>
+              <div class="full_img"><img src="../assets/images/project/full_img.jpg">
+                <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+              </div>
+              <p class="text">部屋全体の仕上げをクロスから塗装仕上げに変更＋床は無垢フローリング張りへと全体を改修していますが、特に力を入れたのはこの洗面トイレ部分。<br>ダークグリーンの塗装、ダークブラウンの木目、白のタイル。海外製のミラーと照明器具を取り合わせたシックな水廻りへと大改修。<br>個人的には住宅でもオフィスでも、水廻りのしつらえの豊かさが人の心理に与える影響はとても大きいと感じるので大事にしています。<br>オフィスの水廻りが素敵だと社員さんたちも気分が良いですよね。<br>賃貸なのでもちろん改修前に管理会社を通じてオーナー様に内容を伝え、退去時の復旧をしなくて良い内容としています。</p>
+              <div class="narrow_img"><img src="../assets/images/project/narrow_img.jpg">
+                <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+              </div>
+              <div class="links">
+                <div class="link">
+                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                </div>
+                <div class="link">
+                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                </div>
+                <div class="link">
+                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                </div>
+                <div class="link">
+                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                </div>
+              </div>
+              <div class="column">
+                <div class="column_img--1 column_img"><img src="../assets/images/project/column1_img.jpg">
                   <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
                 </div>
-                <p class="text">部屋全体の仕上げをクロスから塗装仕上げに変更＋床は無垢フローリング張りへと全体を改修していますが、特に力を入れたのはこの洗面トイレ部分。<br>ダークグリーンの塗装、ダークブラウンの木目、白のタイル。海外製のミラーと照明器具を取り合わせたシックな水廻りへと大改修。<br>個人的には住宅でもオフィスでも、水廻りのしつらえの豊かさが人の心理に与える影響はとても大きいと感じるので大事にしています。<br>オフィスの水廻りが素敵だと社員さんたちも気分が良いですよね。<br>賃貸なのでもちろん改修前に管理会社を通じてオーナー様に内容を伝え、退去時の復旧をしなくて良い内容としています。</p>
-                <div class="narrow_img"><img src="../assets/images/project/narrow_img.jpg">
+                <div class="column_img--2 column_img"><img src="../assets/images/project/column2_img.jpg">
                   <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
                 </div>
-                <div class="links">
-                  <div class="link">
-                    <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+              </div>
+              <div class="before-after">
+                <p class="before-after__head">(  Before & After  )</p>
+                <div class="before-after__wrapper">
+                  <div class="before"><img src="../assets/images/project/before_img.jpg">
+                    <p class="before-after__text">Before</p>
                   </div>
-                  <div class="link">
-                    <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-                  </div>
-                  <div class="link">
-                    <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-                  </div>
-                  <div class="link">
-                    <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-                  </div>
-                </div>
-                <div class="column"> 
-                  <div class="column_img--1 column_img"><img src="../assets/images/project/column1_img.jpg">
-                    <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-                  </div>
-                  <div class="column_img--2 column_img"><img src="../assets/images/project/column2_img.jpg">
-                    <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-                  </div>
-                </div>
-                <div class="before-after"> 
-                  <p class="before-after__head">(  Before & After  )</p>
-                  <div class="before-after__wrapper">
-                    <div class="before"><img src="../assets/images/project/before_img.jpg">
-                      <p class="before-after__text">Before</p>
-                    </div>
-                    <div class="after"><img src="../assets/images/project/after_img.jpg">
-                      <p class="before-after__text">After </p>
-                    </div>
+                  <div class="after"><img src="../assets/images/project/after_img.jpg">
+                    <p class="before-after__text">After</p>
                   </div>
                 </div>
               </div>
             </div>
+            <div class="data" data-post="faq-1" hidden>
+              <p class="question">他のリノベーション会社との違いは何でしょうか？</p>
+              <div class="full_img"><img src="../assets/images/project/full_img.jpg">
+                <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+              </div>
+              <p class="text">部屋全体の仕上げをクロスから塗装仕上げに変更＋床は無垢フローリング張りへと全体を改修していますが、特に力を入れたのはこの洗面トイレ部分。<br>ダークグリーンの塗装、ダークブラウンの木目、白のタイル。海外製のミラーと照明器具を取り合わせたシックな水廻りへと大改修。<br>個人的には住宅でもオフィスでも、水廻りのしつらえの豊かさが人の心理に与える影響はとても大きいと感じるので大事にしています。<br>オフィスの水廻りが素敵だと社員さんたちも気分が良いですよね。<br>賃貸なのでもちろん改修前に管理会社を通じてオーナー様に内容を伝え、退去時の復旧をしなくて良い内容としています。</p>
+              <div class="narrow_img"><img src="../assets/images/project/narrow_img.jpg">
+                <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+              </div>
+              <div class="links">
+                <div class="link">
+                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                </div>
+                <div class="link">
+                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                </div>
+                <div class="link">
+                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                </div>
+                <div class="link">
+                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                </div>
+              </div>
+              <div class="column">
+                <div class="column_img--1 column_img"><img src="../assets/images/project/column1_img.jpg">
+                  <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+                </div>
+                <div class="column_img--2 column_img"><img src="../assets/images/project/column2_img.jpg">
+                  <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+                </div>
+              </div>
+              <div class="before-after">
+                <p class="before-after__head">(  Before & After  )</p>
+                <div class="before-after__wrapper">
+                  <div class="before"><img src="../assets/images/project/before_img.jpg">
+                    <p class="before-after__text">Before</p>
+                  </div>
+                  <div class="after"><img src="../assets/images/project/after_img.jpg">
+                    <p class="before-after__text">After</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="data" data-post="faq-2" hidden>
+              <p class="question">他のリノベーション会社との違いは何でしょうか？</p>
+              <div class="full_img"><img src="../assets/images/project/full_img.jpg">
+                <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+              </div>
+              <p class="text">部屋全体の仕上げをクロスから塗装仕上げに変更＋床は無垢フローリング張りへと全体を改修していますが、特に力を入れたのはこの洗面トイレ部分。<br>ダークグリーンの塗装、ダークブラウンの木目、白のタイル。海外製のミラーと照明器具を取り合わせたシックな水廻りへと大改修。<br>個人的には住宅でもオフィスでも、水廻りのしつらえの豊かさが人の心理に与える影響はとても大きいと感じるので大事にしています。<br>オフィスの水廻りが素敵だと社員さんたちも気分が良いですよね。<br>賃貸なのでもちろん改修前に管理会社を通じてオーナー様に内容を伝え、退去時の復旧をしなくて良い内容としています。</p>
+              <div class="narrow_img"><img src="../assets/images/project/narrow_img.jpg">
+                <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+              </div>
+              <div class="links">
+                <div class="link">
+                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                </div>
+                <div class="link">
+                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                </div>
+                <div class="link">
+                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                </div>
+                <div class="link">
+                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                </div>
+              </div>
+              <div class="column">
+                <div class="column_img--1 column_img"><img src="../assets/images/project/column1_img.jpg">
+                  <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+                </div>
+                <div class="column_img--2 column_img"><img src="../assets/images/project/column2_img.jpg">
+                  <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+                </div>
+              </div>
+              <div class="before-after">
+                <p class="before-after__head">(  Before & After  )</p>
+                <div class="before-after__wrapper">
+                  <div class="before"><img src="../assets/images/project/before_img.jpg">
+                    <p class="before-after__text">Before</p>
+                  </div>
+                  <div class="after"><img src="../assets/images/project/after_img.jpg">
+                    <p class="before-after__text">After</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="data" data-post="faq-3" hidden>
+              <p class="question">他のリノベーション会社との違いは何でしょうか？</p>
+              <div class="full_img"><img src="../assets/images/project/full_img.jpg">
+                <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+              </div>
+              <p class="text">部屋全体の仕上げをクロスから塗装仕上げに変更＋床は無垢フローリング張りへと全体を改修していますが、特に力を入れたのはこの洗面トイレ部分。<br>ダークグリーンの塗装、ダークブラウンの木目、白のタイル。海外製のミラーと照明器具を取り合わせたシックな水廻りへと大改修。<br>個人的には住宅でもオフィスでも、水廻りのしつらえの豊かさが人の心理に与える影響はとても大きいと感じるので大事にしています。<br>オフィスの水廻りが素敵だと社員さんたちも気分が良いですよね。<br>賃貸なのでもちろん改修前に管理会社を通じてオーナー様に内容を伝え、退去時の復旧をしなくて良い内容としています。</p>
+              <div class="narrow_img"><img src="../assets/images/project/narrow_img.jpg">
+                <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+              </div>
+              <div class="links">
+                <div class="link">
+                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                </div>
+                <div class="link">
+                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                </div>
+                <div class="link">
+                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                </div>
+                <div class="link">
+                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                </div>
+              </div>
+              <div class="column">
+                <div class="column_img--1 column_img"><img src="../assets/images/project/column1_img.jpg">
+                  <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+                </div>
+                <div class="column_img--2 column_img"><img src="../assets/images/project/column2_img.jpg">
+                  <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+                </div>
+              </div>
+              <div class="before-after">
+                <p class="before-after__head">(  Before & After  )</p>
+                <div class="before-after__wrapper">
+                  <div class="before"><img src="../assets/images/project/before_img.jpg">
+                    <p class="before-after__text">Before</p>
+                  </div>
+                  <div class="after"><img src="../assets/images/project/after_img.jpg">
+                    <p class="before-after__text">After</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+      <footer class="l-footer" id="l-footer">
+        <ul class="c-sns l-footer__sns type-footer">
+          <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-instagram.svg" alt="instagram"/></a></li>
+          <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-facebook.svg" alt="facebook"/></a></li>
+          <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-pinterest.svg" alt="pinterest"/></a></li>
+          <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-home.svg" alt="home"/></a></li>
+        </ul>
+        <p class="l-footer__copyright f-inter-B">©FIELD LABO  ALL RIGHTS RESERVED.</p>
+        <div class="l-footer__top">
+          <div class="c-toTop"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.595 33.595">
+<rect class="cls-2" width="33.595" height="33.595"/>
+<polygon class="cls-1" points="21.774 18.725 16.797 13.749 11.821 18.724 10.835 17.738 16.797 11.775 22.76 17.737 21.774 18.725"/>
+<rect class="cls-1" x="16.099" y="12.762" width="1.396" height="10.938"/>
+<rect class="cls-1" x="10.987" y="9.196" width="11.62" height="1.396"/>
+</svg>
           </div>
-        </div>
-        <button class="modal__btn js-modalClose" data-id="faqModal">
-          <div class="btn-close"></div>
-        </button>
-      </div>
-      <footer class="footer" id="footer">
-        <div class="footer__inner"><a href="http://field-labo.com/">
-            <h1 class="footer__logo">FILED LABO </h1></a>
-          <p class="footer__address">〒205-0014 東京都羽村市羽東2-2-3</p>
-          <p class="footer__email">shigeho.s@field-labo.com</p>
-          <p class="footer__copyright">© 2016 - FIELD LABO All Rights Reserved.</p>
         </div>
       </footer>
     </div>
-    <script src="/themes/field-labo-2026/assets/js/common.js"></script>
+    <script src="/themes/field-labo-2026/assets/js/static-common.js"></script>
     <script src="/themes/field-labo-2026/assets/js/static.js"></script>
-    <script src="/themes/field-labo-2026/assets/js/page.js"></script>
+    <script src="/themes/field-labo-2026/assets/js/static-page.js"></script>
   </body>
 </html>

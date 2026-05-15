@@ -1,35 +1,56 @@
 @use '../../_base/settings' as *;
 @use 'sass:math';
 
-.footer{
+.l-footer{
   width: 100%;
-  background: #c8c8c8;
-  
-  &__inner{
-    margin-inline: auto;
-    padding-top: 50px;
-    padding-bottom: 10px;
-  }
+  height: vw(154);
+  border-top: vw(2) solid #eeeeee;  
+  position: relative;
 
-  &__logo{
-    font-size: 50px;
-    font-weight: 800;
-  }
-
-  &__address{
-    margin-top: 30px;
-    font-size: 15px;
-  }
-
-  &__email{
-    margin-top: 0px;
-    font-size: 15px;
+  &__sns{
+    position: absolute;
+    top: vw(40);
+    left: vw(35);
   }
 
   &__copyright{
-    margin-top: 200px;
-    text-align: center;
-    font-size: 10px;
+    position: absolute;
+    bottom: vw(30);
+    left: vw(35);
+    font-size: vw(20);
   }
 
+  &__top{
+    position: absolute;
+    top: vw(59);
+    right: vw(24);
+    width: vw(67);
+  }
+}
+
+@include mq(pc){
+  .l-footer{
+    height: 64px;
+    border-top: 1px solid #eeeeee;  
+
+    &__sns{
+      top: 50%;
+      transform: translateY(-50%);
+      left: 39px;
+    }
+
+    &__copyright{
+      bottom: 50%;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      font-size:10px;
+    }
+
+    &__top{
+      top: 50%;
+      transform: translateY(-50%);
+      right: 20px;
+      width:33px;
+    }
+  }  
 }

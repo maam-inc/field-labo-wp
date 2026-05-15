@@ -1,5 +1,7 @@
 extends ../_layout/layout
 include ../_project/parts
+include ../_project/svg
+
 
 block data
   include ../_data/data_top
@@ -13,39 +15,14 @@ block content
   .wrapper#wrapper
     .modalOpenBg
       include ../_modules/common/header
-      include ../_modules/top/main
-      include ../_modules/top/contents
+      .l-content
+        .l-content__wrapper
+          include ../_modules/top/main
+          include ../_modules/top/contents
       include ../_modules/common/footer
     
-    .modal.hbgModal#hbgModal
-      .modal__bg.js-modalClose(data-id="hbgModal")
-        .modal__container
-          .modal__contents
-            .modal__wrapper  
-              .modal__inner
-                button.modal__btn.js-modalClose(data-id="hbgModal")
-                  .btn-close ×
-                a.modal__contact(href="#")
-                  p.modal__contact-text contact 
-                  .modal__contact-arrow →
-                
-                nav.modal__nav 
-                  a(href="#") Top
-                  a(href="#") Project
-                  a(href="#") Note
-                  a(href="#") About
-                  a(href="#") FAQ
-                
-                ul.modal__sns 
-                  li
-                    a(href="#") Instagram
-                  li
-                    a(href="#") Pinterest
-                  li
-                    a(href="#") Facebook  
-
 block script
-  //- script(src=`${JS_DIR}top.js?${now.getTime()}`)
+  //- script(src=`${JS_DIR}static-top.js`)
   //- script(src="minimasonry.min.js")
 
 

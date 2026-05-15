@@ -7,7 +7,7 @@ import Masonry from 'masonry-layout';
 
 import UiManager from './_modules/UiManager';
 import MainSwiper from './_modules/MainSwiper';
-import MasonryUi from './_modules/MasonryUi';
+import Gallery from './_modules/wp-gallery';
 
 if(!window.gsap) window.gsap = gsap;
 if(!window.ScrollTrigger) window.ScrollTrigger = ScrollTrigger;
@@ -27,8 +27,8 @@ const loaded = () => {
   uiManager.init();
   const mainSwiper = new MainSwiper;
   mainSwiper.init();
-  const masonryUi = new MasonryUi;
-  masonryUi.init();
+  const masonryUi = new Gallery;
+  Gallery.init();
 
 };
 

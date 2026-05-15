@@ -1,3 +1,59 @@
+.f-inter-R {
+  font-family: "Inter",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.f-inter-M {
+  font-family: "Inter",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.f-inter-B {
+  font-family: "Inter",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.f-noto-T {
+  font-family: "Noto Sans JP",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 100;
+}
+
+.f-noto-R {
+  font-family: "Noto Sans JP",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.f-noto-M {
+  font-family: "Noto Sans JP",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.f-noto-SB {
+  font-family: "Inter",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.f-noto-B {
+  font-family: "Inter",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 900;
+}
+
 .about__wrapper {
   margin-top: 14.2666666667vw;
   padding-inline: 2.9333333333vw;
@@ -155,9 +211,8 @@
   font-size: 3.4666666667vw;
 }
 
-.faqModal {
+.commonModal {
   background-color: hsla(0,0%,100%,.9);
-  display: none;
   height: 100vh;
   left: 0;
   position: absolute;
@@ -165,17 +220,13 @@
   width: 100vw;
 }
 
-.faqModal.is-open {
-  display: block;
-}
-
-.faqModal .modal__bg {
+.commonModal .modal__bg {
   background-color: #222;
   height: 100%;
   width: 100%;
 }
 
-.faqModal .modal__container {
+.commonModal .modal__container {
   height: calc(100% - 50px);
   left: 50%;
   overflow-y: scroll;
@@ -184,32 +235,32 @@
   transform: translate(-50%, -50%);
 }
 
-.faqModal .modal__wrapper {
+.commonModal .modal__wrapper {
   background: #fff;
 }
 
-.faqModal .modal__inner {
+.commonModal .modal__inner {
   margin-inline: auto;
   padding-bottom: 150px;
   padding-top: 150px;
 }
 
-.faqModal .question {
+.commonModal .question {
   color: #9a9797;
   font-size: 23px;
 }
 
-.faqModal .full_img {
+.commonModal .full_img {
   margin: 50px auto 0;
   width: 100%;
 }
 
-.faqModal .narrow_img {
+.commonModal .narrow_img {
   height: auto;
   margin: 50px auto 0;
 }
 
-.faqModal .text {
+.commonModal .text {
   font-size: 12px;
   letter-spacing: .05em;
   line-height: 215%;
@@ -217,33 +268,33 @@
   width: 100%;
 }
 
-.faqModal .cap {
+.commonModal .cap {
   font-size: 11px;
   margin: 20px auto 0;
   width: 100%;
 }
 
-.faqModal .links {
+.commonModal .links {
   font-size: 12px;
   margin: 50px auto 0;
   width: 100%;
 }
 
-.faqModal .links .link {
+.commonModal .links .link {
   display: flex;
 }
 
-.faqModal .links .link:not(:first-child) {
+.commonModal .links .link:not(:first-child) {
   margin-top: 5px;
 }
 
-.faqModal .links .link_url {
+.commonModal .links .link_url {
   text-decoration-line: underline;
   width: -moz-fit-content;
   width: fit-content;
 }
 
-.faqModal .column {
+.commonModal .column {
   align-items: self-start;
   display: flex;
   justify-content: space-between;
@@ -251,33 +302,33 @@
   width: 100%;
 }
 
-.faqModal .column_img {
+.commonModal .column_img {
   width: calc((100% - 20px)/2);
 }
 
-.faqModal .before-after {
+.commonModal .before-after {
   margin: 50px auto 0;
   width: 100%;
 }
 
-.faqModal .before-after__head {
+.commonModal .before-after__head {
   font-size: 15px;
   text-align: center;
 }
 
-.faqModal .before-after__wrapper {
+.commonModal .before-after__wrapper {
   display: flex;
   justify-content: space-between;
   margin: 20px auto 0;
   width: 100%;
 }
 
-.faqModal .before-after__wrapper .before,
-.faqModal .before-after__wrapper .after {
+.commonModal .before-after__wrapper .before,
+.commonModal .before-after__wrapper .after {
   width: calc((100% - 20px)/2);
 }
 
-.faqModal .before-after__text {
+.commonModal .before-after__text {
   font-size: 12px;
   margin-top: 10px;
 }

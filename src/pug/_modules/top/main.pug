@@ -1,17 +1,14 @@
-.main#main
-  .main__wrapper
-    .swiper-container
-      .main__mv.swiper 
-        .swiper-wrapper 
-          -for(let i=0; i<4; i++)
-            .swiper-slide 
-              a.inner(href="./project/page/index.html")
-                .main_img: +picture2(`${IMG_DIR}main/main_${i+1}-pc.jpg`, `${IMG_DIR}main/main_${i+1}-sp.jpg`, '', '')
-                .text-wrapper 
-                  .type Project
-                  p.title Jingumae office-M
-                  p.main_summary 普段は主に個人邸リノベーションの仕事が多いのですがオフィスリノベーションも行っています。
-        
+main.top__main#top__main
+  .top__main-mv.swiper 
+    .swiper-wrapper 
+      -for(let i = 0; i < main.slide.length; i++)
+        .swiper-slide 
+          a.inner(href="#")
+            .main_img: +picture2(`${IMG_DIR}top/main${i+1}-pc.jpg`, `${IMG_DIR}top/main${i+1}-sp.jpg`, '', '')
+            .text-wrapper 
+              .title.f-inter-B: p!=main.slide[i].title
+              .main_summary.f-noto-B: p!=main.slide[i].summary
+    +c-ctrl-btn('top__main-mv')
 
 
-      .swiper-pagination
+      

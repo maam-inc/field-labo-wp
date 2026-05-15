@@ -1,18 +1,57 @@
-.article {
-  font-size: 1.4rem;
+.f-inter-R {
+  font-family: "Inter",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 400;
 }
 
-.article img {
-  height: auto;
+.f-inter-M {
+  font-family: "Inter",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 500;
 }
 
-.article .image-block {
-  margin: 0 auto;
-  width: 50%;
+.f-inter-B {
+  font-family: "Inter",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 700;
 }
 
-.article .article__contents>* {
-  margin: 2rem auto;
+.f-noto-T {
+  font-family: "Noto Sans JP",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 100;
+}
+
+.f-noto-R {
+  font-family: "Noto Sans JP",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.f-noto-M {
+  font-family: "Noto Sans JP",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.f-noto-SB {
+  font-family: "Inter",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.f-noto-B {
+  font-family: "Inter",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 900;
 }
 
 .article__wrapper {

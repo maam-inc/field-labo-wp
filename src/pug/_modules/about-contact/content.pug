@@ -1,0 +1,34 @@
+main.l-content
+  .l-content__wrapper
+    +c-breadcrumbs('ABOUT & CONTACT', false)
+
+    .about#about
+      .about__wrapper
+        .about__block.about__block--1
+          h2.about__head.f-inter-B message
+          p.about__text.f-noto-T!=contents.message
+
+        .about__block.about__block--2
+          h2.about__head.f-inter-B about me
+          div.about__text-group.f-noto-T
+            p.about__name
+              |柴田 茂穂
+              span.en.f-inter-R shigeho.shibata
+            p.about__text!=contents.profile
+
+        .about__block.about__block--3
+          h2.about__head.f-inter-B faq
+          p.about__text.f-noto-T!=contents.faq
+
+        .about__block.about__block--4
+          h2.about__head.f-inter-B contact
+          .about__contacts
+            -for(let i = 0; i < contents.contact.length; i++)
+              .about__contact
+                p.head.f-inter-B!=contents.contact[i].head
+                p.text.f-noto-T!=contents.contact[i].text
+
+          p.about__note.f-noto-T 
+            |※主に東京都及び首都圏近郊にて活動しております。
+            br.sp
+            |お気軽にお問い合わせください。
