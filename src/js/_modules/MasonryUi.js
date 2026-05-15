@@ -1,5 +1,6 @@
+// WPで使用
+// 
 import Masonry from 'masonry-layout';
-
 export default class MasonryiUi {
 
   constructor(){

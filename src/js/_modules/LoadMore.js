@@ -1,3 +1,4 @@
+// WPで使用
 export default class LoadMore {
   static #instance = null;
 
