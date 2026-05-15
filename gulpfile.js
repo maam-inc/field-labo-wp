@@ -29,13 +29,13 @@ const SERVER_NAME = 'field-labo.com';
 
 const DIR = '';
 const WP_THEME_NAME = 'field-labo-2026';
-const ASSET_DIR = '/wp-content/themes/' + WP_THEME_NAME;
+const ASSET_DIR = '/themes/' + WP_THEME_NAME;
 
 const CSS_DIR = `/assets/css/`;
 const JS_DIR = `/assets/js/`;
 const IMG_DIR = `/assets/images/`;
 
-const DUMMY_DIR = `/wp-content/uploads/dummy/`;
+const DUMMY_DIR = `/uploads/dummy/`;
 
 
 const HTML_ROOT = './static/';
@@ -58,7 +58,7 @@ const errorHandler = (error) => {
 };
 
 const compilePug = (done) => {
-  src(
+  return src(
     [
       // 'src/pug/**.pug',
       // 'src/pug/**/*.pug',
@@ -92,7 +92,6 @@ const compilePug = (done) => {
     )
     // .pipe(rename(path => path.extname = '.php'))
     .pipe(dest(INDEX_DIR /* { sourcemaps: './sourcemaps'} */));
-  done();
 };
 
 
@@ -103,7 +102,7 @@ const compileSass = (done) => {
     }),
     cssdeclsort({ order: 'alphabetical' /* smacss, concentric-css */ }),
   ];
-  src([
+  return src([
     'src/scss/**/*.scss',
     '!src/scss/_*/**.scss',
     '!src/scss/_*/**/**.scss',
@@ -119,7 +118,6 @@ const compileSass = (done) => {
     .pipe(gcmq())
     // .pipe(cleanCSS({ rebase: false }))
     .pipe(dest(`${ASSET_ROOT}${CSS_DIR}`) /* , { sourcemaps: './sourcemaps'} */);
-  done(); // 終了宣言
 };
 
 const buildServer = (done) => {
@@ -130,7 +128,7 @@ const buildServer = (done) => {
     startPath: DIR,
     // reloadDelay: WATCH_INTERVAL,
     server: {
-      baseDir: HTML_ROOT // ルートとなるディレクトリを指定
+      baseDir: [HTML_ROOT, './'] // 静的HTMLと /themes 配下のアセットを配信
     }
   });
 
@@ -142,11 +140,12 @@ const browserReload = (done) => {
   done();
 };
 
-const watchFiles = () => {
+const watchFiles = (done) => {
   watch(['src/pug/**/*.pug'], series(compilePug, browserReload));
   // watch(['./scss/**/*.scss'], series(compileSass, browserStream));
   watch(['src/scss/**/*.scss','src/scss/**/*.sass'], series(compileSass, browserReload));
-  watch(['src/js/'], series(browserReload));
+  watch(['src/js/**/*.js'], series(browserReload));
+  done();
 };
 
 if (PROD) {

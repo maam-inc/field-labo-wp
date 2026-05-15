@@ -34,6 +34,10 @@ module.exports = {
     filename: "[name]"
   },
 
+  watchOptions: {
+    ignored: /node_modules/,
+  },
+
   // babel
   module: {
     rules: [

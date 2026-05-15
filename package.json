@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "run-p development:*",
-    "dev": "npx gulp",
+    "dev": "run-p development:*",
     "development:site": "npx gulp",
     "development:webpack": "webpack --config webpack.dev.js",
     "build": "run-s build:*",

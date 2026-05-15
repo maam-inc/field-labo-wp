@@ -14,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 const domContentLoaded = () => {
-  console.log("domContentLoaded")
+  console.log("[common]domContentLoaded")
   const uiManager = new UiManager;
   uiManager.init();
 };
