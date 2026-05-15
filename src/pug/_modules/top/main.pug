@@ -4,7 +4,7 @@ main.top__main#top__main
       -for(let i = 0; i < main.slide.length; i++)
         .swiper-slide 
           a.inner(href="#")
-            .main_img: +picture2(`${IMG_DIR}top/main${i+1}-pc.jpg`, `${IMG_DIR}top/main${i+1}-sp.jpg`, '', '')
+            .main_img: +picture2(`${DUMMY_DIR}top/main${i+1}-pc.jpg`, `${DUMMY_DIR}top/main${i+1}-sp.jpg`, '', '')
             .text-wrapper 
               .title.f-inter-B: p!=main.slide[i].title
               .main_summary.f-noto-B: p!=main.slide[i].summary

@@ -52,7 +52,7 @@ mixin c-thumbnail(className, type, i, idx)
   .c-thumbnail(class=className ? className : '')
     //- フォトギャラリー
     -if(type=='top')
-      .c-thumbnail__main_img: img(src=`${IMG_DIR}top/gallery${idx+1}.jpg`)
+      .c-thumbnail__main_img: img(src=`${DUMMY_DIR}top/gallery${idx+1}.jpg`)
       .c-thumbnail__text-wrapper
         -if(i.ttlJp === true)
           .c-thumbnail__title.f-noto-B: p!=i.title
