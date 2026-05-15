@@ -3,9 +3,9 @@ header.l-header#l-header
   .l-header__inner
     a.l-header__logo(href="#"): h1: +c-logo('')
     nav.l-header__nav.f-inter-B
-      a.l-header__nav-list(href="#") BLOG & NOTE
-      a.l-header__nav-list(href="#") PROJECTS
-      a.l-header__nav-list(href="#") ABOUT & CONTACT
+      a.l-header__nav-list(href="./blog") BLOG & NOTE
+      a.l-header__nav-list(href="./projects") PROJECTS
+      a.l-header__nav-list(href="./about-contact") ABOUT & CONTACT
 
     button.l-header__menu.js-modalOpen(data-id='hbgModal')
       .l-header__menu-inner
@@ -28,9 +28,9 @@ header.l-header#l-header
       .c-modal__logo: +c-logo(true)        
       
       nav.c-modal__nav 
-        a.f-inter-B(href="#") BLOG & NOTE
-        a.f-inter-B(href="#") PROJECTS
-        a.f-inter-B(href="#") ABOUT & CONTACT
+        a.f-inter-B(href="./blog") BLOG & NOTE
+        a.f-inter-B(href="./projects") PROJECTS
+        a.f-inter-B(href="./about-contact") ABOUT & CONTACT
       
       +c-sns('c-modal__sns', '')
 
