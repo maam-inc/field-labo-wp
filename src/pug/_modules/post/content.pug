@@ -1,0 +1,312 @@
+.article
+  .article__wrapper
+    .article__main 
+      //- メイン画像　
+      .main_img: img(src=`../../assets/images/project/main_img.jpg`)
+      
+      //- 日付　
+      p.date 2024-05
+      
+      //- タイトル
+      p.title Jingumae office-M
+
+      //- カテゴリ　
+      .categorie_wrapper 
+        .categorie Kitchen 
+        .categorie Office 
+        .categorie Renovation
+    
+    //- ここから本文　    
+    .article__contents  
+
+      //- w100写真パーツ
+      .full_img
+        .img
+          img(src=`../../assets/images/project/full_img.jpg`)
+          .btn-wrap
+            button.btn.js-modalOpen(data-id='imgModal' data-post='')
+              .inner
+        .cap スチールアングルを切っただけの引戸引手は定番アイテム
+              
+      //- 見出し
+      p.head 水廻りの改修内容について
+
+      //- テキスト
+      p.text 部屋全体の仕上げをクロスから塗装仕上げに変更＋床は無垢フローリング張りへと全体を改修していますが、特に力を入れたのはこの洗面トイレ部分。
+        br
+        | ダークグリーンの塗装、ダークブラウンの木目、白のタイル。海外製のミラーと照明器具を取り合わせたシックな水廻りへと大改修。
+        br
+        | 個人的には住宅でもオフィスでも、水廻りのしつらえの豊かさが人の心理に与える影響はとても大きいと感じるので大事にしています。
+        br
+        | オフィスの水廻りが素敵だと社員さんたちも気分が良いですよね。
+        br
+        | 賃貸なのでもちろん改修前に管理会社を通じてオーナー様に内容を伝え、退去時の復旧をしなくて良い内容としています。
+      
+      //- テーブルパーツ
+      table.table 
+        tr
+          td.table_head TITLE
+          td.table_text 東京都中央区-M37
+        tr
+          td.table_head 所在地
+          td.table_text 東京都中央区
+        tr
+          td.table_head 築年・面積
+          td.table_text 築15年・マンション専用部分37.1平米
+        tr
+          td.table_head 工事概要
+          td.table_text フルスケルトンリノベーション
+        tr
+          td.table_head 主な仕様
+          td.table_text 天井：躯体スラブ表し
+            br
+            | 壁：OSB合板、AEP白塗装
+            br
+            | 床：クリ無垢フローリングOS塗装
+            br
+            | 他：スチールフレームキッチン、SPF造作クロゼット
+        tr
+          td.table_head 工事期間
+          td.table_text 設計1.5ヶ月＋工事1.5ヶ月間   
+
+      //- w狭め写真パーツ
+      .narrow_img 
+        .img
+          img(src=`../../assets/images/project/narrow_img.jpg`)
+          .btn-wrap
+            button.btn.js-modalOpen(data-id='imgModal' data-post='')
+              .inner
+        .cap スチールアングルを切っただけの引戸引手は定番アイテム
+      //- //- 写真キャプション
+      //- p.cap スチールアングルを切っただけの引戸引手は定番アイテム
+      
+      //- リンク
+      .links
+        .link
+          p.link_name FIELD LABO :&nbsp;
+          a.link_url(href="http://field-labo.com/") http://field-labo.com/
+        .link
+          p.link_name FIELD LABO :&nbsp;
+          a.link_url(href="http://field-labo.com/") http://field-labo.com/
+        .link
+          p.link_name FIELD LABO :&nbsp;
+          a.link_url(href="http://field-labo.com/") http://field-labo.com/
+        .link
+          p.link_name FIELD LABO :&nbsp;
+          a.link_url(href="http://field-labo.com/") http://field-labo.com/
+
+      //- 横並び２カラムパーツ
+      .column 
+        .column_img--1.column_img
+          .img
+            img(src=`../../assets/images/project/column1_img.jpg`)
+            .btn-wrap
+              button.btn.js-modalOpen(data-id='imgModal' data-post='')
+                .inner
+          .cap スチールアングルを切っただけの引戸引手は定番アイテム
+        .column_img--2.column_img 
+          .img
+            img(src=`../../assets/images/project/column2_img.jpg`)
+            .btn-wrap
+              button.btn.js-modalOpen(data-id='imgModal' data-post='')
+                .inner
+          .cap スチールアングルを切っただけの引戸引手は定番アイテム
+      
+      //- Before & Afterパーツ　
+      .before-after 
+        p.before-after__head (  Before & After  )
+        .before-after__wrapper
+          .before
+            p.before-after__text Before
+            .article__contents  
+
+              //- w100写真パーツ
+              .full_img.img
+                .img
+                  img(src=`../../assets/images/project/full_img.jpg`)
+                  .btn-wrap
+                    button.btn.js-modalOpen(data-id='imgModal' data-post='')
+                      .inner
+                .cap スチールアングルを切っただけの引戸引手は定番アイテム
+                      
+              //- 見出し
+              p.head 水廻りの改修内容について
+
+              //- テキスト
+              p.text 部屋全体の仕上げをクロスから塗装仕上げに変更＋床は無垢フローリング張りへと全体を改修していますが、特に力を入れたのはこの洗面トイレ部分。
+                br
+                | ダークグリーンの塗装、ダークブラウンの木目、白のタイル。海外製のミラーと照明器具を取り合わせたシックな水廻りへと大改修。
+                br
+                | 個人的には住宅でもオフィスでも、水廻りのしつらえの豊かさが人の心理に与える影響はとても大きいと感じるので大事にしています。
+                br
+                | オフィスの水廻りが素敵だと社員さんたちも気分が良いですよね。
+                br
+                | 賃貸なのでもちろん改修前に管理会社を通じてオーナー様に内容を伝え、退去時の復旧をしなくて良い内容としています。
+              
+              //- テーブルパーツ
+              table.table 
+                tr
+                  td.table_head TITLE
+                  td.table_text 東京都中央区-M37
+                tr
+                  td.table_head 所在地
+                  td.table_text 東京都中央区
+                tr
+                  td.table_head 築年・面積
+                  td.table_text 築15年・マンション専用部分37.1平米
+                tr
+                  td.table_head 工事概要
+                  td.table_text フルスケルトンリノベーション
+                tr
+                  td.table_head 主な仕様
+                  td.table_text 天井：躯体スラブ表し
+                    br
+                    | 壁：OSB合板、AEP白塗装
+                    br
+                    | 床：クリ無垢フローリングOS塗装
+                    br
+                    | 他：スチールフレームキッチン、SPF造作クロゼット
+                tr
+                  td.table_head 工事期間
+                  td.table_text 設計1.5ヶ月＋工事1.5ヶ月間   
+
+              //- w狭め写真パーツ
+              .narrow_img 
+                .img
+                  img(src=`../../assets/images/project/narrow_img.jpg`)
+                  .btn-wrap
+                    button.btn.js-modalOpen(data-id='imgModal' data-post='')
+                      .inner
+                .cap スチールアングルを切っただけの引戸引手は定番アイテム
+              //- //- 写真キャプション
+              //- p.cap スチールアングルを切っただけの引戸引手は定番アイテム
+              
+              //- リンク
+              .links
+                .link
+                  p.link_name FIELD LABO :&nbsp;
+                  a.link_url(href="http://field-labo.com/") http://field-labo.com/
+                .link
+                  p.link_name FIELD LABO :&nbsp;
+                  a.link_url(href="http://field-labo.com/") http://field-labo.com/
+                .link
+                  p.link_name FIELD LABO :&nbsp;
+                  a.link_url(href="http://field-labo.com/") http://field-labo.com/
+                .link
+                  p.link_name FIELD LABO :&nbsp;
+                  a.link_url(href="http://field-labo.com/") http://field-labo.com/
+
+              //- 横並び２カラムパーツ
+              .column 
+                .column_img--1.column_img
+                  .img
+                    img(src=`../../assets/images/project/column1_img.jpg`)
+                    .btn-wrap
+                      button.btn.js-modalOpen(data-id='imgModal' data-post='')
+                        .inner
+                  .cap スチールアングルを切っただけの引戸引手は定番アイテム
+                .column_img--2.column_img 
+                  .img
+                    img(src=`../../assets/images/project/column2_img.jpg`)
+                    .btn-wrap
+                      button.btn.js-modalOpen(data-id='imgModal' data-post='')
+                        .inner
+                  .cap スチールアングルを切っただけの引戸引手は定番アイテム
+
+          .after
+            p.before-after__text After
+            .article__contents  
+
+              //- w100写真パーツ
+              .full_img.img
+                .img
+                  img(src=`../../assets/images/project/full_img.jpg`)
+                  .btn-wrap
+                    button.btn.js-modalOpen(data-id='imgModal' data-post='')
+                      .inner
+                .cap スチールアングルを切っただけの引戸引手は定番アイテム
+                      
+              //- 見出し
+              p.head 水廻りの改修内容について
+
+              //- テキスト
+              p.text 部屋全体の仕上げをクロスから塗装仕上げに変更＋床は無垢フローリング張りへと全体を改修していますが、特に力を入れたのはこの洗面トイレ部分。
+                br
+                | ダークグリーンの塗装、ダークブラウンの木目、白のタイル。海外製のミラーと照明器具を取り合わせたシックな水廻りへと大改修。
+                br
+                | 個人的には住宅でもオフィスでも、水廻りのしつらえの豊かさが人の心理に与える影響はとても大きいと感じるので大事にしています。
+                br
+                | オフィスの水廻りが素敵だと社員さんたちも気分が良いですよね。
+                br
+                | 賃貸なのでもちろん改修前に管理会社を通じてオーナー様に内容を伝え、退去時の復旧をしなくて良い内容としています。
+              
+              //- テーブルパーツ
+              table.table 
+                tr
+                  td.table_head TITLE
+                  td.table_text 東京都中央区-M37
+                tr
+                  td.table_head 所在地
+                  td.table_text 東京都中央区
+                tr
+                  td.table_head 築年・面積
+                  td.table_text 築15年・マンション専用部分37.1平米
+                tr
+                  td.table_head 工事概要
+                  td.table_text フルスケルトンリノベーション
+                tr
+                  td.table_head 主な仕様
+                  td.table_text 天井：躯体スラブ表し
+                    br
+                    | 壁：OSB合板、AEP白塗装
+                    br
+                    | 床：クリ無垢フローリングOS塗装
+                    br
+                    | 他：スチールフレームキッチン、SPF造作クロゼット
+                tr
+                  td.table_head 工事期間
+                  td.table_text 設計1.5ヶ月＋工事1.5ヶ月間   
+
+              //- w狭め写真パーツ
+              .narrow_img 
+                .img
+                  img(src=`../../assets/images/project/narrow_img.jpg`)
+                  .btn-wrap
+                    button.btn.js-modalOpen(data-id='imgModal' data-post='')
+                      .inner
+                .cap スチールアングルを切っただけの引戸引手は定番アイテム
+              //- //- 写真キャプション
+              //- p.cap スチールアングルを切っただけの引戸引手は定番アイテム
+              
+              //- リンク
+              .links
+                .link
+                  p.link_name FIELD LABO :&nbsp;
+                  a.link_url(href="http://field-labo.com/") http://field-labo.com/
+                .link
+                  p.link_name FIELD LABO :&nbsp;
+                  a.link_url(href="http://field-labo.com/") http://field-labo.com/
+                .link
+                  p.link_name FIELD LABO :&nbsp;
+                  a.link_url(href="http://field-labo.com/") http://field-labo.com/
+                .link
+                  p.link_name FIELD LABO :&nbsp;
+                  a.link_url(href="http://field-labo.com/") http://field-labo.com/
+
+              //- 横並び２カラムパーツ
+              .column 
+                .column_img--1.column_img
+                  .img
+                    img(src=`../../assets/images/project/column1_img.jpg`)
+                    .btn-wrap
+                      button.btn.js-modalOpen(data-id='imgModal' data-post='')
+                        .inner
+                  .cap スチールアングルを切っただけの引戸引手は定番アイテム
+                .column_img--2.column_img 
+                  .img
+                    img(src=`../../assets/images/project/column2_img.jpg`)
+                    .btn-wrap
+                      button.btn.js-modalOpen(data-id='imgModal' data-post='')
+                        .inner
+                  .cap スチールアングルを切っただけの引戸引手は定番アイテム
+              

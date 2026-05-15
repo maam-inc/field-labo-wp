@@ -1,0 +1,124 @@
+@use '../../_base/settings' as *;
+@use 'sass:math';
+
+.about {
+  &__wrapper {
+    margin-top: vw(107);
+    padding-inline: vw(22);
+  }
+
+  &__head {
+    margin-bottom: vw(44);
+    font-size: vw(40);
+    color: $bk;
+    letter-spacing: -0.02em;
+  }
+
+  &__text {
+    font-size: vw(26);
+    line-height: 1.7;
+    color: $bk;
+
+    &-link {
+      display: inline-block;
+      width: fit-content;
+      color: #aa9977;
+    }
+  }
+
+  &__name {
+    margin-bottom: vw(34);
+    font-size: vw(28);
+
+    .en {
+      margin-left: vw(28);
+      font-size: vw(24);
+    }
+  }
+
+  &__contact {
+    display: flex;
+    align-items: center;
+
+    &:not(:first-of-type){
+      margin-top: vw(8);
+    }
+
+    .head {
+      width: vw(180);
+      font-size: vw(26);
+      color: $bk;
+    }
+
+    .text {
+      flex: 1;
+      font-size: vw(26);
+      line-height: 1.8;
+      color: $bk;
+    }
+  }
+
+  &__note {
+    margin-top: vw(52);
+    font-size: vw(22);
+    line-height: 1.6;
+  }
+
+  @include mq(sp) {
+    &__block {
+      &:not(:first-of-type){
+        margin-top: vw(98);
+      }
+    }
+  }
+
+  @include mq(pc) {
+    &__wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 117px 88px;
+      margin-top: 36px;
+      padding: 0;
+    }
+
+    &__head {
+      margin-bottom: 22px;
+      font-size: 20px;
+    }
+
+    &__text {
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    &__name {
+      margin-bottom: 8px;
+      font-size: 14px;
+
+      .en {
+        margin-left: 13px;
+        font-size: 12px;
+      }
+    }
+
+    &__contact {
+      &:not(:first-of-type) {
+        margin-top: 3px;
+      }
+
+      .head {
+        width: 95px;
+        font-size: 14px;
+      }
+
+      .text {
+        font-size: 14px;
+      }
+    }
+
+    &__note {
+      margin-top: 12px;
+      font-size: 12px;
+    }
+  }
+}

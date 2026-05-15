@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+// ベースファイルの読み込み
+@use './_base/reset';
+@use './_libs/wolk/libs/swiper';
+@use './_base/base';
+
+// コンテンツ 開発用ファイル
+// @use './_modules/common/parts';
+@use './_modules/common/parts';
+@use './_modules/common/header';
+@use './_modules/common/footer';

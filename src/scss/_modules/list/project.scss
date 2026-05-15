@@ -1,0 +1,53 @@
+@use '../../_base/settings' as *;
+@use 'sass:math';
+.project{
+  &__wrapper{
+    width: 800px;
+    margin-inline: auto;
+    padding-top: 90px;
+    padding-bottom: 200px;
+  }
+
+  &__title{
+    font-size: 25px;
+    font-weight: 900;
+  }
+  &__articles{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__article{
+    width: calc((100% - 20px) / 2);
+    // margin-inline: auto;
+    height: 400px;
+    box-sizing: border-box;
+
+    .summary{
+      margin-top: 5px;
+      font-size: 12px;
+    }
+
+    &:nth-child(n+3){
+      margin-top: 20px;
+    }
+
+    .main_img{
+      width: 100%;
+    }
+
+    .title{
+      font-size: 20px;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .summary{
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  }
+}

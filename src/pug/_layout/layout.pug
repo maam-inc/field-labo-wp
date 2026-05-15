@@ -1,0 +1,28 @@
+include ../_libs/maam/_utils
+//- include ../_libs/maam/share
+//- include ../_libs/maam/text_split
+//- include ../_libs/maam/picture
+
+block data
+
+doctype html
+html(lang="ja")
+  head
+    include head
+    block head
+
+    link(href=`${CSS_DIR}common.css?${now.getTime()}` rel='stylesheet' type='text/css')
+    link(href=`${CSS_DIR}${page.type}.css?${now.getTime()}` rel='stylesheet' type='text/css')
+    block css
+    .
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+
+  body(id=`${page.id}`)
+    block content
+
+    script(src=`${JS_DIR}common.js?${now.getTime()}`)
+    script(src=`${JS_DIR}static.js?${now.getTime()}`)
+    script(src=`${JS_DIR}${page.id}.js?${now.getTime()}`)
+    block script

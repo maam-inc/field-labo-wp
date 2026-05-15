@@ -1,0 +1,48 @@
+.contents#contents
+  .contents__wrapper 
+    .contents__nav 
+      a(href="./project/index.html") Project
+      a(href="./note/index.html") Note
+    .categorie_container
+      select.categorie_wrapper(name="categorie" required)
+        option.categorie(value="all") All
+        option.categorie(value="kitchen") Kitchen 
+        option.categorie(value="office") Office 
+        option.categorie(value="renovation") Renovation
+
+    .contents__inspos.jsLoadMoreWrapper
+      .jsLoadMoreContainer.masonry
+        .gutter-sizer
+        -for(let i = 0; i < 24; i++)
+          .contents__inspo
+            .btn-wrap
+              button.btn.js-modalOpen(data-id='inspoModal')
+                .inner
+                  .main_img: img(src=`${IMG_DIR}note/main_img_${i+1}.jpg`)
+      
+    btn.contents__load.jsLoadMoreBtn
+      p LOAD MORE
+      
+.modal.inspoModal#inspoModal
+  .modal__bg.js-modalClose(data-id="inspoModal")
+    .modal__container
+      .modal__contents
+        .modal__wrapper  
+          .modal__inner
+            .js-modalContent
+            .inspo-data.data(data-id="" )
+              .main_img: img(src=`${IMG_DIR}note/main_img.jpg`)
+
+              .categorie_wrapper 
+                .categorie Kitchen 
+                .categorie Office 
+                .categorie Renovation
+
+              p.text 普段は主に個人邸リノベーションの仕事が多いのですがオフィスリノベーションも行っています。    
+              
+              p.link_head 関連記事
+              ul.links 
+                li.link
+                  p.link_text(href="./project/index.html") Jingumae office-M
+                  a.link_btn(href="./project/index.html") READ
+  

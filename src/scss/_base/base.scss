@@ -1,0 +1,41 @@
+@use 'settings' as *;
+
+html{
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings : "palt";
+  font-size: vw(10);
+  @include f-noto-M;
+  @include mq(pc) {
+    font-size: 10px;
+  }
+}
+body{
+  *{
+    box-sizing: border-box;
+  }
+}
+
+a{
+  text-decoration: inherit;
+  color: inherit;
+  display:block;
+  width: 100%;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+img,video{
+  display: block;
+  width: 100%;
+}
+
+
+// responsive
+@include mq(sp) {
+  .pc{
+    display: none!important;
+  }
+}
+@include mq(pc) {
+  .sp{
+    display: none!important;
+  }
+}

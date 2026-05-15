@@ -1,0 +1,20 @@
+@use '../../_base/settings' as *;
+@use 'sass:math';
+
+// FONT系
+.f-inter-R { @include f-inter-R; }
+.f-inter-M { @include f-inter-M; }
+.f-inter-B { @include f-inter-B; }
+.f-noto-T { @include f-noto-T; }
+.f-noto-R { @include f-noto-R; }
+.f-noto-M { @include f-noto-M; }
+.f-noto-SB { @include f-noto-SB; }
+.f-noto-B { @include f-noto-B; }
+
+// 共通パーツ
+// 大枠
+.content { @include l-content; }
+
+// 要素
+.c-breadcrumbs { @include c-breadcrumbs; }
+

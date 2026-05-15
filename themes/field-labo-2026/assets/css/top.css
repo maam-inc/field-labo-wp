@@ -1,0 +1,259 @@
+.main {
+  width: 100%;
+}
+
+.main__wrapper {
+  margin-inline: auto;
+  width: 800px;
+}
+
+.main__mv {
+  width: 100%;
+}
+
+.main__mv .img {
+  aspect-ratio: 800/500;
+  background: #3f3c3c;
+  height: auto;
+  width: 100%;
+}
+
+.main__mv .text-wrapper {
+  margin-inline: auto;
+  padding-top: 20px;
+  width: 100%;
+}
+
+.main__mv .type {
+  font-size: 11px;
+}
+
+.main__mv .title {
+  font-size: 22px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.main__mv .main_summary {
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.contents {
+  margin-top: 30px;
+}
+
+.contents__wrapper {
+  border-top: 1px solid #ebe8e8;
+  margin-inline: auto;
+  padding-top: 50px;
+  position: relative;
+  width: 800px;
+}
+
+.contents__nav {
+  align-items: center;
+  display: flex;
+  justify-content: right;
+  padding-right: 20px;
+  width: 100%;
+}
+
+.contents__nav a {
+  font-size: 17px;
+  font-weight: bold;
+  text-decoration-line: underline;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.contents__nav a:not(:first-child) {
+  margin-left: 30px;
+}
+
+.contents__nav a:hover {
+  opacity: .8;
+  text-decoration-line: underline;
+}
+
+.contents .categorie_container {
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.contents .categorie_container .categorie_wrapper {
+  border: #000 1px solid;
+  border-radius: 999px;
+  height: 20px;
+  padding-left: 10px;
+  width: 200px;
+}
+
+.contents .categorie_container::after {
+  background: #000;
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  content: "";
+  height: 5px;
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  width: 7px;
+}
+
+.contents__inspos {
+  margin-top: 20px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.contents__inspo {
+  float: left;
+  margin-bottom: 16px;
+  width: 31%;
+}
+
+.contents__inspo .main_img {
+  width: 100%;
+}
+
+.contents__inspo .title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.contents__inspo .summary {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.contents .gutter-sizer {
+  width: 2.375%;
+}
+
+.contents__load {
+  align-items: center;
+  background: #fff;
+  display: flex;
+  font-size: 16px;
+  font-weight: bold;
+  height: 200px;
+  justify-content: center;
+  width: 100%;
+}
+
+.inspoModal {
+  display: none;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 9999;
+}
+
+.inspoModal.is-active {
+  display: block;
+}
+
+.inspoModal {
+  position: absolute;
+}
+
+.inspoModal .modal__bg {
+  background: rgba(0,0,0,.1254901961);
+  height: 100%;
+  width: 100%;
+}
+
+.inspoModal .modal__container {
+  height: calc(100% - 50px);
+  left: 50%;
+  overflow-y: scroll;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+}
+
+.inspoModal .modal__wrapper {
+  background: #fff;
+}
+
+.inspoModal .modal__inner {
+  margin-inline: auto;
+  padding-bottom: 150px;
+  padding-top: 150px;
+  width: 750px;
+}
+
+.inspoModal .main_img {
+  width: 100%;
+}
+
+.inspoModal .categorie_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 15px;
+}
+
+.inspoModal .categorie {
+  background: #f6f3f3;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 400;
+  margin-right: 10px;
+  padding: 5px;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.inspoModal .text {
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.inspoModal .link_head {
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 50px;
+}
+
+.inspoModal .links {
+  margin-top: 10px;
+}
+
+.inspoModal .link {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+}
+
+.inspoModal .link:not(:first-child) {
+  margin-top: 10px;
+}
+
+.inspoModal .link .link_text {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.inspoModal .link .link_btn {
+  align-items: center;
+  border: 1px solid #000;
+  border-radius: 999px;
+  color: #000;
+  display: flex;
+  font-size: 10px;
+  font-weight: bold;
+  height: 20px;
+  justify-content: center;
+  width: 50px;
+}
+
+.inspoModal .link .link_btn:hover {
+  opacity: .8;
+}

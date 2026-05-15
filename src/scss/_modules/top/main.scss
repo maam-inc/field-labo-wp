@@ -1,0 +1,46 @@
+@use '../../_base/settings' as *;
+@use 'sass:math';
+
+.main{
+  width: 100%;
+
+  &__wrapper{
+    width: 800px;
+    margin-inline: auto;
+  }
+
+  &__mv{
+    width: 100%;
+
+    .img{
+      width: 100%;
+      aspect-ratio: 800/500;
+      height: auto;
+      background: #3f3c3c;
+    }
+
+    .text-wrapper {
+      width: 100%;
+      margin-inline: auto;
+      padding-top: 20px;
+    }
+
+    .type{
+      font-size: 11px;
+    }
+
+    .title{
+      font-size: 22px;
+      font-weight: 500;
+      margin-top: 5px;
+    }
+
+    .main_summary{
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    
+  }
+  
+}
