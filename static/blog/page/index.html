@@ -29,8 +29,8 @@
             <h1>
               <div class="c-logo white"></div>
             </h1></a>
-          <nav class="l-header__nav f-inter-B"><a class="l-header__nav-list" href="./blog">BLOG & NOTE</a><a class="l-header__nav-list" href="./projects">PROJECTS</a><a class="l-header__nav-list" href="./about-contact">ABOUT & CONTACT</a></nav>
-          <button class="l-header__menu js-modalOpen" data-id="hbgModal">
+          <nav class="l-header__nav f-inter-B"><a class="l-header__nav-list is-current" href="./blog">BLOG & NOTE</a><a class="l-header__nav-list" href="./projects">PROJECTS</a><a class="l-header__nav-list" href="./about-contact">ABOUT & CONTACT</a></nav>
+          <button class="l-header__menu">
             <div class="l-header__menu-inner">
               <div class="line"></div>
               <div class="line"></div>
@@ -39,20 +39,20 @@
           </button>
         </div>
       </header>
-      <div class="c-modal hbgModal" id="hbgModal">
-        <div class="c-modal__bg js-modalClose" data-id="hbgModal"></div>
-        <div class="c-modal__container">
-          <div class="c-modal__inner"><a class="c-modal__top" href="#">
-              <div class="c-modal__top-arrow"><img src="/themes/field-labo-2026/assets/images/common/icon-arrow-r.svg" alt="arrow"></div>
-              <p class="c-modal__top-text f-inter-B">top</p></a>
-            <button class="c-modal__btn js-modalClose" data-id="hbgModal">
+      <div class="l-header__modal">
+        <div class="l-header__modal-bg"></div>
+        <div class="l-header__modal-container">
+          <div class="l-header__modal-inner"><a class="l-header__modal-top" href="#">
+              <div class="l-header__modal-top-arrow"><img src="/themes/field-labo-2026/assets/images/common/icon-arrow-r.svg" alt="arrow"></div>
+              <p class="l-header__modal-top-text f-inter-B">top</p></a>
+            <button class="l-header__modal-btn">
               <div class="btn-close"><img src="/themes/field-labo-2026/assets/images/common/icon-close.svg" alt="close"></div>
             </button>
-            <div class="c-modal__logo">
+            <div class="l-header__modal-logo">
               <div class="c-logo black"></div>
             </div>
-            <nav class="c-modal__nav"> <a class="f-inter-B" href="./blog">BLOG & NOTE</a><a class="f-inter-B" href="./projects">PROJECTS</a><a class="f-inter-B" href="./about-contact">ABOUT & CONTACT</a></nav>
-            <ul class="c-sns c-modal__sns">
+            <nav class="l-header__modal-nav"> <a class="f-inter-B" href="./blog">BLOG & NOTE</a><a class="f-inter-B" href="./projects">PROJECTS</a><a class="f-inter-B" href="./about-contact">ABOUT & CONTACT</a></nav>
+            <ul class="c-sns l-header__modal-sns">
               <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-instagram.svg" alt="instagram"/></a></li>
               <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-facebook.svg" alt="facebook"/></a></li>
               <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-pinterest.svg" alt="pinterest"/></a></li>
@@ -61,84 +61,71 @@
           </div>
         </div>
       </div>
-      <div class="article">
-        <div class="article__wrapper">
-          <div class="article__main"> 
-            <div class="main_img"><img src="../../assets/images/project/main_img.jpg"></div>
-            <p class="date">2024-05</p>
-            <p class="title">Jingumae office-M</p>
-            <div class="categorie_wrapper"> 
-              <div class="categorie">Kitchen </div>
-              <div class="categorie">Office </div>
-              <div class="categorie">Renovation</div>
-            </div>
-          </div>
-          <div class="article__contents"> 
-            <div class="full_img">
-              <div class="img"><img src="../../assets/images/project/full_img.jpg">
-                <div class="btn-wrap">
-                  <button class="btn js-modalOpen" data-id="imgModal" data-post="">
-                    <div class="inner"></div>
-                  </button>
+      <div class="l-contents"> 
+        <div class="l-contents__wrapper"> 
+          <div class="article">
+            <main class="articleMain">
+              <div class="articleMain__img"><img src="/uploads/dummy/top/modal-full.jpg"></div>
+              <p class="articleMain__title f-intel-B">Minamiaoyama office-M  </p>
+              <p class="articleMain__info f-intel-B">(     PROJECT, 2025.FEB     )</p>
+            </main>
+            <section class="articleContents">
+              <p class="articleContents__head f-noto-B">南青山オフィスM リノベーション事例</p>
+              <p class="articleContents__text f-noto-M">以前にオフィスの部分改修をさせていただいたお客様からの工事依頼です。前回はワークスペース部分の改修だったのですが今回はそのときには手をつけなかったもう一室、流し台のあるスペースの部分リニューアル工事。ベンチ収納は<a href="#">こちら</a><a href="#" class="is-external">Houzz</a>でも紹介しています。主な目的は流し台周りの改修工事でしたが、加えてカーペット仕上げだった床をOSB合板を白のオイルステインで明るく爽やかなしつらえとしつつ収納がない部屋だった事もありベンチ収納を造作。</p>
+              <p class="articleContents__text f-noto-M">主な目的は流し台周りの改修工事でしたが、加えてカーペット仕上げだった床をOSB合板を白のオイルステインで明るく爽やかなしつらえとしつつ収納がない部屋だった事もありベンチ収納を造作。</p>
+              <div class="articleContents__img-full">
+                <div class="img"><img src="/uploads/dummy/page/full.jpg"></div>
+                <p class="cap f-noto-M">コンロはありませんが間口を広く取って電子レンジやティファール等を置けるスペースを想定。シンクの左右は引き出しとしています。</p>
+              </div>
+              <p class="articleContents__head f-noto-B">ディテール</p>
+              <p class="articleContents__text f-noto-M">以前にオフィスの部分改修をさせていただいたお客様からの工事依頼です。前回はワークスペース部分の改修だったのですが今回はそのときには手をつけなかったもう一室、流し台のあるスペースの部分リニューアル工事。ベンチ収納は<a href="#">こちら</a><a href="#" class="is-external">Houzz</a>でも紹介しています。主な目的は流し台周りの改修工事でしたが、加えてカーペット仕上げだった床をOSB合板を白のオイルステインで明るく爽やかなしつらえとしつつ収納がない部屋だった事もありベンチ収納を造作。</p>
+              <p class="articleContents__text f-noto-M">主な目的は流し台周りの改修工事でしたが、加えてカーペット仕上げだった床をOSB合板を白のオイルステインで明るく爽やかなしつらえとしつつ収納がない部屋だった事もありベンチ収納を造作。</p>
+              <div class="articleContents__column articleContents__column-text">
+                <div class="articleContents__column-item articleContents__column-item--1">
+                  <div class="img"><img src="/uploads/dummy/page/culumn-text.jpg"></div>
+                </div>
+                <div class="articleContents__column-item articleContents__column-item--2">
+                  <p class="f-noto-M">OSB合板を研磨＋白染色は品の良いラフ感で個人的に最近お気に入りの仕上げ。</p>
                 </div>
               </div>
-              <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-            </div>
-            <p class="head">水廻りの改修内容について</p>
-            <p class="text">部屋全体の仕上げをクロスから塗装仕上げに変更＋床は無垢フローリング張りへと全体を改修していますが、特に力を入れたのはこの洗面トイレ部分。<br>ダークグリーンの塗装、ダークブラウンの木目、白のタイル。海外製のミラーと照明器具を取り合わせたシックな水廻りへと大改修。<br>個人的には住宅でもオフィスでも、水廻りのしつらえの豊かさが人の心理に与える影響はとても大きいと感じるので大事にしています。<br>オフィスの水廻りが素敵だと社員さんたちも気分が良いですよね。<br>賃貸なのでもちろん改修前に管理会社を通じてオーナー様に内容を伝え、退去時の復旧をしなくて良い内容としています。</p>
-            <table class="table"> 
-              <tr>
-                <td class="table_head">TITLE</td>
-                <td class="table_text">東京都中央区-M37</td>
-              </tr>
-              <tr>
-                <td class="table_head">所在地</td>
-                <td class="table_text">東京都中央区</td>
-              </tr>
-              <tr>
-                <td class="table_head">築年・面積</td>
-                <td class="table_text">築15年・マンション専用部分37.1平米</td>
-              </tr>
-              <tr>
-                <td class="table_head">工事概要</td>
-                <td class="table_text">フルスケルトンリノベーション</td>
-              </tr>
-              <tr>
-                <td class="table_head">主な仕様</td>
-                <td class="table_text">天井：躯体スラブ表し<br>壁：OSB合板、AEP白塗装<br>床：クリ無垢フローリングOS塗装<br>他：スチールフレームキッチン、SPF造作クロゼット</td>
-              </tr>
-              <tr>
-                <td class="table_head">工事期間</td>
-                <td class="table_text">設計1.5ヶ月＋工事1.5ヶ月間   </td>
-              </tr>
-            </table>
-            <div class="narrow_img"> 
-              <div class="img"><img src="../../assets/images/project/narrow_img.jpg">
-                <div class="btn-wrap">
-                  <button class="btn js-modalOpen" data-id="imgModal" data-post="">
-                    <div class="inner"></div>
-                  </button>
+              <p class="articleContents__text f-noto-M">以前にオフィスの部分改修をさせていただいたお客様からの工事依頼です。前回はワークスペース部分の改修だったのですが今回はそのときには手をつけなかったもう一室、流し台のあるスペースの部分リニューアル工事。ベンチ収納は<a href="#">こちら</a><a href="#" class="is-external">Houzz</a>でも紹介しています。主な目的は流し台周りの改修工事でしたが、加えてカーペット仕上げだった床をOSB合板を白のオイルステインで明るく爽やかなしつらえとしつつ収納がない部屋だった事もありベンチ収納を造作。</p>
+              <p class="articleContents__text f-noto-M">主な目的は流し台周りの改修工事でしたが、加えてカーペット仕上げだった床をOSB合板を白のオイルステインで明るく爽やかなしつらえとしつつ収納がない部屋だった事もありベンチ収納を造作。</p>
+              <div class="articleContents__column articleContents__column-text">
+                <div class="articleContents__column-item articleContents__column-item--1">
+                  <div class="img"><img src="/uploads/dummy/page/culumn-text.jpg"></div>
+                </div>
+                <div class="articleContents__column-item articleContents__column-item--2">
+                  <p class="f-noto-M">OSB合板を研磨＋白染色は品の良いラフ感で個人的に最近お気に入りの仕上げ。</p>
                 </div>
               </div>
-              <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-            </div>
-            <div class="links">
-              <div class="link">
-                <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-              </div>
-              <div class="link">
-                <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-              </div>
-              <div class="link">
-                <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-              </div>
-              <div class="link">
-                <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-              </div>
-            </div>
-            <div class="column"> 
-              <div class="column_img--1 column_img">
-                <div class="img"><img src="../../assets/images/project/column1_img.jpg">
+              <table class="table"> 
+                <tr>
+                  <td class="table_head">TITLE</td>
+                  <td class="table_text">東京都中央区-M37</td>
+                </tr>
+                <tr>
+                  <td class="table_head">所在地</td>
+                  <td class="table_text">東京都中央区</td>
+                </tr>
+                <tr>
+                  <td class="table_head">築年・面積</td>
+                  <td class="table_text">築15年・マンション専用部分37.1平米</td>
+                </tr>
+                <tr>
+                  <td class="table_head">工事概要</td>
+                  <td class="table_text">フルスケルトンリノベーション</td>
+                </tr>
+                <tr>
+                  <td class="table_head">主な仕様</td>
+                  <td class="table_text">天井：躯体スラブ表し<br>壁：OSB合板、AEP白塗装<br>床：クリ無垢フローリングOS塗装<br>他：スチールフレームキッチン、SPF造作クロゼット</td>
+                </tr>
+                <tr>
+                  <td class="table_head">工事期間</td>
+                  <td class="table_text">設計1.5ヶ月＋工事1.5ヶ月間   </td>
+                </tr>
+              </table>
+              <div class="narrow_img"> 
+                <div class="img"><img src="../../assets/images/project/narrow_img.jpg">
                   <div class="btn-wrap">
                     <button class="btn js-modalOpen" data-id="imgModal" data-post="">
                       <div class="inner"></div>
@@ -147,200 +134,226 @@
                 </div>
                 <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
               </div>
-              <div class="column_img--2 column_img"> 
-                <div class="img"><img src="../../assets/images/project/column2_img.jpg">
-                  <div class="btn-wrap">
-                    <button class="btn js-modalOpen" data-id="imgModal" data-post="">
-                      <div class="inner"></div>
-                    </button>
-                  </div>
+              <div class="links">
+                <div class="link">
+                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
                 </div>
-                <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-              </div>
-            </div>
-            <div class="before-after"> 
-              <p class="before-after__head">(  Before & After  )</p>
-              <div class="before-after__wrapper">
-                <div class="before">
-                  <p class="before-after__text">Before</p>
-                  <div class="article__contents"> 
-                    <div class="full_img img">
-                      <div class="img"><img src="../../assets/images/project/full_img.jpg">
-                        <div class="btn-wrap">
-                          <button class="btn js-modalOpen" data-id="imgModal" data-post="">
-                            <div class="inner"></div>
-                          </button>
-                        </div>
-                      </div>
-                      <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-                    </div>
-                    <p class="head">水廻りの改修内容について</p>
-                    <p class="text">部屋全体の仕上げをクロスから塗装仕上げに変更＋床は無垢フローリング張りへと全体を改修していますが、特に力を入れたのはこの洗面トイレ部分。<br>ダークグリーンの塗装、ダークブラウンの木目、白のタイル。海外製のミラーと照明器具を取り合わせたシックな水廻りへと大改修。<br>個人的には住宅でもオフィスでも、水廻りのしつらえの豊かさが人の心理に与える影響はとても大きいと感じるので大事にしています。<br>オフィスの水廻りが素敵だと社員さんたちも気分が良いですよね。<br>賃貸なのでもちろん改修前に管理会社を通じてオーナー様に内容を伝え、退去時の復旧をしなくて良い内容としています。</p>
-                    <table class="table"> 
-                      <tr>
-                        <td class="table_head">TITLE</td>
-                        <td class="table_text">東京都中央区-M37</td>
-                      </tr>
-                      <tr>
-                        <td class="table_head">所在地</td>
-                        <td class="table_text">東京都中央区</td>
-                      </tr>
-                      <tr>
-                        <td class="table_head">築年・面積</td>
-                        <td class="table_text">築15年・マンション専用部分37.1平米</td>
-                      </tr>
-                      <tr>
-                        <td class="table_head">工事概要</td>
-                        <td class="table_text">フルスケルトンリノベーション</td>
-                      </tr>
-                      <tr>
-                        <td class="table_head">主な仕様</td>
-                        <td class="table_text">天井：躯体スラブ表し<br>壁：OSB合板、AEP白塗装<br>床：クリ無垢フローリングOS塗装<br>他：スチールフレームキッチン、SPF造作クロゼット</td>
-                      </tr>
-                      <tr>
-                        <td class="table_head">工事期間</td>
-                        <td class="table_text">設計1.5ヶ月＋工事1.5ヶ月間   </td>
-                      </tr>
-                    </table>
-                    <div class="narrow_img"> 
-                      <div class="img"><img src="../../assets/images/project/narrow_img.jpg">
-                        <div class="btn-wrap">
-                          <button class="btn js-modalOpen" data-id="imgModal" data-post="">
-                            <div class="inner"></div>
-                          </button>
-                        </div>
-                      </div>
-                      <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-                    </div>
-                    <div class="links">
-                      <div class="link">
-                        <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-                      </div>
-                      <div class="link">
-                        <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-                      </div>
-                      <div class="link">
-                        <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-                      </div>
-                      <div class="link">
-                        <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-                      </div>
-                    </div>
-                    <div class="column"> 
-                      <div class="column_img--1 column_img">
-                        <div class="img"><img src="../../assets/images/project/column1_img.jpg">
-                          <div class="btn-wrap">
-                            <button class="btn js-modalOpen" data-id="imgModal" data-post="">
-                              <div class="inner"></div>
-                            </button>
-                          </div>
-                        </div>
-                        <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-                      </div>
-                      <div class="column_img--2 column_img"> 
-                        <div class="img"><img src="../../assets/images/project/column2_img.jpg">
-                          <div class="btn-wrap">
-                            <button class="btn js-modalOpen" data-id="imgModal" data-post="">
-                              <div class="inner"></div>
-                            </button>
-                          </div>
-                        </div>
-                        <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-                      </div>
-                    </div>
-                  </div>
+                <div class="link">
+                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
                 </div>
-                <div class="after">
-                  <p class="before-after__text">After</p>
-                  <div class="article__contents"> 
-                    <div class="full_img img">
-                      <div class="img"><img src="../../assets/images/project/full_img.jpg">
-                        <div class="btn-wrap">
-                          <button class="btn js-modalOpen" data-id="imgModal" data-post="">
-                            <div class="inner"></div>
-                          </button>
-                        </div>
-                      </div>
-                      <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-                    </div>
-                    <p class="head">水廻りの改修内容について</p>
-                    <p class="text">部屋全体の仕上げをクロスから塗装仕上げに変更＋床は無垢フローリング張りへと全体を改修していますが、特に力を入れたのはこの洗面トイレ部分。<br>ダークグリーンの塗装、ダークブラウンの木目、白のタイル。海外製のミラーと照明器具を取り合わせたシックな水廻りへと大改修。<br>個人的には住宅でもオフィスでも、水廻りのしつらえの豊かさが人の心理に与える影響はとても大きいと感じるので大事にしています。<br>オフィスの水廻りが素敵だと社員さんたちも気分が良いですよね。<br>賃貸なのでもちろん改修前に管理会社を通じてオーナー様に内容を伝え、退去時の復旧をしなくて良い内容としています。</p>
-                    <table class="table"> 
-                      <tr>
-                        <td class="table_head">TITLE</td>
-                        <td class="table_text">東京都中央区-M37</td>
-                      </tr>
-                      <tr>
-                        <td class="table_head">所在地</td>
-                        <td class="table_text">東京都中央区</td>
-                      </tr>
-                      <tr>
-                        <td class="table_head">築年・面積</td>
-                        <td class="table_text">築15年・マンション専用部分37.1平米</td>
-                      </tr>
-                      <tr>
-                        <td class="table_head">工事概要</td>
-                        <td class="table_text">フルスケルトンリノベーション</td>
-                      </tr>
-                      <tr>
-                        <td class="table_head">主な仕様</td>
-                        <td class="table_text">天井：躯体スラブ表し<br>壁：OSB合板、AEP白塗装<br>床：クリ無垢フローリングOS塗装<br>他：スチールフレームキッチン、SPF造作クロゼット</td>
-                      </tr>
-                      <tr>
-                        <td class="table_head">工事期間</td>
-                        <td class="table_text">設計1.5ヶ月＋工事1.5ヶ月間   </td>
-                      </tr>
-                    </table>
-                    <div class="narrow_img"> 
-                      <div class="img"><img src="../../assets/images/project/narrow_img.jpg">
-                        <div class="btn-wrap">
-                          <button class="btn js-modalOpen" data-id="imgModal" data-post="">
-                            <div class="inner"></div>
-                          </button>
-                        </div>
-                      </div>
-                      <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-                    </div>
-                    <div class="links">
-                      <div class="link">
-                        <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-                      </div>
-                      <div class="link">
-                        <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-                      </div>
-                      <div class="link">
-                        <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-                      </div>
-                      <div class="link">
-                        <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-                      </div>
-                    </div>
-                    <div class="column"> 
-                      <div class="column_img--1 column_img">
-                        <div class="img"><img src="../../assets/images/project/column1_img.jpg">
-                          <div class="btn-wrap">
-                            <button class="btn js-modalOpen" data-id="imgModal" data-post="">
-                              <div class="inner"></div>
-                            </button>
-                          </div>
-                        </div>
-                        <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-                      </div>
-                      <div class="column_img--2 column_img"> 
-                        <div class="img"><img src="../../assets/images/project/column2_img.jpg">
-                          <div class="btn-wrap">
-                            <button class="btn js-modalOpen" data-id="imgModal" data-post="">
-                              <div class="inner"></div>
-                            </button>
-                          </div>
-                        </div>
-                        <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-                      </div>
-                    </div>
-                  </div>
+                <div class="link">
+                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                </div>
+                <div class="link">
+                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
                 </div>
               </div>
-            </div>
+              <div class="column"> 
+                <div class="column_img--1 column_img">
+                  <div class="img"><img src="../../assets/images/project/column1_img.jpg">
+                    <div class="btn-wrap">
+                      <button class="btn js-modalOpen" data-id="imgModal" data-post="">
+                        <div class="inner"></div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+                </div>
+                <div class="column_img--2 column_img"> 
+                  <div class="img"><img src="../../assets/images/project/column2_img.jpg">
+                    <div class="btn-wrap">
+                      <button class="btn js-modalOpen" data-id="imgModal" data-post="">
+                        <div class="inner"></div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+                </div>
+              </div>
+              <div class="before-after"> 
+                <p class="before-after__head">(  Before & After  )</p>
+                <div class="before-after__wrapper">
+                  <div class="before">
+                    <p class="before-after__text">Before</p>
+                    <div class="article__contents"> 
+                      <div class="full_img img">
+                        <div class="img"><img src="../../assets/images/project/full_img.jpg">
+                          <div class="btn-wrap">
+                            <button class="btn js-modalOpen" data-id="imgModal" data-post="">
+                              <div class="inner"></div>
+                            </button>
+                          </div>
+                        </div>
+                        <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+                      </div>
+                      <p class="head">水廻りの改修内容について</p>
+                      <p class="text">部屋全体の仕上げをクロスから塗装仕上げに変更＋床は無垢フローリング張りへと全体を改修していますが、特に力を入れたのはこの洗面トイレ部分。<br>ダークグリーンの塗装、ダークブラウンの木目、白のタイル。海外製のミラーと照明器具を取り合わせたシックな水廻りへと大改修。<br>個人的には住宅でもオフィスでも、水廻りのしつらえの豊かさが人の心理に与える影響はとても大きいと感じるので大事にしています。<br>オフィスの水廻りが素敵だと社員さんたちも気分が良いですよね。<br>賃貸なのでもちろん改修前に管理会社を通じてオーナー様に内容を伝え、退去時の復旧をしなくて良い内容としています。</p>
+                      <table class="table"> 
+                        <tr>
+                          <td class="table_head">TITLE</td>
+                          <td class="table_text">東京都中央区-M37</td>
+                        </tr>
+                        <tr>
+                          <td class="table_head">所在地</td>
+                          <td class="table_text">東京都中央区</td>
+                        </tr>
+                        <tr>
+                          <td class="table_head">築年・面積</td>
+                          <td class="table_text">築15年・マンション専用部分37.1平米</td>
+                        </tr>
+                        <tr>
+                          <td class="table_head">工事概要</td>
+                          <td class="table_text">フルスケルトンリノベーション</td>
+                        </tr>
+                        <tr>
+                          <td class="table_head">主な仕様</td>
+                          <td class="table_text">天井：躯体スラブ表し<br>壁：OSB合板、AEP白塗装<br>床：クリ無垢フローリングOS塗装<br>他：スチールフレームキッチン、SPF造作クロゼット</td>
+                        </tr>
+                        <tr>
+                          <td class="table_head">工事期間</td>
+                          <td class="table_text">設計1.5ヶ月＋工事1.5ヶ月間   </td>
+                        </tr>
+                      </table>
+                      <div class="narrow_img"> 
+                        <div class="img"><img src="../../assets/images/project/narrow_img.jpg">
+                          <div class="btn-wrap">
+                            <button class="btn js-modalOpen" data-id="imgModal" data-post="">
+                              <div class="inner"></div>
+                            </button>
+                          </div>
+                        </div>
+                        <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+                      </div>
+                      <div class="links">
+                        <div class="link">
+                          <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                        </div>
+                        <div class="link">
+                          <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                        </div>
+                        <div class="link">
+                          <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                        </div>
+                        <div class="link">
+                          <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                        </div>
+                      </div>
+                      <div class="column"> 
+                        <div class="column_img--1 column_img">
+                          <div class="img"><img src="../../assets/images/project/column1_img.jpg">
+                            <div class="btn-wrap">
+                              <button class="btn js-modalOpen" data-id="imgModal" data-post="">
+                                <div class="inner"></div>
+                              </button>
+                            </div>
+                          </div>
+                          <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+                        </div>
+                        <div class="column_img--2 column_img"> 
+                          <div class="img"><img src="../../assets/images/project/column2_img.jpg">
+                            <div class="btn-wrap">
+                              <button class="btn js-modalOpen" data-id="imgModal" data-post="">
+                                <div class="inner"></div>
+                              </button>
+                            </div>
+                          </div>
+                          <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="after">
+                    <p class="before-after__text">After</p>
+                    <div class="article__contents"> 
+                      <div class="full_img img">
+                        <div class="img"><img src="../../assets/images/project/full_img.jpg">
+                          <div class="btn-wrap">
+                            <button class="btn js-modalOpen" data-id="imgModal" data-post="">
+                              <div class="inner"></div>
+                            </button>
+                          </div>
+                        </div>
+                        <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+                      </div>
+                      <p class="head">水廻りの改修内容について</p>
+                      <p class="text">部屋全体の仕上げをクロスから塗装仕上げに変更＋床は無垢フローリング張りへと全体を改修していますが、特に力を入れたのはこの洗面トイレ部分。<br>ダークグリーンの塗装、ダークブラウンの木目、白のタイル。海外製のミラーと照明器具を取り合わせたシックな水廻りへと大改修。<br>個人的には住宅でもオフィスでも、水廻りのしつらえの豊かさが人の心理に与える影響はとても大きいと感じるので大事にしています。<br>オフィスの水廻りが素敵だと社員さんたちも気分が良いですよね。<br>賃貸なのでもちろん改修前に管理会社を通じてオーナー様に内容を伝え、退去時の復旧をしなくて良い内容としています。</p>
+                      <table class="table"> 
+                        <tr>
+                          <td class="table_head">TITLE</td>
+                          <td class="table_text">東京都中央区-M37</td>
+                        </tr>
+                        <tr>
+                          <td class="table_head">所在地</td>
+                          <td class="table_text">東京都中央区</td>
+                        </tr>
+                        <tr>
+                          <td class="table_head">築年・面積</td>
+                          <td class="table_text">築15年・マンション専用部分37.1平米</td>
+                        </tr>
+                        <tr>
+                          <td class="table_head">工事概要</td>
+                          <td class="table_text">フルスケルトンリノベーション</td>
+                        </tr>
+                        <tr>
+                          <td class="table_head">主な仕様</td>
+                          <td class="table_text">天井：躯体スラブ表し<br>壁：OSB合板、AEP白塗装<br>床：クリ無垢フローリングOS塗装<br>他：スチールフレームキッチン、SPF造作クロゼット</td>
+                        </tr>
+                        <tr>
+                          <td class="table_head">工事期間</td>
+                          <td class="table_text">設計1.5ヶ月＋工事1.5ヶ月間   </td>
+                        </tr>
+                      </table>
+                      <div class="narrow_img"> 
+                        <div class="img"><img src="../../assets/images/project/narrow_img.jpg">
+                          <div class="btn-wrap">
+                            <button class="btn js-modalOpen" data-id="imgModal" data-post="">
+                              <div class="inner"></div>
+                            </button>
+                          </div>
+                        </div>
+                        <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+                      </div>
+                      <div class="links">
+                        <div class="link">
+                          <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                        </div>
+                        <div class="link">
+                          <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                        </div>
+                        <div class="link">
+                          <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                        </div>
+                        <div class="link">
+                          <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
+                        </div>
+                      </div>
+                      <div class="column"> 
+                        <div class="column_img--1 column_img">
+                          <div class="img"><img src="../../assets/images/project/column1_img.jpg">
+                            <div class="btn-wrap">
+                              <button class="btn js-modalOpen" data-id="imgModal" data-post="">
+                                <div class="inner"></div>
+                              </button>
+                            </div>
+                          </div>
+                          <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+                        </div>
+                        <div class="column_img--2 column_img"> 
+                          <div class="img"><img src="../../assets/images/project/column2_img.jpg">
+                            <div class="btn-wrap">
+                              <button class="btn js-modalOpen" data-id="imgModal" data-post="">
+                                <div class="inner"></div>
+                              </button>
+                            </div>
+                          </div>
+                          <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
       </div>

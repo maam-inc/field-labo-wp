@@ -1,72 +1,34 @@
-//- .l-contents#l-contents.is-gallery←コントロールとto topの出しわけクラス
-.l-contents#l-contents
+section.l-contents#l-contents.topContents.is-show 
+  //- section.l-contents#l-contents.topContents
   .l-contents__wrapper 
-    +c-breadcrumbs('PHOTO GALLERY', '')
-    
-    .l-contents__gallery-ctrl.f-inter-B
-      .sort.ctrl-item
-        p.sort__item.ctrl-item--name sort :
-        select.sort__lists(name="categorie" required)
-          -for(let i = 0; i < main.sort.length; i++)
-            option.sort__list(value=main.sort[i].toLowerCase())= main.sort[i]
-        .sort__toggle
+    .topContents__head
+      h1.topContents__title.f-inter-B PHOTO GALLERY
+      .topContents__ctrl.f-inter-B
+        .sort.ctrl-item
+          p.sort__item.ctrl-item--name sort :
+          select.sort__lists(name="categorie" required)
+            -for(let i = 0; i < main.sort.length; i++)
+              option.sort__list(value=main.sort[i].toLowerCase())= main.sort[i]
+          .sort__toggle
 
-      .order.ctrl-item
-        p.order__item.ctrl-item--name order :
-        .order__ctrl 
-          btn.order__ctrl-random.order__ctrl-name.active random
-          btn.order__ctrl-latest.order__ctrl-name latest
+        .order.ctrl-item
+          p.order__item.ctrl-item--name order :
+          .order__ctrl 
+            btn.order__ctrl-random.order__ctrl-name.is-active random
+            btn.order__ctrl-latest.order__ctrl-name latest
 
-    .l-contents__gallery
-      .masonry.l-contents__gallery-wrapper
+    .topContents__gallery
+      .masonry.topContents__gallery-wrapper
         .gutter-sizer
         -for(let i = 0; i < main.gallery.length; i++)
-          .l-contents__item
+          .topContents__item
             .btn-wrap
-              button.btn.js-modalOpen(data-id='commonModal' data-post=page.id)
+              button.btn.btn-open
                 .inner
-                  +c-thumbnail('l-contents__gallery-item', 'top', main.gallery[i], i)
+                  +c-thumbnail('topContents__gallery-item', 'top', main.gallery[i], i)
       
-    btn.l-contents__load
-      p.f-inter-B load more
-    
-    .l-contents__toTop: +c-toTop
+    +c-loadMore('')
+    .topContents__toTop: +c-toTop
 
 //- モーダル本体（空のシェル）
-+c-modal
-
-//- モーダルに差し込まれるTOPページ専用のコンテンツ
-.data(data-post=page.id hidden)
-  //- .img-box.is-single ←画像一枚の場合
-  .img-box.is-multiple
-    //- w100写真パーツ
-    .full_img.img
-      img(src=`${IMG_DIR}top/modal-full.jpg`)
-
-    //- w狭め写真パーツ
-    .narrow_img.img
-      img(src=`${IMG_DIR}top/modal-narrow.jpg`)
-
-  //- テキスト
-  p.text.f-noto-M!=modal.text
-
-  .flex_box
-    .related_articles.flex_box-item
-      p.related_articles-head.flex_box-head.f-inter-B related article
-      ul.related_articles-wrapper
-        -for(let i = 0; i < modal.article.length; i++)
-          li.related_article
-            a.related_article-inner(href="#")
-              .related_article-icon: img(src=`${IMG_DIR}common/icon-arrow-box.svg`)
-              -if(modal.article[i].ttlJp === true)
-                .related_article-text.f-noto-B: p!=modal.article[i].title
-              -else
-                .related_article-text.f-inter-B: p!=modal.article[i].title
-              p.related_article-genre.f-inter-M (#{`${modal.article[i].genre}`})
-
-    .tag.f-inter-B.flex_box-item
-      p.tag-head.flex_box-head tag
-      ul.tag-wrapper
-        -for(let i = 0; i < modal.tag.length; i++)
-          li.tag-item.f-inter-B
-            a(href="#")!=modal.tag[i]
++l-modal('top')

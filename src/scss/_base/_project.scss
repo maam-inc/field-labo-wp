@@ -15,7 +15,7 @@ $IMG_DIR: '../images/';
 // ../_libs/maam/breakpoint で利用
 // ===========================
 $bp: 768 !default;      //sp ↔︎ pc(タブレット含む)
-$bp-pc: 1200 !default;  //pc さらに大きいブレイクポイントが必要になった時
+$bp-pc: 1280 !default;  //pc さらに大きいブレイクポイントが必要になった時
 
 //px単位に変換
 $BREAKPOINT: #{$bp}px !default;

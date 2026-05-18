@@ -69,7 +69,7 @@
     }
   }
 
-  &.is-content{
+  &.is-show{
     position: fixed;
     height: vw(100);
     z-index: 100;
@@ -135,7 +135,7 @@
       }
     }
 
-    &.is-content{
+    &.is-show{
       width: per(1260, 1280);
       max-width: none;
       height: 65px;
@@ -184,28 +184,29 @@
   }
 }
 
-.hbgModal{
+.l-header__modal{
   width: 100vw;
   height: 100vh;
   display: none;
   position: absolute;
   z-index: 200;
+  top: 0;
+  left: 0;
   
-  .c-modal{
-    &__bg{
+    &-bg{
       width: 100%;
       height: 100%;
       background: #00000080;
     } 
     
-    &__container{
+    &-container{
       position: absolute;
       width: 100%;
       top: 0;
       right: 0;
     }
 
-    &__inner{
+    &-inner{
       background: $wh;
       width: 100%;
       height: vw(726);
@@ -214,8 +215,7 @@
       padding-top: vw(159);
     }
 
-
-    &__top{
+    &-top{
       align-items: center;
       display: flex;
       justify-content: space-between;
@@ -233,7 +233,7 @@
       }
     }
 
-    &__btn{
+    &-btn{
       position: absolute;
       top: vw(40);
       right: vw(35);
@@ -242,12 +242,12 @@
       aspect-ratio: 1/1;
     }
 
-    &__logo{
+    &-logo{
       width: vw(412);
       margin-inline: auto;
     }
 
-    &__nav{
+    &-nav{
       margin-top: vw(55);
       font-size: vw(32);
       text-align: center;
@@ -260,8 +260,7 @@
       }
     }
 
-    &__sns{
+    &-sns{
       margin: vw(140) auto 0;
     }
-  }
 }

@@ -30,3 +30,7 @@
     @return min(100vw * $denominator / $baseSize, $per * $denominator * 1px);
   }
 };
+
+@function cqi($denominator: 0, $molecule: 0){
+  @return calc($denominator / $molecule * 100cqi);
+}

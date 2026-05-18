@@ -1,29 +1,11 @@
-.project#project
-  .project__wrapper
-    p.project__title PROJECT
+.projects#projects.l-content
+  .l-content__wrapper
+    +c-breadcrumbs('PROJECTS', false)
+    .projects__gallery
+      .projects__gallery-wrapper
+        -for(let i = 0; i < contents.gallery.length; i++)
+          a.projects__gallery-item(href="./page")
+            +c-thumbnail('projects__gallery-thumbnail', 'projects', contents.gallery[i], i)
+      
 
-    .project__articles 
-      a.project__article(href="./page/index.html")
-        .main_img: img(src=`../${IMG_DIR}project/main_img.jpg`)
-        p.title Jingumae office-M
-        p.summary 普段は主に個人邸リノベーションの仕事が多いのですがオフィスリノベーションも行っています。
-
-      a.project__article(href="./page/index.html")
-        .main_img: img(src=`../${IMG_DIR}project/main_img.jpg`)
-        p.title Jingumae office-M
-        p.summary 普段は主に個人邸リノベーションの仕事が多いのですがオフィスリノベーションも行っています。
-
-      a.project__article(href="./page/index.html")
-        .main_img: img(src=`../${IMG_DIR}project/main_img.jpg`)
-        p.title Jingumae office-M
-        p.summary 普段は主に個人邸リノベーションの仕事が多いのですがオフィスリノベーションも行っています。
-
-      a.project__article(href="./page/index.html")
-        .main_img: img(src=`../${IMG_DIR}project/main_img.jpg`)
-        p.title Jingumae office-M
-        p.summary 普段は主に個人邸リノベーションの仕事が多いのですがオフィスリノベーションも行っています。
-
-      a.project__article(href="./page/index.html")
-        .main_img: img(src=`../${IMG_DIR}project/main_img.jpg`)
-        p.title Jingumae office-M
-        p.summary 普段は主に個人邸リノベーションの仕事が多いのですがオフィスリノベーションも行っています。
+    +c-loadMore('')

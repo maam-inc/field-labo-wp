@@ -1,16 +1,11 @@
-.blog#blog
-  .blog__wrapper 
-    p.blog__title blog
-
-    .categorie_container
-      select.categorie_wrapper(name="categorie" required)
-        option.categorie(value="all") All
-        option.categorie(value="kitchen") Kitchen 
-        option.categorie(value="office") Office 
-        option.categorie(value="renovation") Renovation
+.blog#blog.l-content
+  .l-content__wrapper
+    +c-breadcrumbs('BLOG & NOTE', false)
+    .blog__gallery
+      .blog__gallery-wrapper
+        -for(let i = 0; i < contents.gallery.length; i++)
+          a.blog__gallery-item(href="./page")
+            +c-thumbnail('blog__gallery-thumbnail', 'blog', contents.gallery[i], i)
       
-    .blog__articles 
-      a.blog__article(href="./page/index.html")
-        .main_img: img(src=`../${IMG_DIR}blog/main_img.jpg`)
-        p.title Jingumae office-M
-        p.summary 普段は主に個人邸リノベーションの仕事が多いのですがオフィスリノベーションも行っています。    
+
+    +c-loadMore('')

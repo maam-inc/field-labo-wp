@@ -1,53 +1,108 @@
 @use '../../_base/settings' as *;
 @use 'sass:math';
-.project{
-  &__wrapper{
-    width: 800px;
-    margin-inline: auto;
-    padding-top: 90px;
-    padding-bottom: 200px;
-  }
+.projects{
+  &__gallery{
+    margin: vw(10) auto 0;
 
-  &__title{
-    font-size: 25px;
-    font-weight: 900;
-  }
-  &__articles{
-    margin-top: 20px;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-  &__article{
-    width: calc((100% - 20px) / 2);
-    // margin-inline: auto;
-    height: 400px;
-    box-sizing: border-box;
-
-    .summary{
-      margin-top: 5px;
-      font-size: 12px;
-    }
-
-    &:nth-child(n+3){
-      margin-top: 20px;
-    }
-
-    .main_img{
+    &-item{
       width: 100%;
-    }
 
-    .title{
-      font-size: 20px;
-      font-weight: 600;
-      margin-top: 10px;
-    }
+      .c-thumbnail{
+        &__main_img{
+          aspect-ratio: 730/307;
+          width: 100%;
+          height: auto;
+          
+          img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
 
-    .summary{
-      font-size: 14px;
-      margin-top: 5px;
+        &__text-wrapper{
+          padding: vw(48) vw(46);
+          background: $bk;
+          height: vw(214);
+          box-sizing: border-box;
+        }
+
+        &__title{
+          font-size: vw(32);
+          margin-bottom: vw(23);
+        }
+
+        &__summary{
+          font-size: vw(24);
+          letter-spacing: 0.03em;
+          line-height: 150%;
+        }
+      }
+
+      &:not(:first-child){
+        margin-top: vw(10);
+      }
     }
   }
+}
+
+@include mq(pc){
+  .projects{
+    &__gallery{
+      margin: 5px auto 0;
+
+      &-item{
+        height: 270px;
+
+        .c-thumbnail{
+          display: flex;
+          flex-direction: row-reverse;
+          height: 100%;
+          container-type: inline-size;
+
+          &__main_img{
+            width: per(641,990);
+          }
+
+          &__text-wrapper{
+            width: per(350, 990);
+            padding: cqi(80, 990) cqi(34, 990);
+            height: auto;
+          }
+
+          &__title{
+            margin-bottom: 15px;
+            font-size: calc(24 / 990 * 100cqi);
+          }
+
+          &__summary{
+            font-size: 12px;
+          } 
+        }
+
+        &:not(:first-child){
+          margin-top: 5px;
+        }
+      }
+    }
+  }  
+}
+
+@include mq(pc-l){
+  .projects{
+    &__gallery{
+      &-item{
+        .c-thumbnail{
+          
+          &__text-wrapper{
+            padding: 80px 34px;
+          }
+
+          &__title{
+            font-size: 24px;
+          }
+        }
+      }
+    }
+  }    
 }

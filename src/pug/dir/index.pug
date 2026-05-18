@@ -13,17 +13,16 @@ block head
 
 block content
   .wrapper#wrapper
-    .modalOpenBg
-      include ../_modules/common/header
-      .l-content
-        .l-content__wrapper
-          include ../_modules/top/main
-          include ../_modules/top/contents
-      include ../_modules/common/footer
-    
+    include ../_modules/common/header
+    .l-content
+      .l-content__wrapper
+        include ../_modules/top/main
+        include ../_modules/top/contents
+    include ../_modules/common/footer
+  
 block script
-  //- script(src=`${JS_DIR}static-top.js`)
-  //- script(src="minimasonry.min.js")
+  script(src=`${JS_DIR}static-top.js`)
+  script(src="minimasonry.min.js")
 
 
 

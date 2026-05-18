@@ -1,3 +1,7 @@
+//- ーーーーーーーーーーーーーーーーーーー
+//- 共通パーツ
+//- ーーーーーーーーーーーーーーーーーーー
+
 //- パンくず
 mixin c-breadcrumbs(crumb, faq)
   .c-breadcrumbs
@@ -41,11 +45,11 @@ mixin c-ctrl-btn(className)
   .c-ctrl__next.swiper-button-next(class=className ? `${className}--next` : ''): img(src=`${IMG_DIR}common/icon-next.svg` alt="next")
 
 //- モーダル開くアイコン
-mixin c-modalOpenIcon(dark)
+mixin l-modalOpenIcon(dark)
   -if(dark === true) 
-    .c-modalOpenIcon(class=`c-modalOpenIcon--dark`)
+    .l-modalOpenIcon(class=`l-modalOpenIcon--dark`)
   -else
-    .c-modalOpenIcon
+    .l-modalOpenIcon
 
 //- サムネイル
 mixin c-thumbnail(className, type, i, idx)
@@ -58,10 +62,10 @@ mixin c-thumbnail(className, type, i, idx)
           .c-thumbnail__title.f-noto-B: p!=i.title
         -else
           .c-thumbnail__title.f-inter-B: p!=i.title
-        .c-thumbnail__open: +c-modalOpenIcon(false)
+        .c-thumbnail__open: +l-modalOpenIcon(false)
     //- 一覧ページ　
     -else if(type==='projects' || type==='blog')
-      .c-thumbnail__main_img: img(src=`${IMG_DIR}${type}/main_img_${idx+1}.jpg`)
+      .c-thumbnail__main_img: img(src=`${DUMMY_DIR}${type}/list${idx+1}.jpg`)
       .c-thumbnail__text-wrapper
         -if(i.ttlJp === true)
           .c-thumbnail__title.f-noto-B: p!=i.title
@@ -81,25 +85,75 @@ mixin c-thumbnail(className, type, i, idx)
           .c-thumbnail__viewmore-icon: img(src=`${IMG_DIR}common/icon-link.svg` alt="viewmore")
           p.c-thumbnail__viewmore-text.f-inter-B view more
 
-//- TOPとFAQのモーダル
-//- ページ判別は data_meta.pug の page.id から行う（top → topModal, faq → faqModal）
-//- .c-modal__inner以下の中身は各ページの .data[data-post="X"] から
-//- UiManager.js の modalUi() が .js-modalContent に動的に挿入する
-mixin c-modal
-  .c-modal.commonModal#commonModal(class=`${page.id}Modal`)
-    .c-modal__bg.js-modalClose(data-id=`commonModal`)
-    .c-modal__container
-      .c-modal__wrapper
-        .c-modal__contents.is-over
-          .c-modal__inner-scrlWrap
-            .c-modal__inner(data-type=page.id)
-              .js-modalContent
-                //- ページ別の .data ブロックからここに innerHTML が差し込まれる
+//- LOAD MORE 
+mixin c-loadMore(className) 
+  btn.c-loadMore(class=className ? `${className}` : '')
+    p.f-inter-B load more
 
-              button.c-modal__bottom.js-modalClose(data-id=`commonModal`)
-                .c-modal__bottom-icon
-                p.c-modal__bottom-text.f-inter-B close
+//- ーーーーーーーーーーーーーーーーーーー
+//- TOPとFAQ共通モーダル
+//- ーーーーーーーーーーーーーーーーーーー
 
-          button.c-modal__btn.js-modalClose(data-id=`commonModal`)
-            .c-modal__btn-inner
-              .c-modal__btn-icon
+//- モーダルの大枠
+mixin l-modal(type, className)
+  .l-modal#l-modal
+    .l-modal__bg.btn-close
+    .l-modal__container
+      .l-modal__wrapper
+        .l-modal__contents.is-over
+          .l-modal__inner-scrlWrap
+            .l-modal__inner
+              -if(type === 'top')
+                +topModalContent
+              -else if(type === 'faq')
+                +faqModalContent
+
+              button.l-modal__bottom.btn-close
+                .l-modal__bottom-icon
+                p.l-modal__bottom-text.f-inter-B close
+
+          button.l-modal__btn.btn-close
+            .l-modal__btn-inner
+              .l-modal__btn-icon
+
+//- 中身ーTOP
+mixin topModalContent
+  .topContents__modal
+    //- .img-box.is-single ←画像一枚の場合
+    .img-box.is-multiple
+      //- w100写真パーツ
+      .full_img.img
+        img(src=`${DUMMY_DIR}top/modal-full.jpg`)
+
+      //- w狭め写真パーツ
+      .narrow_img.img
+        img(src=`${DUMMY_DIR}top/modal-narrow.jpg`)
+
+    //- テキスト
+    p.text.f-noto-M!=modal.text
+
+    .flex_box
+      .related_articles.flex_box-item
+        p.related_articles-head.flex_box-head.f-inter-B related article
+        ul.related_articles-wrapper
+          -for(let i = 0; i < modal.article.length; i++)
+            li.related_article
+              a.related_article-inner(href="#")
+                .related_article-icon: img(src=`${IMG_DIR}common/icon-arrow-box.svg`)
+                -if(modal.article[i].ttlJp === true)
+                  .related_article-text.f-noto-B: p!=modal.article[i].title
+                -else
+                  .related_article-text.f-inter-B: p!=modal.article[i].title
+                p.related_article-genre.f-inter-M (#{`${modal.article[i].genre}`})
+
+      .tag.f-inter-B.flex_box-item
+        p.tag-head.flex_box-head tag
+        ul.tag-wrapper
+          -for(let i = 0; i < modal.tag.length; i++)
+            li.tag-item.f-inter-B
+              a(href="#")!=modal.tag[i]
+
+//- 中身ーFAQ
+mixin faqModalContent
+  .faq__modal
+    

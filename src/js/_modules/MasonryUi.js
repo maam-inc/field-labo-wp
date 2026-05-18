@@ -22,7 +22,7 @@ export default class MasonryiUi {
         const msnry = new Masonry( elem, {
           // options
           // columnWidth: width
-          itemSelector: '.l-contents__item',
+          itemSelector: '.topContents__item',
           percentPosition: true,
           gutter: ".gutter-sizer",
         });        

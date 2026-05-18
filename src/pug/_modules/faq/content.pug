@@ -1,9 +1,8 @@
-main.content
-  .content__wrapper
+main.l-content
+  .l-content__wrapper
     +c-breadcrumbs('', true)
 
-    //- .faq#faq.modalOpenBg
-    .faq#faq.modalOpenBg
+    .faq#faq
       .faq__wrapper
         .faq__title-group
           h2.faq__title.f-inter-B faq
@@ -16,7 +15,7 @@ main.content
           -for(let i = 0; i < faqList.length; i++)
             .faq__item
               .question
-                button.question__button.js-modalOpen(data-id='commonModal' data-post=`${page.id}-${i}`)
+                button.question__button.btn-open
                   p.question__text.f-noto-T 他のリノベーション会社との違いは何でしょうか？
                   span.question__icon
         .faq__return
@@ -24,68 +23,4 @@ main.content
             .icon
             .text.f-inter-B about & contact
 
-+c-modal
-
-//- モーダルに差し込まれるFAQページ専用のコンテンツ
-mixin faqModalContent(post)
-  .data(data-post=post hidden)
-    p.question 他のリノベーション会社との違いは何でしょうか？
-
-    //- w100写真パーツ
-    .full_img
-      img(src=`../assets/images/project/full_img.jpg`)
-      .cap スチールアングルを切っただけの引戸引手は定番アイテム
-
-    //- テキスト
-    p.text 部屋全体の仕上げをクロスから塗装仕上げに変更＋床は無垢フローリング張りへと全体を改修していますが、特に力を入れたのはこの洗面トイレ部分。
-      br
-      | ダークグリーンの塗装、ダークブラウンの木目、白のタイル。海外製のミラーと照明器具を取り合わせたシックな水廻りへと大改修。
-      br
-      | 個人的には住宅でもオフィスでも、水廻りのしつらえの豊かさが人の心理に与える影響はとても大きいと感じるので大事にしています。
-      br
-      | オフィスの水廻りが素敵だと社員さんたちも気分が良いですよね。
-      br
-      | 賃貸なのでもちろん改修前に管理会社を通じてオーナー様に内容を伝え、退去時の復旧をしなくて良い内容としています。
-
-    //- w狭め写真パーツ
-    .narrow_img
-      img(src=`../assets/images/project/narrow_img.jpg`)
-      .cap スチールアングルを切っただけの引戸引手は定番アイテム
-
-    //- リンク
-    .links
-      .link
-        p.link_name FIELD LABO :&nbsp;
-        a.link_url(href="http://field-labo.com/") http://field-labo.com/
-      .link
-        p.link_name FIELD LABO :&nbsp;
-        a.link_url(href="http://field-labo.com/") http://field-labo.com/
-      .link
-        p.link_name FIELD LABO :&nbsp;
-        a.link_url(href="http://field-labo.com/") http://field-labo.com/
-      .link
-        p.link_name FIELD LABO :&nbsp;
-        a.link_url(href="http://field-labo.com/") http://field-labo.com/
-
-    //- 横並び２カラムパーツ
-    .column
-      .column_img--1.column_img
-        img(src=`../assets/images/project/column1_img.jpg`)
-        .cap スチールアングルを切っただけの引戸引手は定番アイテム
-      .column_img--2.column_img
-        img(src=`../assets/images/project/column2_img.jpg`)
-        .cap スチールアングルを切っただけの引戸引手は定番アイテム
-
-    //- Before & Afterパーツ
-    .before-after
-      p.before-after__head (  Before & After  )
-      .before-after__wrapper
-        .before
-          img(src=`../assets/images/project/before_img.jpg`)
-          p.before-after__text Before
-        .after
-          img(src=`../assets/images/project/after_img.jpg`)
-          p.before-after__text After
-
--for(let i = 0; i < 4; i++)
-  +faqModalContent(`${page.id}-${i}`)
++l-modal('faq')

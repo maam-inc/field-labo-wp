@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Masonry from 'masonry-layout';
 
 import UiManager from './_modules/UiManager';
+import CommonModal from './_modules/commonModal';
 import MainSwiper from './_modules/MainSwiper';
 import LoadMore from './_modules/LoadMore';
 import MasonryUi from './_modules/MasonryUi';
@@ -27,6 +28,8 @@ const loaded = () => {
   console.log('top js loaded')
   const uiManager = new UiManager;
   uiManager.init();
+  const commonModal = new CommonModal;
+  commonModal.init();
   // const mainSwiper = new MainSwiper;
   // mainSwiper.init();
   // const loadMore = new LoadMore;

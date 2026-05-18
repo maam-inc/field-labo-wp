@@ -1,5 +1,5 @@
-main.top__main#top__main
-  .top__main-mv.swiper 
+main.topMain#topMain
+  .topMain__mv.swiper 
     .swiper-wrapper 
       -for(let i = 0; i < main.slide.length; i++)
         .swiper-slide 
@@ -8,7 +8,7 @@ main.top__main#top__main
             .text-wrapper 
               .title.f-inter-B: p!=main.slide[i].title
               .main_summary.f-noto-B: p!=main.slide[i].summary
-    +c-ctrl-btn('top__main-mv')
+    +c-ctrl-btn('topMain__mv')
 
 
       
