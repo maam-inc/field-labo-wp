@@ -239,7 +239,7 @@
     $post_id = (int) $request['id'];
     ob_start();
 
-    get_template_part('template-parts/modal-faq-content', null, [
+    get_template_part('template-parts/modal-faq', null, [
       'post_id' => $post_id,
     ]);
 

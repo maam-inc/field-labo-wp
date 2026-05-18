@@ -14,6 +14,5 @@
     </div>
     <p class="title"><?php the_title(); ?></p>
     <p class="summary"><?php the_field('summary'); ?></p>
-
   </a>
 </div>

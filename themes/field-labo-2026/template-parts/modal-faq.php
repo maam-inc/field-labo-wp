@@ -1,17 +1,28 @@
-<div class="modal faqModal" id="faqModal">
-  <div class="modal__bg js-modalClose" data-id="faqModal"></div>
+<?php
+$post_id = $args['post_id'] ?? 0;
+?>
 
-  <div class="modal__container">
-    <div class="modal__contents">
-      <div class="modal__wrapper">
-        <div class="modal__inner">
-          <div class="js-modalContent"></div>
+<?php if (have_rows('answer', $post_id)) : ?>
+  <div class="faq-answer">
+    <?php while (have_rows('answer', $post_id)) : the_row(); ?>
+
+      <?php if (get_row_layout() === 'answer_text') : ?>
+        <div class="faq-answer__text">
+          <?php echo get_sub_field('text'); ?>
         </div>
-      </div>
-    </div>
-  </div>
+      <?php endif; ?>
 
-  <button class="modal__btn js-modalClose" data-id="faqModal">
-    <div class="btn-close"></div>
-  </button>
-</div>
+      <?php if (get_row_layout() === 'answer_img') : ?>
+        <?php $img = get_sub_field('img'); ?>
+
+        <?php if ($img) : ?>
+          <div class="faq-answer__img">
+            <img src="<?php echo esc_url($img); ?>" alt="">
+          </div>
+        <?php endif; ?>
+
+      <?php endif; ?>
+
+    <?php endwhile; ?>
+  </div>
+<?php endif; ?>
