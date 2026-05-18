@@ -23,6 +23,11 @@ export default class Gallery {
     this.sortBtns = document.querySelectorAll('.js-sortBtn')
     this.currentCat = 'all'
     this.currentSort = 'random'
+
+    // MODAL URL
+    this.modalId = 'inspoModal'
+    this.modalQueryKey = 'modal'
+    this.isSyncingModalUrl = false
   }
 
   init(){
@@ -34,7 +39,9 @@ export default class Gallery {
     this.bindSort()
     this.bindSortBtn()
     this.bindModal()
+    this.bindModalUrl()
     this.updateSortBtn()
+    this.openInitialModalFromUrl()
     this.fetchInspoPosts({ page: 1, reset: true })
   }
 
@@ -230,14 +237,14 @@ export default class Gallery {
     document.addEventListener('click', (e) => {
       const openBtn = e.target.closest('.js-modalOpen')
       
-      if(openBtn && openBtn.dataset.id === 'inspoModal') {
+      if(openBtn && openBtn.dataset.id === this.modalId) {
         e.preventDefault()
 
         const modalId = openBtn.dataset.id
         const postId = openBtn.dataset.post
         if(!postId) return
 
-        this.openModal(modalId,postId)
+        this.openModal(modalId, postId, { updateUrl: true })
         return
       }
 
@@ -245,14 +252,63 @@ export default class Gallery {
       const isInsideContainer = e.target.closest('.modal__container')
 
       // 閉じる
-      if(closeBg && closeBg.dataset.id === 'inspoModal' && !isInsideContainer) {
+      if(closeBg && closeBg.dataset.id === this.modalId && !isInsideContainer) {
         const modalId = closeBg.dataset.id
-        this.closeModal(modalId)
+        this.closeModal(modalId, { updateUrl: true })
       }
     })
   }
 
-  async openModal(modalId, postId) {
+  bindModalUrl() {
+    window.addEventListener('popstate', () => {
+      const postId = this.getModalPostIdFromUrl()
+
+      this.isSyncingModalUrl = true
+
+      if(postId) {
+        this.openModal(this.modalId, postId)
+      } else {
+        this.closeModal(this.modalId)
+      }
+
+      this.isSyncingModalUrl = false
+    })
+  }
+
+  openInitialModalFromUrl() {
+    const postId = this.getModalPostIdFromUrl()
+    if(!postId) return
+
+    this.openModal(this.modalId, postId)
+  }
+
+  getModalPostIdFromUrl() {
+    const params = new URLSearchParams(window.location.search)
+    const value = params.get(this.modalQueryKey)
+
+    if(value && /^\d+$/.test(value)) return value
+
+    return ''
+  }
+
+  updateModalUrl(postId) {
+    if(this.isSyncingModalUrl || !window.history || !window.history.pushState) return
+
+    const url = new URL(window.location.href)
+
+    url.searchParams.delete(this.modalQueryKey)
+
+    if(postId) {
+      url.searchParams.set(this.modalQueryKey, postId)
+    }
+
+    const nextUrl = `${url.pathname}${url.search}${url.hash}`
+    if(nextUrl === `${window.location.pathname}${window.location.search}${window.location.hash}`) return
+
+    window.history.pushState({ modalPostId: postId || null }, '', nextUrl)
+  }
+
+  async openModal(modalId, postId, { updateUrl = false } = {}) {
     console.log('[modal] open request:', { modalId, postId })
 
     // element
@@ -261,6 +317,10 @@ export default class Gallery {
 
     const modalContent = modal.querySelector('.js-modalContent')
     if(!modalContent) return
+
+    if(updateUrl) {
+      this.updateModalUrl(postId)
+    }
 
     // モーダルの枠だけ表示
     modal.classList.add('is-active')
@@ -322,9 +382,13 @@ export default class Gallery {
       this.showModalError(modalContent, '読み込みに失敗しました。時間をおいて再度お試しください。')
     }
   }
-  closeModal(modalId) {
+  closeModal(modalId, { updateUrl = false } = {}) {
     const modal = document.getElementById(modalId)
     if(!modal) return
+
+    if(updateUrl) {
+      this.updateModalUrl('')
+    }
 
     // 中身をクリア
     const modalContent = modal.querySelector('.js-modalContent')

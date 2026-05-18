@@ -39,12 +39,12 @@
     <!-- repeat template - link -->
     <template id="inspo-modal-link-template">
       <li class="related_article">
-        <a class="related_article-inner" href="#">
+        <a class="related_article-inner" href="" target="_blank">
           <div class="related_article-icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/icon-arrow-box.svg"></div>
           <div class="related_article-text f-inter-B">
             <p></p>
           </div>
-          <p class="related_article-genre f-inter-M">(projects)</p>
+          <p class="related_article-genre f-inter-M"></p>
         </a>
       </li>
     </template>
