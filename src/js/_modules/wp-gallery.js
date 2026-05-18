@@ -20,7 +20,6 @@ export default class Gallery {
 
     // SORT
     this.catSelect = document.querySelector('.js-category')
-    this.sortBtns = document.querySelectorAll('.js-sortBtn')
     this.currentCat = 'all'
     this.currentSort = 'random'
 
@@ -82,26 +81,28 @@ export default class Gallery {
   }
 
   bindSortBtn() {
-    if(!this.sortBtns.length) return
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.js-sortBtn')
+      if(!btn) return
 
-    this.sortBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const sort = btn.dataset.sort
-        if(!sort || sort === this.currentSort) return
+      const sort = btn.dataset.sort
+      if(!sort || sort === this.currentSort) return
 
-        this.currentSort = sort
-        this.currentPage = 1
-        this.updateSortBtn()
-        this.fetchInspoPosts({ page: 1, reset: true })
-      })
+      this.currentSort = sort
+      this.currentPage = 1
+      this.updateSortBtn()
+      this.fetchInspoPosts({ page: 1, reset: true })
     })
   }
 
   updateSortBtn() {
-    if(!this.sortBtns.length) return
+    const sortBtns = document.querySelectorAll('.js-sortBtn')
+    if(!sortBtns.length) return
 
-    this.sortBtns.forEach(btn => {
-      btn.classList.toggle('is-active', btn.dataset.sort === this.currentSort)
+    sortBtns.forEach(btn => {
+      const isActive = btn.dataset.sort === this.currentSort
+      btn.classList.toggle('is-active', isActive)
+      btn.classList.toggle('active', isActive)
     })
   }
 
