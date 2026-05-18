@@ -1,0 +1,74 @@
+# =========================
+# root: ignore all
+# =========================
+*
+
+# =========================
+# allow root files
+# =========================
+!.gitignore
+!gulpfile.js
+!webpack.common.js
+!webpack.dev.js
+!webpack.prod.js
+!package.json
+!yarn.lock
+!README.md
+!package-lock.json
+
+
+# =========================
+# allow directories
+# =========================
+!themes/
+!uploads/
+!src/
+!static/
+
+# =========================
+# allow contents
+# =========================
+!themes/field-labo-2026/
+!themes/field-labo-2026/**
+themes/field-labo-2026/assets/js/
+themes/field-labo-2026/assets/css/
+
+!uploads/dummy/
+!uploads/dummy/**
+
+!src/**
+!static/**
+
+# =========================
+# ignore inside uploads
+# =========================
+uploads/*
+!uploads/dummy/
+
+# =========================
+# node
+# =========================
+node_modules/
+
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.claude/
+.cursor/
+.mcp.json
+AGENTS.md
+CLAUDE.md
+history/
+
+# =========================
+# OS
+# =========================
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
