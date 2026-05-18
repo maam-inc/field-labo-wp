@@ -105,6 +105,17 @@
       'taxonomies' => ['categorie'],
     ]);
 
+    register_taxonomy('categorie', ['inspo'], [
+      'label' => 'カテゴリー',
+      'public' => true,
+      'hierarchical' => true,
+      'show_ui' => true,
+      'show_in_rest' => true,
+      'show_admin_column' => false,
+      'rewrite' => false,
+    ]);
+
+
     // 投稿
     // **********
     register_post_type('project', [

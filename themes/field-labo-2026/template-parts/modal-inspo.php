@@ -1,15 +1,17 @@
     <div class="modal inspoModal" id="inspoModal" aria-hidden="true" style="display:none;">
-      <div class="modal__bg js-modalClose" data-id="inspoModal">
-        <div class="modal__container">
-          <div class="modal__contents">
-            <div class="modal__wrapper"> 
-              <div class="modal__inner">
-                <div class="js-modalContent"></div>
-              </div>
+      <div class="modal__bg js-modalClose" data-id="inspoModal"></div>
+      <div class="modal__container">
+        <div class="modal__contents">
+          <div class="modal__wrapper"> 
+            <div class="modal__inner">
+              <div class="js-modalContent"></div>
             </div>
           </div>
         </div>
       </div>
+      <button class="modal__btn js-modalClose" type="button" data-id="inspoModal" aria-label="close">
+        <div class="btn-close"></div>
+      </button>
     </div>
 
     <!-- TEMPLATE インナー -->

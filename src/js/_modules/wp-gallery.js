@@ -9,7 +9,7 @@ export default class Gallery {
     this.mq_pc = `(min-width: 768px)`;
     this.cmd = { isPc: this.mq_pc, isSp: this.mq_sp };
 
-    this.container = document.querySelector('.masonry');
+    this.container = document.querySelector('.js-masonry');
     this.msnry = null;
 
     // LOAD MORE
@@ -19,14 +19,16 @@ export default class Gallery {
     this.isLoading = false
 
     // SORT
-    this.catSelect = document.querySelector('.categorie_wrapper')
-    this.sortBtns = document.querySelectorAll('.jsSortBtn')
+    this.catSelect = document.querySelector('.js-category')
+    this.sortBtns = document.querySelectorAll('.js-sortBtn')
     this.currentCat = 'all'
     this.currentSort = 'random'
   }
 
   init(){
     console.log('masonryUi init')
+    if(!this.container) return
+
     this.masonryUi()
     this.bindLoadMore()
     this.bindSort()
@@ -158,20 +160,24 @@ export default class Gallery {
     const container = this.container
     const template = document.querySelector('#inspo-template')
 
-    // container.innerHTML = ''
+    if(!container || !template) return
+
     if(reset) {
-      container.querySelectorAll('.contents__inspo').forEach(item => item.remove())
+      container.querySelectorAll('.l-contents__item').forEach(item => item.remove())
     }
-    posts.forEach(post => {
+    ;(posts || []).forEach(post => {
       const clone = template.content.cloneNode(true)
 
       const btn = clone.querySelector('.js-modalOpen')
       const img = clone.querySelector('img')
-      const ttl = clone.querySelector('.ttl')
+      const ttl = clone.querySelector('.c-thumbnail__title p')
 
-      btn.dataset.post = post.id
-      img.src = post.image
-      ttl.textContent = post.title
+      if(btn) btn.dataset.post = post.id
+      if(img) {
+        img.src = post.image || ''
+        img.alt = post.title || ''
+      }
+      if(ttl) ttl.textContent = post.title || ''
 
       container.appendChild(clone)
     })
@@ -223,11 +229,13 @@ export default class Gallery {
     document.addEventListener('click', (e) => {
       const openBtn = e.target.closest('.js-modalOpen')
       
-      if(openBtn) {
+      if(openBtn && openBtn.dataset.id === 'inspoModal') {
         e.preventDefault()
 
         const modalId = openBtn.dataset.id
         const postId = openBtn.dataset.post
+        if(!postId) return
+
         this.openModal(modalId,postId)
         return
       }
@@ -236,7 +244,7 @@ export default class Gallery {
       const isInsideContainer = e.target.closest('.modal__container')
 
       // 閉じる
-      if(closeBg && !isInsideContainer) {
+      if(closeBg && closeBg.dataset.id === 'inspoModal' && !isInsideContainer) {
         const modalId = closeBg.dataset.id
         this.closeModal(modalId)
       }
@@ -248,7 +256,10 @@ export default class Gallery {
 
     // element
     const modal = document.getElementById(modalId)
+    if(!modal) return
+
     const modalContent = modal.querySelector('.js-modalContent')
+    if(!modalContent) return
 
     // モーダルの枠だけ表示
     modal.classList.add('is-active')
@@ -307,10 +318,7 @@ export default class Gallery {
     } catch(err) {
       clearTimeout(loadingTimer)
       console.error('[modal api] error:', err)
-      modalContent.innerHTML = ''
-      while(buffer.firstChild) {
-        modalContent.appendChild(buffer.firstChild)
-      }
+      this.showModalError(modalContent, '読み込みに失敗しました。時間をおいて再度お試しください。')
     }
   }
   closeModal(modalId) {
@@ -387,6 +395,8 @@ export default class Gallery {
   // APIのデータを元にモーダル内に描画
   renderModal(data, container) {
     const template = document.querySelector('#inspo-modal-template')
+    if(!template || !container) return
+
     const clone = template.content.cloneNode(true)
 
     // element
@@ -401,34 +411,38 @@ export default class Gallery {
     const linkTemplate = document.querySelector('#inspo-modal-link-template')
 
     // テキスト
-    text.textContent = data.text || ''
+    if(text) text.textContent = data.text || ''
 
     // 画像
-    if(data.images && imgTemplate) {
+    if(data.images && imgTemplate && imgWrap) {
       data.images.forEach(img => {
         const imgClone = imgTemplate.content.cloneNode(true)
         const imgEl = imgClone.querySelector('img')
-        console.log(img)
-        imgEl.src = img
+        if(imgEl) {
+          imgEl.src = img
+          imgEl.alt = data.title || ''
+        }
         imgWrap.appendChild(imgClone)
       })
     }
     
     // カテゴリ
-    if(data.categories && catTemplate) {
+    if(data.categories && catTemplate && catWrap) {
       data.categories.forEach(cat => {
         const catClone = catTemplate.content.cloneNode(true)
         const catLink = catClone.querySelector('a')
 
-        catLink.href = cat.url
-        catLink.textContent = cat.name
+        if(catLink) {
+          catLink.href = cat.url || '#'
+          catLink.textContent = cat.name || ''
+        }
 
         catWrap.appendChild(catClone)
       })
     }
 
     // 関連記事
-    if(data.links && data.links.length && linkTemplate) {
+    if(data.links && data.links.length && linkTemplate && linksWrap && linksList) {
       linksWrap.hidden = false
 
       data.links.forEach(link => {
@@ -436,8 +450,8 @@ export default class Gallery {
         const linkText = linkClone.querySelector('.link_text')
         const linkBtn = linkClone.querySelector('.link_btn')
 
-        linkText.textContent = `${link.title}_${link.post_type}`
-        linkBtn.href = link.url
+        if(linkText) linkText.textContent = `${link.title || ''}_${link.post_type || ''}`
+        if(linkBtn) linkBtn.href = link.url || '#'
 
         linksList.appendChild(linkClone)
       })

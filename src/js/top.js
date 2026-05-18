@@ -28,7 +28,7 @@ const loaded = () => {
   const mainSwiper = new MainSwiper;
   mainSwiper.init();
   const masonryUi = new Gallery;
-  Gallery.init();
+  masonryUi.init();
 
 };
 
