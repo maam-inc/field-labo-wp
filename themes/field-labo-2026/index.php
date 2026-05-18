@@ -27,7 +27,7 @@
 
             <!-- ******** Main ******** -->
             <main class="top__main" id="top__main">
-              <div class="top__main-mv swiper">
+              <div class="top__main-mv swiper js-mainSwiper">
                 <div class="swiper-wrapper"> 
                   <?php if($query->have_posts()): ?>
                   <?php while($query->have_posts()): $query->the_post(); ?> 
@@ -169,7 +169,14 @@
                 <?php get_template_part('template-parts/loadmore')?>
 
                 <!-- MODALの読み込み -->
-                <?php get_template_part('template-parts/modal-inspo')?>
+                <?php
+                  get_template_part('template-parts/modal-frame', null, [
+                    'modal_id' => 'inspoModal',
+                    'content_class' => 'inspoModal',
+                    'is_hidden' => true,
+                  ]);
+                  get_template_part('template-parts/modal-inspo');
+                ?>
 
 
                 <div class="l-contents__toTop">

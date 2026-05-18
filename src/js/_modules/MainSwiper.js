@@ -14,7 +14,7 @@ export default class MainSwiper {
   }
 
   MainSwiper(){
-    const mainSwiper = new Swiper('.main__mv', {
+    const mainSwiper = new Swiper('.js-mainSwiper', {
 
       pagination: {
         el: '.swiper-pagination',

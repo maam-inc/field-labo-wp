@@ -47,6 +47,7 @@ export default class Gallery {
         const { isPc, isSp } = context.conditions;
         this.msnry = new Masonry( this.container, {
           percentPosition: true,
+          columnWidth: '.l-contents__item',
           gutter: ".gutter-sizer",
           transitionDuration: 0,
         });        
@@ -334,7 +335,7 @@ export default class Gallery {
     // 非表示
     modal.classList.remove('is-active')
     modal.setAttribute('aria-hidden', 'true')
-    modal.style.display = ''
+    modal.style.display = 'none'
     document.documentElement.classList.remove('is-modal-open')
   }
 
@@ -400,9 +401,9 @@ export default class Gallery {
     const clone = template.content.cloneNode(true)
 
     // element
-    const imgWrap = clone.querySelector('.main_img')
+    const imgWrap = clone.querySelector('.img-box')
     const text = clone.querySelector('.text')
-    const catWrap = clone.querySelector('.categorie_wrapper')
+    const catWrap = clone.querySelector('.tag-wrapper')
     const linksWrap = clone.querySelector('.links-wrapper')
     const linksList = clone.querySelector('.links')
 
@@ -447,11 +448,13 @@ export default class Gallery {
 
       data.links.forEach(link => {
         const linkClone = linkTemplate.content.cloneNode(true)
-        const linkText = linkClone.querySelector('.link_text')
-        const linkBtn = linkClone.querySelector('.link_btn')
+        const linkText = linkClone.querySelector('.related_article-text p')
+        const linkBtn = linkClone.querySelector('.related_article-inner')
+        const genre = linkClone.querySelector('.related_article-genre')
 
-        if(linkText) linkText.textContent = `${link.title || ''}_${link.post_type || ''}`
+        if(linkText) linkText.textContent = `${link.title || ''}`
         if(linkBtn) linkBtn.href = link.url || '#'
+        if(genre) genre.textContent = `(${link.post_type || ''})`
 
         linksList.appendChild(linkClone)
       })
