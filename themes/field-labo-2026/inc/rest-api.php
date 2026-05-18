@@ -44,6 +44,57 @@
     ]);
   });
 
+  function field_labo_get_image_data($image) {
+    $url = '';
+    $width = '';
+    $height = '';
+    $attachment_id = 0;
+
+    if (is_array($image)) {
+      $url = $image['url'] ?? ($image['image'] ?? '');
+      $width = $image['width'] ?? '';
+      $height = $image['height'] ?? '';
+      $attachment_id = (int) ($image['ID'] ?? ($image['id'] ?? 0));
+    } elseif (is_numeric($image)) {
+      $attachment_id = (int) $image;
+      $url = wp_get_attachment_url($attachment_id);
+    } elseif (is_string($image)) {
+      $url = $image;
+    }
+
+    if (!$attachment_id && $url) {
+      $attachment_id = attachment_url_to_postid($url);
+    }
+
+    if ((!$width || !$height) && $attachment_id) {
+      $src = wp_get_attachment_image_src($attachment_id, 'full');
+      if ($src) {
+        $url = $url ?: $src[0];
+        $width = $src[1];
+        $height = $src[2];
+      }
+    }
+
+    if ((!$width || !$height) && $url) {
+      $path = wp_parse_url($url, PHP_URL_PATH);
+      $file = $path ? ABSPATH . ltrim($path, '/') : '';
+
+      if ($file && file_exists($file)) {
+        $size = getimagesize($file);
+        if ($size) {
+          $width = $size[0];
+          $height = $size[1];
+        }
+      }
+    }
+
+    return [
+      'url' => $url,
+      'width' => $width ? (int) $width : '',
+      'height' => $height ? (int) $height : '',
+    ];
+  }
+
   // -----------------------------------------
   // TOP 一覧用の記事データを返す
   // -----------------------------------------
@@ -91,12 +142,14 @@
       $query -> the_post();
 
       $images = get_field('images', get_the_ID()) ?: [];
-      $image_url = $images[0] ?? '';
+      $image = field_labo_get_image_data($images[0] ?? '');
 
       $posts[] = [
         'id' => get_the_ID(),
         'title' => get_the_title(),
-        'image' => $image_url,
+        'image' => $image['url'],
+        'image_width' => $image['width'],
+        'image_height' => $image['height'],
       ];
     }
 

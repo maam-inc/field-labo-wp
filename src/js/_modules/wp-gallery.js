@@ -54,7 +54,7 @@ export default class Gallery {
         const { isPc, isSp } = context.conditions;
         this.msnry = new Masonry( this.container, {
           percentPosition: true,
-          columnWidth: '.l-contents__item',
+          columnWidth: '.js-galleryItem',
           gutter: ".gutter-sizer",
           transitionDuration: 0,
         });        
@@ -184,6 +184,8 @@ export default class Gallery {
       if(img) {
         img.src = post.image || ''
         img.alt = post.title || ''
+        if(post.image_width) img.width = post.image_width
+        if(post.image_height) img.height = post.image_height
       }
       if(ttl) ttl.textContent = post.title || ''
 
@@ -234,6 +236,9 @@ export default class Gallery {
   // MODAL クリックイベント
   // ------------------------------
   bindModal() {
+    const modal = document.getElementById(this.modalId)
+    if(!modal) return
+
     document.addEventListener('click', (e) => {
       const openBtn = e.target.closest('.js-modalOpen')
       
@@ -248,13 +253,11 @@ export default class Gallery {
         return
       }
 
-      const closeBg = e.target.closest('.js-modalClose')
-      const isInsideContainer = e.target.closest('.modal__container')
+      const closeBtn = e.target.closest('.js-modalClose')
 
       // 閉じる
-      if(closeBg && closeBg.dataset.id === this.modalId && !isInsideContainer) {
-        const modalId = closeBg.dataset.id
-        this.closeModal(modalId, { updateUrl: true })
+      if(closeBtn && modal.contains(closeBtn)) {
+        this.closeModal({ updateUrl: true })
       }
     })
   }
@@ -268,7 +271,7 @@ export default class Gallery {
       if(postId) {
         this.openModal(this.modalId, postId)
       } else {
-        this.closeModal(this.modalId)
+        this.closeModal()
       }
 
       this.isSyncingModalUrl = false
@@ -382,8 +385,8 @@ export default class Gallery {
       this.showModalError(modalContent, '読み込みに失敗しました。時間をおいて再度お試しください。')
     }
   }
-  closeModal(modalId, { updateUrl = false } = {}) {
-    const modal = document.getElementById(modalId)
+  closeModal({ updateUrl = false } = {}) {
+    const modal = document.getElementById(this.modalId)
     if(!modal) return
 
     if(updateUrl) {

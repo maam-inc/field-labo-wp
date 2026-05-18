@@ -126,17 +126,7 @@
 
                 <!-- TEMPLATEここから -->
                 <template id="inspo-template">
-                  <!-- <div class="contents__inspo">
-                    <button  class="btn js-modalOpen" data-id="inspoModal" data-post="">
-                      <div class="inner">
-                        <div class="main_img">
-                          <img src="" loading="lazy"/>
-                        </div>
-                        <p class="ttl"></p>
-                      </div>
-                    </button>
-                  </div> -->
-                  <div class="l-contents__item">
+                  <div class="l-contents__item js-galleryItem">
                     <div class="btn-wrap">
                       <button class="btn js-modalOpen" data-id="inspoModal" data-post="">
                         <div class="inner">
@@ -187,66 +177,6 @@
 
               </div>
             </div>
-
-            <!-- <div class="c-modal commonModal topModal" id="commonModal">
-              <div class="c-modal__bg js-modalClose" data-id="commonModal"></div>
-              <div class="c-modal__container">
-                <div class="c-modal__wrapper">
-                  <div class="c-modal__contents is-over">
-                    <div class="c-modal__inner-scrlWrap">
-                      <div class="c-modal__inner" data-type="top">
-                        <div class="js-modalContent"></div>
-                        <button class="c-modal__bottom js-modalClose" data-id="commonModal">
-                          <div class="c-modal__bottom-icon"></div>
-                          <p class="c-modal__bottom-text f-inter-B">close</p>
-                        </button>
-                      </div>
-                    </div>
-                    <button class="c-modal__btn js-modalClose" data-id="commonModal">
-                      <div class="c-modal__btn-inner">
-                        <div class="c-modal__btn-icon"></div>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-            
-            <!-- これ何？ -->
-            <div class="data" data-post="top" hidden>
-              <div class="img-box is-multiple">
-                <div class="full_img img"><img src="/themes/field-labo-2026/assets/images/top/modal-full.jpg"></div>
-                <div class="narrow_img img"><img src="/themes/field-labo-2026/assets/images/top/modal-narrow.jpg"></div>
-              </div>
-              <p class="text f-noto-M">以前にお取引のお客様からのオフィスの工事依頼です。今回は、流し台のあるスペースの部分リニューアル工事。</p>
-              <div class="flex_box">
-                <div class="related_articles flex_box-item">
-                  <p class="related_articles-head flex_box-head f-inter-B">related article</p>
-                  <ul class="related_articles-wrapper">
-                    <li class="related_article"><a class="related_article-inner" href="#">
-                        <div class="related_article-icon"><img src="/themes/field-labo-2026/assets/images/common/icon-arrow-box.svg"></div>
-                        <div class="related_article-text f-inter-B">
-                          <p>Jingumae Office M</p>
-                        </div>
-                        <p class="related_article-genre f-inter-M">(projects)</p></a></li>
-                    <li class="related_article"><a class="related_article-inner" href="#">
-                        <div class="related_article-icon"><img src="/themes/field-labo-2026/assets/images/common/icon-arrow-box.svg"></div>
-                        <div class="related_article-text f-noto-B">
-                          <p>ステンシルペイントが気になる</p>
-                        </div>
-                        <p class="related_article-genre f-inter-M">(blog &amp; note)</p></a></li>
-                  </ul>
-                </div>
-                <div class="tag f-inter-B flex_box-item">
-                  <p class="tag-head flex_box-head">tag</p>
-                  <ul class="tag-wrapper">
-                    <li class="tag-item f-inter-B"><a href="#">kitchen</a></li>
-                    <li class="tag-item f-inter-B"><a href="#">inovation</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
 
