@@ -41,9 +41,9 @@
               </h1>
             </a>
             <nav class="l-header__nav f-inter-B">
-              <a class="l-header__nav-list" href="<?php echo home_url('blog'); ?>">BLOG & NOTE</a>
-              <a class="l-header__nav-list" href="<?php echo home_url('projects'); ?>">PROJECTS</a>
-              <a class="l-header__nav-list" href="<?php echo home_url('about-contact'); ?>">ABOUT & CONTACT</a>
+              <a class="l-header__nav-list <?php echo is_post_type_archive('blog') || is_singular('blog') ? 'is-current' : '' ?>" href="<?php echo home_url('blog'); ?>">BLOG & NOTE</a>
+              <a class="l-header__nav-list <?php echo is_post_type_archive('projects') || is_singular('projects') ? 'is-current' : '' ?>" href="<?php echo home_url('projects'); ?>">PROJECTS</a>
+              <a class="l-header__nav-list <?php echo is_page('about-contact') || is_post_type_archive('faq') ? 'is-current' : '' ?>" href="<?php echo home_url('about-contact'); ?>">ABOUT & CONTACT</a>
             </nav>
             <button class="l-header__menu" type="button">
               <div class="l-header__menu-inner">
