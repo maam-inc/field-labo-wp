@@ -26,8 +26,8 @@
 
 
             <!-- ******** Main ******** -->
-            <main class="top__main" id="top__main">
-              <div class="top__main-mv swiper js-mainSwiper">
+            <main class="topMain" id="topMain">
+              <div class="topMain__mv swiper js-mainSwiper"> 
                 <div class="swiper-wrapper"> 
                   <?php if($query->have_posts()): ?>
                   <?php while($query->have_posts()): $query->the_post(); ?> 
@@ -63,19 +63,65 @@
                   <?php endwhile; ?>
                   <?php endif; ?>
                 </div>
-                <div class="c-ctrl__prev swiper-button-prev top__main-mv--prev"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/icon-prev.svg" alt="prev"/></div>
-                <div class="c-ctrl__next swiper-button-next top__main-mv--next"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/icon-next.svg" alt="next"/></div>
+                <div class="c-ctrl__prev swiper-button-prev topMain__mv--prev"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/icon-prev.svg" alt="prev"/></div>
+                <div class="c-ctrl__next swiper-button-next topMain__mv--next"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/icon-next.svg" alt="next"/></div>
               </div>
             </main>
 
 
 
-            <div class="l-contents" id="l-contents">
-
+            <section class="l-contents topContents is-show" id="l-contents"> 
               <div class="l-contents__wrapper"> 
-                <div class="c-breadcrumbs">
-                  <div class="c-breadcrumbs__item">
-                    <h1 class="c-breadcrumbs__page f-inter-B">PHOTO GALLERY</h1>
+                <div class="topContents__head">
+                  <h1 class="topContents__title f-inter-B">PHOTO GALLERY</h1>
+                  <div class="topContents__ctrl f-inter-B">
+                    <div class="sort ctrl-item">
+                      <p class="sort__item ctrl-item--name">sort :</p>
+                      <select class="sort__lists js-category">
+                        <option class="sort__list" value="all">All Photos</option>
+                        <?php
+                          $all_terms = get_terms([
+                            'taxonomy' => 'categorie',
+                            'hide_empty' => false,
+                            'orderby' => 'name',
+                            'order' => 'ASC',
+                          ]);
+                          if (!is_wp_error($all_terms)) {
+                            foreach ($all_terms as $term) {
+                              echo '<option class="sort__list" value="' . esc_attr($term->slug) . '">' . esc_html($term->name) . '</option>';
+                            }
+                          }
+                        ?>
+                      </select>
+                    
+                      <select class="sort__lists" name="categorie" required>
+                        <option class="sort__list" value="all photos">All Photos</option>
+                        <option class="sort__list" value="kitchen">Kitchen</option>
+                        <option class="sort__list" value="living">Living</option>
+                        <option class="sort__list" value="bathroom">Bathroom</option>
+                        <option class="sort__list" value="washbasin">Washbasin</option>
+                        <option class="sort__list" value="toilet">Toilet</option>
+                        <option class="sort__list" value="entrance">Entrance</option>
+                        <option class="sort__list" value="other">Other</option>
+                        <option class="sort__list" value="lighting">Lighting</option>
+                        <option class="sort__list" value="switch &amp; outlet">Switch &amp; Outlet</option>
+                        <option class="sort__list" value="door &amp; window">Door &amp; Window</option>
+                        <option class="sort__list" value="color &amp; pattern">Color &amp; Pattern</option>
+                        <option class="sort__list" value="built-in">Built-in</option>
+                        <option class="sort__list" value="diy">DIY</option>
+                        <option class="sort__list" value="ikea">IKEA</option>
+                        <option class="sort__list" value="hobby">Hobby</option>
+                        <option class="sort__list" value="field">FIELD</option>
+                      </select>
+                      <div class="sort__toggle"></div>
+                    </div>
+                    <div class="order ctrl-item">
+                      <p class="order__item ctrl-item--name">order :</p>
+                      <div class="order__ctrl"> 
+                        <btn class="order__ctrl-random order__ctrl-name is-active">random</btn>
+                        <btn class="order__ctrl-latest order__ctrl-name">latest</btn>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -176,7 +222,7 @@
                 </div>
 
               </div>
-            </div>
+                  </section>
           </div>
         </div>
 

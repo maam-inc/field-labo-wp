@@ -1,6 +1,9 @@
     <!-- TEMPLATE インナー -->
     <template id="inspo-modal-template">
-      <div class="img-box"><!-- #inspo-modal-img-template --></div>
+      <div class="img-box">
+        <!-- <div class="img"><img src="" alt=""></div> -->
+        <!-- #inspo-modal-img-template -->
+      </div>
       <p class="text f-noto-M"><!-- ここにキャプション --></p>
       <div class="flex_box">
         <div class="related_articles flex_box-item">

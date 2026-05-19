@@ -31,7 +31,6 @@
   </head>
   <body>
     <div class="wrapper" id="wrapper">
-      <div class="modalOpenBg">
         
         <!-- Header -->
         <header class="l-header" id="l-header">
@@ -45,8 +44,8 @@
               <a class="l-header__nav-list" href="<?php echo home_url('blog'); ?>">BLOG & NOTE</a>
               <a class="l-header__nav-list" href="<?php echo home_url('projects'); ?>">PROJECTS</a>
               <a class="l-header__nav-list" href="<?php echo home_url('about'); ?>">ABOUT & CONTACT</a>
-          </nav>
-            <button class="l-header__menu js-modalOpen" data-id="hbgModal">
+            </nav>
+            <button class="l-header__menu">
               <div class="l-header__menu-inner">
                 <div class="line"></div>
                 <div class="line"></div>
@@ -55,26 +54,30 @@
             </button>
           </div>
         </header>
-        <div class="c-modal hbgModal" id="hbgModal">
-          <div class="c-modal__bg js-modalClose" data-id="hbgModal"></div>
-          <div class="c-modal__container">
-            <div class="c-modal__inner">
-              <a class="c-modal__top" href="<?php echo home_url(); ?>">
-                <div class="c-modal__top-arrow"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/icon-arrow-r.svg" alt="arrow"></div>
-                <p class="c-modal__top-text f-inter-B">top</p>
+        
+        <!-- Humburger -->
+        <div class="l-header__modal">
+          <div class="l-header__modal-bg"></div>
+          <div class="l-header__modal-container">
+            <div class="l-header__modal-inner">
+              <a class="l-header__modal-top" href="<?php echo home_url(); ?>">
+                <div class="l-header__modal-top-arrow">
+                  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/icon-arrow-r.svg" alt="">
+                </div>
+                <p class="l-header__modal-top-text f-inter-B">top</p>
               </a>
-              <button class="c-modal__btn js-modalClose" data-id="hbgModal">
+              <button class="l-header__modal-btn">
                 <div class="btn-close"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/icon-close.svg" alt="close"></div>
               </button>
-              <div class="c-modal__logo">
+              <div class="l-header__modal-logo">
                 <div class="c-logo black"></div>
               </div>
-              <nav class="c-modal__nav">
+              <nav class="l-header__modal-nav">
                 <a class="f-inter-B" href="<?php echo home_url('blog'); ?>">BLOG & NOTE</a>
                 <a class="f-inter-B" href="<?php echo home_url('projects'); ?>">PROJECTS</a>
                 <a class="f-inter-B" href="<?php echo home_url('about'); ?>">ABOUT & CONTACT</a>
               </nav>
-              <ul class="c-sns c-modal__sns">
+              <ul class="c-sns l-header__modal-sns">
                 <li>
                   <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/icon-instagram.svg" alt="instagram"/></a>
                 </li>
