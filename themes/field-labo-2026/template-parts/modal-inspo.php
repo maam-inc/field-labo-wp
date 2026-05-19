@@ -42,7 +42,7 @@
     <template id="inspo-modal-link-template">
       <li class="related_article">
         <a class="related_article-inner" href="" target="_blank">
-          <div class="related_article-icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/icon-arrow-box.svg"></div>
+          <div class="related_article-icon"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/icon-arrow-box.svg" alt=""></div>
           <div class="related_article-text f-inter-B">
             <p></p>
           </div>

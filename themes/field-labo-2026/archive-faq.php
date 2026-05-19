@@ -18,7 +18,7 @@
   <div class="l-content__wrapper">
     <div class="c-breadcrumbs">
       <div class="c-breadcrumbs__item">
-        <a class="c-breadcrumbs__page f-inter-B" href="<?php echo home_url('about-contact'); ?>">ABOUT & CONTACT</a>
+        <a class="c-breadcrumbs__page f-inter-B" href="<?php echo esc_url(home_url('about-contact')); ?>">ABOUT & CONTACT</a>
       </div>
       <div class="c-breadcrumbs__item">
         <h1 class="c-breadcrumbs__page f-inter-B">FAQ</h1>
@@ -49,7 +49,7 @@
           <?php wp_reset_postdata();?>
         </div>
         <div class="faq__return">
-          <a class="faq__return-link" href="<?php echo home_url('about-contact'); ?>">
+          <a class="faq__return-link" href="<?php echo esc_url(home_url('about-contact')); ?>">
             <div class="icon"></div>
             <div class="text f-inter-B">about & contact</div></a>
           </div>
@@ -57,7 +57,7 @@
     </div>
   </div>
 </main>
-<?
+<?php
 get_template_part('template-parts/modal-frame', null, [
   'modal_id' => 'faqModal',
   'content_class' => 'faqModal',

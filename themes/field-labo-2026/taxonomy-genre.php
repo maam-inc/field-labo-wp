@@ -25,7 +25,7 @@
           <p class="note__title">note</p>
           <div class="categorie_container">
             <select class="categorie_wrapper" name="genre" onchange="if(this.value) location.href=this.value;"> 
-              <option class="categorie" value="<?php echo get_post_type_archive_link('blog'); ?>">ALL</option>
+              <option class="categorie" value="<?php echo esc_url(get_post_type_archive_link('blog')); ?>">ALL</option>
               <?php
                 $genres = get_categories( array(
                   'taxonomy' => 'genre',
@@ -58,15 +58,15 @@
             <?php $query = new WP_Query($args);?>
             <?php if($query->have_posts()): ?>
               <?php while($query->have_posts()): $query->the_post(); ?>
-                <?php $group_field = get_field('common_parts');?>
+                <?php $group_field = get_field('common_parts') ?: [];?>
                 <li class="note__article">
                   <a href="<?php the_permalink(); ?>">
                     <div class="main_img">
-                      <?php $img_field = $group_field['img_main'];?>
-                      <img src="<?php echo $img_field['image']; ?>"/>
+                      <?php $img_field = $group_field['img_main'] ?? [];?>
+                      <img src="<?php echo esc_url($img_field['image'] ?? ''); ?>"/>
                     </div>
-                    <p class="title"><?php echo $group_field['title']; ?></p>
-                    <p class="summary"><?php echo get_field('summary');?></p>
+                    <p class="title"><?php echo esc_html($group_field['title'] ?? get_the_title()); ?></p>
+                    <p class="summary"><?php echo wp_kses_post(get_field('summary'));?></p>
                   </a>
                 </li>
               <?php endwhile; ?>
@@ -78,15 +78,15 @@
           <!-- <ul class="note__articles">
             <?php $posts = get_posts( $args );?>
               <?php if( $posts ) : foreach( $posts as $post ) : setup_postdata( $post ); ?>
-                <?php $group_field = get_field('common_parts');?>
+                <?php $group_field = get_field('common_parts') ?: [];?>
                 <li class="note__article">
                   <a href="<?php the_permalink(); ?>">
                     <div class="main_img">
-                      <?php $img_field = $group_field['img_main'];?>
-                      <img src="<?php echo $img_field['image']; ?>"/>
+                      <?php $img_field = $group_field['img_main'] ?? [];?>
+                      <img src="<?php echo esc_url($img_field['image'] ?? ''); ?>"/>
                     </div>
-                    <p class="title"><?php echo $group_field['title']; ?></p>
-                    <p class="summary"><?php echo get_field('summary');?></p>
+                    <p class="title"><?php echo esc_html($group_field['title'] ?? get_the_title()); ?></p>
+                    <p class="summary"><?php echo wp_kses_post(get_field('summary'));?></p>
                   </a>
                 </li>
               <?php endforeach; ?>

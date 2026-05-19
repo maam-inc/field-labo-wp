@@ -14,10 +14,10 @@
     </div>
     <div class="c-thumbnail__text-wrapper">
       <div class="c-thumbnail__title f-inter-B">
-        <p><?php the_title(); ?></p>
+        <p><?php echo esc_html(get_the_title()); ?></p>
       </div>
       <div class="c-thumbnail__summary f-noto-M">
-        <p><?php the_field('post_summary'); ?></p>
+        <p><?php echo wp_kses_post(get_field('post_summary')); ?></p>
       </div>
     </div>
   </div>

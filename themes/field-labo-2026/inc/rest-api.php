@@ -312,6 +312,11 @@
   // -----------------------------------------
   function get_faq_detail($request) {
     $post_id = (int) $request['id'];
+
+    if (!$post_id || get_post_type($post_id) !== 'faq' || get_post_status($post_id) !== 'publish') {
+      return new WP_Error('not_found', 'FAQ not found', ['status' => 404]);
+    }
+
     ob_start();
 
     get_template_part('template-parts/modal-faq', null, [

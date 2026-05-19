@@ -46,8 +46,8 @@
                         </picture>
                       </div>
                       <div class="text-wrapper"> 
-                        <p class="title"><?php echo get_field('title');?></p>
-                        <p class="main_summary"><?php echo get_field('text');?></p>
+                        <p class="title"><?php echo esc_html(get_field('title'));?></p>
+                        <p class="main_summary"><?php echo wp_kses_post(get_field('text'));?></p>
                       </div>
                     </a>
                   </div>
@@ -62,10 +62,10 @@
         <div class="contents" id="contents">
           <div class="contents__wrapper"> 
             <div class="contents__nav">
-              <a href="<?php echo get_post_type_archive_link('projects'); ?>">Project</a>
-              <a href="<?php echo get_post_type_archive_link('blog'); ?>">Note</a>
-              <a href="<?php echo get_post_type_archive_link('faq'); ?>">FAQ</a>
-              <a href="<?php echo get_page_link(314);?>">ABOUT</a>
+              <a href="<?php echo esc_url(get_post_type_archive_link('projects')); ?>">Project</a>
+              <a href="<?php echo esc_url(get_post_type_archive_link('blog')); ?>">Note</a>
+              <a href="<?php echo esc_url(get_post_type_archive_link('faq')); ?>">FAQ</a>
+              <a href="<?php echo esc_url(get_page_link(314));?>">ABOUT</a>
             </div>
             <div class="categorie_container">
               <?php
@@ -79,7 +79,7 @@
                 $current_slug = $current_term->slug;
               ?>
               <select class="categorie_wrapper" onchange="if(this.value) location.href=this.value;" name="categorie"> 
-                <option value="<?php echo home_url(); ?>">ALL</option>
+                <option value="<?php echo esc_url(home_url('/')); ?>">ALL</option>
                 <?php
                   foreach ($all_terms as $term) {
                     if($term->parent)

@@ -36,7 +36,7 @@
                     }
                   }
                   foreach ($child_terms as $term) {
-                    echo '<li class="categorie"><a href="' . get_term_link($term) . '?view=note">' . $term->name . '</a></li>';
+                    echo '<li class="categorie"><a href="' . esc_url(get_term_link($term) . '?view=note') . '">' . esc_html($term->name) . '</a></li>';
                   }
                 }
                 // $terms = get_terms('categorie');
@@ -54,16 +54,16 @@
                 <?php if( get_row_layout() == 'img_full'):?>
                   <div class="full_img">
                       <div class="img">
-                        <img src="<?php echo get_sub_field('image'); ?>"/>
+                        <img src="<?php echo esc_url(get_sub_field('image')); ?>"/>
                         <div class="btn-wrap">
-                          <button class="btn js-modalOpen" data-id="imgModal" data-post="<?php echo esc_attr(get_the_ID()); ?>" data-type="inner" data-img="<?php echo get_sub_field('image'); ?>">
+                          <button class="btn js-modalOpen" data-id="imgModal" data-post="<?php echo esc_attr(get_the_ID()); ?>" data-type="inner" data-img="<?php echo esc_url(get_sub_field('image')); ?>">
                             <div class="inner"></div>
                           </button>
                         </div>
                       </div>
                     <!-- キャプションがあれば -->
                     <?php if( get_sub_field('cap') ): ?>
-                      <div class="cap"><?php echo get_sub_field('cap'); ?></div>
+                      <div class="cap"><?php echo wp_kses_post(get_sub_field('cap')); ?></div>
                     <?php endif; ?>
                   </div>                    
                   
@@ -74,29 +74,29 @@
                 <?php elseif( get_row_layout() == 'img_narrow'):?>
                   <div class="narrow_img">
                     <div class="img">
-                      <img src="<?php echo get_sub_field('image'); ?>"/>
+                      <img src="<?php echo esc_url(get_sub_field('image')); ?>"/>
                       <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="imgModal" data-post="<?php echo esc_attr(get_the_ID()); ?>" data-type="inner" data-img="<?php echo get_sub_field('image'); ?>">
+                        <button class="btn js-modalOpen" data-id="imgModal" data-post="<?php echo esc_attr(get_the_ID()); ?>" data-type="inner" data-img="<?php echo esc_url(get_sub_field('image')); ?>">
                           <div class="inner"></div>
                         </button>
                       </div>
                     </div>
                     <!-- キャプションがあれば -->
                     <?php if( get_sub_field('cap') ): ?>
-                      <div class="cap"><?php echo get_sub_field('cap'); ?></div>
+                      <div class="cap"><?php echo wp_kses_post(get_sub_field('cap')); ?></div>
                     <?php endif; ?>
                   </div> 
                 
                 <!-- 見出し -->
                 <?php elseif( get_row_layout() == 'head'):?>
                   <div class="head">
-                    <?php the_sub_field('head');?>
+                    <?php echo wp_kses_post(get_sub_field('head')); ?>
                   </div>
 
                 <!-- テキスト -->
                 <?php elseif( get_row_layout() == 'text'):?>
                   <div class="text">
-                    <?php the_sub_field('text');?>
+                    <?php echo wp_kses_post(get_sub_field('text')); ?>
                   </div>
 
                 <!-- テーブル -->  
@@ -106,13 +106,13 @@
                       <?php if( have_rows('table')):?>
                         <?php while(have_rows('table')): the_row(); ?>
                         <tr>
-                          <td class="table_head"><?php the_sub_field('item'); ?></td>
-                          <td class="table_text"><?php the_sub_field('text'); ?></td>
+                          <td class="table_head"><?php echo esc_html(get_sub_field('item')); ?></td>
+                          <td class="table_text"><?php echo wp_kses_post(get_sub_field('text')); ?></td>
                         </tr>
                         <?php endwhile ?>
                       <?php endif; ?>
                     </table>
-                    <div class="img"> <img src="<?php echo the_sub_field('image');?>"/></div>
+                    <div class="img"> <img src="<?php echo esc_url(get_sub_field('image')); ?>"/></div>
                   </div>
                 <!-- リンク -->
                 <?php elseif( get_row_layout() == 'text_link'):?>
@@ -122,8 +122,8 @@
                         <?php if(get_sub_field('link')): ?>
                           <?php $group_field = get_sub_field('link');?>
                           <div class="link">
-                            <p class="link_name"><?php echo $group_field['link_name']; ?> :&nbsp;</p>
-                            <a class="link_url" href="<?php echo $group_field['link_url']; ?>"><?php echo $group_field['link_url']; ?></a>
+                            <p class="link_name"><?php echo esc_html($group_field['link_name'] ?? ''); ?> :&nbsp;</p>
+                            <a class="link_url" href="<?php echo esc_url($group_field['link_url'] ?? ''); ?>"><?php echo esc_html($group_field['link_url'] ?? ''); ?></a>
                           </div>
                         <?php endif; ?>
                       <?php endwhile; ?>
@@ -133,34 +133,34 @@
                 <!-- 横並び２カラムパーツ -->
                 <?php elseif( get_row_layout() == 'columns'):?>
                   <div class="column"> 
-                    <?php $group_field = get_sub_field('column_1');?>
+                    <?php $group_field = get_sub_field('column_1') ?: [];?>
                     <div class="column_img--1 column_img">
-                      <?php $img_field = $group_field['image'];?>
+                      <?php $img_field = $group_field['image'] ?? '';?>
                       <div class="img">
-                        <img src="<?php echo ($img_field); ?>"/>
+                        <img src="<?php echo esc_url($img_field); ?>"/>
                         <div class="btn-wrap">
                           <button class="btn js-modalOpen" data-id="imgModal" data-post="<?php echo esc_attr(get_the_ID()); ?>" data-type="inner" data-img="<?php echo esc_url($img_field); ?>">
                             <div class="inner"></div>
                           </button>
                         </div>
                       </div>
-                      <?php if($group_field['cap']): ?>
-                        <div class="cap"><?php echo $group_field['cap']; ?></div>
+                      <?php if(!empty($group_field['cap'])): ?>
+                        <div class="cap"><?php echo wp_kses_post($group_field['cap']); ?></div>
                       <?php endif; ?>
                     </div>
-                    <?php $group_field = get_sub_field('column_2');?>
+                    <?php $group_field = get_sub_field('column_2') ?: [];?>
                     <div class="column_img--1 column_img">
-                      <?php $img_field = $group_field['image'];?>
+                      <?php $img_field = $group_field['image'] ?? '';?>
                       <div class="img">
-                        <img src="<?php echo ($img_field); ?>"/>
+                        <img src="<?php echo esc_url($img_field); ?>"/>
                         <div class="btn-wrap">
-                          <button class="btn js-modalOpen" data-id="imgModal" data-post="<?php echo esc_attr(get_the_ID()); ?>" data-type="inner" data-img="<?php echo ($img_field); ?>">
+                          <button class="btn js-modalOpen" data-id="imgModal" data-post="<?php echo esc_attr(get_the_ID()); ?>" data-type="inner" data-img="<?php echo esc_url($img_field); ?>">
                             <div class="inner"></div>
                           </button>
                         </div>
                       </div>
-                      <?php if($group_field['cap']): ?>
-                        <div class="cap"><?php echo $group_field['cap']; ?></div>
+                      <?php if(!empty($group_field['cap'])): ?>
+                        <div class="cap"><?php echo wp_kses_post($group_field['cap']); ?></div>
                       <?php endif; ?>
                     </div>
                   </div>
@@ -184,7 +184,7 @@
                           }
                       ?>
                         <div class="<?php echo esc_attr($class); ?>">
-                          <p class="before-after__text"><?php echo $sec; ?></p>
+                          <p class="before-after__text"><?php echo esc_html($sec); ?></p>
                           <div class="article__contents"> 
                             <!-- 柔軟なコンテンツ ここから-->
                             <?php
@@ -201,15 +201,15 @@
                                 <?php if( $layout == 'img_full'):?>
                                   <div class="full_img">
                                     <div class="img">
-                                      <img src="<?php echo esc_url($row['image']); ?>"/>
+                                      <img src="<?php echo esc_url($row['image'] ?? ''); ?>"/>
                                       <div class="btn-wrap">
-                                        <button class="btn js-modalOpen" data-id="imgModal" data-post="<?php echo esc_attr(get_the_ID()); ?>" data-type="inner" data-img="<?php echo esc_url($row['image']); ?>">
+                                        <button class="btn js-modalOpen" data-id="imgModal" data-post="<?php echo esc_attr(get_the_ID()); ?>" data-type="inner" data-img="<?php echo esc_url($row['image'] ?? ''); ?>">
                                           <div class="inner"></div>
                                         </button>
                                       </div>
                                     </div>
                                     <?php if( !empty($row['cap']) ): ?>
-                                      <div class="cap"><?php echo $row['cap']; ?></div>
+                                      <div class="cap"><?php echo wp_kses_post($row['cap']); ?></div>
                                     <?php endif; ?>
                                   </div>
 
@@ -217,28 +217,28 @@
                                 <?php elseif( $layout == 'img_narrow'):?>
                                   <div class="narrow_img">
                                     <div class="img">
-                                      <img src="<?php echo esc_url($row['image']); ?>"/>
+                                      <img src="<?php echo esc_url($row['image'] ?? ''); ?>"/>
                                       <div class="btn-wrap">
-                                        <button class="btn js-modalOpen" data-id="imgModal" data-post="<?php echo esc_attr(get_the_ID()); ?>" data-type="inner" data-img="<?php echo esc_url($row['image']); ?>">
+                                        <button class="btn js-modalOpen" data-id="imgModal" data-post="<?php echo esc_attr(get_the_ID()); ?>" data-type="inner" data-img="<?php echo esc_url($row['image'] ?? ''); ?>">
                                           <div class="inner"></div>
                                         </button>
                                       </div>
                                     </div>
                                     <?php if( !empty($row['cap']) ): ?>
-                                      <div class="cap"><?php echo $row['cap']; ?></div>
+                                      <div class="cap"><?php echo wp_kses_post($row['cap']); ?></div>
                                     <?php endif; ?>
                                   </div>
 
                                 <!-- 見出し -->
                                 <?php elseif( $layout == 'head'):?>
                                   <div class="head">
-                                    <?php echo $row['head']; ?>
+                                    <?php echo wp_kses_post($row['head'] ?? ''); ?>
                                   </div>
 
                                 <!-- テキスト -->
                                 <?php elseif( $layout == 'text'):?>
                                   <div class="text">
-                                    <?php echo $row['text']; ?>
+                                    <?php echo wp_kses_post($row['text'] ?? ''); ?>
                                   </div>
 
                                 <!-- テーブル -->  
@@ -248,13 +248,13 @@
                                       <?php if( $row['table']):?>
                                         <?php foreach($row['table'] as $table_row): ?>
                                         <tr>
-                                          <td class="table_head"><?php echo $table_row['item']; ?></td>
-                                          <td class="table_text"><?php echo $table_row['text']; ?></td>
+                                          <td class="table_head"><?php echo esc_html($table_row['item'] ?? ''); ?></td>
+                                          <td class="table_text"><?php echo wp_kses_post($table_row['text'] ?? ''); ?></td>
                                         </tr>
                                         <?php endforeach ?>
                                       <?php endif; ?>
                                     </table>
-                                    <div class="img"> <img src="<?php echo $row['image'];?>"/></div>
+                                    <div class="img"> <img src="<?php echo esc_url($row['image'] ?? ''); ?>"/></div>
                                   </div>
 
                                 <!-- リンク -->
@@ -265,9 +265,9 @@
                                         <?php if( !empty($link_row['link']) ): ?>
                                           <?php $link_group = $link_row['link']; ?>
                                           <div class="link">
-                                            <p class="link_name"><?php echo $link_group['link_name']; ?> :&nbsp;</p>
-                                            <a class="link_url" href="<?php echo $link_group['link_url']; ?>">
-                                              <?php echo $link_group['link_url']; ?>
+                                            <p class="link_name"><?php echo esc_html($link_group['link_name'] ?? ''); ?> :&nbsp;</p>
+                                            <a class="link_url" href="<?php echo esc_url($link_group['link_url'] ?? ''); ?>">
+                                              <?php echo esc_html($link_group['link_url'] ?? ''); ?>
                                             </a>
                                           </div>
                                         <?php endif; ?>
@@ -278,32 +278,32 @@
                                 <!-- 横並び２カラムパーツ -->
                                 <?php elseif( $layout == 'columns'):?>
                                   <div class="column"> 
-                                    <?php $col1 = $row['column_1']; ?>
+                                    <?php $col1 = $row['column_1'] ?? []; ?>
                                     <div class="column_img--1 column_img">
                                       <div class="img">
-                                        <img src="<?php echo esc_url($col1['image']); ?>"/>
+                                        <img src="<?php echo esc_url($col1['image'] ?? ''); ?>"/>
                                         <div class="btn-wrap">
-                                          <button class="btn js-modalOpen" data-id="imgModal" data-post="<?php echo esc_attr(get_the_ID()); ?>" data-type="inner" data-img="<?php echo esc_url($col1['image']); ?>">
+                                          <button class="btn js-modalOpen" data-id="imgModal" data-post="<?php echo esc_attr(get_the_ID()); ?>" data-type="inner" data-img="<?php echo esc_url($col1['image'] ?? ''); ?>">
                                             <div class="inner"></div>
                                           </button>
                                         </div>
                                       </div>
                                       <?php if( !empty($col1['cap']) ): ?>
-                                        <div class="cap"><?php echo $col1['cap']; ?></div>
+                                        <div class="cap"><?php echo wp_kses_post($col1['cap']); ?></div>
                                       <?php endif; ?>
                                     </div>
-                                    <?php $col2 = $row['column_2']; ?>
+                                    <?php $col2 = $row['column_2'] ?? []; ?>
                                     <div class="column_img--2 column_img">
                                       <div class="img">
-                                        <img src="<?php echo esc_url($col2['image']); ?>"/>
+                                        <img src="<?php echo esc_url($col2['image'] ?? ''); ?>"/>
                                         <div class="btn-wrap">
-                                          <button class="btn js-modalOpen" data-id="imgModal" data-post="<?php echo esc_attr(get_the_ID()); ?>" data-type="inner" data-img="<?php echo esc_url($col2['image']); ?>">
+                                          <button class="btn js-modalOpen" data-id="imgModal" data-post="<?php echo esc_attr(get_the_ID()); ?>" data-type="inner" data-img="<?php echo esc_url($col2['image'] ?? ''); ?>">
                                             <div class="inner"></div>
                                           </button>
                                         </div>
                                       </div>
                                       <?php if( !empty($col2['cap']) ): ?>
-                                        <div class="cap"><?php echo $col2['cap']; ?></div>
+                                        <div class="cap"><?php echo wp_kses_post($col2['cap']); ?></div>
                                       <?php endif; ?>
                                     </div>
                                   </div>

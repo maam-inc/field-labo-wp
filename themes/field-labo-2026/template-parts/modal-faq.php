@@ -8,7 +8,7 @@ $post_id = $args['post_id'] ?? 0;
 
       <?php if (get_row_layout() === 'answer_text') : ?>
         <div class="faq-answer__text">
-          <?php echo get_sub_field('text'); ?>
+          <?php echo wp_kses_post(get_sub_field('text')); ?>
         </div>
       <?php endif; ?>
 

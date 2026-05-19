@@ -46,11 +46,11 @@
                           <?php while(have_rows('custom_parts')): the_row(); ?>
                             <?php  $row_layout = get_row_layout();?>
                             <?php if($row_layout === 'img_full' || $row_layout === 'img_narrow'): ?>
-                              <div class="inspo-layout inspo-layout--inner" data-img="<?php echo get_sub_field('image'); ?>" style="display:none;">
-                                <div class="img"><img src="<?php echo get_sub_field('image'); ?>" alt=""></div>
+                              <div class="inspo-layout inspo-layout--inner" data-img="<?php echo esc_url(get_sub_field('image')); ?>" style="display:none;">
+                                <div class="img"><img src="<?php echo esc_url(get_sub_field('image')); ?>" alt=""></div>
                                 <ul class="categorie_wrapper">
                                   <?php foreach ($child_terms as $term) : ?>
-                                    <li class="categorie"><a href="<?php echo esc_url(get_term_link($term)); ?>?view=top"><?php echo esc_html($term->name); ?></a></li>
+                                    <li class="categorie"><a href="<?php echo esc_url(get_term_link($term) . '?view=top'); ?>"><?php echo esc_html($term->name); ?></a></li>
                                   <?php endforeach; ?>
                                 </ul>
                               </div>
@@ -62,11 +62,11 @@
                                   $img_raw = $wrap_field['image'] ?? null;
                                   $img_url = $img_raw;
                               ?>
-                              <div class="inspo-layout inspo-layout--inner" data-img="<?php echo esc_attr($img_url); ?>" style="display:none;">
-                                <div class="img"><img src="<?php echo esc_attr($img_url); ?>" alt=""></div>
+                              <div class="inspo-layout inspo-layout--inner" data-img="<?php echo esc_url($img_url); ?>" style="display:none;">
+                                <div class="img"><img src="<?php echo esc_url($img_url); ?>" alt=""></div>
                                 <ul class="categorie_wrapper">
                                   <?php foreach ($child_terms as $term) : ?>
-                                    <li class="categorie"><a href="<?php echo esc_url(get_term_link($term)); ?>?view=top"><?php echo esc_html($term->name); ?></a></li>
+                                    <li class="categorie"><a href="<?php echo esc_url(get_term_link($term) . '?view=top'); ?>"><?php echo esc_html($term->name); ?></a></li>
                                   <?php endforeach; ?>
                                 </ul>
                               </div>
@@ -87,30 +87,30 @@
                               <?php foreach($flexible_rows as $row): ?>
                                 <?php $layout = $row['acf_fc_layout'] ?? ''; ?>
                                 <?php if( $layout == 'img_full' || $layout == 'img_narrow' ):?>
-                                  <div class="inspo-layout inspo-layout--inner" data-img="<?php echo esc_url($row['image']); ?>" style="display:none;">
-                                    <div class="img"><img src="<?php echo esc_url($row['image']); ?>" alt=""></div>
+                                  <div class="inspo-layout inspo-layout--inner" data-img="<?php echo esc_url($row['image'] ?? ''); ?>" style="display:none;">
+                                    <div class="img"><img src="<?php echo esc_url($row['image'] ?? ''); ?>" alt=""></div>
                                     <ul class="categorie_wrapper">
                                       <?php foreach ($child_terms as $term) : ?>
-                                        <li class="categorie"><a href="<?php echo esc_url(get_term_link($term)); ?>?view=top"><?php echo esc_html($term->name); ?></a></li>
+                                        <li class="categorie"><a href="<?php echo esc_url(get_term_link($term) . '?view=top'); ?>"><?php echo esc_html($term->name); ?></a></li>
                                       <?php endforeach; ?>
                                     </ul>
                                   </div>  
                                 <?php elseif( $layout == 'columns' ):?>
-                                  <?php $col1 = $row['column_1']; ?>
-                                  <div class="inspo-layout inspo-layout--inner" data-img="<?php echo esc_url($col1['image']); ?>" style="display:none;">
-                                    <div class="img"><img src="<?php echo esc_url($col1['image']); ?>" alt=""></div>
+                                  <?php $col1 = $row['column_1'] ?? []; ?>
+                                  <div class="inspo-layout inspo-layout--inner" data-img="<?php echo esc_url($col1['image'] ?? ''); ?>" style="display:none;">
+                                    <div class="img"><img src="<?php echo esc_url($col1['image'] ?? ''); ?>" alt=""></div>
                                     <ul class="categorie_wrapper">
                                       <?php foreach ($child_terms as $term) : ?>
-                                        <li class="categorie"><a href="<?php echo esc_url(get_term_link($term)); ?>?view=top"><?php echo esc_html($term->name); ?></a></li>
+                                        <li class="categorie"><a href="<?php echo esc_url(get_term_link($term) . '?view=top'); ?>"><?php echo esc_html($term->name); ?></a></li>
                                       <?php endforeach; ?>
                                     </ul>
                                   </div>  
-                                  <?php $col2 = $row['column_2']; ?>
-                                  <div class="inspo-layout inspo-layout--inner" data-img="<?php echo esc_url($col2['image']); ?>" style="display:none;">
-                                    <div class="img"><img src="<?php echo esc_url($col2['image']); ?>" alt=""></div>
+                                  <?php $col2 = $row['column_2'] ?? []; ?>
+                                  <div class="inspo-layout inspo-layout--inner" data-img="<?php echo esc_url($col2['image'] ?? ''); ?>" style="display:none;">
+                                    <div class="img"><img src="<?php echo esc_url($col2['image'] ?? ''); ?>" alt=""></div>
                                     <ul class="categorie_wrapper">
                                       <?php foreach ($child_terms as $term) : ?>
-                                        <li class="categorie"><a href="<?php echo esc_url(get_term_link($term)); ?>?view=top"><?php echo esc_html($term->name); ?></a></li>
+                                        <li class="categorie"><a href="<?php echo esc_url(get_term_link($term) . '?view=top'); ?>"><?php echo esc_html($term->name); ?></a></li>
                                       <?php endforeach; ?>
                                     </ul>
                                   </div>                                    

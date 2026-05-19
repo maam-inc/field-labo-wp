@@ -2,10 +2,10 @@
         <!-- Footer -->
         <footer class="l-footer" id="l-footer">
           <ul class="c-sns l-footer__sns type-footer">
-            <li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/icon-instagram.svg" alt="instagram"/></a></li>
-            <li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/icon-facebook.svg" alt="facebook"/></a></li>
-            <li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/icon-pinterest.svg" alt="pinterest"/></a></li>
-            <li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/icon-home.svg" alt="home"/></a></li>
+            <li><a href="#"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/icon-instagram.svg" alt="instagram"/></a></li>
+            <li><a href="#"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/icon-facebook.svg" alt="facebook"/></a></li>
+            <li><a href="#"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/icon-pinterest.svg" alt="pinterest"/></a></li>
+            <li><a href="#"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/icon-home.svg" alt="home"/></a></li>
           </ul>
           <p class="l-footer__copyright f-inter-B">©FIELD LABO  ALL RIGHTS RESERVED.</p>
           <div class="l-footer__top">
@@ -22,11 +22,6 @@
 
       </div>
     </div>
-    <script src="<?php echo get_template_directory_uri(); ?>/assets/js/common.js"></script>
-    <?php
-      $asset_type = function_exists('get_asset_type') ? get_asset_type() : 'page';
-    ?>
-    <script src="<?php echo get_template_directory_uri(); ?>/assets/js/<?php echo esc_attr($asset_type); ?>.js"></script>
     <?php wp_footer();?>
   </body>
 </html>
