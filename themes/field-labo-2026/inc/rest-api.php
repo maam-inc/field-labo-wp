@@ -264,7 +264,7 @@
       explode(',', (string) $request->get_param('exclude'))
     ));
 
-    $allowed_post_types = ['project', 'blog'];
+    $allowed_post_types = ['projects', 'blog'];
 
     if (!in_array($post_type, $allowed_post_types, true)) {
       return new WP_Error('invalid_post_type', 'Invalid post type.', ['status' => 400]);

@@ -4,7 +4,7 @@
         $paged = get_query_var('paged') ?: 1;
 
         $args = [
-          'post_type' => ['note','project'],
+          'post_type' => ['blog','projects'],
           'posts_per_page' => -1,
           'paged' => $paged,
           'orderby' => 'rand',

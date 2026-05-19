@@ -2,19 +2,27 @@
       <div class="article">
         <div class="article__wrapper">
           <div class="article__main"> 
-            <?php $group_field = get_field('common_parts');?>
+            <?php
+              $group_field = get_field('common_parts');
+              $group_field = is_array($group_field) ? $group_field : [];
+              $img_field = $group_field['img_main'] ?? null;
+              $img_url = is_array($img_field) ? ($img_field['image'] ?? '') : '';
+              $date = $group_field['date'] ?? get_the_date('Y.m.d');
+              $title = $group_field['title'] ?? get_the_title();
+            ?>
             <!-- 共通メイン画像 -->
+            <?php if ($img_url): ?>
             <div class="main_img">
-              <?php $img_field = $group_field['img_main'];?>
-              <img src="<?php echo $img_field['image']; ?>"/>
+              <img src="<?php echo esc_url($img_url); ?>"/>
             </div>
+            <?php endif; ?>
             <!-- 投稿日　 -->
             <p class="date">
-              <?php echo $group_field['date']; ?>
+              <?php echo esc_html($date); ?>
             </p>
             <!-- 共通タイトル　 -->
             <p class="title">
-              <?php echo $group_field['title']; ?>
+              <?php echo esc_html($title); ?>
             </p>
             
             <ul class="categorie_wrapper"> 

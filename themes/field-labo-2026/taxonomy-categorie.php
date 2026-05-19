@@ -62,8 +62,8 @@
         <div class="contents" id="contents">
           <div class="contents__wrapper"> 
             <div class="contents__nav">
-              <a href="<?php echo get_post_type_archive_link('project'); ?>">Project</a>
-              <a href="<?php echo get_post_type_archive_link('note'); ?>">Note</a>
+              <a href="<?php echo get_post_type_archive_link('projects'); ?>">Project</a>
+              <a href="<?php echo get_post_type_archive_link('blog'); ?>">Note</a>
               <a href="<?php echo get_post_type_archive_link('faq'); ?>">FAQ</a>
               <a href="<?php echo get_page_link(314);?>">ABOUT</a>
             </div>

@@ -12,7 +12,8 @@
         // WordPressの現在の一覧情報を取得 ... max_num_pages などを参照するために必要
         global $wp_query;
         // REST APIへ渡す投稿タイプ名 ... /wp-json/.../?post_type=project の project 部分になる
-        $post_type = 'project';
+        $post_type = 'projects';
+        // $post_type = 'project';
         // 現在のページ番号（1ページ目なら1,2ページ目なら2）
         $current_page = max(1, get_query_var('paged') ?: 1);
       ?>

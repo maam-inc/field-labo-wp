@@ -4,7 +4,7 @@
     // blog / projects 投稿だけ制御
     if(
       !empty($editor_context->post) &&
-      in_array($editor_context->post->post_type, ['blog', 'project'], true)
+      in_array($editor_context->post->post_type, ['blog', 'projects'], true)
     ) {
 
       return [

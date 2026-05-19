@@ -20,7 +20,7 @@
     <?php
       $date = new DateTime(get_the_date('Y-m-d'));
       $post_type_labels = [
-        'project' => 'PROJECTS',
+        'projects' => 'PROJECTS',
         'blog' => 'BLOG & NOTE',
       ];
       $post_type = get_post_type();

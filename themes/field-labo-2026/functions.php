@@ -34,7 +34,7 @@
     if (!$query->is_main_query()) return;
 
     // project一覧の初期表示件数
-    if ($query->is_post_type_archive('project')) {
+    if ($query->is_post_type_archive('projects')) {
       $query->set('posts_per_page', 2);
       $query->set('orderby', [
         'date' => 'DESC',
@@ -126,14 +126,15 @@
 
     // 投稿
     // **********
-    register_post_type('project', [
+    register_post_type('projects', [
       'label' => 'Projects',
       'public' => true,
       'show_in_rest' => true,
-      'has_archive' => true,
+      'has_archive' => 'projects',
       'rewrite' => [
         'slug' => 'projects',
       ],
+      'query_var' => 'projects',
       'supports' => ['title', 'editor'],
       // 'supports' => ['title'],
     ]);
@@ -166,6 +167,15 @@
 
   add_action('init', 'create_post_type');
 
+  add_action('init', function() {
+    $rewrite_version = '20260519_projects_blog_cpt';
+
+    if (get_option('field_labo_rewrite_version') !== $rewrite_version) {
+      flush_rewrite_rules(false);
+      update_option('field_labo_rewrite_version', $rewrite_version);
+    }
+  }, 20);
+
   // カテゴリ　NOTEとTOPの出し分け
   // function add_custom_query_vars($vars){
   //   $vars[] = 'view';
@@ -176,6 +186,7 @@
   // JS,CSS用ロジック
   function get_asset_type() {
     if (is_front_page()) return 'top';
+    if (is_page('about-contact')) return 'page';
     if (is_singular()) return 'post';
     if (is_post_type_archive('faq')) return 'page';
     if (is_post_type_archive() || is_tax() || is_category() || is_tag() || is_archive()) return 'list';

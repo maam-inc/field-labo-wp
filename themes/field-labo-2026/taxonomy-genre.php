@@ -6,7 +6,7 @@
           $paged = get_query_var('paged') ?: 1;
 
           $args = [
-            'post_type' => ['note'],
+            'post_type' => ['blog'],
             'posts_per_page' => -1,
             'paged' => $paged,
             'meta_query' => array(
@@ -25,7 +25,7 @@
           <p class="note__title">note</p>
           <div class="categorie_container">
             <select class="categorie_wrapper" name="genre" onchange="if(this.value) location.href=this.value;"> 
-              <option class="categorie" value="<?php echo get_post_type_archive_link('note'); ?>">ALL</option>
+              <option class="categorie" value="<?php echo get_post_type_archive_link('blog'); ?>">ALL</option>
               <?php
                 $genres = get_categories( array(
                   'taxonomy' => 'genre',
@@ -34,8 +34,10 @@
                 ));
                 $current_term = get_queried_object();
                 $current_slug = $current_term->slug;
-                foreach( $genres as $genre ) {
-                  echo '<option class="categorie" value="' . esc_url(get_term_link($genre)) . '?view=note" ' . ($current_slug === $genre->slug ? 'selected' : '') . '>' . esc_html($genre->name) . '</option>';
+                if (!is_wp_error($genres)) {
+                  foreach( $genres as $genre ) {
+                    echo '<option class="categorie" value="' . esc_url(get_term_link($genre)) . '?view=note" ' . ($current_slug === $genre->slug ? 'selected' : '') . '>' . esc_html($genre->name) . '</option>';
+                  }
                 }
               ?>
             </select>
@@ -48,7 +50,7 @@
               $args = [
                 'taxonomy' => 'genre',
                 'posts_per_page' => -1,
-                'post_type' => 'note',
+                'post_type' => 'blog',
                 'paged' => $paged,
                 'term' => $term_slug
               ];
