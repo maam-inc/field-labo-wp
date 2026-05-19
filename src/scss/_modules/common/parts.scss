@@ -1,7 +1,9 @@
 @use '../../_base/settings' as *;
 @use 'sass:math';
 
-
+//- ーーーーーーーーーーーーーーーーーーー
+//- 共通パーツ
+//- ーーーーーーーーーーーーーーーーーーー
 // 大枠
 .l-content { 
   padding-block: vw(10) vw(74);
@@ -18,8 +20,6 @@
     }
   }
 }
-
-// ーーーーーーーー要素ーーーーーーーー
 
 // パンくず
 .c-breadcrumbs { 
@@ -163,7 +163,7 @@
 }
 
 //- モーダル開くアイコン
-.c-modalOpenIcon{
+.l-modalOpenIcon{
   aspect-ratio: 1/1;
   height: auto;
   mask-image: url(../images/common/icon-open.svg);
@@ -172,200 +172,6 @@
   background-color: #888888;
 
   &--dark{ background-color: #666666;}
-}
-
-// TOP＆FAQモーダル共通
-.commonModal{
-  width: 100vw;
-  height: 100vh;
-  display: none;
-  position: absolute;
-  z-index: 200; 
-  
-  .c-modal{
-    &__bg{
-      width: 100%;
-      height: 100%;
-      background: rgba(255,255,255,0.9);
-    } 
-    
-    &__container{
-      position: absolute;
-      width: 100%;
-      // height: calc(100% - (vw(76) + vw(76)));
-      // top: vw(76);
-      height: 100vh;
-      top:0;
-      left:0;
-    }
-
-    &__wrapper{
-      position: relative;
-      width: 100%;
-      height: 100%;
-      // overflow-y: scroll;
-    }
-
-    &__contents{
-      position: absolute;
-      width: 100%;
-      height: auto;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
-      padding-top: vw(76);
-      
-      &.is-over{ //innerの高さがcontaierを超えたら
-        height: 100%;
-        top: 0;
-        transform: translateY(0%);
-
-        .c-modal__bottom{
-          display: block;
-          width: vw(750);
-          height: vw(113);
-          border-top: #333333 solid vw(2);
-          margin-left: vw(-20);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-
-          &-icon{
-            width: vw(12);
-            height: auto;
-            aspect-ratio: 1/1;
-            mask-image: url(../images/common/icon-close.svg);
-            -webkit-mask-image: url(../images/common/icon-close.svg);
-            mask-size: contain;
-            background: #888888;
-            margin-right: vw(16);
-          }
-
-          &-text{
-            color: #888888;
-            font-size: vw(20);
-          }
-        }
-
-        .c-modal__inner-scrlWrap{
-          overflow-y: scroll;
-          height: calc(100% - vw(76));
-        }
-      }
-    }
-
-    &__inner-scrlWrap{
-      height: auto;
-    }
-
-    &__inner{
-      position: relative;
-      width: 100%;
-      padding: vw(20);
-      background: $bk;
-    }
-
-    &__bottom{
-      display: none;
-    }
-
-    &__btn{
-      position: absolute;
-      top: vw(24);
-      right: vw(19);
-
-      &-inner{
-        width: vw(42);
-        height: auto;
-        aspect-ratio: 1;
-        border: vw(4) solid $bk;
-        box-sizing: border-box;
-        background: $wh;
-        display: flex;
-        justify-content: center;
-        align-items: center;        
-      }
-
-      &-icon{
-        width: vw(17);
-        height: auto;
-        aspect-ratio: 1;
-        mask-image: url(../images/common/icon-close.svg);
-        -webkit-mask-image: url(../images/common/icon-close.svg);
-        mask-size: contain;
-        background: $bk;
-      }
-
-    }
-  }
-}
-@include mq(pc){
-  .commonModal{
-    .c-modal{
-      &__container{
-        max-width: 990px;
-        left:50%;
-        translate: -50% ;
-      }
-
-      &__contents{
-        width: 100%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding-top: 0;
-
-        &.is-over{ //innerの高さがcontaierを超えたら
-        height: 100%;
-        top: 0;
-        transform: translate(-50%, 0%);
-
-          .c-modal__bottom{
-            max-width: 990px;
-            height: 95px;
-            border-top: #333333 solid 1px;
-            margin-left: -18px;
-            margin-bottom: -18px;
-
-            &-icon{
-              width: 7px;
-              margin-right: 10px;
-            }
-
-            &-text{
-              font-size: 12px;
-            }
-          }
-
-          .c-modal__inner-scrlWrap{
-            height: 100%;
-          }
-        }
-      }
-
-      &__inner{
-        padding: 18px;
-      }
-
-      &__bottom{
-        display: none;
-      }
-
-      &__btn{
-        top: 18px;
-        right: -35px;
-
-        &-inner{
-          width: 25px;
-          border: 2px solid $bk;
-        }
-
-        &-icon{
-          width: 10px;
-        }
-
-      }
-    }
-  }  
 }
 
 //- サムネイル
@@ -378,5 +184,222 @@
 
   &__summary{
     color: #888888;
+  }
+}
+
+// LOAD MORE 
+.c-loadMore{
+  margin: vw(81) auto vw(47);
+  width: vw(520);
+  height: vw(98);
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  font-size: vw(28);
+  display: flex;
+  border: vw(2) solid $bk;
+}
+@include mq(pc){
+  .c-loadMore{
+    margin: 58px auto 79px;
+    width: 497px;
+    height: 49px;
+    font-size:12px;
+    border: 1px solid $bk;
+  }
+}
+
+//- ーーーーーーーーーーーーーーーーーーー
+//- TOPとFAQ共通モーダル
+//- ーーーーーーーーーーーーーーーーーーー
+//- モーダルの大枠
+.l-modal{
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  position: fixed;
+  z-index: 200; 
+  top: 0;
+  left: 0;
+
+  &__bg{
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.9);
+  } 
+  
+  &__container{
+    position: absolute;
+    width: 100%;
+    // height: calc(100% - (vw(76) + vw(76)));
+    // top: vw(76);
+    height: 100vh;
+    top:0;
+    left:0;
+  }
+
+  &__wrapper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    // overflow-y: scroll;
+  }
+
+  &__contents{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    padding-top: vw(76);
+    
+    &.is-over{ //innerの高さがcontaierを超えたら
+      height: 100%;
+      top: 0;
+      transform: translateY(0%);
+
+      .l-modal__bottom{
+        display: block;
+        width: vw(750);
+        height: vw(113);
+        border-top: #333333 solid vw(2);
+        margin-left: vw(-20);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &-icon{
+          width: vw(12);
+          height: auto;
+          aspect-ratio: 1/1;
+          mask-image: url(../images/common/icon-close.svg);
+          -webkit-mask-image: url(../images/common/icon-close.svg);
+          mask-size: contain;
+          background: #888888;
+          margin-right: vw(16);
+        }
+
+        &-text{
+          color: #888888;
+          font-size: vw(20);
+        }
+      }
+
+      .l-modal__inner-scrlWrap{
+        overflow-y: scroll;
+        height: calc(100% - vw(76));
+      }
+    }
+  }
+
+  &__inner-scrlWrap{
+    height: auto;
+  }
+
+  &__inner{
+    position: relative;
+    width: 100%;
+    padding: vw(20);
+    background: $bk;
+  }
+
+  &__bottom{
+    display: none;
+  }
+
+  &__btn{
+    position: absolute;
+    top: vw(24);
+    right: vw(19);
+
+    &-inner{
+      width: vw(42);
+      height: auto;
+      aspect-ratio: 1;
+      border: vw(4) solid $bk;
+      box-sizing: border-box;
+      background: $wh;
+      display: flex;
+      justify-content: center;
+      align-items: center;        
+    }
+
+    &-icon{
+      width: vw(17);
+      height: auto;
+      aspect-ratio: 1;
+      mask-image: url(../images/common/icon-close.svg);
+      -webkit-mask-image: url(../images/common/icon-close.svg);
+      mask-size: contain;
+      background: $bk;
+    }
+
+  }
+}
+@include mq(pc){
+  .l-modal{
+    &__container{
+      max-width: 990px;
+      left:50%;
+      translate: -50% ;
+    }
+
+    &__contents{
+      width: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding-top: 0;
+
+      &.is-over{ //innerの高さがcontaierを超えたら
+      height: 100%;
+      top: 0;
+      transform: translate(-50%, 0%);
+
+        .l-modal__bottom{
+          max-width: 990px;
+          height: 95px;
+          border-top: #333333 solid 1px;
+          margin-left: -18px;
+          margin-bottom: -18px;
+
+          &-icon{
+            width: 7px;
+            margin-right: 10px;
+          }
+
+          &-text{
+            font-size: 12px;
+          }
+        }
+
+        .l-modal__inner-scrlWrap{
+          height: 100%;
+        }
+      }
+    }
+
+    &__inner{
+      padding: 18px;
+    }
+
+    &__bottom{
+      display: none;
+    }
+
+    &__btn{
+      top: 18px;
+      right: -35px;
+
+      &-inner{
+        width: 25px;
+        border: 2px solid $bk;
+      }
+
+      &-icon{
+        width: 10px;
+      }
+
+    }
   }
 }

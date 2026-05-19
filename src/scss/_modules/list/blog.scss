@@ -1,212 +1,100 @@
 @use '../../_base/settings' as *;
 @use 'sass:math';
 
-.note{
-  &__wrapper{
-    position: relative;
-    width: 800px;
-    margin-inline: auto;
-    padding-top: 90px;
-    padding-bottom: 200px;
-  }
-
-  // ul liの時
-  // .categorie_container{
-  //   position: absolute;
-  //   top: 49px;
-  //   left: 0;
-
-  //   .categorie_wrapper{
-  //     display: flex;
-  //     // flex-wrap: wrap;
-  //     // margin-top: 15px;
-  //     flex-direction: column;
-  //     justify-content: flex-start;
-  //     // row-gap: 10px;
-  //     // border-bottom: #000 1px solid;
-  //     position: relative;
-  //     width: fit-content;
-  //     height: 20px;
-  //     overflow: hidden;
-  //     z-index: 100;
-
-  //     &::after{
-  //       position: absolute;
-  //       content: "";
-  //       width: 7px;
-  //       height: 5px;
-  //       background: #000;
-  //       top: 10px;
-  //       right: 10px;
-  //       clip-path: polygon(50% 100%, 0 0, 100% 0);
-  //     }
-  //   }
-
-  //   .categorie{
-  //     width: 200px;
-  //     padding: 5px;
-  //     font-size: 10px;
-  //     font-weight: 900;
-  //     height: 20px;
-  //     background: #fff;
-
-  //     &:first-child{
-  //       border-bottom: #000 1px solid;
-  //     }
-
-  //     &:not(:first-child){
-  //       opacity: 0;
-  //     }
-  //   }
-
-  //   .categorie_wrapper{
-  //     &::after{
-  //       transition: transform 0.3s ease;
-  //     }
-
-  //     .categorie{
-  //       &:not(:first-child){
-  //         transition: opacity 0.3s ease;
-
-  //         &:hover{
-  //           background: #e0dddd;
-  //         }
-  //       }
-  //     }
-
-  //     &:hover{
-  //       height: fit-content;
-  //       &::after{
-  //         transform: rotate(180deg);
-  //         transition: transform 0.3s ease;
-  //       }
-
-  //       .categorie{
-  //         &:not(:first-child){
-  //           opacity: 1;
-  //           transition: opacity 0.3s ease;
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-
-  // プルダウン
-  .categorie_container{
-    // position: absolute;
-    position: relative;
-    // top: 49px;
-    // left: 0;
-    width: fit-content;
-    margin-top: 20px;
-
-    .categorie_wrapper{
-      width: 200px;
-      height: 20px;
-      border: #000 1px solid;
-      border-radius: 999px;
-      // position: relative;
-      padding-left: 10px;
+.blog{
+  // border: 3px solid red;
+  &__gallery{
+    margin: vw(13) auto 0;
+    &-wrapper{
+      display: flex;
+      gap: vw(9);
+      flex-wrap: wrap;
     }
 
+    &-item{
+      float: left;
+      width: calc((100% - vw(9))/2);
 
-    &::after{
-      position: absolute;
-      content: "";
-      width: 7px;
-      height: 5px;
-      background: #000;
-      top: 8px;
-      right: 10px;
-      clip-path: polygon(50% 100%, 0 0, 100% 0);
-    }
-    // .categorie{
-    //   width: 200px;
-    //   padding: 5px;
-    //   font-size: 10px;
-    //   font-weight: 900;
-    //   height: 20px;
-    //   background: #fff;
+      .c-thumbnail{
+        &__main_img{
+          aspect-ratio: 360/202;
+        }
 
-    //   &:first-child{
-    //     border-bottom: #000 1px solid;
-    //   }
+        &__text-wrapper{
+          padding: vw(24) vw(22);
+          background: #000;
+          height: vw(294);
+          box-sizing: border-box;
+        }
 
-    //   &:not(:first-child){
-    //     opacity: 0;
-    //   }
-    // }
+        &__title{
+          font-size: vw(24);
+          margin-bottom: vw(18);
+        }
 
-    // .categorie_wrapper{
-    //   &::after{
-    //     transition: transform 0.3s ease;
-    //   }
-
-    //   .categorie{
-    //     &:not(:first-child){
-    //       transition: opacity 0.3s ease;
-
-    //       &:hover{
-    //         background: #e0dddd;
-    //       }
-    //     }
-    //   }
-
-    //   &:hover{
-    //     height: fit-content;
-    //     &::after{
-    //       transform: rotate(180deg);
-    //       transition: transform 0.3s ease;
-    //     }
-
-    //     .categorie{
-    //       &:not(:first-child){
-    //         opacity: 1;
-    //         transition: opacity 0.3s ease;
-    //       }
-    //     }
-    //   }
-    // }
-  }
-
-  &__title{
-    font-size: 25px;
-    font-weight: 900;
-  }
-  &__articles{
-    margin-top: 20px;
-    width: 100%;
-    // display: flex;
-    // flex-wrap: wrap;
-    // justify-content: space-between;
-    // align-items: self-start;
-    column-count: 2;      /* 2列 */
-    column-gap: 16px; 
-  }
-
-  &__article{
-    width: 100%;
-    // margin-inline: auto;
-    break-inside: avoid;  /* アイテムが途中で分断されないように */
-    margin-bottom: 16px;
-
-    // &:nth-child(n+3){
-    //   margin-top: 40px;
-    // }
-
-    .main_img{
-      width: 100%;
-    }
-
-    .title{
-      font-size: 20px;
-      font-weight: 600;
-      margin-top: 10px;
-    }
-
-    .summary{
-      font-size: 14px;
-      margin-top: 5px;
+        &__summary{
+          font-size: vw(20);
+          letter-spacing: 0.03em;
+          line-height: 150%;
+        }
+      }
     }
   }
+}
+
+@include mq(pc){
+  .blog{
+    &__gallery{
+      margin: 11px auto 0;
+      &-wrapper{
+        gap: per(9, 1280);
+      }
+
+      &-item{
+        $itemW: calc((100% - (per(9, 1280)*2))/3);
+        width: $itemW;
+        margin-bottom: per(9, 1280);
+        container-type: inline-size;
+
+        .c-thumbnail{
+          &__text-wrapper{
+            padding: cqi(22, 323) cqi(17, 323);
+            height: cqi(136, 323);
+          }
+
+          &__title{
+            margin-bottom: 10px;
+            font-size: calc(16 / 322 * 100cqi);
+          }
+
+          &__summary{
+            font-size: calc(12 / 322 * 100cqi);
+          } 
+        }
+      }
+    }
+  }  
+}
+
+@include mq(pc-l){
+  .blog{
+    &__gallery{
+      &-item{
+        .c-thumbnail{
+          &__text-wrapper{
+            padding: 22px 17px;
+            height: 136px;
+          }
+
+          &__title{
+            font-size: 16px;
+          }
+
+          &__summary{
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }    
 }

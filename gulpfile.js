@@ -44,7 +44,11 @@ const HOST_NAME = `${PROTOCOL}://${SERVER_NAME}`;
 const CANONICAL_ROOT = `${HOST_NAME}/${DIR}`;
 const INDEX_DIR = `${HTML_ROOT}${DIR}`;
 
-const errorHandler = (error) => {
+// NOTE: アロー関数にすると `this` がストリームを指さず、
+// gulp-plumber がエラー時に `compileSass` を終了できずハングし、
+// 以降の watch が死ぬ（毎回 yarn start し直す羽目になる）。
+// 通常関数にして `this.emit('end')` でストリームを必ず閉じる。
+function errorHandler(error) {
   notifier.notify(
     {
       title: 'エラー発生！',
@@ -55,7 +59,11 @@ const errorHandler = (error) => {
       console.log(error.message);
     },
   );
-};
+  // ストリームを正常終了させ、watch を生かし続ける
+  if (this && typeof this.emit === 'function') {
+    this.emit('end');
+  }
+}
 
 const compilePug = (done) => {
   return src(

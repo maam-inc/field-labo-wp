@@ -1,10 +1,10 @@
 @use '../../_base/settings' as *;
 @use 'sass:math';
 
-.top__main{
+.topMain{
   width: 100%;
 
-  &-mv{
+  &__mv{
     width: 100%;
     aspect-ratio: 730/973;
     height: auto;
@@ -51,8 +51,8 @@
 }
 
 @include mq(pc){
-  .top__main{
-    &-mv{
+  .topMain{
+    &__mv{
       aspect-ratio: 990/419;
 
       .text-wrapper {

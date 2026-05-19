@@ -24,92 +24,88 @@
   </head>
   <body id="top">
     <div class="wrapper" id="wrapper">
-      <div class="modalOpenBg">
-        <header class="l-header" id="l-header">
-          <div class="l-header__inner"><a class="l-header__logo" href="#">
-              <h1>
-                <div class="c-logo white"></div>
-              </h1></a>
-            <nav class="l-header__nav f-inter-B"><a class="l-header__nav-list" href="#">BLOG & NOTE</a><a class="l-header__nav-list" href="#">PROJECTS</a><a class="l-header__nav-list" href="#">ABOUT & CONTACT</a></nav>
-            <button class="l-header__menu js-modalOpen" data-id="hbgModal">
-              <div class="l-header__menu-inner">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-              </div>
-            </button>
-          </div>
-        </header>
-        <div class="c-modal hbgModal" id="hbgModal">
-          <div class="c-modal__bg js-modalClose" data-id="hbgModal"></div>
-          <div class="c-modal__container">
-            <div class="c-modal__inner"><a class="c-modal__top" href="#">
-                <div class="c-modal__top-arrow"><img src="/themes/field-labo-2026/assets/images/common/icon-arrow-r.svg" alt="arrow"></div>
-                <p class="c-modal__top-text f-inter-B">top</p></a>
-              <button class="c-modal__btn js-modalClose" data-id="hbgModal">
-                <div class="btn-close"><img src="/themes/field-labo-2026/assets/images/common/icon-close.svg" alt="close"></div>
-              </button>
-              <div class="c-modal__logo">
-                <div class="c-logo black"></div>
-              </div>
-              <nav class="c-modal__nav"> <a class="f-inter-B" href="#">BLOG & NOTE</a><a class="f-inter-B" href="#">PROJECTS</a><a class="f-inter-B" href="#">ABOUT & CONTACT</a></nav>
-              <ul class="c-sns c-modal__sns">
-                <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-instagram.svg" alt="instagram"/></a></li>
-                <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-facebook.svg" alt="facebook"/></a></li>
-                <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-pinterest.svg" alt="pinterest"/></a></li>
-                <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-home.svg" alt="home"/></a></li>
-              </ul>
+      <header class="l-header" id="l-header">
+        <div class="l-header__inner"><a class="l-header__logo" href="#">
+            <h1>
+              <div class="c-logo white"></div>
+            </h1></a>
+          <nav class="l-header__nav f-inter-B"><a class="l-header__nav-list is-current" href="./blog">BLOG & NOTE</a><a class="l-header__nav-list" href="./projects">PROJECTS</a><a class="l-header__nav-list" href="./about-contact">ABOUT & CONTACT</a></nav>
+          <button class="l-header__menu">
+            <div class="l-header__menu-inner">
+              <div class="line"></div>
+              <div class="line"></div>
+              <div class="line"></div>
             </div>
+          </button>
+        </div>
+      </header>
+      <div class="l-header__modal">
+        <div class="l-header__modal-bg"></div>
+        <div class="l-header__modal-container">
+          <div class="l-header__modal-inner"><a class="l-header__modal-top" href="#">
+              <div class="l-header__modal-top-arrow"><img src="/themes/field-labo-2026/assets/images/common/icon-arrow-r.svg" alt="arrow"></div>
+              <p class="l-header__modal-top-text f-inter-B">top</p></a>
+            <button class="l-header__modal-btn">
+              <div class="btn-close"><img src="/themes/field-labo-2026/assets/images/common/icon-close.svg" alt="close"></div>
+            </button>
+            <div class="l-header__modal-logo">
+              <div class="c-logo black"></div>
+            </div>
+            <nav class="l-header__modal-nav"> <a class="f-inter-B" href="./blog">BLOG & NOTE</a><a class="f-inter-B" href="./projects">PROJECTS</a><a class="f-inter-B" href="./about-contact">ABOUT & CONTACT</a></nav>
+            <ul class="c-sns l-header__modal-sns">
+              <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-instagram.svg" alt="instagram"/></a></li>
+              <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-facebook.svg" alt="facebook"/></a></li>
+              <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-pinterest.svg" alt="pinterest"/></a></li>
+              <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-home.svg" alt="home"/></a></li>
+            </ul>
           </div>
         </div>
-        <div class="l-content">
-          <div class="l-content__wrapper">
-            <main class="top__main" id="top__main">
-              <div class="top__main-mv swiper"> 
-                <div class="swiper-wrapper"> 
-                  <div class="swiper-slide"> <a class="inner" href="#">
-                      <div class="main_img">
-                        <picture>
-                          <source media="(min-width: 769px)" srcset="/uploads/dummy/top/main1-pc.jpg"/>
-                          <source media="(max-width: 768px)" srcset="/uploads/dummy/top/main1-sp.jpg"/><img src="/uploads/dummy/top/main1-sp.jpg" role="presentation"/>
-                        </picture>
+      </div>
+      <div class="l-content">
+        <div class="l-content__wrapper">
+          <main class="topMain" id="topMain">
+            <div class="topMain__mv swiper"> 
+              <div class="swiper-wrapper"> 
+                <div class="swiper-slide"> <a class="inner" href="#">
+                    <div class="main_img">
+                      <picture>
+                        <source media="(min-width: 769px)" srcset="/uploads/dummy/top/main1-pc.jpg"/>
+                        <source media="(max-width: 768px)" srcset="/uploads/dummy/top/main1-sp.jpg"/><img src="/uploads/dummy/top/main1-sp.jpg" role="presentation"/>
+                      </picture>
+                    </div>
+                    <div class="text-wrapper"> 
+                      <div class="title f-inter-B">
+                        <p>After Renovation</p>
                       </div>
-                      <div class="text-wrapper"> 
-                        <div class="title f-inter-B">
-                          <p>After Renovation</p>
-                        </div>
-                        <div class="main_summary f-noto-B">
-                          <p>machida T173 リノベーションその後の住まい</p>
-                        </div>
-                      </div></a></div>
-                  <div class="swiper-slide"> <a class="inner" href="#">
-                      <div class="main_img">
-                        <picture>
-                          <source media="(min-width: 769px)" srcset="/uploads/dummy/top/main2-pc.jpg"/>
-                          <source media="(max-width: 768px)" srcset="/uploads/dummy/top/main2-sp.jpg"/><img src="/uploads/dummy/top/main2-sp.jpg" role="presentation"/>
-                        </picture>
+                      <div class="main_summary f-noto-B">
+                        <p>machida T173 リノベーションその後の住まい</p>
                       </div>
-                      <div class="text-wrapper"> 
-                        <div class="title f-inter-B">
-                          <p>[2]After Renovation</p>
-                        </div>
-                        <div class="main_summary f-noto-B">
-                          <p>machida T173 リノベーションその後の住まい</p>
-                        </div>
-                      </div></a></div>
-                </div>
-                <div class="c-ctrl__prev swiper-button-prev top__main-mv--prev"><img src="/themes/field-labo-2026/assets/images/common/icon-prev.svg" alt="prev"/></div>
-                <div class="c-ctrl__next swiper-button-next top__main-mv--next"><img src="/themes/field-labo-2026/assets/images/common/icon-next.svg" alt="next"/></div>
+                    </div></a></div>
+                <div class="swiper-slide"> <a class="inner" href="#">
+                    <div class="main_img">
+                      <picture>
+                        <source media="(min-width: 769px)" srcset="/uploads/dummy/top/main2-pc.jpg"/>
+                        <source media="(max-width: 768px)" srcset="/uploads/dummy/top/main2-sp.jpg"/><img src="/uploads/dummy/top/main2-sp.jpg" role="presentation"/>
+                      </picture>
+                    </div>
+                    <div class="text-wrapper"> 
+                      <div class="title f-inter-B">
+                        <p>[2]After Renovation</p>
+                      </div>
+                      <div class="main_summary f-noto-B">
+                        <p>machida T173 リノベーションその後の住まい</p>
+                      </div>
+                    </div></a></div>
               </div>
-            </main>
-            <div class="l-contents" id="l-contents">
-              <div class="l-contents__wrapper"> 
-                <div class="c-breadcrumbs">
-                  <div class="c-breadcrumbs__item">
-                    <h1 class="c-breadcrumbs__page f-inter-B">PHOTO GALLERY</h1>
-                  </div>
-                </div>
-                <div class="l-contents__gallery-ctrl f-inter-B">
+              <div class="c-ctrl__prev swiper-button-prev topMain__mv--prev"><img src="/themes/field-labo-2026/assets/images/common/icon-prev.svg" alt="prev"/></div>
+              <div class="c-ctrl__next swiper-button-next topMain__mv--next"><img src="/themes/field-labo-2026/assets/images/common/icon-next.svg" alt="next"/></div>
+            </div>
+          </main>
+          <section class="l-contents topContents is-show" id="l-contents"> 
+            <div class="l-contents__wrapper"> 
+              <div class="topContents__head">
+                <h1 class="topContents__title f-inter-B">PHOTO GALLERY</h1>
+                <div class="topContents__ctrl f-inter-B">
                   <div class="sort ctrl-item">
                     <p class="sort__item ctrl-item--name">sort :</p>
                     <select class="sort__lists" name="categorie" required>
@@ -136,699 +132,700 @@
                   <div class="order ctrl-item">
                     <p class="order__item ctrl-item--name">order :</p>
                     <div class="order__ctrl"> 
-                      <btn class="order__ctrl-random order__ctrl-name active">random</btn>
+                      <btn class="order__ctrl-random order__ctrl-name is-active">random</btn>
                       <btn class="order__ctrl-latest order__ctrl-name">latest</btn>
                     </div>
                   </div>
                 </div>
-                <div class="l-contents__gallery">
-                  <div class="masonry l-contents__gallery-wrapper">
-                    <div class="gutter-sizer"></div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery1.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>Jingumae office-M</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+              </div>
+              <div class="topContents__gallery">
+                <div class="masonry topContents__gallery-wrapper">
+                  <div class="gutter-sizer"></div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery1.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>Jingumae office-M</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery2.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>Black steel plate outlet [original]</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery2.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>Black steel plate outlet [original]</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery3.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>Remake the signboard of the memory</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery3.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>Remake the signboard of the memory</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery4.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>kita-N70 After Renovation</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery4.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>kita-N70 After Renovation</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery5.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-noto-B">
-                                  <p>ステンシルペイントが気になる</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery5.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-noto-B">
+                                <p>ステンシルペイントが気になる</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery6.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>Jingumae office-M</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery6.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>Jingumae office-M</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery7.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>Black steel plate outlet [original]</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery7.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>Black steel plate outlet [original]</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery8.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>Remake the signboard of the memory</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery8.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>Remake the signboard of the memory</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery9.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>kita-N70 After Renovation</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery9.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>kita-N70 After Renovation</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery10.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-noto-B">
-                                  <p>ステンシルペイントが気になる</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery10.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-noto-B">
+                                <p>ステンシルペイントが気になる</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery11.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>Jingumae office-M</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery11.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>Jingumae office-M</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery12.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>Black steel plate outlet [original]</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery12.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>Black steel plate outlet [original]</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery13.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>Remake the signboard of the memory</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery13.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>Remake the signboard of the memory</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery14.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>kita-N70 After Renovation</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery14.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>kita-N70 After Renovation</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery15.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-noto-B">
-                                  <p>ステンシルペイントが気になる</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery15.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-noto-B">
+                                <p>ステンシルペイントが気になる</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery16.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>Jingumae office-M</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery16.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>Jingumae office-M</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery17.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>Black steel plate outlet [original]</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery17.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>Black steel plate outlet [original]</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery18.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>Remake the signboard of the memory</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery18.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>Remake the signboard of the memory</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery19.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>kita-N70 After Renovation</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery19.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>kita-N70 After Renovation</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery20.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-noto-B">
-                                  <p>ステンシルペイントが気になる</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery20.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-noto-B">
+                                <p>ステンシルペイントが気になる</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery21.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>Jingumae office-M</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery21.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>Jingumae office-M</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery22.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>Black steel plate outlet [original]</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery22.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>Black steel plate outlet [original]</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery23.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>Remake the signboard of the memory</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery23.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>Remake the signboard of the memory</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery24.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>kita-N70 After Renovation</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery24.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>kita-N70 After Renovation</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery25.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-noto-B">
-                                  <p>ステンシルペイントが気になる</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery25.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-noto-B">
+                                <p>ステンシルペイントが気になる</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery26.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>Jingumae office-M</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery26.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>Jingumae office-M</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery27.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>Black steel plate outlet [original]</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery27.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>Black steel plate outlet [original]</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery28.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>Remake the signboard of the memory</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery28.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>Remake the signboard of the memory</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery29.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>kita-N70 After Renovation</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery29.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>kita-N70 After Renovation</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery30.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-noto-B">
-                                  <p>ステンシルペイントが気になる</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery30.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-noto-B">
+                                <p>ステンシルペイントが気になる</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
-                    <div class="l-contents__item">
-                      <div class="btn-wrap">
-                        <button class="btn js-modalOpen" data-id="commonModal" data-post="top">
-                          <div class="inner">
-                            <div class="c-thumbnail l-contents__gallery-item">
-                              <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery31.jpg"/></div>
-                              <div class="c-thumbnail__text-wrapper">
-                                <div class="c-thumbnail__title f-inter-B">
-                                  <p>Jingumae office-M</p>
-                                </div>
-                                <div class="c-thumbnail__open">
-                                  <div class="c-modalOpenIcon"></div>
-                                </div>
+                  </div>
+                  <div class="topContents__item">
+                    <div class="btn-wrap">
+                      <button class="btn btn-open">
+                        <div class="inner">
+                          <div class="c-thumbnail topContents__gallery-item">
+                            <div class="c-thumbnail__main_img"><img src="/uploads/dummy/top/gallery31.jpg"/></div>
+                            <div class="c-thumbnail__text-wrapper">
+                              <div class="c-thumbnail__title f-inter-B">
+                                <p>Jingumae office-M</p>
+                              </div>
+                              <div class="c-thumbnail__open">
+                                <div class="l-modalOpenIcon"></div>
                               </div>
                             </div>
                           </div>
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     </div>
                   </div>
                 </div>
-                <btn class="l-contents__load">
-                  <p class="f-inter-B">load more</p>
-                </btn>
-                <div class="l-contents__toTop">
-                  <div class="c-toTop"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.595 33.595">
+              </div>
+              <btn class="c-loadMore">
+                <p class="f-inter-B">load more</p>
+              </btn>
+              <div class="topContents__toTop">
+                <div class="c-toTop"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.595 33.595">
 <rect class="cls-2" width="33.595" height="33.595"/>
 <polygon class="cls-1" points="21.774 18.725 16.797 13.749 11.821 18.724 10.835 17.738 16.797 11.775 22.76 17.737 21.774 18.725"/>
 <rect class="cls-1" x="16.099" y="12.762" width="1.396" height="10.938"/>
 <rect class="cls-1" x="10.987" y="9.196" width="11.62" height="1.396"/>
 </svg>
-                  </div>
                 </div>
               </div>
             </div>
-            <div class="c-modal commonModal topModal" id="commonModal">
-              <div class="c-modal__bg js-modalClose" data-id="commonModal"></div>
-              <div class="c-modal__container">
-                <div class="c-modal__wrapper">
-                  <div class="c-modal__contents is-over">
-                    <div class="c-modal__inner-scrlWrap">
-                      <div class="c-modal__inner" data-type="top">
-                        <div class="js-modalContent"></div>
-                        <button class="c-modal__bottom js-modalClose" data-id="commonModal">
-                          <div class="c-modal__bottom-icon"></div>
-                          <p class="c-modal__bottom-text f-inter-B">close</p>
-                        </button>
+          </section>
+          <div class="l-modal" id="l-modal">
+            <div class="l-modal__bg btn-close"></div>
+            <div class="l-modal__container">
+              <div class="l-modal__wrapper">
+                <div class="l-modal__contents is-over">
+                  <div class="l-modal__inner-scrlWrap">
+                    <div class="l-modal__inner">
+                      <div class="topContents__modal">
+                        <div class="img-box is-multiple">
+                          <div class="full_img img"><img src="/uploads/dummy/top/modal-full.jpg"/></div>
+                          <div class="narrow_img img"><img src="/uploads/dummy/top/modal-narrow.jpg"/></div>
+                        </div>
+                        <p class="text f-noto-M">以前にお取引のお客様からのオフィスの工事依頼です。今回は、流し台のあるスペースの部分リニューアル工事。</p>
+                        <div class="flex_box">
+                          <div class="related_articles flex_box-item">
+                            <p class="related_articles-head flex_box-head f-inter-B">related article</p>
+                            <ul class="related_articles-wrapper">
+                              <li class="related_article"><a class="related_article-inner" href="#">
+                                  <div class="related_article-icon"><img src="/themes/field-labo-2026/assets/images/common/icon-arrow-box.svg"/></div>
+                                  <div class="related_article-text f-inter-B">
+                                    <p>Jingumae Office M</p>
+                                  </div>
+                                  <p class="related_article-genre f-inter-M">(projects)</p></a></li>
+                              <li class="related_article"><a class="related_article-inner" href="#">
+                                  <div class="related_article-icon"><img src="/themes/field-labo-2026/assets/images/common/icon-arrow-box.svg"/></div>
+                                  <div class="related_article-text f-noto-B">
+                                    <p>ステンシルペイントが気になる</p>
+                                  </div>
+                                  <p class="related_article-genre f-inter-M">(blog &amp; note)</p></a></li>
+                            </ul>
+                          </div>
+                          <div class="tag f-inter-B flex_box-item">
+                            <p class="tag-head flex_box-head">tag</p>
+                            <ul class="tag-wrapper">
+                              <li class="tag-item f-inter-B"><a href="#">kitchen</a></li>
+                              <li class="tag-item f-inter-B"><a href="#">inovation</a></li>
+                            </ul>
+                          </div>
+                        </div>
                       </div>
+                      <button class="l-modal__bottom btn-close">
+                        <div class="l-modal__bottom-icon"></div>
+                        <p class="l-modal__bottom-text f-inter-B">close</p>
+                      </button>
                     </div>
-                    <button class="c-modal__btn js-modalClose" data-id="commonModal">
-                      <div class="c-modal__btn-inner">
-                        <div class="c-modal__btn-icon"></div>
-                      </div>
-                    </button>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="data" data-post="top" hidden>
-              <div class="img-box is-multiple">
-                <div class="full_img img"><img src="/themes/field-labo-2026/assets/images/top/modal-full.jpg"></div>
-                <div class="narrow_img img"><img src="/themes/field-labo-2026/assets/images/top/modal-narrow.jpg"></div>
-              </div>
-              <p class="text f-noto-M">以前にお取引のお客様からのオフィスの工事依頼です。今回は、流し台のあるスペースの部分リニューアル工事。</p>
-              <div class="flex_box">
-                <div class="related_articles flex_box-item">
-                  <p class="related_articles-head flex_box-head f-inter-B">related article</p>
-                  <ul class="related_articles-wrapper">
-                    <li class="related_article"><a class="related_article-inner" href="#">
-                        <div class="related_article-icon"><img src="/themes/field-labo-2026/assets/images/common/icon-arrow-box.svg"></div>
-                        <div class="related_article-text f-inter-B">
-                          <p>Jingumae Office M</p>
-                        </div>
-                        <p class="related_article-genre f-inter-M">(projects)</p></a></li>
-                    <li class="related_article"><a class="related_article-inner" href="#">
-                        <div class="related_article-icon"><img src="/themes/field-labo-2026/assets/images/common/icon-arrow-box.svg"></div>
-                        <div class="related_article-text f-noto-B">
-                          <p>ステンシルペイントが気になる</p>
-                        </div>
-                        <p class="related_article-genre f-inter-M">(blog &amp; note)</p></a></li>
-                  </ul>
-                </div>
-                <div class="tag f-inter-B flex_box-item">
-                  <p class="tag-head flex_box-head">tag</p>
-                  <ul class="tag-wrapper">
-                    <li class="tag-item f-inter-B"><a href="#">kitchen</a></li>
-                    <li class="tag-item f-inter-B"><a href="#">inovation</a></li>
-                  </ul>
+                  <button class="l-modal__btn btn-close">
+                    <div class="l-modal__btn-inner">
+                      <div class="l-modal__btn-icon"></div>
+                    </div>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <footer class="l-footer" id="l-footer">
-          <ul class="c-sns l-footer__sns type-footer">
-            <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-instagram.svg" alt="instagram"/></a></li>
-            <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-facebook.svg" alt="facebook"/></a></li>
-            <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-pinterest.svg" alt="pinterest"/></a></li>
-            <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-home.svg" alt="home"/></a></li>
-          </ul>
-          <p class="l-footer__copyright f-inter-B">©FIELD LABO  ALL RIGHTS RESERVED.</p>
-          <div class="l-footer__top">
-            <div class="c-toTop"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.595 33.595">
+      </div>
+      <footer class="l-footer" id="l-footer">
+        <ul class="c-sns l-footer__sns type-footer">
+          <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-instagram.svg" alt="instagram"/></a></li>
+          <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-facebook.svg" alt="facebook"/></a></li>
+          <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-pinterest.svg" alt="pinterest"/></a></li>
+          <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-home.svg" alt="home"/></a></li>
+        </ul>
+        <p class="l-footer__copyright f-inter-B">©FIELD LABO  ALL RIGHTS RESERVED.</p>
+        <div class="l-footer__top">
+          <div class="c-toTop"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.595 33.595">
 <rect class="cls-2" width="33.595" height="33.595"/>
 <polygon class="cls-1" points="21.774 18.725 16.797 13.749 11.821 18.724 10.835 17.738 16.797 11.775 22.76 17.737 21.774 18.725"/>
 <rect class="cls-1" x="16.099" y="12.762" width="1.396" height="10.938"/>
 <rect class="cls-1" x="10.987" y="9.196" width="11.62" height="1.396"/>
 </svg>
-            </div>
           </div>
-        </footer>
-      </div>
+        </div>
+      </footer>
     </div>
     <script src="/themes/field-labo-2026/assets/js/static-common.js"></script>
     <script src="/themes/field-labo-2026/assets/js/static.js"></script>
     <script src="/themes/field-labo-2026/assets/js/static-top.js"></script>
+    <script src="/themes/field-labo-2026/assets/js/static-top.js"></script>
+    <script src="minimasonry.min.js"></script>
   </body>
 </html>

@@ -29,8 +29,8 @@
             <h1>
               <div class="c-logo white"></div>
             </h1></a>
-          <nav class="l-header__nav f-inter-B"><a class="l-header__nav-list" href="#">BLOG & NOTE</a><a class="l-header__nav-list" href="#">PROJECTS</a><a class="l-header__nav-list" href="#">ABOUT & CONTACT</a></nav>
-          <button class="l-header__menu js-modalOpen" data-id="hbgModal">
+          <nav class="l-header__nav f-inter-B"><a class="l-header__nav-list is-current" href="./blog">BLOG & NOTE</a><a class="l-header__nav-list" href="./projects">PROJECTS</a><a class="l-header__nav-list" href="./about-contact">ABOUT & CONTACT</a></nav>
+          <button class="l-header__menu">
             <div class="l-header__menu-inner">
               <div class="line"></div>
               <div class="line"></div>
@@ -39,20 +39,20 @@
           </button>
         </div>
       </header>
-      <div class="c-modal hbgModal" id="hbgModal">
-        <div class="c-modal__bg js-modalClose" data-id="hbgModal"></div>
-        <div class="c-modal__container">
-          <div class="c-modal__inner"><a class="c-modal__top" href="#">
-              <div class="c-modal__top-arrow"><img src="/themes/field-labo-2026/assets/images/common/icon-arrow-r.svg" alt="arrow"></div>
-              <p class="c-modal__top-text f-inter-B">top</p></a>
-            <button class="c-modal__btn js-modalClose" data-id="hbgModal">
+      <div class="l-header__modal">
+        <div class="l-header__modal-bg"></div>
+        <div class="l-header__modal-container">
+          <div class="l-header__modal-inner"><a class="l-header__modal-top" href="#">
+              <div class="l-header__modal-top-arrow"><img src="/themes/field-labo-2026/assets/images/common/icon-arrow-r.svg" alt="arrow"></div>
+              <p class="l-header__modal-top-text f-inter-B">top</p></a>
+            <button class="l-header__modal-btn">
               <div class="btn-close"><img src="/themes/field-labo-2026/assets/images/common/icon-close.svg" alt="close"></div>
             </button>
-            <div class="c-modal__logo">
+            <div class="l-header__modal-logo">
               <div class="c-logo black"></div>
             </div>
-            <nav class="c-modal__nav"> <a class="f-inter-B" href="#">BLOG & NOTE</a><a class="f-inter-B" href="#">PROJECTS</a><a class="f-inter-B" href="#">ABOUT & CONTACT</a></nav>
-            <ul class="c-sns c-modal__sns">
+            <nav class="l-header__modal-nav"> <a class="f-inter-B" href="./blog">BLOG & NOTE</a><a class="f-inter-B" href="./projects">PROJECTS</a><a class="f-inter-B" href="./about-contact">ABOUT & CONTACT</a></nav>
+            <ul class="c-sns l-header__modal-sns">
               <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-instagram.svg" alt="instagram"/></a></li>
               <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-facebook.svg" alt="facebook"/></a></li>
               <li><a href="#"><img src="/themes/field-labo-2026/assets/images/common/icon-pinterest.svg" alt="pinterest"/></a></li>
@@ -61,21 +61,108 @@
           </div>
         </div>
       </div>
-      <div class="blog" id="blog">
-        <div class="blog__wrapper"> 
-          <p class="blog__title">blog</p>
-          <div class="categorie_container">
-            <select class="categorie_wrapper" name="categorie" required>
-              <option class="categorie" value="all">All</option>
-              <option class="categorie" value="kitchen">Kitchen </option>
-              <option class="categorie" value="office">Office </option>
-              <option class="categorie" value="renovation">Renovation</option>
-            </select>
+      <div class="blog l-content" id="blog">
+        <div class="l-content__wrapper">
+          <div class="c-breadcrumbs">
+            <div class="c-breadcrumbs__item">
+              <h1 class="c-breadcrumbs__page f-inter-B">BLOG &amp; NOTE</h1>
+            </div>
           </div>
-          <div class="blog__articles"> <a class="blog__article" href="./page/index.html">
-              <div class="main_img"><img src="..//themes/field-labo-2026/assets/images/blog/main_img.jpg"></div>
-              <p class="title">Jingumae office-M</p>
-              <p class="summary">普段は主に個人邸リノベーションの仕事が多いのですがオフィスリノベーションも行っています。    </p></a></div>
+          <div class="blog__gallery">
+            <div class="blog__gallery-wrapper"><a class="blog__gallery-item" href="./page">
+                <div class="c-thumbnail blog__gallery-thumbnail">
+                  <div class="c-thumbnail__main_img"><img src="/uploads/dummy/blog/list1.jpg"/></div>
+                  <div class="c-thumbnail__text-wrapper">
+                    <div class="c-thumbnail__title f-inter-B">
+                      <p>Jingumae office-M</p>
+                    </div>
+                    <div class="c-thumbnail__summary f-noto-M">
+                      <p>オフィスの工事依頼です。今回は、流し台のあるスペースの部分リニューアル工事。40w オフィスの工事依頼です。今回は、流し台のあるスペースの部分リニューアル工事。80w オフィスの工事依頼です。今回流し...</p>
+                    </div>
+                  </div>
+                </div></a><a class="blog__gallery-item" href="./page">
+                <div class="c-thumbnail blog__gallery-thumbnail">
+                  <div class="c-thumbnail__main_img"><img src="/uploads/dummy/blog/list2.jpg"/></div>
+                  <div class="c-thumbnail__text-wrapper">
+                    <div class="c-thumbnail__title f-inter-B">
+                      <p>Black steel plate outlet [original]</p>
+                    </div>
+                    <div class="c-thumbnail__summary f-noto-M">
+                      <p>オフィスの工事依頼です。今回は、流し台のあるスペースの部分リニューアル工事。40w オフィスの工事依頼です。今回は、流し台のあるスペースの部分リニューアル工事。80w オフィスの工事依頼です。今回流し...</p>
+                    </div>
+                  </div>
+                </div></a><a class="blog__gallery-item" href="./page">
+                <div class="c-thumbnail blog__gallery-thumbnail">
+                  <div class="c-thumbnail__main_img"><img src="/uploads/dummy/blog/list3.jpg"/></div>
+                  <div class="c-thumbnail__text-wrapper">
+                    <div class="c-thumbnail__title f-inter-B">
+                      <p>Remake the signboard of the memory</p>
+                    </div>
+                    <div class="c-thumbnail__summary f-noto-M">
+                      <p>オフィスの工事依頼です。今回は、流し台のあるスペースの部分リニューアル工事。40w</p>
+                    </div>
+                  </div>
+                </div></a><a class="blog__gallery-item" href="./page">
+                <div class="c-thumbnail blog__gallery-thumbnail">
+                  <div class="c-thumbnail__main_img"><img src="/uploads/dummy/blog/list4.jpg"/></div>
+                  <div class="c-thumbnail__text-wrapper">
+                    <div class="c-thumbnail__title f-inter-B">
+                      <p>kita-N70 After Renovation</p>
+                    </div>
+                    <div class="c-thumbnail__summary f-noto-M">
+                      <p>オフィスの工事依頼です。今回は、流し台のあるスペースの部分リニューアル工事。40w</p>
+                    </div>
+                  </div>
+                </div></a><a class="blog__gallery-item" href="./page">
+                <div class="c-thumbnail blog__gallery-thumbnail">
+                  <div class="c-thumbnail__main_img"><img src="/uploads/dummy/blog/list5.jpg"/></div>
+                  <div class="c-thumbnail__text-wrapper">
+                    <div class="c-thumbnail__title f-inter-B">
+                      <p>ステンシルペイントが気になる</p>
+                    </div>
+                    <div class="c-thumbnail__summary f-noto-M">
+                      <p>オフィスの工事依頼です。今回は、流し台のあるスペースの部分リニューアル工事。40w</p>
+                    </div>
+                  </div>
+                </div></a><a class="blog__gallery-item" href="./page">
+                <div class="c-thumbnail blog__gallery-thumbnail">
+                  <div class="c-thumbnail__main_img"><img src="/uploads/dummy/blog/list6.jpg"/></div>
+                  <div class="c-thumbnail__text-wrapper">
+                    <div class="c-thumbnail__title f-inter-B">
+                      <p>Jingumae office-M</p>
+                    </div>
+                    <div class="c-thumbnail__summary f-noto-M">
+                      <p>オフィスの工事依頼です。今回は、流し台のあるスペースの部分リニューアル工事。40w</p>
+                    </div>
+                  </div>
+                </div></a><a class="blog__gallery-item" href="./page">
+                <div class="c-thumbnail blog__gallery-thumbnail">
+                  <div class="c-thumbnail__main_img"><img src="/uploads/dummy/blog/list7.jpg"/></div>
+                  <div class="c-thumbnail__text-wrapper">
+                    <div class="c-thumbnail__title f-inter-B">
+                      <p>Black steel plate outlet [original]</p>
+                    </div>
+                    <div class="c-thumbnail__summary f-noto-M">
+                      <p>オフィスの工事依頼です。今回は、流し台のあるスペースの部分リニューアル工事。40w</p>
+                    </div>
+                  </div>
+                </div></a><a class="blog__gallery-item" href="./page">
+                <div class="c-thumbnail blog__gallery-thumbnail">
+                  <div class="c-thumbnail__main_img"><img src="/uploads/dummy/blog/list8.jpg"/></div>
+                  <div class="c-thumbnail__text-wrapper">
+                    <div class="c-thumbnail__title f-inter-B">
+                      <p>Remake the signboard of the memory</p>
+                    </div>
+                    <div class="c-thumbnail__summary f-noto-M">
+                      <p>オフィスの工事依頼です。今回は、流し台のあるスペースの部分リニューアル工事。40w</p>
+                    </div>
+                  </div>
+                </div></a>
+            </div>
+          </div>
+          <btn class="c-loadMore">
+            <p class="f-inter-B">load more</p>
+          </btn>
         </div>
       </div>
       <footer class="l-footer" id="l-footer">

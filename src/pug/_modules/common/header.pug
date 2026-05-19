@@ -1,38 +1,37 @@
-//- header.l-header#l-header.is-content --- headerが見えなくなったら ---
+//- header.l-header#l-header.is-show
 header.l-header#l-header
   .l-header__inner
     a.l-header__logo(href="#"): h1: +c-logo('')
     nav.l-header__nav.f-inter-B
-      a.l-header__nav-list(href="#") BLOG & NOTE
-      a.l-header__nav-list(href="#") PROJECTS
-      a.l-header__nav-list(href="#") ABOUT & CONTACT
+      a.l-header__nav-list.is-current(href="./blog") BLOG & NOTE
+      a.l-header__nav-list(href="./projects") PROJECTS
+      a.l-header__nav-list(href="./about-contact") ABOUT & CONTACT
 
-    button.l-header__menu.js-modalOpen(data-id='hbgModal')
+    button.l-header__menu
       .l-header__menu-inner
         .line
         .line
         .line
 
 //- HBGメニュー　
-.c-modal.hbgModal#hbgModal
-  .c-modal__bg.js-modalClose(data-id="hbgModal")
-  .c-modal__container
-    //- ↓↓↓↓↓↓↓↓↓↓↓中身ここから↓↓↓↓↓↓↓↓↓↓↓
-    .c-modal__inner
-      a.c-modal__top(href="#")
-        .c-modal__top-arrow: img(src=`${IMG_DIR}common/icon-arrow-r.svg` alt="arrow")
-        p.c-modal__top-text.f-inter-B top
-      button.c-modal__btn.js-modalClose(data-id="hbgModal")
+.l-header__modal
+  .l-header__modal-bg
+  .l-header__modal-container
+    .l-header__modal-inner
+      a.l-header__modal-top(href="#")
+        .l-header__modal-top-arrow: img(src=`${IMG_DIR}common/icon-arrow-r.svg` alt="arrow")
+        p.l-header__modal-top-text.f-inter-B top
+      button.l-header__modal-btn
         .btn-close: img(src=`${IMG_DIR}common/icon-close.svg` alt="close")
 
-      .c-modal__logo: +c-logo(true)        
+      .l-header__modal-logo: +c-logo(true)        
       
-      nav.c-modal__nav 
-        a.f-inter-B(href="#") BLOG & NOTE
-        a.f-inter-B(href="#") PROJECTS
-        a.f-inter-B(href="#") ABOUT & CONTACT
+      nav.l-header__modal-nav 
+        a.f-inter-B(href="./blog") BLOG & NOTE
+        a.f-inter-B(href="./projects") PROJECTS
+        a.f-inter-B(href="./about-contact") ABOUT & CONTACT
       
-      +c-sns('c-modal__sns', '')
+      +c-sns('l-header__modal-sns', '')
 
 
 
