@@ -29,7 +29,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
     <?php wp_head();?>
   </head>
-  <body>
+  <body<?php echo is_front_page() ? ' id="top"' : ''; ?>>
     <div class="wrapper" id="wrapper">
         
         <!-- Header -->
@@ -43,9 +43,9 @@
             <nav class="l-header__nav f-inter-B">
               <a class="l-header__nav-list" href="<?php echo home_url('blog'); ?>">BLOG & NOTE</a>
               <a class="l-header__nav-list" href="<?php echo home_url('projects'); ?>">PROJECTS</a>
-              <a class="l-header__nav-list" href="<?php echo home_url('about'); ?>">ABOUT & CONTACT</a>
+              <a class="l-header__nav-list" href="<?php echo home_url('about-contact'); ?>">ABOUT & CONTACT</a>
             </nav>
-            <button class="l-header__menu">
+            <button class="l-header__menu" type="button">
               <div class="l-header__menu-inner">
                 <div class="line"></div>
                 <div class="line"></div>
@@ -75,7 +75,7 @@
               <nav class="l-header__modal-nav">
                 <a class="f-inter-B" href="<?php echo home_url('blog'); ?>">BLOG & NOTE</a>
                 <a class="f-inter-B" href="<?php echo home_url('projects'); ?>">PROJECTS</a>
-                <a class="f-inter-B" href="<?php echo home_url('about'); ?>">ABOUT & CONTACT</a>
+                <a class="f-inter-B" href="<?php echo home_url('about-contact'); ?>">ABOUT & CONTACT</a>
               </nav>
               <ul class="c-sns l-header__modal-sns">
                 <li>

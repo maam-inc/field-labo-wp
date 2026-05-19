@@ -1,29 +1,28 @@
     <!-- TEMPLATE インナー -->
     <template id="inspo-modal-template">
-      <div class="img-box">
-        <!-- <div class="img"><img src="" alt=""></div> -->
-        <!-- #inspo-modal-img-template -->
-      </div>
-      <p class="text f-noto-M"><!-- ここにキャプション --></p>
-      <div class="flex_box">
-        <div class="related_articles flex_box-item">
-          <p class="related_articles-head flex_box-head f-inter-B">related article</p>
-          <ul class="related_articles-wrapper">
-            <!-- #inspo-modal-link-template -->
-          </ul>
+      <div class="topContents__modal">
+        <div class="img-box is-multiple">
+          <!-- <div class="img"><img src="" alt=""></div> -->
+          <!-- #inspo-modal-img-template -->
         </div>
-        <div class="tag f-inter-B flex_box-item">
-          <p class="tag-head flex_box-head">tag</p>
-          <ul class="tag-wrapper">
-            <!-- #inspo-modal-category-template -->
-          </ul>
+        <p class="text f-noto-M"><!-- ここにキャプション --></p>
+        <div class="flex_box">
+          <div class="related_articles flex_box-item">
+            <p class="related_articles-head flex_box-head f-inter-B">related article</p>
+            <ul class="related_articles-wrapper links">
+              <!-- #inspo-modal-link-template -->
+            </ul>
+          </div>
+          <div class="tag f-inter-B flex_box-item">
+            <p class="tag-head flex_box-head">tag</p>
+            <ul class="tag-wrapper">
+              <!-- #inspo-modal-category-template -->
+            </ul>
+          </div>
         </div>
-      </div>
-      <div class="inspo-layout inspo-layout--main">
-        <ul class="categorie_wrapper"></ul>        
-        <div class="links-wrapper" hidden>
-          <p class="link_head">関連記事</p>
-          <ul class="links"></ul>
+        <div class="inspo-layout inspo-layout--main">
+          <ul class="categorie_wrapper"></ul>
+          <div class="links-wrapper" hidden></div>
         </div>
       </div>
     </template>
