@@ -1,4 +1,4 @@
-<div class="project__article">
+<div class="project__article" data-post-id="<?php echo esc_attr(get_the_ID()); ?>">
   <a href="<?php the_permalink(); ?>">
     <div class="main_img">
       <?php

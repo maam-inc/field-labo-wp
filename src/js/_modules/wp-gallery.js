@@ -16,6 +16,7 @@ export default class Gallery {
     this.moreBtn = document.querySelector('.js-load-more')
     this.currentPage = 1
     this.maxPages = 1
+    this.hasMore = true
     this.isLoading = false
 
     // SORT
@@ -114,7 +115,7 @@ export default class Gallery {
 
     this.moreBtn.addEventListener('click', () => {
       if(this.isLoading) return
-      if(this.currentPage >= this.maxPages) return
+      if(!this.hasMore) return
 
       const nextPage = this.currentPage + 1
 
@@ -134,6 +135,12 @@ export default class Gallery {
       category: this.currentCat,
       sort: this.currentSort
     })
+    const loadedIds = this.getLoadedIds()
+
+    if(!reset && loadedIds.length) {
+      params.set('exclude', loadedIds.join(','))
+    }
+
     const apiUrl = `/wp-json/field-labo/v1/inspo?${params.toString()}`
     console.log('[inspo api] request:', apiUrl)
 
@@ -155,6 +162,7 @@ export default class Gallery {
 
       this.currentPage = data.current_page
       this.maxPages = data.max_pages
+      this.hasMore = Boolean(data.has_more)
 
       await this.renderPosts(data.posts, { reset })
 
@@ -174,13 +182,19 @@ export default class Gallery {
     if(reset) {
       container.querySelectorAll('.l-contents__item').forEach(item => item.remove())
     }
+    const loadedIds = this.getLoadedIds()
+
     ;(posts || []).forEach(post => {
+      if(loadedIds.includes(String(post.id))) return
+
       const clone = template.content.cloneNode(true)
 
+      const item = clone.querySelector('.js-galleryItem')
       const btn = clone.querySelector('.js-modalOpen')
       const img = clone.querySelector('img')
       const ttl = clone.querySelector('.c-thumbnail__title p')
 
+      if(item) item.dataset.postId = post.id
       if(btn) btn.dataset.post = post.id
       if(img) {
         img.src = post.image || ''
@@ -205,10 +219,16 @@ export default class Gallery {
   updateMoreBtn() {
     if(!this.moreBtn) return
 
-    const shouldHide = this.currentPage >= this.maxPages
+    const shouldHide = !this.hasMore
 
     this.moreBtn.disabled = this.isLoading || shouldHide
     this.moreBtn.style.display = shouldHide ? 'none' : ''
+  }
+
+  getLoadedIds() {
+    return Array.from(this.container.querySelectorAll('[data-post-id]'))
+      .map(item => item.dataset.postId)
+      .filter(Boolean)
   }
 
   // 画像の読み込みを待つ

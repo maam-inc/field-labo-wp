@@ -105,13 +105,17 @@
     // パラメーターからカテゴリを取得。ソート用。
     $cat = sanitize_text_field((string) $request->get_param('category'));
     $sort = sanitize_text_field((string) $request->get_param('sort'));
+    $exclude_ids = array_filter(array_map(
+      'absint',
+      explode(',', (string) $request->get_param('exclude'))
+    ));
 
 
     // 取得する記事の条件
     $args = [
       'post_type' => 'inspo',
       'posts_per_page' => 5,
-      'paged' => $page,
+      'paged' => $exclude_ids ? 1 : $page,
       'post_status' => 'publish',
       'orderby' => 'date',
       'order' => 'DESC',
@@ -120,6 +124,10 @@
     if( $sort === 'random' ) {
       $args['orderby'] = 'rand';
       unset($args['order']);
+    }
+
+    if($exclude_ids) {
+      $args['post__not_in'] = $exclude_ids;
     }
 
     // カテゴリが指定されていて、allではない場合だけカテゴリで絞り込む
@@ -160,6 +168,7 @@
       'posts' => $posts,
       'max_pages' => (int) $query -> max_num_pages,
       'current_page' => $page,
+      'has_more' => $exclude_ids ? (int) $query->max_num_pages > 1 : $page < (int) $query->max_num_pages,
       'cat' => $cat ?: 'all',
       'sort' => $sort ?: 'latest',
     ];
@@ -250,6 +259,10 @@
     $post_type = sanitize_key($request->get_param('post_type') ?: 'post');
     $page = max(1, (int) $request->get_param('page'));
     $per_page = max(1, (int) ($request->get_param('per_page') ?: get_option('posts_per_page')));
+    $exclude_ids = array_filter(array_map(
+      'absint',
+      explode(',', (string) $request->get_param('exclude'))
+    ));
 
     $allowed_post_types = ['project', 'blog'];
 
@@ -257,14 +270,22 @@
       return new WP_Error('invalid_post_type', 'Invalid post type.', ['status' => 400]);
     }
 
-    $query = new WP_Query([
+    $args = [
       'post_type' => $post_type,
       'post_status' => 'publish',
-      'paged' => $page,
+      'paged' => $exclude_ids ? 1 : $page,
       'posts_per_page' => $per_page,
-      'orderby' => 'date',
-      'order' => 'DESC',
-    ]);
+      'orderby' => [
+        'date' => 'DESC',
+        'ID' => 'DESC',
+      ],
+    ];
+
+    if ($exclude_ids) {
+      $args['post__not_in'] = $exclude_ids;
+    }
+
+    $query = new WP_Query($args);
 
     ob_start();
 
@@ -282,6 +303,7 @@
       'html' => ob_get_clean(),
       'current_page' => $page,
       'max_page' => (int) $query->max_num_pages,
+      'has_more' => (int) $query->max_num_pages > 1,
     ];
   }
 

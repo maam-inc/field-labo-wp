@@ -18,7 +18,7 @@
         <div class="content__wrapper">
           <div class="c-breadcrumbs">
             <div class="c-breadcrumbs__item">
-              <a class="c-breadcrumbs__page f-inter-B" href="<?php echo home_url('about'); ?>">ABOUT & CONTACT</a>
+              <a class="c-breadcrumbs__page f-inter-B" href="<?php echo home_url('about-contact'); ?>">ABOUT & CONTACT</a>
             </div>
             <div class="c-breadcrumbs__item">
               <h1 class="c-breadcrumbs__page f-inter-B">FAQ</h1>
@@ -50,7 +50,7 @@
               </div>
 
               <div class="faq__return">
-                <a class="faq__return-link" href="<?php echo home_url('about'); ?>">
+                <a class="faq__return-link" href="<?php echo home_url('about-contact'); ?>">
                   <div class="icon"></div>
                   <div class="text f-inter-B">about & contact</div></a>
                 </div>

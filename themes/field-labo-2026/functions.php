@@ -36,11 +36,19 @@
     // project一覧の初期表示件数
     if ($query->is_post_type_archive('project')) {
       $query->set('posts_per_page', 2);
+      $query->set('orderby', [
+        'date' => 'DESC',
+        'ID' => 'DESC',
+      ]);
     }
 
     // blog一覧の初期表示件数
     if ($query->is_post_type_archive('blog')) {
       $query->set('posts_per_page', 4);
+      $query->set('orderby', [
+        'date' => 'DESC',
+        'ID' => 'DESC',
+      ]);
     }
   }
   add_action('pre_get_posts', 'archive_posts_per_page');
