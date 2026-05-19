@@ -27,7 +27,7 @@
     <div class="faq" id="faq">
       <div class="faq__wrapper">
         <div class="faq__title-group">
-          <h2 class="faq__title f-inter-B">faq</h2>
+          <h2 class="faq__title f-inter-B">FAQ</h2>
           <p class="faq__text f-noto-M">フィールドラボのリノベーションについて<br class="sp">よくある質問形式にまとめてみました。</p>
         </div>
 
@@ -39,7 +39,7 @@
           ?>
           <div class="faq__item">
             <div class="question">
-              <button class="question__button btn-open js-modalOpen" data-post="<?php the_ID(); ?>">
+              <button class="question__button btn-open js-modalOpen" data-post="<?php the_ID(); ?>" data-id="faqModal">
                 <p class="question__text f-noto-M"><?php echo esc_html(get_field('question'));?></p><span class="question__icon"></span>
               </button>
             </div>

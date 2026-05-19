@@ -1,3 +1,5 @@
+import CommonModal from "./commonModal";
+
 export default class FaqModal {
   static #instance = null;
 
@@ -50,7 +52,7 @@ export default class FaqModal {
   }
 
   async open(postId) {
-    console.log(postId)
+    // console.log(postId)
     if(this.isFetching) return;
 
     this.isFetching = true;
@@ -58,7 +60,9 @@ export default class FaqModal {
     // this.content.innerHTML = '<p>読み込み中です。</p>';
     this.content.innerHTML = '';
     // 開く処理 仮
-    this.modal.classList.add('is-open')
+    const modalFunc = new CommonModal;
+    modalFunc.openModal(this.modal)
+    // this.modal.classList.add('is-open')
 
     try {
       const res = await fetch(`/wp-json/field-labo/v1/faq/${postId}`);
@@ -77,7 +81,9 @@ export default class FaqModal {
   }
 
   close() {
-    this.modal.classList.remove('is-open');
+    const modalFunc = new CommonModal;
+    modalFunc.closeModal(this.modal)
+    // this.modal.classList.remove('is-open');
     this.content.innerHTML = '';
   }
 }
