@@ -1,6 +1,6 @@
-<div class="project__article" data-post-id="<?php echo esc_attr(get_the_ID()); ?>">
-  <a href="<?php the_permalink(); ?>">
-    <div class="main_img">
+<a class="projects__gallery-item" href="<?php the_permalink(); ?>" data-post-id="<?php echo esc_attr(get_the_ID()); ?>">
+  <div class="c-thumbnail projects__gallery-thumbnail">
+    <div class="c-thumbnail__main_img">
       <?php
         $group_field = get_field('common_parts');
         $img_field = $group_field['img_main'];
@@ -10,9 +10,14 @@
         src="<?php echo esc_url($img_url); ?>"
         alt="<?php echo esc_attr(get_the_title()); ?>"
       />
-
     </div>
-    <p class="title"><?php the_title(); ?></p>
-    <p class="summary"><?php the_field('summary'); ?></p>
-  </a>
-</div>
+    <div class="c-thumbnail__text-wrapper">
+      <div class="c-thumbnail__title f-inter-B">
+        <p><?php the_title(); ?></p>
+      </div>
+      <div class="c-thumbnail__summary f-noto-M">
+        <p><?php the_field('summary'); ?></p>
+      </div>
+    </div>
+  </div>
+</a>
