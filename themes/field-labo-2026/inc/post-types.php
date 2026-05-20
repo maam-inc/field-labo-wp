@@ -110,13 +110,22 @@
 
   add_action('init', 'create_post_type');
 
-  add_action('init', function() {
-    $rewrite_version = '20260519_projects_blog_cpt';
-
-    if (get_option('field_labo_rewrite_version') !== $rewrite_version) {
-      flush_rewrite_rules(false);
-      update_option('field_labo_rewrite_version', $rewrite_version);
+  // Projects / Blog のアーカイブRSSリンクを head に出力しない
+  add_filter('feed_links_extra_show_post_type_archive_feed', function($show) {
+    if (is_post_type_archive(['projects', 'blog'])) {
+      return false;
     }
-  }, 20);
+
+    return $show;
+  });
+
+  // add_action('init', function() {
+  //   $rewrite_version = '20260519_projects_blog_cpt';
+
+  //   if (get_option('field_labo_rewrite_version') !== $rewrite_version) {
+  //     flush_rewrite_rules(false);
+  //     update_option('field_labo_rewrite_version', $rewrite_version);
+  //   }
+  // }, 20);
 
 ?>

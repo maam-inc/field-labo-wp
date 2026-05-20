@@ -26,6 +26,22 @@
         'ID' => 'DESC',
       ]);
     }
+
+    if ($query->is_post_type_archive('faq')) {
+      $query->set('posts_per_page', -1);
+      $query->set('orderby', 'menu_order');
+      $query->set('order', 'ASC');
+    }
+
+    if ($query->is_tax('categorie')) {
+      $query->set('post_type', 'inspo');
+      $query->set('posts_per_page', -1);
+    }
+
+    if ($query->is_tax('genre')) {
+      $query->set('post_type', 'blog');
+      $query->set('posts_per_page', -1);
+    }
   }
   add_action('pre_get_posts', 'archive_posts_per_page');
 

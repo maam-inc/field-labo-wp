@@ -107,7 +107,15 @@ if(is_singular()) {
 
   $title = get_the_title($post_id);
 
-  if(has_excerpt($post_id)) {
+  if(function_exists('get_field')) {
+    $post_summary = get_field('post_summary', $post_id);
+
+    if(trim(wp_strip_all_tags((string) $post_summary)) !== '') {
+      $description = format_meta_description($post_summary);
+    }
+  }
+
+  if($description === '' && has_excerpt($post_id)) {
     $description = format_meta_description(get_the_excerpt($post_id));
   }
 
@@ -222,4 +230,3 @@ if($title !== '' && $title !== $site_name) {
   $output_title = $site_name;
 }
 ?>
-

@@ -1,19 +1,4 @@
 <?php get_header(); ?>
-<?php
-  // $args = array(
-  //   'numberposts' => -1,
-  //   'post_type' => 'faq'
-  // );
-  $args = [
-    'post_type' => 'faq',
-    'posts_per_page' => -1,
-    'post_status' => 'publish',
-    'orderby' => 'menu_order',
-    'order' => 'ASC',
-  ];
-
-  $faq_query = new WP_Query($args);
-?>
 <main class="l-content">
   <div class="l-content__wrapper">
     <div class="c-breadcrumbs">
@@ -33,9 +18,9 @@
 
         <div class="faq__items">
           <?php
-            if ($faq_query->have_posts()) :
-            while ($faq_query->have_posts()) :
-            $faq_query->the_post();
+            if (have_posts()) :
+            while (have_posts()) :
+            the_post();
           ?>
           <div class="faq__item">
             <div class="question">
@@ -46,7 +31,6 @@
           </div>
           <?php endwhile; ?>
           <?php endif; ?>
-          <?php wp_reset_postdata();?>
         </div>
         <div class="faq__return">
           <a class="faq__return-link" href="<?php echo esc_url(home_url('about-contact')); ?>">

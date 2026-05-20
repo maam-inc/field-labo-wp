@@ -1,31 +1,18 @@
 <?php get_header(); ?>
         <?php
-          $query = get_query_var('custom_query');
-          if(!($query instanceof WP_Query)){
-            $paged = get_query_var('paged') ?: 1;
-
-            $args = [
-              'post_type' => ['top'],
-              'posts_per_page' => -1,
-              'paged' => $paged,
-              'meta_query' => array(
-                array(
-                  // 'key' => 'slider',
-                  // 'value' => '1',
-                  // 'compare' => '=',
-                ),
-              ),
-            ];
-            $query = new WP_Query($args);
-          }
+          $top_posts = get_posts([
+            'post_type' => 'top',
+            'posts_per_page' => -1,
+            'post_status' => 'publish',
+          ]);
         ?>
         <div class="main" id="main">
           <div class="main__wrapper">
             <div class="swiper-container">
               <div class="main__mv swiper"> 
                 <div class="swiper-wrapper"> 
-                  <?php if($query->have_posts()): ?>
-                  <?php while($query->have_posts()): $query->the_post(); ?> 
+                  <?php if($top_posts): ?>
+                  <?php foreach($top_posts as $post): setup_postdata($post); ?>
                   <div class="swiper-slide">
                     <?php
                       $img_pc = get_field('image_pc');
@@ -51,7 +38,8 @@
                       </div>
                     </a>
                   </div>
-                  <?php endwhile; ?>
+                  <?php endforeach; ?>
+                  <?php wp_reset_postdata(); ?>
                   <?php endif; ?>
                 </div>
               </div>
@@ -91,25 +79,11 @@
             <!-- ===================== ===================== -->
                               <!-- ① INSPO -->
             <!-- ===================== ===================== -->      
-            <?php
-              $paged = get_query_var('paged') ?: 1;
-              $term_object = get_queried_object();
-              $term_slug = $term_object->slug;
-              $args = [
-                'post_type' => 'inspo',
-                'posts_per_page' => -1,
-                'paged' => $paged,
-                // 'orderby' => 'rand',
-                'taxonomy' => 'categorie',
-                'term' => $term_slug
-              ];          
-            ?>
-            <?php $query = new WP_Query($args);?>        
             <div class="contents__inspos jsLoadMoreWrapper">
               <div class="jsLoadMoreContainer masonry">
                 <div class="gutter-sizer"></div>
-                <?php if($query->have_posts()): ?>
-                  <?php while($query->have_posts()): $query->the_post(); ?>
+                <?php if(have_posts()): ?>
+                  <?php while(have_posts()): the_post(); ?>
                     <?php
                       $img = get_field('image');
                     ?>    
@@ -129,8 +103,6 @@
                     
                   <?php endwhile; ?>
                 <?php endif; ?>    
-
-                <?php wp_reset_postdata(); ?>
               </div>
             </div>
             <button class="contents__load jsLoadMoreBtn">
