@@ -30,9 +30,15 @@
         <header class="l-header" id="l-header">
           <div class="l-header__inner">
             <a class="l-header__logo" href="<?php echo esc_url(home_url('/')); ?>">
-              <h1>
-                <div class="c-logo white"></div>
-              </h1>
+              <?php if (is_front_page()) : ?>
+                <h1 class="l-header__site-title">
+                  <span class="c-logo white" aria-label="FIELD LABO"></span>
+                </h1>
+              <?php else : ?>
+                <p class="l-header__site-title">
+                  <span class="c-logo white" aria-label="FIELD LABO"></span>
+                </p>
+              <?php endif; ?>
             </a>
             <nav class="l-header__nav f-inter-B">
               <a class="l-header__nav-list <?php echo is_post_type_archive('blog') || is_singular('blog') ? 'is-current' : '' ?>" href="<?php echo esc_url(home_url('blog')); ?>">BLOG & NOTE</a>
