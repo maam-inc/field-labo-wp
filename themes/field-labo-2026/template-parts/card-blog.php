@@ -17,7 +17,7 @@
         <p><?php echo esc_html(get_the_title()); ?></p>
       </div>
       <div class="c-thumbnail__summary f-noto-M">
-        <p><?php echo wp_kses_post(get_field('post_summary')); ?></p>
+        <p><?php echo wp_kses_post(field_labo_get_post_summary()); ?></p>
       </div>
     </div>
   </div>

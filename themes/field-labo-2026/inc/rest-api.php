@@ -18,7 +18,34 @@
     register_rest_route('field-labo/v1', '/inspo', [
       'methods' => 'GET',   // データを取得するだけ
       'callback' => 'get_inspo_posts',    // このAPIにアクセスしたときに実行する関数
-      'permission_callback' => '__return_true'  // ログインしてないユーザーにも許可する
+      'permission_callback' => '__return_true',  // ログインしてないユーザーにも許可する
+      'args' => [
+        'page' => [
+          'sanitize_callback' => 'absint',
+          'validate_callback' => function($value) {
+            return (int) $value >= 1;
+          },
+        ],
+        'category' => [
+          'sanitize_callback' => 'sanitize_text_field',
+          'validate_callback' => function($value) {
+            $term = term_exists($value, 'categorie');
+            return $value === '' || $value === 'all' || ($term !== null && $term !== 0);
+          },
+        ],
+        'sort' => [
+          'sanitize_callback' => 'sanitize_key',
+          'validate_callback' => function($value) {
+            return $value === '' || in_array($value, ['latest', 'random'], true);
+          },
+        ],
+        'exclude' => [
+          'sanitize_callback' => 'sanitize_text_field',
+          'validate_callback' => function($value) {
+            return $value === '' || preg_match('/^\d+(,\d+)*$/', (string) $value) === 1;
+          },
+        ],
+      ],
     ]);
 
     // モーダル詳細用API
@@ -26,7 +53,15 @@
     register_rest_route('field-labo/v1', '/inspo/(?P<id>\d+)', [
       'methods' => 'GET',
       'callback' => 'get_inspo_post_detail',
-      'permission_callback' => '__return_true'
+      'permission_callback' => '__return_true',
+      'args' => [
+        'id' => [
+          'sanitize_callback' => 'absint',
+          'validate_callback' => function($value) {
+            return (int) $value >= 1;
+          },
+        ],
+      ],
     ]);
 
     // アーカイブページ LOAD MORE 用API
@@ -34,6 +69,32 @@
       'methods' => 'GET',
       'callback' => 'load_archive',
       'permission_callback' => '__return_true',
+      'args' => [
+        'post_type' => [
+          'sanitize_callback' => 'sanitize_key',
+          'validate_callback' => function($value) {
+            return in_array($value, ['projects', 'blog'], true);
+          },
+        ],
+        'page' => [
+          'sanitize_callback' => 'absint',
+          'validate_callback' => function($value) {
+            return (int) $value >= 1;
+          },
+        ],
+        'per_page' => [
+          'sanitize_callback' => 'absint',
+          'validate_callback' => function($value) {
+            return (int) $value >= 1 && (int) $value <= 20;
+          },
+        ],
+        'exclude' => [
+          'sanitize_callback' => 'sanitize_text_field',
+          'validate_callback' => function($value) {
+            return $value === '' || preg_match('/^\d+(,\d+)*$/', (string) $value) === 1;
+          },
+        ],
+      ],
     ]);
 
     // FAQページ
@@ -41,6 +102,14 @@
       'methods' => 'GET',
       'callback' => 'get_faq_detail',
       'permission_callback' => '__return_true',
+      'args' => [
+        'id' => [
+          'sanitize_callback' => 'absint',
+          'validate_callback' => function($value) {
+            return (int) $value >= 1;
+          },
+        ],
+      ],
     ]);
   });
 
@@ -183,7 +252,7 @@
     $post_id = (int) $request['id'];
 
     // 投稿が存在しない場合は404を返す
-    if(!$post_id || get_post_status($post_id) !== 'publish') {
+    if(!$post_id || get_post_type($post_id) !== 'inspo' || get_post_status($post_id) !== 'publish') {
       return new WP_Error('not_found', 'Post not found', ['status' => 404]);
     }
 
@@ -258,7 +327,7 @@
   function load_archive($request) {
     $post_type = sanitize_key($request->get_param('post_type') ?: 'post');
     $page = max(1, (int) $request->get_param('page'));
-    $per_page = max(1, (int) ($request->get_param('per_page') ?: get_option('posts_per_page')));
+    $per_page = min(20, max(1, (int) ($request->get_param('per_page') ?: get_option('posts_per_page'))));
     $exclude_ids = array_filter(array_map(
       'absint',
       explode(',', (string) $request->get_param('exclude'))

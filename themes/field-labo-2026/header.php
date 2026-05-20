@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require get_template_directory() . '/inc/meta-data.php'; ?>
-    <title><?php echo esc_html($output_title); ?>
-  </title>
+    <title><?php echo esc_html($output_title); ?></title>
     <meta name="description" content="<?php echo esc_attr($description); ?>">
     <link rel="canonical" href="<?php echo esc_url($page_url); ?>">
     <meta property="og:title" content="<?php echo esc_attr($title); ?>">
