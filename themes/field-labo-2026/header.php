@@ -4,6 +4,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="google-site-verification" content="hd3JBvPgqDhIZvCyZqtMcokLNrIx6za0-nVhSFKaspI" />
+    <meta name="p:domain_verify" content="6ae4222cac44be1ee392005051150c5f" />
+
+    <!-- META -->
     <?php require get_template_directory() . '/inc/meta-data.php'; ?>
     <title><?php echo esc_html($output_title); ?></title>
     <meta name="description" content="<?php echo esc_attr($description); ?>">
@@ -14,12 +19,31 @@
     <meta property="og:url" content="<?php echo esc_url($page_url); ?>">
     <meta property="og:type" content="<?php echo esc_attr($page_type); ?>">
     <meta property="og:image" content="<?php echo esc_url($ogp_img); ?>">
+    
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<?php echo esc_attr($title); ?>">
     <meta name="twitter:description" content="<?php echo esc_attr($description); ?>">
     <meta name="twitter:image" content="<?php echo esc_url($ogp_img); ?>">
+
+    <link rel="icon" href="<?php echo get_template_directory_uri(); ?>/assets/images/favicon.ico" sizes="32x32">
+    <link rel="icon" href="<?php echo get_template_directory_uri(); ?>/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/assets/images/apple-touch-icon.png">
+
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GFJ09MTPQS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+
+      gtag('js', new Date());
+      gtag('config', 'G-GFJ09MTPQS');
+    </script>
+
+
     <?php wp_head();?>
   </head>
   <body<?php echo is_front_page() ? ' id="top"' : ''; ?>>
