@@ -147,6 +147,20 @@
   .cls-2 {
     fill: #222;
   }
+
+  &--fixed{
+    width: vw(67);
+    position: fixed;
+    bottom: vw(19);
+    right: vw(24);
+    z-index: 100;
+
+    @include mq(pc){
+      width: 33px;
+      bottom: 19px;
+      right: 20px;
+    }  
+  }
 }
 
 //- 切り替えのボタン
@@ -163,7 +177,7 @@
 }
 
 //- モーダル開くアイコン
-.l-modalOpenIcon{
+.c-modalOpenIcon{
   aspect-ratio: 1/1;
   height: auto;
   mask-image: url(../images/common/icon-open.svg);
@@ -172,6 +186,44 @@
   background-color: #888888;
 
   &--dark{ background-color: #666666;}
+}
+
+//- モーダル閉じるアイコン
+.c-modalCloseIcon__btn{
+  position: absolute;
+
+  &-inner{
+    width: vw(42);
+    height: auto;
+    aspect-ratio: 1;
+    border: vw(4) solid $bk;
+    box-sizing: border-box;
+    background: $wh;
+    display: flex;
+    justify-content: center;
+    align-items: center;        
+  }
+
+  &-icon{
+    width: vw(17);
+    height: auto;
+    aspect-ratio: 1;
+    mask-image: url(../images/common/icon-close.svg);
+    -webkit-mask-image: url(../images/common/icon-close.svg);
+    mask-size: contain;
+    background: $bk;
+  }
+
+  @include mq(pc){
+    &-inner{
+      width: 25px;
+      border: 2px solid $bk;
+    }
+
+    &-icon{
+      width: 10px;
+    }
+  }
 }
 
 //- サムネイル
@@ -198,14 +250,48 @@
   font-size: vw(28);
   display: flex;
   border: vw(2) solid $bk;
-}
-@include mq(pc){
-  .c-loadMore{
+
+  @include mq(pc){
     margin: 58px auto 79px;
     width: 497px;
     height: 49px;
     font-size:12px;
     border: 1px solid $bk;
+  }
+}
+
+// 外部リンクのアイコン
+a{
+  &.is-external{
+    position: relative;
+    padding-right: vw(31);
+    color: $ylw;
+    text-decoration: underline;
+    width: fit-content;
+
+    &::after{
+      position: absolute;
+      content: '';
+      width: vw(18);
+      height: auto;
+      aspect-ratio: 1/1;
+      mask-image: url(../images/common/icon-external.svg);
+      -webkit-mask-image: url(../images/common/icon-external.svg);
+      mask-size: contain;
+      background: $ylw;
+      top: 50%;
+      translate: 0 -50%;
+      right: vw(8);
+    }
+
+    @include mq(pc){
+      padding-right: 18px;
+
+      &::after{
+        width: 10px;
+        right: 4px;
+      }      
+    }
   }
 }
 
@@ -217,189 +303,129 @@
   width: 100vw;
   height: 100vh;
   display: none;
-  position: fixed;
-  z-index: 200; 
-  top: 0;
-  left: 0;
+  // z-index: 200; 
+  // top: 0;
+  // left: 0;
 
   &__bg{
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background: rgba(255,255,255,0.9);
+    position: fixed;
+    z-index: 200;
+    top: 0;
+    left: 0;
   } 
   
   &__container{
     position: absolute;
     width: 100%;
-    // height: calc(100% - (vw(76) + vw(76)));
-    // top: vw(76);
-    height: 100vh;
-    top:0;
+    height: fit-content;
+    max-height: 100vh;
+    top:50%;
     left:0;
+    translate: 0 -50%;
+    position: fixed;
+    left: 0;
+    z-index: 300;
+    padding-top: vw(76);
   }
 
   &__wrapper{
+    overflow-y: scroll;
+    max-height: calc(100vh - vw(76));
+    background: $bk;
     position: relative;
     width: 100%;
-    height: 100%;
-    // overflow-y: scroll;
-  }
-
-  &__contents{
-    position: absolute;
-    width: 100%;
-    height: auto;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    padding-top: vw(76);
-    
-    &.is-over{ //innerの高さがcontaierを超えたら
-      height: 100%;
-      top: 0;
-      transform: translateY(0%);
-
-      .l-modal__bottom{
-        display: block;
-        width: vw(750);
-        height: vw(113);
-        border-top: #333333 solid vw(2);
-        margin-left: vw(-20);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        &-icon{
-          width: vw(12);
-          height: auto;
-          aspect-ratio: 1/1;
-          mask-image: url(../images/common/icon-close.svg);
-          -webkit-mask-image: url(../images/common/icon-close.svg);
-          mask-size: contain;
-          background: #888888;
-          margin-right: vw(16);
-        }
-
-        &-text{
-          color: #888888;
-          font-size: vw(20);
-        }
-      }
-
-      .l-modal__inner-scrlWrap{
-        overflow-y: scroll;
-        height: calc(100% - vw(76));
-      }
-    }
-  }
-
-  &__inner-scrlWrap{
-    height: auto;
   }
 
   &__inner{
     position: relative;
     width: 100%;
     padding: vw(20);
-    background: $bk;
-  }
-
-  &__bottom{
-    display: none;
+    padding-bottom: vw(116);
   }
 
   &__btn{
-    position: absolute;
     top: vw(24);
-    right: vw(19);
+    right: vw(20);
+  }
 
-    &-inner{
-      width: vw(42);
-      height: auto;
-      aspect-ratio: 1;
-      border: vw(4) solid $bk;
-      box-sizing: border-box;
-      background: $wh;
-      display: flex;
-      justify-content: center;
-      align-items: center;        
-    }
+
+  &__bottom{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: vw(113);
+    // margin-left: vw(-20);
+    border-top: #333333 solid vw(2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &-icon{
-      width: vw(17);
+      width: vw(12);
       height: auto;
-      aspect-ratio: 1;
+      aspect-ratio: 1/1;
       mask-image: url(../images/common/icon-close.svg);
       -webkit-mask-image: url(../images/common/icon-close.svg);
       mask-size: contain;
-      background: $bk;
+      background: #888888;
+      margin-right: vw(16);
     }
 
+    &-text{
+      color: #888888;
+      font-size: vw(20);
+    }
   }
-}
-@include mq(pc){
-  .l-modal{
-    &__container{
-      max-width: 990px;
-      left:50%;
-      translate: -50% ;
-    }
 
-    &__contents{
-      width: 100%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      padding-top: 0;
+  @include mq(pc){
+    .l-modal{
+      &__container{
+        max-width: 990px;
+        left:50%;
+        translate: -50% -50%;
+        width: per(990, 1280);
+        padding-top: 0;
+      }
 
-      &.is-over{ //innerの高さがcontaierを超えたら
-      height: 100%;
-      top: 0;
-      transform: translate(-50%, 0%);
+      &__wrapper{
+        max-height: 100vh;
+      }
 
-        .l-modal__bottom{
-          max-width: 990px;
-          height: 95px;
-          border-top: #333333 solid 1px;
-          margin-left: -18px;
-          margin-bottom: -18px;
+      &__inner{
+        padding: 16px 21px;
+        overflow: hidden;
+      }
 
-          &-icon{
-            width: 7px;
-            margin-right: 10px;
-          }
+      &__inner{
+        padding: 18px;
+        padding-bottom: 95px;
+      }
 
-          &-text{
-            font-size: 12px;
-          }
+      &__btn{
+        top: 16px;
+        right: -35px;
+      }
+
+      &__bottom{
+        max-width: per(990, 950);
+        // margin-left: per(-18,990);
+        height: 95px;
+        border-top: #333333 solid 1px;
+
+        &-icon{
+          width: 7px;
+          margin-right: 10px;
         }
 
-        .l-modal__inner-scrlWrap{
-          height: 100%;
+        &-text{
+          font-size: 12px;
         }
       }
-    }
-
-    &__inner{
-      padding: 18px;
-    }
-
-    &__bottom{
-      display: none;
-    }
-
-    &__btn{
-      top: 18px;
-      right: -35px;
-
-      &-inner{
-        width: 25px;
-        border: 2px solid $bk;
-      }
-
-      &-icon{
-        width: 10px;
-      }
-
     }
   }
 }

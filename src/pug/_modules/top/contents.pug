@@ -1,21 +1,25 @@
-section.l-contents#l-contents.topContents.is-show 
-  //- section.l-contents#l-contents.topContents
-  .l-contents__wrapper 
+//- TOPのギャラリーのコントローラ
+mixin ctrl(fixed) 
+  .topContents__ctrl.f-inter-B(class = fixed ? 'topContents__ctrl--fixed' : '')
+    .sort.ctrl-item
+      p.sort__item.ctrl-item--name sort :
+      select.sort__lists(name="categorie" required)
+        -for(let i = 0; i < main.sort.length; i++)
+          option.sort__list(value=main.sort[i].toLowerCase())= main.sort[i]
+      .sort__toggle
+
+    .order.ctrl-item
+      p.order__item.ctrl-item--name order :
+      .order__ctrl 
+        btn.order__ctrl-random.order__ctrl-name random
+        btn.order__ctrl-latest.order__ctrl-name latest    
+
+
+section.topContents
+  .topContents__wrapper 
     .topContents__head
       h1.topContents__title.f-inter-B PHOTO GALLERY
-      .topContents__ctrl.f-inter-B
-        .sort.ctrl-item
-          p.sort__item.ctrl-item--name sort :
-          select.sort__lists(name="categorie" required)
-            -for(let i = 0; i < main.sort.length; i++)
-              option.sort__list(value=main.sort[i].toLowerCase())= main.sort[i]
-          .sort__toggle
-
-        .order.ctrl-item
-          p.order__item.ctrl-item--name order :
-          .order__ctrl 
-            btn.order__ctrl-random.order__ctrl-name.is-active random
-            btn.order__ctrl-latest.order__ctrl-name latest
+      +ctrl(false) 
 
     .topContents__gallery
       .masonry.topContents__gallery-wrapper
@@ -28,7 +32,8 @@ section.l-contents#l-contents.topContents.is-show
                   +c-thumbnail('topContents__gallery-item', 'top', main.gallery[i], i)
       
     +c-loadMore('')
-    .topContents__toTop: +c-toTop
+
++ctrl(true) 
 
 //- モーダル本体（空のシェル）
 +l-modal('top')

@@ -6,49 +6,49 @@
 // FONTS
 // ------------------------------
 @mixin f-inter-R {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", "Noto Sans JP", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
 }
 @mixin f-inter-M {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", "Noto Sans JP", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
 }
 @mixin f-inter-B {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", "Noto Sans JP", sans-serif;
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
 }
 @mixin f-noto-T {
-  font-family: "Noto Sans JP", sans-serif;
+  font-family: "Noto Sans JP", "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 100;
   font-style: normal;
 }
 @mixin f-noto-R {
-  font-family: "Noto Sans JP", sans-serif;
+  font-family: "Noto Sans JP", "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
 }
 @mixin f-noto-M {
-  font-family: "Noto Sans JP", sans-serif;
+  font-family: "Noto Sans JP", "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
 }
 @mixin f-noto-SB {
-  font-family: "Inter", sans-serif;
+  font-family: "Noto Sans JP", "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
 }
 @mixin f-noto-B {
-  font-family: "Inter", sans-serif;
+  font-family: "Noto Sans JP", "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 900;
   font-style: normal;

@@ -23,7 +23,7 @@
         &__text-wrapper{
           padding: vw(48) vw(46);
           background: $bk;
-          height: vw(214);
+          // height: vw(214);
           box-sizing: border-box;
         }
 
@@ -36,6 +36,10 @@
           font-size: vw(24);
           letter-spacing: 0.03em;
           line-height: 150%;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 6;
+          overflow: hidden;
         }
       }
 
@@ -52,7 +56,7 @@
       margin: 5px auto 0;
 
       &-item{
-        height: 270px;
+        // height: 270px;
 
         .c-thumbnail{
           display: flex;

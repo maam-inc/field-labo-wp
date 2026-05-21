@@ -13,9 +13,12 @@
 
     &-item{
       float: left;
+      display: flex;
       width: calc((100% - vw(9))/2);
 
       .c-thumbnail{
+        background: #000;
+
         &__main_img{
           aspect-ratio: 360/202;
         }
@@ -23,7 +26,7 @@
         &__text-wrapper{
           padding: vw(24) vw(22);
           background: #000;
-          height: vw(294);
+          // height: vw(294);
           box-sizing: border-box;
         }
 
@@ -36,6 +39,10 @@
           font-size: vw(20);
           letter-spacing: 0.03em;
           line-height: 150%;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 6;
+          overflow: hidden;
         }
       }
     }
@@ -45,7 +52,7 @@
 @include mq(pc){
   .blog{
     &__gallery{
-      margin: 11px auto 0;
+      margin: 5px auto 0;
       &-wrapper{
         gap: per(9, 1280);
       }
@@ -59,7 +66,7 @@
         .c-thumbnail{
           &__text-wrapper{
             padding: cqi(22, 323) cqi(17, 323);
-            height: cqi(136, 323);
+            // height: cqi(136, 323);
           }
 
           &__title{
@@ -69,6 +76,7 @@
 
           &__summary{
             font-size: calc(12 / 322 * 100cqi);
+            -webkit-line-clamp: 4;
           } 
         }
       }
@@ -83,7 +91,7 @@
         .c-thumbnail{
           &__text-wrapper{
             padding: 22px 17px;
-            height: 136px;
+            // height: 136px;
           }
 
           &__title{

@@ -6,6 +6,6 @@
         -for(let i = 0; i < contents.gallery.length; i++)
           a.blog__gallery-item(href="./page")
             +c-thumbnail('blog__gallery-thumbnail', 'blog', contents.gallery[i], i)
-      
-
     +c-loadMore('')
+
+  +c-toTop(true)

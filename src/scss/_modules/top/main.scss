@@ -11,6 +11,11 @@
 
     .main_img{
       width: 100%;
+
+      img{
+        object-fit: cover;
+        aspect-ratio: 730/973;
+      }
     }
 
     .text-wrapper {
@@ -55,6 +60,13 @@
     &__mv{
       aspect-ratio: 990/419;
 
+      .main_img{
+        width: 100%;
+
+        img{
+          aspect-ratio: 990/419;
+        }
+      }
       .text-wrapper {
         bottom: 40px;
         left: 68px;
@@ -76,4 +88,45 @@
       }
     }
   }  
+}
+
+// hover 
+@include mq(pc){
+  .topMain{
+    &__mv{
+      .main_img{
+        transition: .4s;
+      }
+
+      .c-ctrl__prev, .c-ctrl__next{
+        transition:  .4s;
+        opacity: 0;
+      }
+      .c-ctrl__prev{
+        left: -36px
+      }
+
+      .c-ctrl__next{
+        right: -36px
+      }
+
+      &:hover{
+        .main_img{
+          filter: grayscale(100%);
+        }
+
+        .c-ctrl__prev, .c-ctrl__next{
+          opacity: 1;
+        }
+        .c-ctrl__prev{
+          left: 0px
+          
+        }
+
+        .c-ctrl__next{
+          right: 0px
+        }
+      }
+    }
+  }
 }
