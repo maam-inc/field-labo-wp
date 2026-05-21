@@ -225,6 +225,24 @@ export default class Gallery {
     this.moreBtn.style.display = shouldHide ? 'none' : ''
   }
 
+  filterByCategory(category) {
+    this.currentCat = category || 'all'
+    this.currentSort = this.currentCat === 'all' ? 'random' : 'latest'
+    this.currentPage = 1
+
+    if(this.catSelect) {
+      this.catSelect.value = this.currentCat
+    }
+
+    this.updateSortBtn()
+    this.fetchInspoPosts({ page: 1, reset: true })
+
+    const contents = document.querySelector('#l-contents')
+    if(contents) {
+      contents.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
   getLoadedIds() {
     return Array.from(this.container.querySelectorAll('[data-post-id]'))
       .map(item => item.dataset.postId)
@@ -271,6 +289,18 @@ export default class Gallery {
         if(!postId) return
 
         this.openModal(modalId, postId, { updateUrl: true })
+        return
+      }
+
+      const tagLink = e.target.closest('.js-modalTag')
+
+      if(tagLink && modal.contains(tagLink)) {
+        const category = tagLink.dataset.category
+        if(!category) return
+
+        e.preventDefault()
+        this.filterByCategory(category)
+        this.closeModal({ updateUrl: true })
         return
       }
 
@@ -491,13 +521,12 @@ export default class Gallery {
     // element
     const imgWrap = clone.querySelector('.img-box')
     const text = clone.querySelector('.text')
-    const catWrap = clone.querySelector('.tag-wrapper')
-    const linksWrap = clone.querySelector('.links-wrapper')
-    const linksList = clone.querySelector('.links')
+    const tagWrap = clone.querySelector('.js-tagWrapper')
+    const articleWrap = clone.querySelector('.js-articleWrapper')
 
     const imgTemplate = document.querySelector('#inspo-modal-img-template')
-    const catTemplate = document.querySelector('#inspo-modal-category-template')
-    const linkTemplate = document.querySelector('#inspo-modal-link-template')
+    const tagTemplate = document.querySelector('#inspo-modal-tag-template')
+    const articleTemplate = document.querySelector('#inspo-modal-article-template')
 
     // テキスト
     if(text) text.textContent = data.text || ''
@@ -516,26 +545,30 @@ export default class Gallery {
     }
     
     // カテゴリ
-    if(data.categories && catTemplate && catWrap) {
-      data.categories.forEach(cat => {
-        const catClone = catTemplate.content.cloneNode(true)
+    const categories = Array.isArray(data.categories) ? data.categories : []
+
+    if(categories.length && tagTemplate && tagWrap) {
+      categories.forEach(cat => {
+        const catClone = tagTemplate.content.cloneNode(true)
         const catLink = catClone.querySelector('a')
 
         if(catLink) {
           catLink.href = cat.url || '#'
           catLink.textContent = cat.name || ''
+          catLink.classList.add('js-modalTag')
+          if(cat.slug) catLink.dataset.category = cat.slug
         }
 
-        catWrap.appendChild(catClone)
+        tagWrap.appendChild(catClone)
       })
     }
 
     // 関連記事
-    if(data.links && data.links.length && linkTemplate && linksWrap && linksList) {
-      linksWrap.hidden = false
+    if(data.links && data.links.length && articleTemplate && articleWrap) {
+      // linksWrap.hidden = false
 
       data.links.forEach(link => {
-        const linkClone = linkTemplate.content.cloneNode(true)
+        const linkClone = articleTemplate.content.cloneNode(true)
         const linkText = linkClone.querySelector('.related_article-text p')
         const linkBtn = linkClone.querySelector('.related_article-inner')
         const genre = linkClone.querySelector('.related_article-genre')
@@ -544,7 +577,7 @@ export default class Gallery {
         if(linkBtn) linkBtn.href = link.url || '#'
         if(genre) genre.textContent = `(${link.post_type || ''})`
 
-        linksList.appendChild(linkClone)
+        articleWrap.appendChild(linkClone)
       })
     }
 

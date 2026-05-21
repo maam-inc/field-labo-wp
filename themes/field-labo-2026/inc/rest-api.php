@@ -183,7 +183,7 @@
     // 取得する記事の条件
     $args = [
       'post_type' => 'inspo',
-      'posts_per_page' => 5,
+      'posts_per_page' => 20,
       'paged' => $exclude_ids ? 1 : $page,
       'post_status' => 'publish',
       'orderby' => 'date',
@@ -261,15 +261,31 @@
     $categories = [];
 
     if(!is_wp_error($terms)) {
+      $fallback_categories = [];
+
       foreach($terms as $term) {
-        // 子カテゴリだけ返す
-        if($term->parent != 0) {
-          $categories[] = [
-            'id' => $term->term_id,
-            'name' => $term->name,
-            'url' => get_term_link($term) . '?view=top',
-          ];
+        $term_link = get_term_link($term);
+
+        if(is_wp_error($term_link)) {
+          continue;
         }
+
+        $category = [
+          'id' => $term->term_id,
+          'name' => $term->name,
+          'slug' => $term->slug,
+          'url' => $term_link . '?view=top',
+        ];
+
+        $fallback_categories[] = $category;
+
+        if($term->parent != 0) {
+          $categories[] = $category;
+        }
+      }
+
+      if(empty($categories)) {
+        $categories = $fallback_categories;
       }
     }
 

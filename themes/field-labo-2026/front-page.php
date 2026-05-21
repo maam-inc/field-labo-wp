@@ -100,6 +100,7 @@
                 </div>
               </div>
 
+              <!-- ▼▼ TEMPLATE ▼▼ -->
               <template id="inspo-template">
                 <div class="topContents__item l-contents__item js-galleryItem">
                   <div class="btn-wrap">
@@ -121,6 +122,7 @@
                   </div>
                 </div>
               </template>
+              <!-- ▲▲ TEMPLATE ▲▲ -->
 
               <div class="topContents__gallery l-contents__gallery">
                 <div class="masonry topContents__gallery-wrapper l-contents__gallery-wrapper js-masonry">
