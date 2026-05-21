@@ -369,7 +369,7 @@ export default class Gallery {
     const modal = document.getElementById(modalId)
     if(!modal) return
 
-    const modalContent = modal.querySelector('.js-modalContent')
+    const modalContent = this.ensureModalContent(modal)
     if(!modalContent) return
 
     if(updateUrl) {
@@ -444,10 +444,10 @@ export default class Gallery {
       this.updateModalUrl('')
     }
 
-    // 中身をクリア
+    // 中身のラッパーごと削除
     const modalContent = modal.querySelector('.js-modalContent')
     if(modalContent) {
-      modalContent.innerHTML = ''
+      modalContent.remove()
     }
 
     // 非表示
@@ -455,6 +455,22 @@ export default class Gallery {
     modal.setAttribute('aria-hidden', 'true')
     modal.style.display = 'none'
     document.documentElement.classList.remove('is-modal-open')
+  }
+
+  ensureModalContent(modal) {
+    const currentContent = modal.querySelector('.js-modalContent')
+    if(currentContent) return currentContent
+
+    const modalInner = modal.querySelector('.l-modal__inner')
+    if(!modalInner) return null
+
+    const modalContent = document.createElement('div')
+    modalContent.classList.add('js-modalContent')
+
+    const bottomBtn = modalInner.querySelector('.l-modal__bottom')
+    modalInner.insertBefore(modalContent, bottomBtn || null)
+
+    return modalContent
   }
 
   // WPのモーダル用データを取得
@@ -519,8 +535,8 @@ export default class Gallery {
     const clone = template.content.cloneNode(true)
 
     // element
-    const imgWrap = clone.querySelector('.img-box')
-    const text = clone.querySelector('.text')
+    const imgWrap = clone.querySelector('.js-images')
+    const text = clone.querySelector('.js-text')
     const tagWrap = clone.querySelector('.js-tagWrapper')
     const articleWrap = clone.querySelector('.js-articleWrapper')
 

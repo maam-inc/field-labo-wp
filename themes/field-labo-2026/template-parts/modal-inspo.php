@@ -1,24 +1,23 @@
     <!-- TEMPLATE インナー -->
     <template id="inspo-modal-template">
       <div class="topContents__modal">
-        <div class="img-box is-multiple">
-          <!-- <div class="img"><img src="" alt=""></div> -->
+        <div class="topContents__modal-imgs js-images">
           <!-- #inspo-modal-img-template -->
         </div>
-        <p class="text f-noto-M"><!-- ここにキャプション --></p>
-        <div class="flex_box">
+        <p class="text js-text f-noto-M"><!-- ここにキャプション --></p>
+        <div class="topContents__flex">
 
           <!-- 関連記事 -->
-          <div class="related_articles flex_box-item">
-            <p class="related_articles-head flex_box-head f-inter-B">related article</p>
-            <ul class="related_articles-wrapper links js-articleWrapper">
+          <div class="related_articles topContents__flex-item">
+            <p class="related_articles-head topContents__flex-head f-inter-B">related article</p>
+            <ul class="related_articles-wrapper js-articleWrapper">
               <!-- #inspo-modal-article-template -->
             </ul>
           </div>
 
           <!-- タグ -->
-          <div class="tag f-inter-B flex_box-item">
-            <p class="tag-head flex_box-head">tag</p>
+          <div class="tag f-inter-B topContents__flex-item">
+            <p class="tag-head topContents__flex-head">tag</p>
             <ul class="tag-wrapper js-tagWrapper">
               <!-- #inspo-modal-tag-template -->
             </ul>
@@ -35,7 +34,7 @@
 
     <!-- repeat template - img -->
     <template id="inspo-modal-img-template">
-      <div class="img"><img src="" alt=""></div>
+      <div class="topContents__modal-img"><img src="" alt=""></div>
     </template>
 
     <!-- repeat template - タグ -->
