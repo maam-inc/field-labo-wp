@@ -423,9 +423,9 @@ export default class Gallery {
       }
 
       // 4. loadingまたは空の状態から、完成済みDOMへ差し替える
-      modalContent.innerHTML = ''
+      this.clearModalContent(modalContent)
       while(buffer.firstChild) {
-        modalContent.appendChild(buffer.firstChild)
+        this.appendModalContent(modalContent, buffer.firstChild)
       }
 
       console.log('[modal] render complete')
@@ -444,10 +444,10 @@ export default class Gallery {
       this.updateModalUrl('')
     }
 
-    // 中身のラッパーごと削除
+    // closeボタンを残して中身だけクリア
     const modalContent = modal.querySelector('.js-modalContent')
     if(modalContent) {
-      modalContent.remove()
+      this.clearModalContent(modalContent)
     }
 
     // 非表示
@@ -464,13 +464,32 @@ export default class Gallery {
     const modalInner = modal.querySelector('.l-modal__inner')
     if(!modalInner) return null
 
-    const modalContent = document.createElement('div')
-    modalContent.classList.add('js-modalContent')
+    modalInner.classList.add('js-modalContent')
 
-    const bottomBtn = modalInner.querySelector('.l-modal__bottom')
-    modalInner.insertBefore(modalContent, bottomBtn || null)
+    return modalInner
+  }
 
-    return modalContent
+  clearModalContent(container) {
+    Array.from(container.childNodes).forEach(node => {
+      if(node.nodeType === Node.ELEMENT_NODE && node.classList.contains('l-modal__bottom')) return
+      node.remove()
+    })
+  }
+
+  appendModalContent(container, node) {
+    const bottomBtn = container.querySelector('.l-modal__bottom')
+    container.insertBefore(node, bottomBtn || null)
+  }
+
+  setModalContentHtml(container, html) {
+    this.clearModalContent(container)
+    const bottomBtn = container.querySelector('.l-modal__bottom')
+    if(bottomBtn) {
+      bottomBtn.insertAdjacentHTML('beforebegin', html)
+      return
+    }
+
+    container.insertAdjacentHTML('beforeend', html)
   }
 
   // WPのモーダル用データを取得
@@ -511,20 +530,20 @@ export default class Gallery {
   // モーダル内loading表示
   // アニメーションは後からCSSで追加する想定
   showModalLoading(container) {
-    container.innerHTML = `
+    this.setModalContentHtml(container, `
       <div class="modal-loading" aria-live="polite">
         <p class="modal-loading__text">Loading...</p>
       </div>
-    `
+    `)
   }
 
   // モーダル内エラー表示
   showModalError(container, message) {
-    container.innerHTML = `
+    this.setModalContentHtml(container, `
       <div class="modal-error" role="alert">
         <p class="modal-error__text">${message}</p>
       </div>
-    `
+    `)
   }
 
   // APIのデータを元にモーダル内に描画

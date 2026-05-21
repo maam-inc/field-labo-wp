@@ -36,7 +36,7 @@ export default class FaqModal {
     document.addEventListener('click', (e) => {
       console.log('click')
       const openButton = e.target.closest(`.js-modalOpen[data-id="${this.modalId}"]`);
-      const closeButton = e.target.closest(`.js-modalClose[data-id="${this.modalId}"]`);
+      const closeButton = e.target.closest('.js-modalClose');
 
       if (openButton) {
         const postId = openButton.dataset.post;
@@ -45,7 +45,7 @@ export default class FaqModal {
         return;
       }
 
-      if (closeButton) {
+      if (closeButton && this.modal.contains(closeButton)) {
         this.close()
       }
     });
@@ -58,7 +58,7 @@ export default class FaqModal {
     this.isFetching = true;
     // loadingやるならここで
     // this.content.innerHTML = '<p>読み込み中です。</p>';
-    this.content.innerHTML = '';
+    this.clearModalContent();
     // 開く処理 仮
     const modalFunc = new CommonModal;
     modalFunc.openModal(this.modal)
@@ -70,11 +70,11 @@ export default class FaqModal {
       const data = await res.json();
       console.log(data)
 
-      this.content.innerHTML = data.answer;
+      this.setModalContentHtml(data.answer);
 
     } catch(err) {
       console.error(err);
-      this.content.innerHTML = '<p>読み込みに失敗しました。</p>';
+      this.setModalContentHtml('<p>読み込みに失敗しました。</p>');
     } finally {
       this.isFetching = false;
     }
@@ -84,6 +84,25 @@ export default class FaqModal {
     const modalFunc = new CommonModal;
     modalFunc.closeModal(this.modal)
     // this.modal.classList.remove('is-open');
-    this.content.innerHTML = '';
+    this.clearModalContent();
+  }
+
+  clearModalContent() {
+    Array.from(this.content.childNodes).forEach(node => {
+      if(node.nodeType === Node.ELEMENT_NODE && node.classList.contains('l-modal__bottom')) return;
+      node.remove();
+    });
+  }
+
+  setModalContentHtml(html) {
+    this.clearModalContent();
+
+    const bottomBtn = this.content.querySelector('.l-modal__bottom');
+    if(bottomBtn) {
+      bottomBtn.insertAdjacentHTML('beforebegin', html);
+      return;
+    }
+
+    this.content.insertAdjacentHTML('beforeend', html);
   }
 }
