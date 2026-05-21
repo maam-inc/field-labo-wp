@@ -50,7 +50,7 @@
     <div class="wrapper" id="wrapper">
         
         <!-- Header -->
-        <header class="l-header" id="l-header">
+        <header class="l-header">
           <div class="l-header__inner">
             <a class="l-header__logo" href="<?php echo esc_url(home_url('/')); ?>">
               <?php if (is_front_page()) : ?>
@@ -68,8 +68,22 @@
               <a class="l-header__nav-list <?php echo is_post_type_archive('projects') || is_singular('projects') ? 'is-current' : '' ?>" href="<?php echo esc_url(home_url('projects')); ?>">PROJECTS</a>
               <a class="l-header__nav-list <?php echo is_page('about-contact') || is_post_type_archive('faq') ? 'is-current' : '' ?>" href="<?php echo esc_url(home_url('about-contact')); ?>">ABOUT & CONTACT</a>
             </nav>
-            <button class="l-header__menu" type="button">
-              <div class="l-header__menu-inner">
+          </div>
+        </header>
+
+        <!-- 固定 HEADER -->
+        <header class="l-headerFixed">
+          <div class="l-headerFixed__inner">
+            <a class="l-headerFixed__logo" href="<?php echo esc_url(home_url('/')); ?>">
+              <div class="c-logo white" aria-label="FIELD LABO"></div>
+            </a>
+            <nav class="l-headerFixed__nav f-inter-B">
+              <a class="l-headerFixed__nav-list <?php echo is_post_type_archive('blog') || is_singular('blog') ? 'is-current' : '' ?>" href="<?php echo esc_url(home_url('blog')); ?>">BLOG & NOTE</a>
+              <a class="l-headerFixed__nav-list <?php echo is_post_type_archive('projects') || is_singular('projects') ? 'is-current' : '' ?>" href="<?php echo esc_url(home_url('projects')); ?>">PROJECTS</a>
+              <a class="l-headerFixed__nav-list <?php echo is_page('about-contact') || is_post_type_archive('faq') ? 'is-current' : '' ?>" href="<?php echo esc_url(home_url('about-contact')); ?>">ABOUT & CONTACT</a>
+            </nav>
+            <button class="l-headerFixed__menu">
+              <div class="l-headerFixed__menu-inner">
                 <div class="line"></div>
                 <div class="line"></div>
                 <div class="line"></div>

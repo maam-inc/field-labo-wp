@@ -64,8 +64,9 @@
             </div>
           </main>
 
-          <section class="l-contents topContents is-show" id="l-contents">
-            <div class="l-contents__wrapper">
+          <section class="topContents">
+            <div class="topContents__wrapper"> 
+              
               <div class="topContents__head">
                 <h1 class="topContents__title f-inter-B">PHOTO GALLERY</h1>
                 <div class="topContents__ctrl f-inter-B">
@@ -109,11 +110,11 @@
                         <div class="c-thumbnail topContents__gallery-item l-contents__gallery-item">
                           <div class="c-thumbnail__main_img"><img src="" alt=""/></div>
                           <div class="c-thumbnail__text-wrapper">
-                            <div class="c-thumbnail__title f-inter-B">
+                            <div class="c-thumbnail__title f-noto-B">
                               <p></p>
                             </div>
                             <div class="c-thumbnail__open">
-                              <div class="l-modalOpenIcon c-modalOpenIcon"></div>
+                              <div class="c-modalOpenIcon"></div>
                             </div>
                           </div>
                         </div>
@@ -132,6 +133,39 @@
 
               <?php get_template_part('template-parts/loadmore'); ?>
 
+
+              <div class="topContents__ctrl f-inter-B topContents__ctrl--fixed">
+                <div class="sort ctrl-item">
+                  <p class="sort__item ctrl-item--name">sort :</p>
+                  <select class="sort__lists js-category" name="categorie" required>
+                    <option class="sort__list" value="all">All Photos</option>
+                    <?php
+                      $all_terms = get_terms([
+                        'taxonomy' => 'categorie',
+                        'hide_empty' => false,
+                        'orderby' => 'name',
+                        'order' => 'ASC',
+                      ]);
+
+                      if (!is_wp_error($all_terms)) {
+                        foreach ($all_terms as $term) {
+                          echo '<option class="sort__list" value="' . esc_attr($term->slug) . '">' . esc_html($term->name) . '</option>';
+                        }
+                      }
+                    ?>
+                  </select>
+                  <div class="sort__toggle"></div>
+                </div>
+                <div class="order ctrl-item">
+                  <p class="order__item ctrl-item--name">order :</p>
+                  <div class="order__ctrl">
+                    <button class="order__ctrl-random order__ctrl-name js-sortBtn is-active" type="button" data-sort="random">random</button>
+                    <button class="order__ctrl-latest order__ctrl-name js-sortBtn" type="button" data-sort="latest">latest</button>
+                  </div>
+                </div>
+              </div>
+
+
               <?php
                 get_template_part('template-parts/modal-frame', null, [
                   'modal_id' => 'inspoModal',
@@ -141,7 +175,7 @@
                 get_template_part('template-parts/modal-inspo');
               ?>
 
-              <div class="topContents__toTop l-contents__toTop">
+              <!-- <div class="topContents__toTop l-contents__toTop">
                 <div class="c-toTop">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.595 33.595">
                     <rect class="cls-2" width="33.595" height="33.595"/>
@@ -150,7 +184,7 @@
                     <rect class="cls-1" x="10.987" y="9.196" width="11.62" height="1.396"/>
                   </svg>
                 </div>
-              </div>
+              </div> -->
             </div>
           </section>
         </div>

@@ -35,7 +35,7 @@
         <div class="faq__return">
           <a class="faq__return-link" href="<?php echo esc_url(home_url('about-contact')); ?>">
             <div class="icon"></div>
-            <div class="text f-inter-B">about & contact</div></a>
+            <div class="text f-inter-B">ABOUT & CONTACT</div></a></div>
           </div>
       </div>
     </div>
