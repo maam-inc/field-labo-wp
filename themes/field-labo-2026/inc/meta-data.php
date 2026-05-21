@@ -130,8 +130,17 @@ if(is_singular()) {
   $page_type = 'article';
   $page_url = get_permalink($post_id);
 
-  if(has_post_thumbnail($post_id)) {
-    $ogp_img = get_the_post_thumbnail_url($post_id, 'full');
+  if(function_exists('get_field')) {
+    $post_thumb = get_field('post_thumb', $post_id);
+    $post_thumb_img = is_array($post_thumb) ? ($post_thumb['img-pc'] ?? '') : '';
+
+    if(is_array($post_thumb_img)) {
+      $ogp_img = $post_thumb_img['url'] ?? '';
+    } elseif(is_numeric($post_thumb_img)) {
+      $ogp_img = wp_get_attachment_image_url((int) $post_thumb_img, 'full') ?: '';
+    } else {
+      $ogp_img = (string) $post_thumb_img;
+    }
   }
 }
 
@@ -220,7 +229,7 @@ if($description === '') {
 }
 
 if($ogp_img === '') {
-  $ogp_img = get_template_directory_uri().'/assets/images/og.jpg';
+  $ogp_img = get_template_directory_uri().'/assets/images/og.png';
 }
 
 if($title !== '' && $title !== $site_name) {
