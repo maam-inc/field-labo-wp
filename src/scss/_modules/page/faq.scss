@@ -37,7 +37,7 @@
 
     .icon {
       position: relative;
-      width: vw(16);
+      width: vw(20);
       aspect-ratio: 1;
       &::before {
         content: '';
@@ -47,8 +47,8 @@
         height: 100%;
         margin: auto;
         background-color: $bk;
-        webkit-mask-image: url('/wp-content/themes/field-labo-2026/assets/images/faq/icon-arrow.svg');
-        mask-image: url('/wp-content/themes/field-labo-2026/assets/images/faq/icon-arrow.svg');
+        webkit-mask-image: url('../images/common/icon-back.svg');
+        mask-image: url('../images/common/icon-back.svg');
         -webkit-mask-size: contain;
         mask-size: contain;
         mask-repeat: no-repeat;
@@ -59,6 +59,7 @@
       font-size: vw(24);
       color: $bk;
       letter-spacing: -0.02em;
+      line-height: 1;
     }
   }
 
@@ -77,8 +78,8 @@
         width: vw(28); 
         aspect-ratio: 1;
         background-color: #666;
-        webkit-mask-image: url('/wp-content/themes/field-labo-2026/assets/images/faq/icon-plus.svg');
-        mask-image: url('/wp-content/themes/field-labo-2026/assets/images/faq/icon-plus.svg');
+        webkit-mask-image: url('../images/common/icon-open.svg');
+        mask-image: url('../images/common/icon-open.svg');
         -webkit-mask-size: contain;
         mask-size: contain;
         mask-repeat: no-repeat;
@@ -162,123 +163,82 @@
   }
 }
 
-.commonModal {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgb(255 255 255 / 90%);
+.faqModal{
+  font-size: vw(26);
+  padding-bottom: vw(87);
 
-  .modal {
-    &__bg{
-      width: 100%;
-      height: 100%;
-      background-color: $bk;
-    } 
-    
-    &__container{
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      height: calc(100% - 50px);
-      overflow-y: scroll;
-    }
-
-    &__wrapper{
-      background: #fff;
-    }
-
-    &__inner{
-      margin-inline: auto;
-      padding-top: 150px;
-      padding-bottom: 150px;
-    }
-  }
-  .question{
-    font-size: 23px;
-    color: #9a9797;
-  }
-
-  .full_img{
-    width: 100%;
-    margin: 50px auto 0;
-  }
-
-  .narrow_img{
-    height: auto;
-    margin: 50px auto 0;
-  }
-
-  .text{
-    width: 100%;
-    font-size: 12px;
-    line-height: 215%;
-    letter-spacing: 0.05em;
-    margin: 50px auto 0;
-  }
-
-  .cap{
-    width: 100%;
-    margin: 20px auto 0;
-    font-size: 11px;
-  }
-
-  .links{
-    width: 100%;
-    font-size: 12px;
-    margin: 50px auto 0;
-
-    .link{
-      display: flex;
-
-      &:not(:first-child){
-        margin-top: 5px;
-      }
-
-      &_url{
-        width: fit-content;
-        text-decoration-line: underline;
-      }
-    }
-  }
-
-  .column{
-    width: 100%;
+  &__head{
+    height: vw(88);
+    color: #888888;
+    padding-left: vw(25);
     display: flex;
-    justify-content: space-between;
-    align-items: self-start;
-    margin: 50px auto 0;
+    align-items: center;
+    border-bottom: #333333 vw(2) solid;
+  }
 
-    &_img{
-      width: calc((100% - 20px) / 2);
+  &__contents{
+    color: $wh;
+    padding-top: vw(41);
+    width: vw(663);
+    margin-inline: auto;
+    line-height: 175%;
+    letter-spacing: 0.03em;
+
+    > *:first-child{
+      margin-top: 0 !important;
+    }
+
+    // 規定アキ
+    > * + *{
+      margin-top: vw(50);
+    }
+
+    > .faqModal__img + .faqModal__img{
+      margin-top: vw(30);
     }
   }
 
-  .before-after{
-    margin: 50px auto 0;
-    width: 100%;
+  &__text{
+    a{
+      color: $ylw;
+      display: inline;
+      text-decoration-line: underline;
+    }
+  }
+
+  @include mq(pc){
+    font-size: 14px;
+    padding-bottom: 60px;
 
     &__head{
-      font-size: 15px;
-      text-align: center;
+      height: 47px;
+      padding-left: 14px;
+      padding-top: 7px;
+      display: block;
+      align-items: auto;
+      border-bottom: #333333 1px solid;
     }
 
-    &__wrapper{
-      margin: 20px auto 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
+    &__contents{
+      padding-top: 27px;
+      width: 730px;
 
-      .before, .after{
-        width: calc((100% - 20px) / 2);
+      // 規定アキ
+      > * + *{
+        margin-top: 50px;
+      }
+
+      > .faqModal__img + .faqModal__img{
+        margin-top: 30px;
       }
     }
 
     &__text{
-      font-size: 12px;
-      margin-top: 10px;
-    }
+      a{
+        color: $ylw;
+        display: inline;
+        text-decoration-line: underline;
+      }
+    }    
   }
 }

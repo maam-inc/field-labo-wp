@@ -24,14 +24,19 @@
   </head>
   <body id="article">
     <div class="wrapper" id="wrapper">
-      <header class="l-header" id="l-header">
+      <header class="l-header">
         <div class="l-header__inner"><a class="l-header__logo" href="#">
-            <h1>
-              <div class="c-logo white"></div>
-            </h1></a>
-          <nav class="l-header__nav f-inter-B"><a class="l-header__nav-list is-current" href="./blog">BLOG & NOTE</a><a class="l-header__nav-list" href="./projects">PROJECTS</a><a class="l-header__nav-list" href="./about-contact">ABOUT & CONTACT</a></nav>
-          <button class="l-header__menu">
-            <div class="l-header__menu-inner">
+            <h1 aria-label="FIELD LABO"><span>
+                <div class="c-logo white"></div></span></h1></a>
+          <nav class="l-header__nav f-inter-B"><a class="l-header__nav-list" href="./blog">BLOG & NOTE</a><a class="l-header__nav-list" href="./projects">PROJECTS</a><a class="l-header__nav-list" href="./about-contact">ABOUT & CONTACT</a></nav>
+        </div>
+      </header>
+      <header class="l-headerFixed">
+        <div class="l-headerFixed__inner"><a class="l-headerFixed__logo" href="#" aria-label="FIELD LABO"><span>
+              <div class="c-logo white"></div></span></a>
+          <nav class="l-headerFixed__nav f-inter-B"><a class="l-headerFixed__nav-list" href="./blog">BLOG & NOTE</a><a class="l-headerFixed__nav-list" href="./projects">PROJECTS</a><a class="l-headerFixed__nav-list" href="./about-contact">ABOUT & CONTACT</a></nav>
+          <button class="l-headerFixed__menu">
+            <div class="l-headerFixed__menu-inner">
               <div class="line"></div>
               <div class="line"></div>
               <div class="line"></div>
@@ -61,301 +66,216 @@
           </div>
         </div>
       </div>
-      <div class="l-contents"> 
-        <div class="l-contents__wrapper"> 
-          <div class="article">
-            <main class="articleMain">
-              <div class="articleMain__img"><img src="/uploads/dummy/top/modal-full.jpg"></div>
-              <p class="articleMain__title f-intel-B">Minamiaoyama office-M  </p>
-              <p class="articleMain__info f-intel-B">(     PROJECT, 2025.FEB     )</p>
+      <div class="l-content">
+        <div class="l-content__wrapper"> 
+          <div class="article" id="article">
+            <main class="main">
+              <div class="main__img"><img src="/uploads/dummy/page/main.jpg"></div>
+              <p class="main__title f-inter-B">Minamiaoyama office-M  </p>
+              <p class="main__info f-inter-B">(     PROJECT, 2025.FEB     )</p>
             </main>
-            <section class="articleContents">
-              <p class="articleContents__head f-noto-B">南青山オフィスM リノベーション事例</p>
-              <p class="articleContents__text f-noto-M">以前にオフィスの部分改修をさせていただいたお客様からの工事依頼です。前回はワークスペース部分の改修だったのですが今回はそのときには手をつけなかったもう一室、流し台のあるスペースの部分リニューアル工事。ベンチ収納は<a href="#">こちら</a><a href="#" class="is-external">Houzz</a>でも紹介しています。主な目的は流し台周りの改修工事でしたが、加えてカーペット仕上げだった床をOSB合板を白のオイルステインで明るく爽やかなしつらえとしつつ収納がない部屋だった事もありベンチ収納を造作。</p>
-              <p class="articleContents__text f-noto-M">主な目的は流し台周りの改修工事でしたが、加えてカーペット仕上げだった床をOSB合板を白のオイルステインで明るく爽やかなしつらえとしつつ収納がない部屋だった事もありベンチ収納を造作。</p>
-              <div class="articleContents__img-full">
-                <div class="img"><img src="/uploads/dummy/page/full.jpg"></div>
-                <p class="cap f-noto-M">コンロはありませんが間口を広く取って電子レンジやティファール等を置けるスペースを想定。シンクの左右は引き出しとしています。</p>
+            <section class="contents">
+              <p class="contents__head f-noto-B">南青山オフィスM リノベーション事例</p>
+              <p class="contents__text f-noto-M">以前にオフィスの部分改修をさせていただいたお客様からの工事依頼です。前回はワークスペース部分の改修だったのですが今回はそのときには手をつけなかったもう一室、流し台のあるスペースの部分リニューアル工事。ベンチ収納は<a href="#">こちら</a><a href="#" class="is-external">Houzz</a>でも紹介しています。主な目的は流し台周りの改修工事でしたが、加えてカーペット仕上げだった床をOSB合板を白のオイルステインで明るく爽やかなしつらえとしつつ収納がない部屋だった事もありベンチ収納を造作。<br><br>主な目的は流し台周りの改修工事でしたが、加えてカーペット仕上げだった床をOSB合板を白のオイルステインで明るく爽やかなしつらえとしつつ収納がない部屋だった事もありベンチ収納を造作。</p>
+              <div class="contents__img-full">
+                <div class="contents__img"><img src="/uploads/dummy/page/full.jpg"></div>
+                <p class="contents__cap f-noto-M">コンロはありませんが間口を広く取って電子レンジやティファール等を置けるスペースを想定。シンクの左右は引き出しとしています。</p>
               </div>
-              <p class="articleContents__head f-noto-B">ディテール</p>
-              <p class="articleContents__text f-noto-M">以前にオフィスの部分改修をさせていただいたお客様からの工事依頼です。前回はワークスペース部分の改修だったのですが今回はそのときには手をつけなかったもう一室、流し台のあるスペースの部分リニューアル工事。ベンチ収納は<a href="#">こちら</a><a href="#" class="is-external">Houzz</a>でも紹介しています。主な目的は流し台周りの改修工事でしたが、加えてカーペット仕上げだった床をOSB合板を白のオイルステインで明るく爽やかなしつらえとしつつ収納がない部屋だった事もありベンチ収納を造作。</p>
-              <p class="articleContents__text f-noto-M">主な目的は流し台周りの改修工事でしたが、加えてカーペット仕上げだった床をOSB合板を白のオイルステインで明るく爽やかなしつらえとしつつ収納がない部屋だった事もありベンチ収納を造作。</p>
-              <div class="articleContents__column articleContents__column-text">
-                <div class="articleContents__column-item articleContents__column-item--1">
-                  <div class="img"><img src="/uploads/dummy/page/culumn-text.jpg"></div>
+              <p class="contents__head f-noto-B">ディテール</p>
+              <p class="contents__text f-noto-M">以前にオフィスの部分改修をさせていただいたお客様からの工事依頼です。前回はワークスペース部分の改修だったのですが今回はそのときには手をつけなかったもう一室、流し台のあるスペースの部分リニューアル工事。ベンチ収納は<a href="#">こちら</a><a href="#" class="is-external">Houzz</a>でも紹介しています。主な目的は流し台周りの改修工事でしたが、加えてカーペット仕上げだった床をOSB合板を白のオイルステインで明るく爽やかなしつらえとしつつ収納がない部屋だった事もありベンチ収納を造作。<br><br>主な目的は流し台周りの改修工事でしたが、加えてカーペット仕上げだった床をOSB合板を白のオイルステインで明るく爽やかなしつらえとしつつ収納がない部屋だった事もありベンチ収納を造作。</p>
+              <div class="contents__column contents__column-text">
+                <div class="contents__column-item contents__column-item--1">
+                  <div class="contents__img"><img src="/uploads/dummy/page/culumn-text.jpg"></div>
                 </div>
-                <div class="articleContents__column-item articleContents__column-item--2">
+                <div class="contents__column-item contents__column-item--2">
                   <p class="f-noto-M">OSB合板を研磨＋白染色は品の良いラフ感で個人的に最近お気に入りの仕上げ。</p>
                 </div>
               </div>
-              <p class="articleContents__text f-noto-M">以前にオフィスの部分改修をさせていただいたお客様からの工事依頼です。前回はワークスペース部分の改修だったのですが今回はそのときには手をつけなかったもう一室、流し台のあるスペースの部分リニューアル工事。ベンチ収納は<a href="#">こちら</a><a href="#" class="is-external">Houzz</a>でも紹介しています。主な目的は流し台周りの改修工事でしたが、加えてカーペット仕上げだった床をOSB合板を白のオイルステインで明るく爽やかなしつらえとしつつ収納がない部屋だった事もありベンチ収納を造作。</p>
-              <p class="articleContents__text f-noto-M">主な目的は流し台周りの改修工事でしたが、加えてカーペット仕上げだった床をOSB合板を白のオイルステインで明るく爽やかなしつらえとしつつ収納がない部屋だった事もありベンチ収納を造作。</p>
-              <div class="articleContents__column articleContents__column-text">
-                <div class="articleContents__column-item articleContents__column-item--1">
-                  <div class="img"><img src="/uploads/dummy/page/culumn-text.jpg"></div>
+              <p class="contents__text f-noto-M">以前にオフィスの部分改修をさせていただいたお客様からの工事依頼です。前回はワークスペース部分の改修だったのですが今回はそのときには手をつけなかったもう一室、流し台のあるスペースの部分リニューアル工事。ベンチ収納は<a href="#">こちら</a><a href="#" class="is-external">Houzz</a>でも紹介しています。主な目的は流し台周りの改修工事でしたが、加えてカーペット仕上げだった床をOSB合板を白のオイルステインで明るく爽やかなしつらえとしつつ収納がない部屋だった事もありベンチ収納を造作。<br><br>主な目的は流し台周りの改修工事でしたが、加えてカーペット仕上げだった床をOSB合板を白のオイルステインで明るく爽やかなしつらえとしつつ収納がない部屋だった事もありベンチ収納を造作。</p>
+              <div class="contents__column contents__column">
+                <div class="contents__column-item contents__column-item--1">
+                  <div class="contents__img"><img src="/uploads/dummy/page/column1.jpg"></div>
+                  <p class="contents__cap f-noto-M">コンロはありませんが間口を広く取って電子レンジやティファール等を置けるスペースを想定。シンクの左右は引き出しとしています。</p>
                 </div>
-                <div class="articleContents__column-item articleContents__column-item--2">
-                  <p class="f-noto-M">OSB合板を研磨＋白染色は品の良いラフ感で個人的に最近お気に入りの仕上げ。</p>
+                <div class="contents__column-item contents__column-item--2">
+                  <div class="contents__img"><img src="/uploads/dummy/page/column2.jpg"></div>
+                  <p class="contents__cap f-noto-M">コンロはありませんが間口を広く取って電子レンジやティファール等を置けるスペースを想定。シンクの左右は引き出しとしています。</p>
                 </div>
               </div>
-              <table class="table"> 
-                <tr>
-                  <td class="table_head">TITLE</td>
-                  <td class="table_text">東京都中央区-M37</td>
-                </tr>
-                <tr>
-                  <td class="table_head">所在地</td>
-                  <td class="table_text">東京都中央区</td>
-                </tr>
-                <tr>
-                  <td class="table_head">築年・面積</td>
-                  <td class="table_text">築15年・マンション専用部分37.1平米</td>
-                </tr>
-                <tr>
-                  <td class="table_head">工事概要</td>
-                  <td class="table_text">フルスケルトンリノベーション</td>
-                </tr>
-                <tr>
-                  <td class="table_head">主な仕様</td>
-                  <td class="table_text">天井：躯体スラブ表し<br>壁：OSB合板、AEP白塗装<br>床：クリ無垢フローリングOS塗装<br>他：スチールフレームキッチン、SPF造作クロゼット</td>
-                </tr>
-                <tr>
-                  <td class="table_head">工事期間</td>
-                  <td class="table_text">設計1.5ヶ月＋工事1.5ヶ月間   </td>
-                </tr>
-              </table>
-              <div class="narrow_img"> 
-                <div class="img"><img src="../../assets/images/project/narrow_img.jpg">
-                  <div class="btn-wrap">
-                    <button class="btn js-modalOpen" data-id="imgModal" data-post="">
-                      <div class="inner"></div>
+              <div class="contents__column contents__column">
+                <div class="contents__column-item contents__column-item--1">
+                  <div class="contents__img"><img src="/uploads/dummy/page/column-narrow1.jpg"></div>
+                </div>
+                <div class="contents__column-item contents__column-item--2">
+                  <div class="contents__img"><img src="/uploads/dummy/page/column-narrow2.jpg"></div>
+                </div>
+              </div>
+              <div class="contents__column contents__column-three">
+                <div class="contents__column-item contents__column-item--1">
+                  <div class="contents__img"><img src="/uploads/dummy/page/column-three1.jpg"></div>
+                  <p class="contents__cap f-noto-M">コンロはありませんが間口を広く取って電子レンジやティファール等を置けるスペースを想定。シンクの左右は引き出しとしています。</p>
+                </div>
+                <div class="contents__column-item contents__column-item--2">
+                  <div class="contents__img"><img src="/uploads/dummy/page/column-three2.jpg"></div>
+                  <p class="contents__cap f-noto-M">コンロはありませんが間口を広く取って電子レンジやティファール等を置けるスペースを想定。シンクの左右は引き出しとしています。</p>
+                </div>
+                <div class="contents__column-item contents__column-item--3">
+                  <div class="contents__img"><img src="/uploads/dummy/page/column-three3.jpg"></div>
+                  <p class="contents__cap f-noto-M">コンロはありませんが間口を広く取って電子レンジやティファール等を置けるスペースを想定。シンクの左右は引き出しとしています。</p>
+                </div>
+              </div>
+              <p class="contents__text f-noto-M">以前にオフィスの部分改修をさせていただいたお客様からの工事依頼です。前回はワークスペース部分の改修だったのですが今回はそのときには手をつけなかったもう一室、流し台のあるスペースの部分リニューアル工事。ベンチ収納は<a href="#">こちら</a><a href="#" class="is-external">Houzz</a>でも紹介しています。主な目的は流し台周りの改修工事でしたが、加えてカーペット仕上げだった床をOSB合板を白のオイルステインで明るく爽やかなしつらえとしつつ収納がない部屋だった事もありベンチ収納を造作。<br><br>主な目的は流し台周りの改修工事でしたが、加えてカーペット仕上げだった床をOSB合板を白のオイルステインで明るく爽やかなしつらえとしつつ収納がない部屋だった事もありベンチ収納を造作。</p>
+              <p class="contents__head f-noto-B">まとめ</p>
+              <div class="contents__beforeAfter"> 
+                <p class="contents__head beforeAfter__head f-noto-B">before</p>
+                <div class="contents__img-full beforeAfter__img">
+                  <div class="contents__img"><img src="/uploads/dummy/page/before_after1.jpg"></div>
+                </div>
+                <p class="contents__head beforeAfter__head f-noto-B">after</p>
+                <div class="contents__img-full beforeAfter__img">
+                  <div class="contents__img"><img src="/uploads/dummy/page/before_after2.jpg"></div>
+                </div>
+                <p class="contents__text beforeAfter__text f-noto-M">以前にオフィスの部分改修をさせていただいたお客様からの工事依頼です。前回はワークスペース部分の改修だったのですが今回はそのときには手をつけなかったもう一室、流し台のあるスペースの部分リニューアル工事。ベンチ収納は<a href="#">こちら</a><a href="#" class="is-external">Houzz</a>でも紹介しています。主な目的は流し台周りの改修工事でしたが、加えてカーペット仕上げだった床をOSB合板を白のオイルステインで明るく爽やかなしつらえとしつつ収納がない部屋だった事もありベンチ収納を造作。<br><br>主な目的は流し台周りの改修工事でしたが、加えてカーペット仕上げだった床をOSB合板を白のオイルステインで明るく爽やかなしつらえとしつつ収納がない部屋だった事もありベンチ収納を造作。</p>
+              </div>
+              <p class="contents__head f-noto-B">その他の写真はこちら</p>
+              <div class="contents__gallery">
+                <div class="contents__gallery-img contents__img"><img src="/uploads/dummy/page/gallery1.jpg">
+                  <button class="btn">
+                    <div class="btn__open btn__open-gallery"></div>
+                  </button>
+                </div>
+                <div class="contents__gallery-img contents__img"><img src="/uploads/dummy/page/gallery2.jpg">
+                  <button class="btn">
+                    <div class="btn__open btn__open-gallery"></div>
+                  </button>
+                </div>
+                <div class="contents__gallery-img contents__img"><img src="/uploads/dummy/page/gallery3.jpg">
+                  <button class="btn">
+                    <div class="btn__open btn__open-gallery"></div>
+                  </button>
+                </div>
+                <div class="contents__gallery-img contents__img"><img src="/uploads/dummy/page/gallery4.jpg">
+                  <button class="btn">
+                    <div class="btn__open btn__open-gallery"></div>
+                  </button>
+                </div>
+                <div class="contents__gallery-img contents__img"><img src="/uploads/dummy/page/gallery5.jpg">
+                  <button class="btn">
+                    <div class="btn__open btn__open-gallery"></div>
+                  </button>
+                </div>
+                <div class="contents__gallery-img contents__img"><img src="/uploads/dummy/page/gallery6.jpg">
+                  <button class="btn">
+                    <div class="btn__open btn__open-gallery"></div>
+                  </button>
+                </div>
+                <div class="contents__gallery-img contents__img"><img src="/uploads/dummy/page/gallery7.jpg">
+                  <button class="btn">
+                    <div class="btn__open btn__open-gallery"></div>
+                  </button>
+                </div>
+                <div class="contents__gallery-img contents__img"><img src="/uploads/dummy/page/gallery8.jpg">
+                  <button class="btn">
+                    <div class="btn__open btn__open-gallery"></div>
+                  </button>
+                </div>
+              </div>
+              <p class="contents__text f-noto-M">玄関のモルタル土間に施したステンシルパターンは最後まで仕上げ材を悩んだ力作。設計者自らステンシル作業を手がけました。<br><br>ステンシル作業についてはこちらの記事でも紹介しています。</p><a class="contents__embed" href="#">
+                <div class="c-thumbnail">
+                  <div class="c-thumbnail__main_img"><img src="/uploads/dummy/page/thumb.jpg"/></div>
+                  <div class="c-thumbnail__text-wrapper">
+                    <div class="c-thumbnail__title f-inter-B">
+                      <p>Remake the signboard of the memory</p>
+                    </div>
+                    <div class="c-thumbnail__summary f-noto-M">
+                      <p>オフィスの工事依頼です。今回は、流し台のあるスペースの部分リニューアル工事。40w</p>
+                    </div>
+                    <div class="c-thumbnail__viewmore">
+                      <div class="c-thumbnail__viewmore-icon"><img src="/themes/field-labo-2026/assets/images/common/icon-link.svg" alt="viewmore"/></div>
+                      <p class="c-thumbnail__viewmore-text f-inter-B">view more</p>
+                    </div>
+                  </div>
+                </div></a>
+              <p class="contents__head f-noto-B">DATA</p>
+              <div class="contents__data">
+                <div class="contents__data-infos">
+                  <table class="table"> 
+                    <tr>
+                      <td class="table__head f-noto-B">物件名</td>
+                      <td class="table__text f-noto-M">machida-T189</td>
+                    </tr>
+                    <tr>
+                      <td class="table__head f-noto-B">所在地</td>
+                      <td class="table__text f-noto-M">神奈川県川崎市</td>
+                    </tr>
+                    <tr>
+                      <td class="table__head f-noto-B">築年/面積</td>
+                      <td class="table__text f-noto-M">築40年以上/S造2階建戸建住宅<br>2階部分 68.9平米<br>1階部分 104.0平米</td>
+                    </tr>
+                    <tr>
+                      <td class="table__head f-noto-B">主な使用</td>
+                      <td class="table__text f-noto-M">天井：石膏ボード＋クロス<br>壁 ：石膏ボード＋クロス<br>床 ：ナラ無垢フローリングUV塗装品<br>他 ：IKEA改特注キッチン＋モルタル天板<br>ユニットバス、IKEA改洗面台</td>
+                    </tr>
+                    <tr>
+                      <td class="table__head f-noto-B">工事期間</td>
+                      <td class="table__text f-noto-M">設計2ヶ月＋工事3.5ヶ月間</td>
+                    </tr>
+                    <tr>
+                      <td class="table__head f-noto-B">工事竣工</td>
+                      <td class="table__text f-noto-M">2021年10月</td>
+                    </tr>
+                  </table>
+                  <div class="detail f-noto-M">
+                    <p class="detail__shooting">After Renovation 撮影 2022年</p>
+                    <div class="detail__links">
+                      <p class="detail__links-head">この事例のその他の写真はこちら</p><a class="detail__link" href="#">Photograph [machida-t173]</a><a class="detail__link" href="#">Houzz</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="contents__data-img">
+                  <div class="contents__img"><img src="/uploads/dummy/page/data.jpg">
+                    <button class="btn">
+                      <div class="btn__open btn__open-data"></div>
                     </button>
-                  </div>
-                </div>
-                <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-              </div>
-              <div class="links">
-                <div class="link">
-                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-                </div>
-                <div class="link">
-                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-                </div>
-                <div class="link">
-                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-                </div>
-                <div class="link">
-                  <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-                </div>
-              </div>
-              <div class="column"> 
-                <div class="column_img--1 column_img">
-                  <div class="img"><img src="../../assets/images/project/column1_img.jpg">
-                    <div class="btn-wrap">
-                      <button class="btn js-modalOpen" data-id="imgModal" data-post="">
-                        <div class="inner"></div>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-                </div>
-                <div class="column_img--2 column_img"> 
-                  <div class="img"><img src="../../assets/images/project/column2_img.jpg">
-                    <div class="btn-wrap">
-                      <button class="btn js-modalOpen" data-id="imgModal" data-post="">
-                        <div class="inner"></div>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-                </div>
-              </div>
-              <div class="before-after"> 
-                <p class="before-after__head">(  Before & After  )</p>
-                <div class="before-after__wrapper">
-                  <div class="before">
-                    <p class="before-after__text">Before</p>
-                    <div class="article__contents"> 
-                      <div class="full_img img">
-                        <div class="img"><img src="../../assets/images/project/full_img.jpg">
-                          <div class="btn-wrap">
-                            <button class="btn js-modalOpen" data-id="imgModal" data-post="">
-                              <div class="inner"></div>
-                            </button>
-                          </div>
-                        </div>
-                        <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-                      </div>
-                      <p class="head">水廻りの改修内容について</p>
-                      <p class="text">部屋全体の仕上げをクロスから塗装仕上げに変更＋床は無垢フローリング張りへと全体を改修していますが、特に力を入れたのはこの洗面トイレ部分。<br>ダークグリーンの塗装、ダークブラウンの木目、白のタイル。海外製のミラーと照明器具を取り合わせたシックな水廻りへと大改修。<br>個人的には住宅でもオフィスでも、水廻りのしつらえの豊かさが人の心理に与える影響はとても大きいと感じるので大事にしています。<br>オフィスの水廻りが素敵だと社員さんたちも気分が良いですよね。<br>賃貸なのでもちろん改修前に管理会社を通じてオーナー様に内容を伝え、退去時の復旧をしなくて良い内容としています。</p>
-                      <table class="table"> 
-                        <tr>
-                          <td class="table_head">TITLE</td>
-                          <td class="table_text">東京都中央区-M37</td>
-                        </tr>
-                        <tr>
-                          <td class="table_head">所在地</td>
-                          <td class="table_text">東京都中央区</td>
-                        </tr>
-                        <tr>
-                          <td class="table_head">築年・面積</td>
-                          <td class="table_text">築15年・マンション専用部分37.1平米</td>
-                        </tr>
-                        <tr>
-                          <td class="table_head">工事概要</td>
-                          <td class="table_text">フルスケルトンリノベーション</td>
-                        </tr>
-                        <tr>
-                          <td class="table_head">主な仕様</td>
-                          <td class="table_text">天井：躯体スラブ表し<br>壁：OSB合板、AEP白塗装<br>床：クリ無垢フローリングOS塗装<br>他：スチールフレームキッチン、SPF造作クロゼット</td>
-                        </tr>
-                        <tr>
-                          <td class="table_head">工事期間</td>
-                          <td class="table_text">設計1.5ヶ月＋工事1.5ヶ月間   </td>
-                        </tr>
-                      </table>
-                      <div class="narrow_img"> 
-                        <div class="img"><img src="../../assets/images/project/narrow_img.jpg">
-                          <div class="btn-wrap">
-                            <button class="btn js-modalOpen" data-id="imgModal" data-post="">
-                              <div class="inner"></div>
-                            </button>
-                          </div>
-                        </div>
-                        <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-                      </div>
-                      <div class="links">
-                        <div class="link">
-                          <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-                        </div>
-                        <div class="link">
-                          <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-                        </div>
-                        <div class="link">
-                          <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-                        </div>
-                        <div class="link">
-                          <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-                        </div>
-                      </div>
-                      <div class="column"> 
-                        <div class="column_img--1 column_img">
-                          <div class="img"><img src="../../assets/images/project/column1_img.jpg">
-                            <div class="btn-wrap">
-                              <button class="btn js-modalOpen" data-id="imgModal" data-post="">
-                                <div class="inner"></div>
-                              </button>
-                            </div>
-                          </div>
-                          <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-                        </div>
-                        <div class="column_img--2 column_img"> 
-                          <div class="img"><img src="../../assets/images/project/column2_img.jpg">
-                            <div class="btn-wrap">
-                              <button class="btn js-modalOpen" data-id="imgModal" data-post="">
-                                <div class="inner"></div>
-                              </button>
-                            </div>
-                          </div>
-                          <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="after">
-                    <p class="before-after__text">After</p>
-                    <div class="article__contents"> 
-                      <div class="full_img img">
-                        <div class="img"><img src="../../assets/images/project/full_img.jpg">
-                          <div class="btn-wrap">
-                            <button class="btn js-modalOpen" data-id="imgModal" data-post="">
-                              <div class="inner"></div>
-                            </button>
-                          </div>
-                        </div>
-                        <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-                      </div>
-                      <p class="head">水廻りの改修内容について</p>
-                      <p class="text">部屋全体の仕上げをクロスから塗装仕上げに変更＋床は無垢フローリング張りへと全体を改修していますが、特に力を入れたのはこの洗面トイレ部分。<br>ダークグリーンの塗装、ダークブラウンの木目、白のタイル。海外製のミラーと照明器具を取り合わせたシックな水廻りへと大改修。<br>個人的には住宅でもオフィスでも、水廻りのしつらえの豊かさが人の心理に与える影響はとても大きいと感じるので大事にしています。<br>オフィスの水廻りが素敵だと社員さんたちも気分が良いですよね。<br>賃貸なのでもちろん改修前に管理会社を通じてオーナー様に内容を伝え、退去時の復旧をしなくて良い内容としています。</p>
-                      <table class="table"> 
-                        <tr>
-                          <td class="table_head">TITLE</td>
-                          <td class="table_text">東京都中央区-M37</td>
-                        </tr>
-                        <tr>
-                          <td class="table_head">所在地</td>
-                          <td class="table_text">東京都中央区</td>
-                        </tr>
-                        <tr>
-                          <td class="table_head">築年・面積</td>
-                          <td class="table_text">築15年・マンション専用部分37.1平米</td>
-                        </tr>
-                        <tr>
-                          <td class="table_head">工事概要</td>
-                          <td class="table_text">フルスケルトンリノベーション</td>
-                        </tr>
-                        <tr>
-                          <td class="table_head">主な仕様</td>
-                          <td class="table_text">天井：躯体スラブ表し<br>壁：OSB合板、AEP白塗装<br>床：クリ無垢フローリングOS塗装<br>他：スチールフレームキッチン、SPF造作クロゼット</td>
-                        </tr>
-                        <tr>
-                          <td class="table_head">工事期間</td>
-                          <td class="table_text">設計1.5ヶ月＋工事1.5ヶ月間   </td>
-                        </tr>
-                      </table>
-                      <div class="narrow_img"> 
-                        <div class="img"><img src="../../assets/images/project/narrow_img.jpg">
-                          <div class="btn-wrap">
-                            <button class="btn js-modalOpen" data-id="imgModal" data-post="">
-                              <div class="inner"></div>
-                            </button>
-                          </div>
-                        </div>
-                        <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-                      </div>
-                      <div class="links">
-                        <div class="link">
-                          <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-                        </div>
-                        <div class="link">
-                          <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-                        </div>
-                        <div class="link">
-                          <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-                        </div>
-                        <div class="link">
-                          <p class="link_name">FIELD LABO :&nbsp;</p><a class="link_url" href="http://field-labo.com/">http://field-labo.com/</a>
-                        </div>
-                      </div>
-                      <div class="column"> 
-                        <div class="column_img--1 column_img">
-                          <div class="img"><img src="../../assets/images/project/column1_img.jpg">
-                            <div class="btn-wrap">
-                              <button class="btn js-modalOpen" data-id="imgModal" data-post="">
-                                <div class="inner"></div>
-                              </button>
-                            </div>
-                          </div>
-                          <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-                        </div>
-                        <div class="column_img--2 column_img"> 
-                          <div class="img"><img src="../../assets/images/project/column2_img.jpg">
-                            <div class="btn-wrap">
-                              <button class="btn js-modalOpen" data-id="imgModal" data-post="">
-                                <div class="inner"></div>
-                              </button>
-                            </div>
-                          </div>
-                          <div class="cap">スチールアングルを切っただけの引戸引手は定番アイテム</div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
             </section>
           </div>
         </div>
+        <div class="c-toTop c-toTop--fixed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.595 33.595">
+<rect class="cls-2" width="33.595" height="33.595"/>
+<polygon class="cls-1" points="21.774 18.725 16.797 13.749 11.821 18.724 10.835 17.738 16.797 11.775 22.76 17.737 21.774 18.725"/>
+<rect class="cls-1" x="16.099" y="12.762" width="1.396" height="10.938"/>
+<rect class="cls-1" x="10.987" y="9.196" width="11.62" height="1.396"/>
+</svg>
+        </div>
+      </div><a class="bottom" href="../">
+        <div class="bottom__icon"> </div>
+        <div class="bottom__text f-inter-B">Back to index</div></a>
+      <div class="galleryModal" id="galleryModal">
+        <div class="galleryModal__bg galleryModal__close"></div>
+        <div class="galleryModal__container">
+          <div class="galleryModal__img"><img src="" alt=""></div>
+          <div class="c-ctrl__prev swiper-button-prev galleryModal__nav--prev"><img src="/themes/field-labo-2026/assets/images/common/icon-prev.svg" alt="prev"/></div>
+          <div class="c-ctrl__next swiper-button-next galleryModal__nav--next"><img src="/themes/field-labo-2026/assets/images/common/icon-next.svg" alt="next"/></div>
+        </div>
+        <button class="c-modalCloseIcon__btn btn-close galleryModal__btn galleryModal__close">
+          <div class="c-modalCloseIcon__btn-inner">
+            <div class="c-modalCloseIcon__btn-icon"></div>
+          </div>
+        </button>
+      </div>
+      <div class="dataModal" id="dataModal">
+        <div class="dataModal__bg dataModal__close"></div>
+        <div class="dataModal__container">
+          <div class="dataModal__img"><img src="" alt=""></div>
+        </div>
+        <button class="c-modalCloseIcon__btn btn-close dataModal__btn dataModal__close">
+          <div class="c-modalCloseIcon__btn-inner">
+            <div class="c-modalCloseIcon__btn-icon"></div>
+          </div>
+        </button>
       </div>
       <footer class="l-footer" id="l-footer">
         <ul class="c-sns l-footer__sns type-footer">

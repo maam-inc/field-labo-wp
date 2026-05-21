@@ -11,8 +11,8 @@ main.l-content
             br.sp
             |よくある質問形式にまとめてみました。
         .faq__items
-          - const faqList = [0, 1, 2, 3]
-          -for(let i = 0; i < faqList.length; i++)
+          //- - const faqList = [0, 1, 2, 3]
+          -for(let i = 0; i < 12; i++)
             .faq__item
               .question
                 button.question__button.btn-open
@@ -21,6 +21,7 @@ main.l-content
         .faq__return
           a.faq__return-link(href="/about")
             .icon
-            .text.f-inter-B about & contact
-
+            .text.f-inter-B ABOUT & CONTACT
+            
+  +c-toTop(true)
 +l-modal('faq')

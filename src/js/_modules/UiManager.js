@@ -1,21 +1,26 @@
 export default class UiManager {
 
   constructor(){
-    this.mm = gsap.matchMedia();
-    this.mq_sp = `(max-width: 767px)`;
-    this.mq_pc = `(min-width: 768px)`;
-    this.cmd = { isPc: this.mq_pc, isSp: this.mq_sp };
-
-    this.modal = document.getElementById('l-modal');
+    this.mq = window.matchMedia('(min-width: 768px)');
     this.header = document.querySelector('.l-header');
+    this.headerFixed = document.querySelector('.l-headerFixed');
     this.headerH = this.header.offsetHeight;
-    // this.modalOpenBg = document.querySelector('.modalOpenBg');
     this.flag = true;
   }
 
   init(){
     this.pageTop();
     this.headerUi();
+  }
+
+  headerUi() {
+    if (!this.headerFixed) return;
+    ScrollTrigger.create({
+      trigger: '.topContents',
+      start: "top top",
+      onEnter: () => this.headerFixed.classList.add('is-show'),
+      onLeaveBack: () => this.headerFixed.classList.remove('is-show'),
+    })
   }
 
   scrollToFunc(id){
@@ -50,50 +55,5 @@ export default class UiManager {
         gsap.to( window, { duration: .7, ease: 'power3.out',scrollTo: { y: 0 }});
       });
     })
-  }
-
-  headerUi() {
-    this.mm.add( this.cmd,
-      (context) => {
-        const { isPc, isSp } = context.conditions;
-        // logoの色を変える
-        const logo = '.header__logo svg .cls-1';
-        const menuBtn = '.menu .menu__btn-open';
-        const playBtn = '.header .header__play-btn .icon-wrapper';
-        const trigger = document.querySelector('.main__inner'); 
-        gsap.set(logo, { fill: "#fff" });
-        gsap.set([menuBtn, playBtn], { border: "none" });
-        gsap.to(logo, {
-          scrollTrigger: {
-            trigger: trigger,
-            start: () => `bottom ${this.headerH}px`,
-            endTrigger: ".footer",
-            end: () => `top ${this.headerH}px`,
-            toggleActions: "play reverse play reverse",
-            invalidateOnRefresh: true,
-          },
-          fill: "#000",
-          duration: 0.01,
-          ease: "none"
-        });
-
-        if(isPc){
-          gsap.to([menuBtn, playBtn], {
-            scrollTrigger: {
-              trigger: trigger,
-              start: () => `bottom ${this.headerH}px`,
-              endTrigger: ".footer",
-              end: () => `top ${this.headerH}px`,
-              toggleActions: "play reverse play reverse",
-              invalidateOnRefresh: true,
-            },
-            border: "#D8D8D8 solid 1px",
-            duration: 0.01,
-            ease: "none"
-          });          
-        }
-
-      }
-    );
   }
 }

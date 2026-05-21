@@ -30,8 +30,8 @@ mixin c-sns(className, footer)
     li: a(href="#"): img(src=`${IMG_DIR}common/icon-home.svg` alt="home")
 
 //- 上に戻るボタン
-mixin c-toTop 
-  .c-toTop
+mixin c-toTop(fixed)
+  .c-toTop(class = fixed ? 'c-toTop--fixed' : '')
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.595 33.595">
       <rect class="cls-2" width="33.595" height="33.595"/>
       <polygon class="cls-1" points="21.774 18.725 16.797 13.749 11.821 18.724 10.835 17.738 16.797 11.775 22.76 17.737 21.774 18.725"/>
@@ -45,11 +45,17 @@ mixin c-ctrl-btn(className)
   .c-ctrl__next.swiper-button-next(class=className ? `${className}--next` : ''): img(src=`${IMG_DIR}common/icon-next.svg` alt="next")
 
 //- モーダル開くアイコン
-mixin l-modalOpenIcon(dark)
+mixin c-modalOpenIcon(dark)
   -if(dark === true) 
-    .l-modalOpenIcon(class=`l-modalOpenIcon--dark`)
+    .c-modalOpenIcon(class=`c-modalOpenIcon--dark`)
   -else
-    .l-modalOpenIcon
+    .c-modalOpenIcon
+
+//- モーダル閉じるアイコン
+mixin c-modalCloseIcon(className)
+  button.c-modalCloseIcon__btn.btn-close(class=`${className}`)
+    .c-modalCloseIcon__btn-inner
+      .c-modalCloseIcon__btn-icon
 
 //- サムネイル
 mixin c-thumbnail(className, type, i, idx)
@@ -58,28 +64,19 @@ mixin c-thumbnail(className, type, i, idx)
     -if(type=='top')
       .c-thumbnail__main_img: img(src=`${DUMMY_DIR}top/gallery${idx+1}.jpg`)
       .c-thumbnail__text-wrapper
-        -if(i.ttlJp === true)
-          .c-thumbnail__title.f-noto-B: p!=i.title
-        -else
-          .c-thumbnail__title.f-inter-B: p!=i.title
-        .c-thumbnail__open: +l-modalOpenIcon(false)
+        .c-thumbnail__title.f-inter-B: p!=i.title
+        .c-thumbnail__open: +c-modalOpenIcon(false)
     //- 一覧ページ　
     -else if(type==='projects' || type==='blog')
       .c-thumbnail__main_img: img(src=`${DUMMY_DIR}${type}/list${idx+1}.jpg`)
       .c-thumbnail__text-wrapper
-        -if(i.ttlJp === true)
-          .c-thumbnail__title.f-noto-B: p!=i.title
-        -else
-          .c-thumbnail__title.f-inter-B: p!=i.title
+        .c-thumbnail__title.f-inter-B: p!=i.title
         .c-thumbnail__summary.f-noto-M: p!=i.summary
     //- 記事埋め込みパーツ
     -else if(type=='page')
-      .c-thumbnail__main_img: img(src=`${IMG_DIR}note/main_img_${i+1}.jpg`)
+      .c-thumbnail__main_img: img(src=`${DUMMY_DIR}${type}/thumb.jpg`)
       .c-thumbnail__text-wrapper
-        -if(i.ttlJp === true)
-          .c-thumbnail__title.f-noto-B: p!=i.title
-        -else
-          .c-thumbnail__title.f-inter-B: p!=i.title
+        .c-thumbnail__title.f-inter-B: p!=i.title
         .c-thumbnail__summary.f-noto-M: p!=i.summary
         .c-thumbnail__viewmore
           .c-thumbnail__viewmore-icon: img(src=`${IMG_DIR}common/icon-link.svg` alt="viewmore")
@@ -87,7 +84,7 @@ mixin c-thumbnail(className, type, i, idx)
 
 //- LOAD MORE 
 mixin c-loadMore(className) 
-  btn.c-loadMore(class=className ? `${className}` : '')
+  button.c-loadMore(class=className ? `${className}` : '')
     p.f-inter-B load more
 
 //- ーーーーーーーーーーーーーーーーーーー
@@ -96,58 +93,49 @@ mixin c-loadMore(className)
 
 //- モーダルの大枠
 mixin l-modal(type, className)
-  .l-modal#l-modal
+  .l-modal
     .l-modal__bg.btn-close
     .l-modal__container
       .l-modal__wrapper
-        .l-modal__contents.is-over
-          .l-modal__inner-scrlWrap
-            .l-modal__inner
-              -if(type === 'top')
-                +topModalContent
-              -else if(type === 'faq')
-                +faqModalContent
+        .l-modal__inner
+          -if(type === 'top')
+            +topModalContent
+          -else if(type === 'faq')
+            +faqModalContent
 
-              button.l-modal__bottom.btn-close
-                .l-modal__bottom-icon
-                p.l-modal__bottom-text.f-inter-B close
+          button.l-modal__bottom.btn-close
+            .l-modal__bottom-icon
+            p.l-modal__bottom-text.f-inter-B close
 
-          button.l-modal__btn.btn-close
-            .l-modal__btn-inner
-              .l-modal__btn-icon
+      //- button.l-modal__btn.btn-close
+      //-   .l-modal__btn-inner
+      //-     .l-modal__btn-icon
+      +c-modalCloseIcon('l-modal__btn')
 
 //- 中身ーTOP
 mixin topModalContent
   .topContents__modal
-    //- .img-box.is-single ←画像一枚の場合
-    .img-box.is-multiple
-      //- w100写真パーツ
-      .full_img.img
+    .topContents__modal-imgs
+      .topContents__modal-img
         img(src=`${DUMMY_DIR}top/modal-full.jpg`)
-
-      //- w狭め写真パーツ
-      .narrow_img.img
+      .topContents__modal-img
         img(src=`${DUMMY_DIR}top/modal-narrow.jpg`)
 
     //- テキスト
     p.text.f-noto-M!=modal.text
-
-    .flex_box
-      .related_articles.flex_box-item
-        p.related_articles-head.flex_box-head.f-inter-B related article
+    .topContents__flex
+      .related_articles.topContents__flex-item
+        p.related_articles-head.topContents__flex-head.f-inter-B related article
         ul.related_articles-wrapper
           -for(let i = 0; i < modal.article.length; i++)
             li.related_article
               a.related_article-inner(href="#")
                 .related_article-icon: img(src=`${IMG_DIR}common/icon-arrow-box.svg`)
-                -if(modal.article[i].ttlJp === true)
-                  .related_article-text.f-noto-B: p!=modal.article[i].title
-                -else
-                  .related_article-text.f-inter-B: p!=modal.article[i].title
+                .related_article-text.f-inter-B: p!=modal.article[i].title
                 p.related_article-genre.f-inter-M (#{`${modal.article[i].genre}`})
 
-      .tag.f-inter-B.flex_box-item
-        p.tag-head.flex_box-head tag
+      .tag.f-inter-B.topContents__flex-item
+        p.tag-head.topContents__flex-head tag
         ul.tag-wrapper
           -for(let i = 0; i < modal.tag.length; i++)
             li.tag-item.f-inter-B
@@ -155,5 +143,10 @@ mixin topModalContent
 
 //- 中身ーFAQ
 mixin faqModalContent
-  .faq__modal
-    
+  .faqModal#faqModal
+    p.faqModal__head.f-noto-M!=modal.q
+    .faqModal__contents.f-noto-M
+      p.faqModal__text!=modal.text[0]
+      -for(let i = 0; i < 3; i++)
+        .faqModal__img: img(src=`${DUMMY_DIR}faq/faq${i+1}.jpg`)
+      p.faqModal__text!=modal.text[1]

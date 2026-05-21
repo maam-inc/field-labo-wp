@@ -1,19 +1,28 @@
 //- header.l-header#l-header.is-show
-header.l-header#l-header
+header.l-header
   .l-header__inner
-    a.l-header__logo(href="#"): h1: +c-logo('')
+    a.l-header__logo(href="#"): h1(aria-label="FIELD LABO"): span: +c-logo('')
     nav.l-header__nav.f-inter-B
-      a.l-header__nav-list.is-current(href="./blog") BLOG & NOTE
+      a.l-header__nav-list(href="./blog") BLOG & NOTE
       a.l-header__nav-list(href="./projects") PROJECTS
       a.l-header__nav-list(href="./about-contact") ABOUT & CONTACT
 
-    button.l-header__menu
-      .l-header__menu-inner
+//- 追従用ヘッダー
+header.l-headerFixed
+  .l-headerFixed__inner
+    a.l-headerFixed__logo(href="#" aria-label="FIELD LABO"): span: +c-logo('')
+    nav.l-headerFixed__nav.f-inter-B
+      a.l-headerFixed__nav-list(href="./blog") BLOG & NOTE
+      a.l-headerFixed__nav-list(href="./projects") PROJECTS
+      a.l-headerFixed__nav-list(href="./about-contact") ABOUT & CONTACT
+
+    button.l-headerFixed__menu
+      .l-headerFixed__menu-inner
         .line
         .line
         .line
 
-//- HBGメニュー　
+//- HBGメニュー
 .l-header__modal
   .l-header__modal-bg
   .l-header__modal-container
