@@ -6,10 +6,13 @@
         $img_url = is_array($thumb) ? ($thumb['img-pc'] ?? '') : '';
       ?>
       <?php if ($img_url): ?>
-      <img
-        src="<?php echo esc_url($img_url); ?>"
-        alt="<?php echo esc_attr(get_the_title()); ?>"
-      />
+        <picture>
+          <source srcset="<?php echo esc_url($img_url); ?>.webp" type="image/webp">
+          <img
+            src="<?php echo esc_url($img_url); ?>"
+            alt="<?php echo esc_attr(get_the_title()); ?>"
+          />
+        </picture>
       <?php endif; ?>
     </div>
     <div class="c-thumbnail__text-wrapper">

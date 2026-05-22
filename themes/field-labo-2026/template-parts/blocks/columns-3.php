@@ -43,13 +43,16 @@ $render_col3_column = function($column) {
   ?>
   <figure class="contents__column-item">
     <div class="contents__img">
-      <img
-        <?php if (!empty($image[1])) : ?>width="<?php echo esc_attr($image[1]); ?>"<?php endif; ?>
-        <?php if (!empty($image[2])) : ?>height="<?php echo esc_attr($image[2]); ?>"<?php endif; ?>
-        src="<?php echo esc_url($image[0]); ?>"
-        alt="<?php echo esc_attr($alt); ?>"
-        loading="lazy"
-      />
+      <picture>
+        <source srcset="<?php echo esc_url($image[0]); ?>.webp" type="image/webp">
+        <img
+          <?php if (!empty($image[1])) : ?>width="<?php echo esc_attr($image[1]); ?>"<?php endif; ?>
+          <?php if (!empty($image[2])) : ?>height="<?php echo esc_attr($image[2]); ?>"<?php endif; ?>
+          src="<?php echo esc_url($image[0]); ?>"
+          alt="<?php echo esc_attr($alt); ?>"
+          loading="lazy"
+        />
+      </picture>
     </div>
     <?php if ($cap) : ?>
       <figcaption class="contents__cap f-noto-M"><?php echo nl2br(esc_html($cap)); ?></figcaption>

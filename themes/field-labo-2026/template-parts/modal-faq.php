@@ -16,7 +16,12 @@ $question = get_field('question', $post_id);
         <?php if (get_row_layout() === 'answer_img') : ?>
           <?php $img = get_sub_field('img'); ?>
           <?php if ($img) : ?>
-            <div class="faqModal__img"><img src="<?php echo esc_url($img); ?>" alt=""/></div>
+            <div class="faqModal__img">
+              <picture>
+                <source srcset="<?php echo esc_url($img); ?>" type="image/webp">
+                <img src="<?php echo esc_url($img); ?>" alt=""/>
+              </picture>
+            </div>
           <?php endif; ?>
         <?php endif; ?>
 

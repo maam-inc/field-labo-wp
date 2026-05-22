@@ -10,7 +10,10 @@ if (!$gallery) {
 <div class="contents__gallery">
   <?php foreach ($gallery as $image) : ?>
     <div class="contents__gallery-img contents__img">
-      <img src="<?php echo $image; ?>" alt="" loading="lazy">
+      <picture>
+        <source srcset="<?php echo $image; ?>.webp" type="image/webp">
+        <img src="<?php echo $image; ?>" alt="" loading="lazy">
+      </picture>
       <button class="btn">
         <div class="btn__open btn__open-gallery"></div>
       </button>

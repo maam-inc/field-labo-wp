@@ -15,7 +15,10 @@ $img = $thumb['img-pc'] ?? '';
   <div class="c-thumbnail">
     <?php if ($img) : ?>
       <div class="c-thumbnail__main_img">
-        <img src="<?php echo esc_url($img); ?>" alt="" loading="lazy">
+        <picture>
+          <source srcset="<?php echo esc_url($img); ?>.webp" type="image/webp">
+          <img src="<?php echo esc_url($img); ?>" alt="" loading="lazy">
+        </picture>
       </div>
     <?php endif; ?>
     <div class="c-thumbnail__text-wrapper">

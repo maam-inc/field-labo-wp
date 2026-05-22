@@ -191,13 +191,14 @@ export default class Gallery {
 
       const item = clone.querySelector('.js-galleryItem')
       const btn = clone.querySelector('.js-modalOpen')
+      const webPimg = clone.querySelector('source')
       const img = clone.querySelector('img')
       const ttl = clone.querySelector('.c-thumbnail__title p')
 
       if(item) item.dataset.postId = post.id
       if(btn) btn.dataset.post = post.id
       if(img) {
-        img.src = post.image || ''
+        webPimg.srcset = `${post.image}.webp` || ''
         img.alt = post.title || ''
         if(post.image_width) img.width = post.image_width
         if(post.image_height) img.height = post.image_height
@@ -571,7 +572,9 @@ export default class Gallery {
       data.images.forEach(img => {
         const imgClone = imgTemplate.content.cloneNode(true)
         const imgEl = imgClone.querySelector('img')
+        const webPEl = imgClone.querySelector('source')
         if(imgEl) {
+          webPEl.srcset = `${img}.webp`
           imgEl.src = img
           imgEl.alt = data.title || ''
         }

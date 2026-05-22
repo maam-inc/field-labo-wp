@@ -34,15 +34,17 @@ $render_col2_column = function($column) {
     ?>
     <figure class="columns-2-block__image">
       <div class="columns-2-block__image-inner">
-        <img
-          width="<?php echo esc_attr($image[1]); ?>"
-          height="<?php echo esc_attr($image[2]); ?>"
-          src="<?php echo esc_url($image[0]); ?>"
-          class=""
-          alt="<?php echo esc_attr($alt); ?>"
-          loading="lazy"
-        />
-
+        <picture>
+          <source srcset="<?php echo esc_url($image[0]); ?>.webp" type="image/webp">
+          <img
+            width="<?php echo esc_attr($image[1]); ?>"
+            height="<?php echo esc_attr($image[2]); ?>"
+            src="<?php echo esc_url($image[0]); ?>"
+            class=""
+            alt="<?php echo esc_attr($alt); ?>"
+            loading="lazy"
+          />
+        </picture>
         <?php if ($is_zoom) : ?>
           <button
             class="btn js-modalOpen"

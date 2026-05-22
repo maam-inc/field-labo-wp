@@ -108,7 +108,12 @@
                     <button class="btn btn-open js-modalOpen" type="button" data-id="inspoModal" data-post="">
                       <div class="inner">
                         <div class="c-thumbnail topContents__gallery-item l-contents__gallery-item">
-                          <div class="c-thumbnail__main_img"><img src="" alt=""/></div>
+                          <div class="c-thumbnail__main_img">
+                            <picture>
+                              <source srcset="" type="image/webp">
+                              <img src="" alt=""/>
+                            </picture>
+                          </div>
                           <div class="c-thumbnail__text-wrapper">
                             <div class="c-thumbnail__title f-noto-B">
                               <p></p>

@@ -34,7 +34,12 @@
 
     <!-- repeat template - img -->
     <template id="inspo-modal-img-template">
-      <div class="topContents__modal-img"><img src="" alt=""></div>
+      <div class="topContents__modal-img">
+        <picture>
+          <source srcset="" type="image/webp">
+          <img src="" alt="">
+        </picture>
+      </div>
     </template>
 
     <!-- repeat template - タグ -->

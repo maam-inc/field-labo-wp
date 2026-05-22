@@ -110,13 +110,16 @@ $render_frame_image = function($img, $cap = '', $class = 'beforeAfter__img') use
   if ($class === null) {
     ?>
     <div class="contents__img">
-      <img
-        <?php if (!empty($image['width'])) : ?>width="<?php echo esc_attr($image['width']); ?>"<?php endif; ?>
-        <?php if (!empty($image['height'])) : ?>height="<?php echo esc_attr($image['height']); ?>"<?php endif; ?>
-        src="<?php echo esc_url($image['url']); ?>"
-        alt="<?php echo esc_attr($image['alt']); ?>"
-        loading="lazy"
-      />
+      <picture>
+        <source srcset="<?php echo esc_url($image['url']); ?>.webp" type="image/webp">
+        <img
+          <?php if (!empty($image['width'])) : ?>width="<?php echo esc_attr($image['width']); ?>"<?php endif; ?>
+          <?php if (!empty($image['height'])) : ?>height="<?php echo esc_attr($image['height']); ?>"<?php endif; ?>
+          src="<?php echo esc_url($image['url']); ?>"
+          alt="<?php echo esc_attr($image['alt']); ?>"
+          loading="lazy"
+        />
+      </picture>
     </div>
 
     <?php if ($cap) : ?>
