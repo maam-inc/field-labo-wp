@@ -7,6 +7,4 @@ if (!$heading) {
 }
 ?>
 
-<h2 class="heading-block">
-  <?php echo nl2br(esc_html($heading)); ?>
-</h2>
+<h2 class="contents__head f-noto-B"><?php echo nl2br(esc_html($heading)); ?></h2>

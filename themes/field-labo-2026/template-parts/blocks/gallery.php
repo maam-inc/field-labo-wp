@@ -7,12 +7,13 @@ if (!$gallery) {
 }
 ?>
 
-<div class="gallery-block">
+<div class="contents__gallery">
   <?php foreach ($gallery as $image) : ?>
-    <?php if (!empty($image['ID'])) : ?>
-      <figure class="gallery-block__item">
-        <?php echo wp_get_attachment_image($image['ID'], 'large'); ?>
-      </figure>
-    <?php endif; ?>
+    <div class="contents__gallery-img contents__img">
+      <img src="<?php echo $image; ?>" alt="" loading="lazy">
+      <button class="btn">
+        <div class="btn__open btn__open-gallery"></div>
+      </button>
+    </div>
   <?php endforeach; ?>
 </div>

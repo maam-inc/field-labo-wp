@@ -41,32 +41,26 @@ $render_col3_column = function($column) {
     return;
   }
   ?>
-  <figure class="columns-3-block__image">
-    <img
-      <?php if (!empty($image[1])) : ?>width="<?php echo esc_attr($image[1]); ?>"<?php endif; ?>
-      <?php if (!empty($image[2])) : ?>height="<?php echo esc_attr($image[2]); ?>"<?php endif; ?>
-      src="<?php echo esc_url($image[0]); ?>"
-      class=""
-      alt="<?php echo esc_attr($alt); ?>"
-      loading="lazy"
-    />
-
+  <figure class="contents__column-item">
+    <div class="contents__img">
+      <img
+        <?php if (!empty($image[1])) : ?>width="<?php echo esc_attr($image[1]); ?>"<?php endif; ?>
+        <?php if (!empty($image[2])) : ?>height="<?php echo esc_attr($image[2]); ?>"<?php endif; ?>
+        src="<?php echo esc_url($image[0]); ?>"
+        alt="<?php echo esc_attr($alt); ?>"
+        loading="lazy"
+      />
+    </div>
     <?php if ($cap) : ?>
-      <figcaption><?php echo nl2br(esc_html($cap)); ?></figcaption>
+      <figcaption class="contents__cap f-noto-M"><?php echo nl2br(esc_html($cap)); ?></figcaption>
     <?php endif; ?>
   </figure>
   <?php
 };
 ?>
 
-<div class="columns-3-block">
-  <div class="columns-3-block__item">
-    <?php $render_col3_column($left_column); ?>
-  </div>
-  <div class="columns-3-block__item">
-    <?php $render_col3_column($center_column); ?>
-  </div>
-  <div class="columns-3-block__item">
-    <?php $render_col3_column($right_column); ?>
-  </div>
+<div class="contents__column contents__column-three">
+  <?php $render_col3_column($left_column); ?>
+  <?php $render_col3_column($center_column); ?>
+  <?php $render_col3_column($right_column); ?>
 </div>
