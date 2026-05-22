@@ -217,6 +217,22 @@ export default class Gallery {
 
   }
 
+  normalizeImage(image) {
+    if(!image) {
+      return { url: '', width: '', height: '' }
+    }
+
+    if(typeof image === 'string') {
+      return { url: image, width: '', height: '' }
+    }
+
+    return {
+      url: image.url || image.image || '',
+      width: image.width || image.image_width || '',
+      height: image.height || image.image_height || '',
+    }
+  }
+
   updateMoreBtn() {
     if(!this.moreBtn) return
 
@@ -569,14 +585,19 @@ export default class Gallery {
 
     // 画像
     if(data.images && imgTemplate && imgWrap) {
-      data.images.forEach(img => {
+      data.images.forEach(image => {
+        const img = this.normalizeImage(image)
+        if(!img.url) return
+
         const imgClone = imgTemplate.content.cloneNode(true)
         const imgEl = imgClone.querySelector('img')
         const webPEl = imgClone.querySelector('source')
         if(imgEl) {
-          webPEl.srcset = `${img}.webp`
-          imgEl.src = img
+          webPEl.srcset = `${img.url}.webp`
+          imgEl.src = img.url
           imgEl.alt = data.title || ''
+          if(img.width) imgEl.width = img.width
+          if(img.height) imgEl.height = img.height
         }
         imgWrap.appendChild(imgClone)
       })

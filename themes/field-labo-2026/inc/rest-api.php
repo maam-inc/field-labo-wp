@@ -320,16 +320,22 @@
     // }
 
     $gallery = get_field('images', $post_id);
-    $image_urls = [];
+    $images = [];
 
     if(is_array($gallery)) {
-      $image_urls = array_values(array_filter($gallery));
+      foreach(array_values(array_filter($gallery)) as $image) {
+        $image_data = field_labo_get_image_data($image);
+
+        if($image_data['url']) {
+          $images[] = $image_data;
+        }
+      }
     }
 
     return [
       'id' => $post_id,
       'title' => get_the_title($post_id),
-      'images' => $image_urls,
+      'images' => $images,
       'text' => get_field('text', $post_id),
       'categories' => $categories,
       'links' => $links,
