@@ -119,13 +119,18 @@
     return $show;
   });
 
-  // add_action('init', function() {
-  //   $rewrite_version = '20260519_projects_blog_cpt';
+  add_action('init', function() {
+    $rewrite_version = '20260525_projects_structure_option';
 
-  //   if (get_option('field_labo_rewrite_version') !== $rewrite_version) {
-  //     flush_rewrite_rules(false);
-  //     update_option('field_labo_rewrite_version', $rewrite_version);
-  //   }
-  // }, 20);
+    if (get_option('field_labo_rewrite_version') !== $rewrite_version) {
+      if (get_option('projects_structure', false) === false) {
+        $legacy_structure = get_option('project_structure', '/%post_id%/');
+        update_option('projects_structure', $legacy_structure);
+      }
+
+      flush_rewrite_rules(false);
+      update_option('field_labo_rewrite_version', $rewrite_version);
+    }
+  }, 20);
 
 ?>

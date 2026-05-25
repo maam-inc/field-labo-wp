@@ -39,6 +39,7 @@
       'title'           => 'テキスト',
       'render_template' => get_template_directory() . '/template-parts/blocks/text.php',
       'category'        => 'field-labo',
+      'icon'            => 'editor-paragraph',
       'mode'            => 'edit',
       'supports'        => [
         'align' => false,
@@ -49,6 +50,7 @@
       'title'           => '見出し',
       'render_template' => get_template_directory() . '/template-parts/blocks/heading.php',
       'category'        => 'field-labo',
+      'icon'            => 'heading',
       'mode'            => 'edit',
       'supports'        => [
         'align' => false,
@@ -60,7 +62,7 @@
       // 'description'     => '画像とキャプションのブロック',
       'render_template' => get_template_directory() . '/template-parts/blocks/image.php',
       'category'        => 'field-labo',
-      // 'icon'            => 'editor-help',
+      'icon'            => 'format-image',
       'mode'            => 'edit',
       'supports'        => [
         'align' => false,
@@ -71,6 +73,7 @@
       'title'           => 'テーブル',
       'render_template' => get_template_directory() . '/template-parts/blocks/table.php',
       'category'        => 'field-labo',
+      'icon'            => 'editor-table',
       'mode'            => 'edit',
       'supports'        => [
         'align' => false,
@@ -81,6 +84,7 @@
       'title'           => '記事リンク',
       'render_template' => get_template_directory() . '/template-parts/blocks/article-link.php',
       'category'        => 'field-labo',
+      'icon'            => 'admin-links',
       'mode'            => 'edit',
       'supports'        => [
         'align' => false,
@@ -91,6 +95,7 @@
       'title'           => '2列レイアウト',
       'render_template' => get_template_directory() . '/template-parts/blocks/columns-2.php',
       'category'        => 'field-labo',
+      'icon'            => 'columns',
       'mode'            => 'edit',
       'supports'        => [
         'align' => false,
@@ -101,6 +106,7 @@
       'title'           => '3列レイアウト',
       'render_template' => get_template_directory() . '/template-parts/blocks/columns-3.php',
       'category'        => 'field-labo',
+      'icon'            => 'columns',
       'mode'            => 'edit',
       'supports'        => [
         'align' => false,
@@ -111,6 +117,7 @@
       'title'           => 'ギャラリー',
       'render_template' => get_template_directory() . '/template-parts/blocks/gallery.php',
       'category'        => 'field-labo',
+      'icon'            => 'format-gallery',
       'mode'            => 'edit',
       'supports'        => [
         'align' => false,
@@ -121,6 +128,8 @@
       'title'           => '枠線ブロック',
       'render_template' => get_template_directory() . '/template-parts/blocks/bordered-block.php',
       'category'        => 'field-labo',
+      'icon'            => 'screenoptions',
+      // 'icon'            => 'editor-kitchensink',
       'mode'            => 'edit',
       'supports'        => [
         'align' => false,
