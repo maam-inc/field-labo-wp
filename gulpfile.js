@@ -1,6 +1,8 @@
 const {
   src, dest, watch, series, parallel,
 } = require('gulp');
+const path = require('path');
+const { Transform } = require('stream');
 const pug = require('gulp-pug');
 const sass = require('gulp-sass')(require('sass'));
 const plumber = require('gulp-plumber');
@@ -43,6 +45,56 @@ const ASSET_ROOT = './themes/' + WP_THEME_NAME;
 const HOST_NAME = `${PROTOCOL}://${SERVER_NAME}`;
 const CANONICAL_ROOT = `${HOST_NAME}/${DIR}`;
 const INDEX_DIR = `${HTML_ROOT}${DIR}`;
+const PUG_ROOT = path.resolve(__dirname, 'src/pug/dir');
+
+const relativeRootFromPugFile = (filePath) => {
+  const relativePath = path.relative(PUG_ROOT, filePath);
+  const dir = path.dirname(relativePath);
+
+  if (dir === '.') {
+    return './';
+  }
+
+  return '../'.repeat(dir.split(path.sep).length);
+};
+
+const relativePathFromRoot = (relativeRoot, targetPath = '') => {
+  if (/^(?:[a-z]+:)?\/\//i.test(targetPath)
+    || targetPath.startsWith('#')
+    || targetPath.startsWith('mailto:')
+    || targetPath.startsWith('tel:')) {
+    return targetPath;
+  }
+
+  const normalizedPath = targetPath.replace(/^\/+/, '');
+
+  if (!normalizedPath) {
+    return relativeRoot;
+  }
+
+  return `${relativeRoot}${normalizedPath}`;
+};
+
+const setPugRelativePaths = () => new Transform({
+  objectMode: true,
+  transform(file, enc, cb) {
+    const REL_ROOT = relativeRootFromPugFile(file.path);
+    const pagePath = (targetPath = '') => relativePathFromRoot(REL_ROOT, targetPath);
+
+    file.data = {
+      ...(file.data || {}),
+      REL_ROOT,
+      pagePath,
+      assetPath: pagePath,
+      CSS_DIR: pagePath(`${ASSET_DIR}${CSS_DIR}`),
+      JS_DIR: pagePath(`${ASSET_DIR}${JS_DIR}`),
+      IMG_DIR: pagePath(`${ASSET_DIR}${IMG_DIR}`),
+      DUMMY_DIR: pagePath(DUMMY_DIR),
+    };
+
+    cb(null, file);
+  },
+});
 
 // NOTE: アロー関数にすると `this` がストリームを指さず、
 // gulp-plumber がエラー時に `compileSass` を終了できずハングし、
@@ -82,16 +134,13 @@ const compilePug = (done) => {
     },
   )
     .pipe(plumber({ errorHandler }))
+    .pipe(setPugRelativePaths())
     .pipe(
       pug({
         pretty: true,
         locals: {
           PROD,
           DIR,
-          CSS_DIR: `${ASSET_DIR}${CSS_DIR}`,
-          JS_DIR: `${ASSET_DIR}${JS_DIR}`,
-          IMG_DIR: `${ASSET_DIR}${IMG_DIR}`,
-          DUMMY_DIR: `${DUMMY_DIR}`,
           BREAKPOINT,
           CANONICAL_ROOT,
           now: new Date(),
