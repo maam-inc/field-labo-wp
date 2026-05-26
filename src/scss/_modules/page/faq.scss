@@ -200,12 +200,13 @@
   padding-bottom: vw(87);
 
   &__head{
-    height: vw(88);
+    // height: vw(88);
     color: #888888;
-    padding-left: vw(25);
+    padding: vw(23) vw(25) vw(35);
     display: flex;
     align-items: center;
     border-bottom: #333333 vw(2) solid;
+    line-height: 1.731;
   }
 
   &__contents{
@@ -213,8 +214,8 @@
     padding-top: vw(41);
     width: vw(663);
     margin-inline: auto;
-    line-height: 175%;
-    letter-spacing: 0.03em;
+    letter-spacing: .05em;
+    line-height: 189%;
 
     > *:first-child{
       margin-top: 0 !important;
@@ -243,9 +244,7 @@
     padding-bottom: 60px;
 
     &__head{
-      height: 47px;
-      padding-left: 14px;
-      padding-top: 7px;
+      padding: 7px 14px 20px;
       display: block;
       align-items: auto;
       border-bottom: #333333 1px solid;
@@ -257,11 +256,11 @@
 
       // 規定アキ
       > * + *{
-        margin-top: 50px;
+        margin-top: 33px;
       }
 
       > .faqModal__img + .faqModal__img{
-        margin-top: 30px;
+        margin-top: 21px;
       }
     }
 
@@ -274,6 +273,13 @@
     }    
   }
 }
+
+.faq{
+  .l-modal__container{
+    max-width: 800px;
+  }  
+}
+
 
 // hover 
 @include mq(pc){

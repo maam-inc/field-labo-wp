@@ -482,6 +482,12 @@ a[target="_blank"]:not(:has(img)){
     background: $bk;
     position: relative;
     width: 100%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar{
+      display: none;
+    }
   }
 
   &__inner{

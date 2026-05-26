@@ -338,11 +338,17 @@ a[target=_blank]:not(:has(img))::after {
 }
 
 .l-modal__wrapper {
+  -ms-overflow-style: none;
   background: #222;
   max-height: calc(100dvh - 10.1333333333vw);
   overflow-y: scroll;
   position: relative;
+  scrollbar-width: none;
   width: 100%;
+}
+
+.l-modal__wrapper::-webkit-scrollbar {
+  display: none;
 }
 
 .l-modal__inner {
