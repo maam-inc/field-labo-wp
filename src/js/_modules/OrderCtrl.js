@@ -48,8 +48,8 @@ export default class OrderCtrl {
     this.gallery.classList.add('is-hidden');
     window.clearTimeout(this._timer);
     this._timer = window.setTimeout(() => {
-      // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓ここに入れ替えの記述入れる↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-      // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑ここに入れ替えの記述入れる↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+      // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓入れ替えの処理↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+      // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑入れ替えの処理↑↑↑↑↑↑↑↑↑↑↑↑↑↑
       this.gallery.classList.remove('is-hidden');
     }, this.hideDuration);
   }
