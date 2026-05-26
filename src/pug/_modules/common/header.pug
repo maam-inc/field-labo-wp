@@ -1,12 +1,12 @@
 header.l-header
   .l-header__inner
-    a.l-header__logo(href="/"): h1(aria-label="FIELD LABO"): +c-logo('')
+    a.l-header__logo(href=pagePath('/')): h1(aria-label="FIELD LABO"): +c-logo('')
     +c-nav
 
 //- 追従用ヘッダー
 header.l-headerFixed
   .l-headerFixed__inner
-    a.l-headerFixed__logo(href="/" aria-label="FIELD LABO"): span: +c-logo('')
+    a.l-headerFixed__logo(href=pagePath('/') aria-label="FIELD LABO"): span: +c-logo('')
     +c-nav
 
     button.l-headerFixed__menu
@@ -20,17 +20,16 @@ header.l-headerFixed
   .l-header__modal-bg.l-header__modal-close
   .l-header__modal-container
     .l-header__modal-inner
-      a.l-header__modal-top(href="/")
+      a.l-header__modal-top(href=pagePath('/'))
         .l-header__modal-top-arrow: img(src=`${IMG_DIR}common/icon-arrow-r.svg` alt="arrow")
         p.l-header__modal-top-text.f-inter-B top
       button.l-header__modal-btn.l-header__modal-close
         .btn-close: img(src=`${IMG_DIR}common/icon-close.svg` alt="close")
 
-      a.l-header__modal-logo(href="/"): +c-logo(true)        
+      a.l-header__modal-logo(href=pagePath('/')): +c-logo(true)        
       
       +c-nav
       
       +c-sns(false)
-
 
 
