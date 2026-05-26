@@ -2,22 +2,20 @@
 @use 'sass:math';
 
 .blog{
-  // border: 3px solid red;
   &__gallery{
     margin: vw(13) auto 0;
+    
     &-wrapper{
-      display: flex;
+      display: grid;
       gap: vw(9);
-      flex-wrap: wrap;
+      grid-template-columns: 1fr 1fr;
     }
 
     &-item{
-      float: left;
       display: flex;
-      width: calc((100% - vw(9))/2);
 
       .c-thumbnail{
-        background: #000;
+        background: $bk;
 
         &__main_img{
           aspect-ratio: 360/202;
@@ -25,7 +23,7 @@
 
         &__text-wrapper{
           padding: vw(24) vw(22);
-          background: #000;
+          background: $bk;
           // height: vw(294);
           box-sizing: border-box;
         }
@@ -51,16 +49,22 @@
 
 @include mq(pc){
   .blog{
+    .l-content{
+      padding-block: 5px 0px;
+    }
+    
     &__gallery{
       margin: 5px auto 0;
+
       &-wrapper{
         gap: per(9, 1280);
+        grid-template-columns: 1fr 1fr 1fr;
       }
 
       &-item{
-        $itemW: calc((100% - (per(9, 1280)*2))/3);
-        width: $itemW;
-        margin-bottom: per(9, 1280);
+        // $itemW: calc((100% - (per(9, 1280)*2))/3);
+        // width: $itemW;
+        // margin-bottom: per(9, 1280);
         container-type: inline-size;
 
         .c-thumbnail{

@@ -321,7 +321,7 @@
   height: var(--swiper-pagination-bullet-height,var(--swiper-pagination-bullet-size,8px));
   display: inline-block;
   border-radius: 50%;
-  background: var(--swiper-pagination-bullet-inactive-color,#000);
+  background: var(--swiper-pagination-bullet-inactive-color, #000000);
   opacity: var(--swiper-pagination-bullet-inactive-opacity, .2)
 }
 
@@ -516,7 +516,7 @@ button.swiper-pagination-bullet {
 }
 
 .swiper-lazy-preloader-black {
-  --swiper-preloader-color: #000
+  --swiper-preloader-color: #000000
 }
 
 @keyframes swiper-preloader-spin {
@@ -619,7 +619,7 @@ button.swiper-pagination-bullet {
 
 .swiper-cube .swiper-cube-shadow:before {
   content: '';
-  background: #000;
+  background: #000000;
   position: absolute;
   left: 0;
   top: 0;

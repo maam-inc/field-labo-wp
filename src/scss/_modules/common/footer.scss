@@ -7,7 +7,7 @@
   border-top: vw(2) solid #eeeeee;  
   position: relative;
 
-  &__sns{
+  .c-sns{
     position: absolute;
     top: vw(40);
     left: vw(35);
@@ -20,7 +20,7 @@
     font-size: vw(20);
   }
 
-  &__top{
+  .c-toTop{
     position: absolute;
     top: vw(59);
     right: vw(24);
@@ -33,7 +33,7 @@
     height: 64px;
     border-top: 1px solid #eeeeee;  
 
-    &__sns{
+    .c-sns{
       top: 50%;
       transform: translateY(-50%);
       left: 39px;
@@ -46,7 +46,7 @@
       font-size:10px;
     }
 
-    &__top{
+    .c-toTop{
       top: 50%;
       transform: translateY(-50%);
       right: 20px;
@@ -54,3 +54,4 @@
     }
   }  
 }
+

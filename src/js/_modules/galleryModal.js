@@ -63,12 +63,14 @@ export default class GalleryModal {
   }
 
   open() {
+    document.body.style.overflow = "hidden";
     if (this.sources.length === 0) return;
     this.modalImg.setAttribute('src', this.sources[this.index]);
     this.modal.classList.add('is-open');
   }
 
   close() {
+    document.body.style.overflow = "auto";
     this.modal.classList.remove('is-open');
     this.modalImg.setAttribute('src', '');
   }

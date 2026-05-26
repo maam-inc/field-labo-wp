@@ -6,8 +6,8 @@ main.topMain#topMain
           a.inner(href="#")
             .main_img: +picture2(`${DUMMY_DIR}top/main${i+1}-pc.jpg`, `${DUMMY_DIR}top/main${i+1}-sp.jpg`, '', '')
             .text-wrapper 
-              .title.f-inter-B: p!=main.slide[i].title
-              .main_summary.f-noto-B: p!=main.slide[i].summary
+              p.title.f-inter-B!=main.slide[i].title
+              p.main_summary.f-noto-B!=main.slide[i].summary
     +c-ctrl-btn('topMain__mv')
 
 
