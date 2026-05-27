@@ -6,7 +6,6 @@ mixin ctrl(fixed)
       select.sort__lists(name="categorie" required)
         -for(let i = 0; i < main.sort.length; i++)
           option.sort__list(value=main.sort[i].toLowerCase())= main.sort[i]
-      .sort__toggle
 
     .order.ctrl-item
       p.order__item.ctrl-item--name order :

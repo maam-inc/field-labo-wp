@@ -13,10 +13,15 @@
     border-bottom: vw(4) solid $bk;
 
     &__img{
+      overflow: hidden;
       img{
         object-fit: cover;
         width: 100%;
         aspect-ratio: 730/903;
+        transform: scale(1.07);
+        filter: grayscale(100%);
+        transition: transform 3s $ease-out-expo, filter 3s $ease-out-cubic;
+        // transition-delay: .5s;
       }
     }
 
@@ -26,6 +31,17 @@
       color: $bk;
       text-align: center;
       line-height: 1.25;
+
+      &-char{
+        display: inline-block;
+        white-space: pre;
+        opacity: 0;
+        transition: opacity .02s linear;
+
+        &.is-shown{
+          opacity: 1;
+        }
+      }
     }
 
     &__info{
@@ -350,19 +366,10 @@
 .galleryModal{
   position: relative;
   z-index: 200;
-  // display: none;
-  visibility: hidden;
-  pointer-events: none;
-
-  &.is-open{
-    visibility: visible;
-    pointer-events: auto;
-  }
 
   &__bg{
     position: fixed;
     background: $bk;
-    opacity: .8;
     cursor: pointer;
     top: 0;
     left: 0;
@@ -412,19 +419,10 @@
 .dataModal{
   position: relative;
   z-index: 200;
-  // display: none;
-  visibility: hidden;
-  pointer-events: none;
-
-  &.is-open{
-    visibility: visible;
-    pointer-events: auto;
-  }
 
   &__bg{
     position: fixed;
     background: $bk;
-    opacity: .8;
     cursor: pointer;
     top: 0;
     left: 0;
@@ -461,8 +459,47 @@
   }
 }
 
+// 共通モーダル
+.postModal{
+  pointer-events: none;
+
+  &__bg{
+    opacity: 0;
+  }
+
+  &__container{
+    opacity: 0;
+  }
+
+  .c-modalCloseIcon__btn{
+    opacity: 0;
+  }
+
+  &.is-open{
+    pointer-events: auto;
+
+    .c-modalCloseIcon__btn{
+      opacity: 1;
+    }
+    .postModal__bg{
+      opacity: 0.8;
+    }
+    .postModal__container{
+      opacity: 1;
+    }    
+  }
+}
+
 @include mq(pc){
   .article{
+    a{
+      text-decoration: underline;
+
+      &:hover{
+        text-decoration: none;
+      }
+    }
+
     .main{
       padding-bottom: 32px;
       border-bottom: 2px solid $bk;
@@ -842,6 +879,42 @@
       }
     }
   }
+
+  .galleryModal{
+    .c-ctrl__prev{
+      img{
+        &:hover{
+          animation: moveArwX-left .4s cubic-bezier(.215,.61,.355,1) 1;
+          @keyframes  moveArwX-left{
+            0% { transform: translateX(0);}
+            50% { opacity: 0; transform: translateX(-20%);}
+            51% { opacity: 1; transform: translateX(20%);}
+            100% { transform: translateX(0);}
+          }
+        }       
+      }
+    }
+
+    .c-ctrl__next{
+      img{
+        &:hover{
+          animation: moveArwX-right .4s cubic-bezier(.215,.61,.355,1) 1;
+          @keyframes  moveArwX-right{
+            0% { transform: translateX(0);}
+            50% { opacity: 0; transform: translateX(20%);}
+            51% { opacity: 1; transform: translateX(-20%);}
+            100% { transform: translateX(0);}
+          }
+        }
+      }
+    }
+  }
 }
 
-
+// ページ読み込み完了後のアニメーション
+html.is-loaded .article{
+  .main__img img{
+    transform: scale(1);
+    filter: grayscale(0);
+  }
+}

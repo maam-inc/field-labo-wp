@@ -11,6 +11,17 @@ html(lang="ja")
     include head
     block head
 
+    script.
+      document.documentElement.classList.add('is-loading');
+      window.addEventListener('load', function () {
+        document.documentElement.classList.remove('is-loading');
+        document.documentElement.classList.add('is-loaded');
+      });
+      setTimeout(function () {
+        document.documentElement.classList.remove('is-loading');
+        document.documentElement.classList.add('is-loaded');
+      }, 8000);
+
     link(href=`${CSS_DIR}common.css` rel='stylesheet' type='text/css')
     link(href=`${CSS_DIR}${page.type}.css` rel='stylesheet' type='text/css')
     block css

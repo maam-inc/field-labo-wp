@@ -1,3 +1,5 @@
+import { gsap } from 'gsap';
+
 export default class LoadMore {
 
   constructor(){
@@ -5,6 +7,9 @@ export default class LoadMore {
     this.mq_sp = `(max-width: 767px)`;
     this.mq_pc = `(min-width: 768px)`;
     this.cmd = { isPc: this.mq_pc, isSp: this.mq_sp };
+
+    this.showDuration = 1;   // sec
+    this.stagger = 0.08;     // sec
   }
 
   init(){
@@ -16,24 +21,27 @@ export default class LoadMore {
     if (!container) return;
 
     const observer = new MutationObserver((mutations) => {
+      // 1コールバック内で追加された item をまとめて取得
+      const newItems = [];
       mutations.forEach((m) => {
         m.addedNodes.forEach((node) => {
           if (node.nodeType !== 1) return;
           if (!node.classList.contains('topContents__item')) return;
-          this.fadeIn(node);
+          newItems.push(node);
         });
       });
+      if (newItems.length) this.fadeInStagger(newItems);
     });
     observer.observe(container, { childList: true });
   }
 
-  fadeIn(el){
-    el.style.opacity = '0';
-    el.style.transition = 'opacity .6s ease';
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        el.style.opacity = '1';
-      });
+  fadeInStagger(items){
+    gsap.set(items, { opacity: 0 });
+    gsap.to(items, {
+      opacity: 1,
+      duration: this.showDuration,
+      ease: 'power1.out',
+      stagger: this.stagger,
     });
   }
 }

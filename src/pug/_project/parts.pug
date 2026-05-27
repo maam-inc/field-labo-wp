@@ -137,7 +137,7 @@ mixin topModalContent
           -for(let i = 0; i < modal.article.length; i++)
             li.related_article
               a.related_article-inner(href="#")
-                .related_article-icon: img(src=`${IMG_DIR}common/icon-arrow-box.svg`)
+                .related_article-icon: .related_article-mask
                 .related_article-text.f-inter-B: p!=modal.article[i].title
                 p.related_article-genre.f-inter-M (#{`${modal.article[i].genre}`})
 

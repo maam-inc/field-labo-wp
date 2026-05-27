@@ -269,6 +269,12 @@
         color: $ylw;
         display: inline;
         text-decoration-line: underline;
+        transition:  .2s;
+        
+        &:hover{
+          text-decoration-line: none;
+          transition:  .2s;
+        }
       }
     }    
   }
@@ -295,6 +301,7 @@
 
       &:hover{
         .question__text{
+          transition: .2s;
           color: $ylw;
         }
 
@@ -307,9 +314,14 @@
     }
 
     &__return {
+      .text{
+        transition: .2s;
+      }
+
       &:hover{
         .text{
           opacity: 0.7;
+          transition: .2s;
         }
         .icon {
           animation: moveArwX .4s cubic-bezier(.215,.61,.355,1) 1;
