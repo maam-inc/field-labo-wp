@@ -39,7 +39,7 @@ main
           //- 横並び２カラムパーツ
           .contents__column
             -for(let i = 0; i < 2; i++)
-              .contents__column-item(class=`contents__column-item--${i+1}`)
+              .contents__column-item
                 .contents__img
                   img(src=`${DUMMY_DIR}page/column${i+1}.jpg`)
                   p.contents__cap.f-noto-M!=parts.cap
@@ -47,7 +47,7 @@ main
           //- 横並び３カラムパーツ
           .contents__column
             -for(let i = 0; i < 3; i++)
-              .contents__column-item(class=`contents__column-item--${i+1}`)
+              .contents__column-item
                 .contents__img
                   img(src=`${DUMMY_DIR}page/column-three${i+1}.jpg`)
                   p.contents__cap.f-noto-M!=parts.cap
@@ -55,7 +55,7 @@ main
           //- 横並び２カラムパーツ
           .contents__column
             -for(let i = 0; i < 2; i++)
-              .contents__column-item(class=`contents__column-item--${i+1}`)
+              .contents__column-item
                 .contents__img
                   img(src=`${DUMMY_DIR}page/column-narrow${i+1}.jpg`)
                   p.contents__cap.f-noto-M!=parts.cap
@@ -107,22 +107,43 @@ main
           //- 見出し
           h2.contents__head.f-noto-B DATA
 
-          //- DATAパーツ
-          .contents__data
-            .contents__data-infos
-              dl.table 
-                -for(let i = 0; i < parts.data.length; i++)
-                  .table__item
+          //- 横並び２カラムパーツ(DATA)
+          .contents__column.contents__column
+            .contents__column-item
+              //- DATAパーツ
+              .contents__data
+                dl.table 
+                  -for(let i = 0; i < parts.data.length; i++)
                     dt.table__head.f-noto-B!=parts.data[i].item
                     dd.table__text.f-noto-M!=parts.data[i].text
-              
-              p.contents__text.f-noto-M!=parts.text_data
+                
+                p.contents__text.f-noto-M!=parts.text_data
 
-            button.contents__data-img
-              .contents__img
-                img(src=`${DUMMY_DIR}page/data.jpg`)
-                .btn
-                  .btn__open.btn__open-data
+            .contents__column-item
+              .contents__img.contents__img--zoom
+                .contents__img--zoom-inner
+                  img(src=`${DUMMY_DIR}page/data.jpg`)
+                  .btn
+                    .btn__open.btn__open-data
+                p.contents__cap.f-noto-M!=parts.cap
+
+          //- //- DATAパーツ
+          //- .contents__data
+          //-   .contents__data-infos
+          //-     dl.table 
+          //-       -for(let i = 0; i < parts.data.length; i++)
+          //-         dt.table__head.f-noto-B!=parts.data[i].item
+          //-         dd.table__text.f-noto-M!=parts.data[i].text
+              
+          //-     p.contents__text.f-noto-M!=parts.text_data
+
+          //-   //- button.contents__data-img
+          //-   .contents__img.contents__img--zoom
+          //-     .contents__img--zoom-inner
+          //-       img(src=`${DUMMY_DIR}page/data.jpg`)
+          //-       .btn
+          //-         .btn__open.btn__open-data
+          //-     p.contents__cap.f-noto-M!=parts.cap
 
       +c-toTop(true)
       

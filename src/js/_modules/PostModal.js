@@ -41,7 +41,7 @@ export default class PostModal {
   }
 
   initData() {
-    document.querySelectorAll('.contents__data-img').forEach((target) => {
+    document.querySelectorAll('.contents__img--zoom').forEach((target) => {
       target.addEventListener('click', () => {
         if (!this.mq.matches) return;
         const src = target.querySelector('img')?.getAttribute('src');

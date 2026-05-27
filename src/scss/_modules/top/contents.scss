@@ -3,6 +3,7 @@
 
 .topContents{
   margin-top: vw(12);
+  padding-bottom: vw(120);
   width: 100%;
 
   &__title{
@@ -213,6 +214,7 @@
 @include mq(pc){
   .topContents{
     margin-top: 10px;
+    padding-bottom: 79px;
   
     &__head{
       display: flex;

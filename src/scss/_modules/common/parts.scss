@@ -9,7 +9,7 @@ html.is-loading body {
 }
 body {
   opacity: 1;
-  transition: opacity .8s $ease-out-sine;
+  transition: opacity .5s linear;
 }
 
 //- ーーーーーーーーーーーーーーーーーーー
@@ -394,7 +394,7 @@ body {
 
 // LOAD MORE 
 .c-loadMore{
-  margin: vw(81) auto vw(47);
+  margin: vw(81) auto 0; 
   width: vw(520);
   height: vw(98);
   justify-content: center;
@@ -406,7 +406,7 @@ body {
   letter-spacing: -0.02em;
 
   @include mq(pc){
-    margin: 58px auto 79px;
+    margin: 58px auto 0;
     width: 497px;
     height: 49px;
     font-size:12px;

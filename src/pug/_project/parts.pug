@@ -86,7 +86,7 @@ mixin c-thumbnail(className, type, i, idx)
         p.c-thumbnail__title.f-inter-B!=i.title
         p.c-thumbnail__summary.f-noto-M!=i.summary
         .c-thumbnail__viewmore
-          .c-thumbnail__viewmore-icon: img(src=`${IMG_DIR}common/icon-link.svg` alt="viewmore")
+          .c-thumbnail__viewmore-icon: .c-thumbnail__viewmore-mask
           p.c-thumbnail__viewmore-text.f-inter-B view more
 
 //- LOAD MORE 
