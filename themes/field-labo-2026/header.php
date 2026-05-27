@@ -54,7 +54,9 @@
           <div class="l-header__inner">
             <a class="l-header__logo" href="<?php echo esc_url(home_url('/')); ?>">
               <?php if (is_front_page()) : ?>
-                <h1 class="l-header__site-title">
+                <!-- <h1 class="l-header__site-title"> -->
+                <h1>
+                  <span class="c-logo white"></span>
                   <span class="c-logo white" aria-label="FIELD LABO"></span>
                 </h1>
               <?php else : ?>
@@ -63,24 +65,27 @@
                 </p>
               <?php endif; ?>
             </a>
-            <nav class="l-header__nav f-inter-B">
-              <a class="l-header__nav-list <?php echo is_post_type_archive('blog') || is_singular('blog') ? 'is-current' : '' ?>" href="<?php echo esc_url(home_url('blog')); ?>">BLOG & NOTE</a>
-              <a class="l-header__nav-list <?php echo is_post_type_archive('projects') || is_singular('projects') ? 'is-current' : '' ?>" href="<?php echo esc_url(home_url('projects')); ?>">PROJECTS</a>
-              <a class="l-header__nav-list <?php echo is_page('about-contact') || is_post_type_archive('faq') ? 'is-current' : '' ?>" href="<?php echo esc_url(home_url('about-contact')); ?>">ABOUT & CONTACT</a>
+            <nav class="c-nav f-inter-B">
+              <a class="c-nav__list <?php echo is_post_type_archive('blog') || is_singular('blog') ? 'is-current' : '' ?>" href="<?php echo esc_url(home_url('blog')); ?>">BLOG & NOTE</a>
+              <a class="c-nav__list <?php echo is_post_type_archive('projects') || is_singular('projects') ? 'is-current' : '' ?>" href="<?php echo esc_url(home_url('projects')); ?>">PROJECTS</a>
+              <a class="c-nav__list <?php echo is_page('about-contact') || is_post_type_archive('faq') ? 'is-current' : '' ?>" href="<?php echo esc_url(home_url('about-contact')); ?>">ABOUT & CONTACT</a>
             </nav>
           </div>
         </header>
 
+        
         <!-- 固定 HEADER -->
         <header class="l-headerFixed">
           <div class="l-headerFixed__inner">
             <a class="l-headerFixed__logo" href="<?php echo esc_url(home_url('/')); ?>">
-              <div class="c-logo white" aria-label="FIELD LABO"></div>
+              <span>
+                <span class="c-logo white" aria-label="FIELD LABO"></span>
+              </span>
             </a>
-            <nav class="l-headerFixed__nav f-inter-B">
-              <a class="l-headerFixed__nav-list <?php echo is_post_type_archive('blog') || is_singular('blog') ? 'is-current' : '' ?>" href="<?php echo esc_url(home_url('blog')); ?>">BLOG & NOTE</a>
-              <a class="l-headerFixed__nav-list <?php echo is_post_type_archive('projects') || is_singular('projects') ? 'is-current' : '' ?>" href="<?php echo esc_url(home_url('projects')); ?>">PROJECTS</a>
-              <a class="l-headerFixed__nav-list <?php echo is_page('about-contact') || is_post_type_archive('faq') ? 'is-current' : '' ?>" href="<?php echo esc_url(home_url('about-contact')); ?>">ABOUT & CONTACT</a>
+            <nav class="c-nav f-inter-B">
+              <a class="c-nav__list <?php echo is_post_type_archive('blog') || is_singular('blog') ? 'is-current' : '' ?>" href="<?php echo esc_url(home_url('blog')); ?>">BLOG & NOTE</a>
+              <a class="c-nav__list <?php echo is_post_type_archive('projects') || is_singular('projects') ? 'is-current' : '' ?>" href="<?php echo esc_url(home_url('projects')); ?>">PROJECTS</a>
+              <a class="c-nav__list <?php echo is_page('about-contact') || is_post_type_archive('faq') ? 'is-current' : '' ?>" href="<?php echo esc_url(home_url('about-contact')); ?>">ABOUT & CONTACT</a>
             </nav>
             <button class="l-headerFixed__menu">
               <div class="l-headerFixed__menu-inner">
@@ -94,7 +99,7 @@
         
         <!-- Humburger -->
         <div class="l-header__modal">
-          <div class="l-header__modal-bg"></div>
+          <div class="l-header__modal-bg l-header__modal-close"></div>
           <div class="l-header__modal-container">
             <div class="l-header__modal-inner">
               <a class="l-header__modal-top" href="<?php echo esc_url(home_url('/')); ?>">
@@ -103,29 +108,32 @@
                 </div>
                 <p class="l-header__modal-top-text f-inter-B">top</p>
               </a>
-              <button class="l-header__modal-btn">
+              <button class="l-header__modal-btn l-header__modal-close">
                 <div class="btn-close"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/icon-close.svg" alt="close"></div>
               </button>
               <div class="l-header__modal-logo">
                 <div class="c-logo black"></div>
               </div>
-              <nav class="l-header__modal-nav">
-                <a class="f-inter-B" href="<?php echo esc_url(home_url('blog')); ?>">BLOG & NOTE</a>
-                <a class="f-inter-B" href="<?php echo esc_url(home_url('projects')); ?>">PROJECTS</a>
-                <a class="f-inter-B" href="<?php echo esc_url(home_url('about-contact')); ?>">ABOUT & CONTACT</a>
+              <a class="l-header__modal-logo" href="<?php echo esc_url(home_url('/')); ?>">
+                <span class="c-logo black" aria-label="FIELD LABO"></span>
+              </a>
+              <nav class="c-nav f-inter-B">
+                <a class="c-nav__list" href="<?php echo esc_url(home_url('blog')); ?>">BLOG & NOTE</a>
+                <a class="c-nav__list" href="<?php echo esc_url(home_url('projects')); ?>">PROJECTS</a>
+                <a class="c-nav__list" href="<?php echo esc_url(home_url('about-contact')); ?>">ABOUT & CONTACT</a>
               </nav>
-              <ul class="c-sns l-header__modal-sns">
+              <ul class="c-sns">
                 <li>
-                  <a href="#"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/icon-instagram.svg" alt="instagram"/></a>
+                  <a href="https://www.instagram.com/field_labo/" target="_blank"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/icon-instagram.svg" alt="instagram"/></a>
                 </li>
                 <li>
-                  <a href="#"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/icon-facebook.svg" alt="facebook"/></a>
+                  <a href="https://www.facebook.com/fieldlabo/" target="_blank"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/icon-facebook.svg" alt="facebook"/></a>
                 </li>
                 <li>
-                  <a href="#"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/icon-pinterest.svg" alt="pinterest"/></a>
+                  <a href="https://jp.pinterest.com/field_labo/" target="_blank"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/icon-pinterest.svg" alt="pinterest"/></a>
                 </li>
                 <li>
-                  <a href="#"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/icon-home.svg" alt="home"/></a>
+                  <a href="https://www.houzz.jp/pro/field-labo" target="_blank"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/icon-home.svg" alt="houzz"/></a>
                 </li>
               </ul>
             </div>
