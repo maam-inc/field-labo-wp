@@ -8,6 +8,31 @@ global $post;
 
 $site_name = get_bloginfo('name');
 $site_description = get_bloginfo('description');
+$default_site_description = '東京、首都圏、多摩地区で個性的なリノベーションの設計デザイン・工事を行うFIELD LABO(フィールドラボ)のホームページです。';
+$archive_meta = [
+  'projects' => [
+    'title' => 'PROJECTS',
+    'description' => 'FIELD LABOのリノベーション事例一覧です。',
+  ],
+  'blog' => [
+    'title' => 'BLOG & NOTE',
+    'description' => 'FIELD LABOの記事一覧です。',
+  ],
+  'faq' => [
+    'title' => 'FAQ | ABOUT & CONTACT',
+    'description' => 'FIELD LABO のリノベーションについてQ&A形式にまとめました。',
+  ],
+];
+$single_parent_titles = [
+  'projects' => 'PROJECTS',
+  'blog' => 'BLOG & NOTE',
+];
+$page_meta = [
+  'about-contact' => [
+    'title' => 'ABOUT & CONTACT',
+    'description' => 'FIELD LABOの紹介ページです。',
+  ],
+];
 
 $title = '';
 $description = '';
@@ -33,50 +58,34 @@ function format_meta_description($text, $limit = 120) {
 }
 
 /**
- * ACF柔軟コンテンツからdescription候補のテキストを取得する
+ * 本文のテキストパーツからdescription候補のテキストを取得する
  */
-function get_flexible_content_description($post_id, $limit = 120) {
-  if(!function_exists('have_rows')) {
+function get_block_text_meta_description($post_id, $limit = 120) {
+  if(!function_exists('field_labo_collect_block_text')) {
     return '';
   }
 
-  $text = '';
+  $post = get_post($post_id);
 
-  // ACF柔軟コンテンツのフィールド名が変わる場合は、ここを実際のフィールド名に合わせる
-  $flexible_fields = ['contents', 'content', 'cont'];
-  $text_keys = ['txt', 'text', 'body', 'lead', 'main_txt', 'main_lead'];
-
-  foreach($flexible_fields as $field_name) {
-    if(!have_rows($field_name, $post_id)) {
-      continue;
-    }
-
-    while(have_rows($field_name, $post_id)) {
-      the_row();
-
-      foreach($text_keys as $key) {
-        $value = get_sub_field($key);
-
-        if(is_array($value)) {
-          $value = implode('', array_filter($value, 'is_scalar'));
-        }
-
-        if(is_scalar($value) && $value !== '') {
-          $text .= ' '.$value;
-        }
-
-        if(mb_strlen(format_meta_description($text, 1000), 'UTF-8') >= $limit) {
-          break 2;
-        }
-      }
-    }
-
-    if($text !== '') {
-      break;
-    }
+  if(!$post) {
+    return '';
   }
 
-  return format_meta_description($text, $limit);
+  $texts = field_labo_collect_block_text(parse_blocks($post->post_content));
+  $text = wp_strip_all_tags(implode(' ', $texts), true);
+  $text = html_entity_decode($text, ENT_QUOTES, get_bloginfo('charset'));
+  $text = preg_replace('/\s+/u', ' ', $text);
+  $text = trim($text);
+
+  if($text === '') {
+    return '';
+  }
+
+  if(mb_strlen($text, 'UTF-8') > $limit) {
+    return mb_substr($text, 0, $limit, 'UTF-8').'…';
+  }
+
+  return $text;
 }
 
 /**
@@ -101,9 +110,18 @@ function get_current_url() {
   return home_url(add_query_arg([], $wp->request));
 }
 
+// TOP
+if(is_front_page()) {
+  $title = $site_name;
+  $description = $default_site_description;
+  $page_url = home_url('/');
+}
+
 // 投稿・固定ページ・カスタム投稿詳細
-if(is_singular()) {
+elseif(is_singular()) {
   $post_id = get_queried_object_id();
+  $post_type = get_post_type($post_id);
+  $post_name = get_post_field('post_name', $post_id);
 
   $title = get_the_title($post_id);
 
@@ -111,23 +129,22 @@ if(is_singular()) {
     $post_summary = get_field('post_summary', $post_id);
 
     if(trim(wp_strip_all_tags((string) $post_summary)) !== '') {
-      $description = format_meta_description($post_summary);
+      $description = format_meta_description($post_summary, PHP_INT_MAX);
     }
   }
 
-  if($description === '' && has_excerpt($post_id)) {
-    $description = format_meta_description(get_the_excerpt($post_id));
-  }
-
   if($description === '') {
-    $description = get_flexible_content_description($post_id);
+    $description = get_block_text_meta_description($post_id);
   }
 
-  if($description === '' && !empty($post->post_content)) {
-    $description = format_meta_description($post->post_content);
+  if(isset($single_parent_titles[$post_type])) {
+    $title .= ' | '.$single_parent_titles[$post_type];
+  } elseif($post_type === 'page' && isset($page_meta[$post_name])) {
+    $title = $page_meta[$post_name]['title'];
+    $description = $page_meta[$post_name]['description'];
   }
 
-  $page_type = 'article';
+  $page_type = is_page($post_id) ? 'website' : 'article';
   $page_url = get_permalink($post_id);
 
   if(function_exists('get_field')) {
@@ -150,7 +167,11 @@ elseif(is_post_type_archive()) {
   $post_type = is_array($post_type) ? reset($post_type) : $post_type;
   $post_type_object = get_post_type_object($post_type);
 
-  if($post_type_object) {
+  if(isset($archive_meta[$post_type])) {
+    $title = $archive_meta[$post_type]['title'];
+    $description = $archive_meta[$post_type]['description'];
+    $page_url = get_post_type_archive_link($post_type);
+  } elseif($post_type_object) {
     $title = $post_type_object->labels->name;
     $description = $post_type_object->description ?: $site_description;
     $page_url = get_post_type_archive_link($post_type);
@@ -220,12 +241,12 @@ elseif(is_404()) {
 // TOP・その他
 else {
   $title = $site_name;
-  $description = $site_description;
+  $description = $site_description ?: $default_site_description;
   $page_url = get_current_url();
 }
 
 if($description === '') {
-  $description = $site_description;
+  $description = $site_description ?: $default_site_description;
 }
 
 if($ogp_img === '') {
