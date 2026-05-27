@@ -489,16 +489,10 @@ a[target=_blank]:not(:has(img))::after {
   margin-top: 2.6666666667vw;
 }
 
-.article .contents__column-item:not(:last-child) {
-  margin-bottom: 8vw;
-}
-
-.article .contents__column:has(.contents__text) .contents__column-item:nth-child(1) {
-  margin-bottom: 0;
-}
-
-.article .contents__column:has(.contents__text) .contents__column-item .contents__text {
-  margin-top: 2.4vw;
+.article .contents__column {
+  display: flex;
+  flex-direction: column;
+  gap: 8vw;
 }
 
 .article .contents__beforeAfter {
@@ -620,42 +614,32 @@ a[target=_blank]:not(:has(img))::after {
   margin-left: 1.7333333333vw;
 }
 
-.article .contents__data-infos {
-  margin-top: -2.6666666667vw;
-}
-
-.article .contents__data-infos .table {
-  -moz-column-gap: 5.8666666667vw;
-  column-gap: 5.8666666667vw;
-  display: grid;
-  grid-template-columns: fit-content(25%) 1fr;
+.article .contents__table {
   width: 100%;
 }
 
-.article .contents__data-infos .table__item {
-  display: grid;
-  grid-column: 1/-1;
-  grid-template-columns: subgrid;
-}
-
-.article .contents__data-infos .table__head,
-.article .contents__data-infos .table__text {
+.article .contents__table-body {
   color: #222;
-  line-height: 200%;
-  vertical-align: baseline;
+  display: grid;
+  gap: 5.8666666667vw;
+  grid-template-columns: fit-content(25%) 1fr;
+  line-height: 2;
 }
 
-.article .contents__data-infos .table__head {
+.article .contents__table-head {
   font-size: 2.9333333333vw;
-  overflow-wrap: anywhere;
-  padding-block: 1.3333333333vw;
-  word-break: break-word;
 }
 
-.article .contents__data-infos .table__text {
+.article .contents__table-text {
   font-size: 3.2vw;
-  padding-block: .9333333333vw;
-  width: 57.6vw;
+}
+
+.article .contents__table .contents__text {
+  margin-top: 7.6rem;
+}
+
+.article .contents__data-infos {
+  margin-top: -2.6666666667vw;
 }
 
 .article .contents__data-infos .contents__text {
@@ -670,13 +654,16 @@ a[target=_blank]:not(:has(img))::after {
   position: relative;
 }
 
+.article .contents__img--zoom-inner {
+  position: relative;
+}
+
 .article .contents__img .btn {
   align-items: center;
   aspect-ratio: 1/1;
   background: rgba(0,0,0,.8);
   bottom: 0;
   display: none;
-  display: flex;
   height: auto;
   justify-content: center;
   position: absolute;
@@ -1125,39 +1112,39 @@ a[target=_blank]:not(:has(img))::after {
 
   .article .contents__column {
     align-items: flex-start;
-    display: flex;
-    gap: 2.25%;
+    flex-direction: row;
+    gap: 0;
     justify-content: space-between;
   }
 
-  .article .contents__column-item {
-    flex: 1;
+  .article .contents__column-item:has(.contents__img) {
     flex-shrink: 0;
+    width: 48.75%;
   }
 
-  .article .contents__column-item:not(:last-child) {
-    margin-bottom: 0;
+  .article .contents__column:has(.contents__column-item:nth-of-type(3)) .contents__column-item {
+    width: 31.75%;
   }
 
-  .article .contents__column:has(.contents__text) {
+  .article .contents__column:has(.contents__column-item>.contents__text) {
     gap: 7.5%;
   }
 
-  .article .contents__column:has(.contents__text) .contents__column-item {
-    flex: none;
-  }
-
-  .article .contents__column:has(.contents__text) .contents__column-item:nth-child(1) {
-    flex-shrink: 0;
+  .article .contents__column:has(.contents__column-item>.contents__text) .contents__column-item:has(.contents__img) {
     width: 333px;
   }
 
-  .article .contents__column:has(.contents__text) .contents__column-item:nth-child(2) {
-    flex-shrink: inherit;
+  .article .contents__column:has(.contents__column-item>.contents__text) .contents__column-item:has(.contents__text) {
+    flex-shrink: 1;
+    width: 100%;
   }
 
-  .article .contents__column:has(.contents__text) .contents__column-item .contents__text {
-    margin-top: 0;
+  .article .contents__column:has(.contents__column-item>.contents__table) {
+    gap: 20px;
+  }
+
+  .article .contents__column:has(.contents__column-item>.contents__table) .contents__column-item:has(.contents__img) {
+    width: 333px;
   }
 
   .article .contents__beforeAfter {
@@ -1232,6 +1219,23 @@ a[target=_blank]:not(:has(img))::after {
     margin-left: 7px;
   }
 
+  .article .contents__table-body {
+    gap: 15px 25px;
+    line-height: 1.8;
+  }
+
+  .article .contents__table-head {
+    font-size: 14px;
+  }
+
+  .article .contents__table-text {
+    font-size: 14px;
+  }
+
+  .article .contents__table .contents__text {
+    margin-top: 80px;
+  }
+
   .article .contents__data {
     align-items: flex-start;
     display: flex;
@@ -1274,6 +1278,7 @@ a[target=_blank]:not(:has(img))::after {
   }
 
   .article .contents__data-img .btn {
+    display: flex;
     width: 18px;
   }
 

@@ -1,6 +1,8 @@
 // WPで使用
 // 
 import Masonry from 'masonry-layout';
+import CommonModal from './commonModal';
+
 export default class Gallery {
 
   constructor(){
@@ -393,11 +395,13 @@ export default class Gallery {
       this.updateModalUrl(postId)
     }
 
-    // モーダルの枠だけ表示
-    modal.classList.add('is-open')
-    modal.setAttribute('aria-hidden', 'false')
-    modal.style.display = 'block'
-    document.documentElement.classList.add('is-modal-open')
+    // CommonModal.openModal() は display:none の解除までは行わないため、
+    // WP側で非表示出力しているモーダルだけ先に表示状態へ戻す。
+    // modal.style.display = 'block'
+    // modal.setAttribute('aria-hidden', 'false')
+    // document.documentElement.classList.add('is-modal-open')
+    const ModalFunc = new CommonModal;
+    ModalFunc.openModal(modal)
 
     // loadingの表示ルール：
     const loadingDelay = 500
@@ -467,11 +471,14 @@ export default class Gallery {
       this.clearModalContent(modalContent)
     }
 
-    // 非表示
-    modal.classList.remove('is-open')
-    modal.setAttribute('aria-hidden', 'true')
-    modal.style.display = 'none'
-    document.documentElement.classList.remove('is-modal-open')
+    // modal.setAttribute('aria-hidden', 'true')
+    // document.documentElement.classList.remove('is-modal-open')
+    const ModalFunc = new CommonModal;
+    ModalFunc.closeModal(modal)
+    // window.setTimeout(() => {
+    //   if(modal.classList.contains('is-open')) return
+    //   modal.style.display = 'none'
+    // }, 220)
   }
 
   ensureModalContent(modal) {
@@ -570,20 +577,9 @@ export default class Gallery {
 
     const clone = template.content.cloneNode(true)
 
-    // element
-    const imgWrap = clone.querySelector('.js-images')
-    const text = clone.querySelector('.js-text')
-    const tagWrap = clone.querySelector('.js-tagWrapper')
-    const articleWrap = clone.querySelector('.js-articleWrapper')
-
-    const imgTemplate = document.querySelector('#inspo-modal-img-template')
-    const tagTemplate = document.querySelector('#inspo-modal-tag-template')
-    const articleTemplate = document.querySelector('#inspo-modal-article-template')
-
-    // テキスト
-    if(text) text.textContent = data.text || ''
-
     // 画像
+    const imgWrap = clone.querySelector('.js-images')
+    const imgTemplate = document.querySelector('#inspo-modal-img-template')
     if(data.images && imgTemplate && imgWrap) {
       data.images.forEach(image => {
         const img = this.normalizeImage(image)
@@ -602,8 +598,22 @@ export default class Gallery {
         imgWrap.appendChild(imgClone)
       })
     }
+
+    // テキスト
+    const text = clone.querySelector('.js-text')
+    if(text) {
+      if(data.text != '') {
+        text.textContent = data.text || ''
+      } else {
+        text.style.display = 'none'
+      }
+    }
     
+
     // カテゴリ
+    const tagContainer = clone.querySelector('.js-tagContainer')
+    const tagWrap = clone.querySelector('.js-tagWrapper')
+    const tagTemplate = document.querySelector('#inspo-modal-tag-template')
     const categories = Array.isArray(data.categories) ? data.categories : []
 
     if(categories.length && tagTemplate && tagWrap) {
@@ -620,9 +630,15 @@ export default class Gallery {
 
         tagWrap.appendChild(catClone)
       })
+    } else {
+      tagContainer.style.display = 'none'
     }
 
     // 関連記事
+    const articleContainer = clone.querySelector('.js-articleContainer')
+    const articleWrap = clone.querySelector('.js-articleWrapper')
+    const articleTemplate = document.querySelector('#inspo-modal-article-template')
+
     if(data.links && data.links.length && articleTemplate && articleWrap) {
       // linksWrap.hidden = false
 
@@ -638,6 +654,8 @@ export default class Gallery {
 
         articleWrap.appendChild(linkClone)
       })
+    } else {
+      articleContainer.style.display = 'none'
     }
 
     container.innerHTML = ''

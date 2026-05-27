@@ -8,7 +8,7 @@
         <div class="topContents__flex">
 
           <!-- 関連記事 -->
-          <div class="related_articles topContents__flex-item">
+          <div class="related_articles topContents__flex-item js-articleContainer">
             <p class="related_articles-head topContents__flex-head f-inter-B">related article</p>
             <ul class="related_articles-wrapper js-articleWrapper">
               <!-- #inspo-modal-article-template -->
@@ -16,7 +16,7 @@
           </div>
 
           <!-- タグ -->
-          <div class="tag f-inter-B topContents__flex-item">
+          <div class="tag f-inter-B topContents__flex-item js-tagContainer">
             <p class="tag-head topContents__flex-head">tag</p>
             <ul class="tag-wrapper js-tagWrapper">
               <!-- #inspo-modal-tag-template -->

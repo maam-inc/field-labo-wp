@@ -32,6 +32,7 @@ export default class CommonModal {
   }
   
   openModal(modal){
+    console.log('common modal target : ',modal)
     modal.classList.add('is-open')
     if(!modal) return;
 
