@@ -56,7 +56,6 @@
               <?php if (is_front_page()) : ?>
                 <!-- <h1 class="l-header__site-title"> -->
                 <h1>
-                  <span class="c-logo white"></span>
                   <span class="c-logo white" aria-label="FIELD LABO"></span>
                 </h1>
               <?php else : ?>
