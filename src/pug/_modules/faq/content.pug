@@ -1,27 +1,30 @@
-main.l-content
-  .l-content__wrapper
-    +c-breadcrumbs('', true)
+main.faq#faq
+  .l-content
+    .l-content__wrapper
+      +c-breadcrumbs('', true)
 
-    .faq#faq
       .faq__wrapper
         .faq__title-group
-          h2.faq__title.f-inter-B faq
-          p.faq__text.f-noto-R
+          h2.faq__title.f-inter-B FAQ
+          p.faq__text.f-noto-M
             |フィールドラボのリノベーションについて
             br.sp
             |よくある質問形式にまとめてみました。
         .faq__items
           //- - const faqList = [0, 1, 2, 3]
-          -for(let i = 0; i < 12; i++)
-            .faq__item
+          -for(let i = 0; i < 20; i++)
+            button.faq__item
               .question
-                button.question__button.btn-open
-                  p.question__text.f-noto-R 他のリノベーション会社との違いは何でしょうか？
-                  span.question__icon
+                .question__button.btn-open
+                  -if(i === 0 )
+                    p.question__text.f-noto-B ユニットバスではないタイル張りのすてきなバスルームをつくりたい！
+                  -else
+                    p.question__text.f-noto-B 他のリノベーション会社との違いは何でしょうか？
+                  .question__icon
         .faq__return
-          a.faq__return-link(href="/about")
+          a.faq__return-link(href="/about-contact/")
             .icon
             .text.f-inter-B ABOUT & CONTACT
             
-  +c-toTop(true)
-+l-modal('faq')
+    +c-toTop(true)
+  +l-modal('faq')

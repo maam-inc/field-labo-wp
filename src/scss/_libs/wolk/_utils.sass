@@ -202,7 +202,7 @@
 @mixin radius($size)
   +border-radius($size + px)
 
-@mixin arrow($direction: right, $size: 10, $color: #000000)
+@mixin arrow($direction: right, $size: 10, $color: $bk)
   $set: left
   @if $direction == left
     $set: right
@@ -218,7 +218,7 @@
   border: $size + px solid transparent
   border-#{$set}-color: $color
 
-@mixin arrowlink($top, $size: 10, $color: #000000)
+@mixin arrowlink($top, $size: 10, $color: $bk)
   position: relative
   padding-left: 10px
   &:before

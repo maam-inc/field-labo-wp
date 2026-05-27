@@ -48,6 +48,14 @@
     }
   }
 
+  &:has(a){
+    a{
+      &:hover{
+        color: $ylw;
+      }        
+    }
+  }
+
   &__page {
     font-size: vw(24);
     color: $wh;
@@ -76,14 +84,41 @@
 
 // FIELD LABOのロゴ 
 .c-logo{
+  display: block;
   aspect-ratio: 272/55;
   height: auto;
   mask-image: url(../images/common/logo.svg);
   -webkit-mask-image: url(../images/common/logo.svg);
-  mask-size: contain;
+  mask-size: cover;
   
   &.black{ background-color: $bk;}
   &.white{ background-color: $wh;}
+}
+
+//- ヘッダーナビ
+.c-nav{
+  display: flex;
+
+  &__list{
+    color: $wh;
+    white-space: nowrap;
+    width: fit-content;
+
+    &.is-current{
+      color: $ylw;
+    }
+
+    &:not(:last-child){
+      position: relative;
+
+      &::before{
+        content: '/';
+        position: absolute;
+        bottom: 0;
+        color: #999999;
+      }
+    }
+  }
 }
 
 // SNS 
@@ -104,7 +139,7 @@
     }
   }
 
-  &.type-footer{
+  &--footer{
     margin-inline: inherit;
     width: vw(201);
 
@@ -119,7 +154,7 @@
 
   @include mq(pc){
 
-    &.type-footer{
+    &--footer{
       width: 119px;
 
       li{
@@ -128,6 +163,15 @@
         &:last-child{
           width: 16px;
         }
+      }
+    }
+  }
+
+  // hover
+  @include mq(pc){
+    a{
+      &:hover{
+        opacity: 0.7;
       }
     }
   }
@@ -154,12 +198,37 @@
     bottom: vw(19);
     right: vw(24);
     z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(80%);
+    transition: transform .4s linear, opacity .2s linear;
+
+    &.is-show{
+      transition: transform .4s linear, opacity .4s linear;
+      pointer-events: auto;
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
 
     @include mq(pc){
       width: 33px;
       bottom: 19px;
       right: 20px;
     }  
+  }
+}
+@include mq(pc){
+  .c-toTop, .c-toTop--fixed{
+    svg{
+      transition: scale .2s;
+
+      &:hover{
+        transition: scale .2s;
+        scale: 1.06;
+        transform-origin: center center;
+      }
+    }
   }
 }
 
@@ -175,6 +244,35 @@
     display: none;
   }
 }
+@include mq(pc){
+  .c-ctrl__prev{
+    img{
+      &:hover{
+        animation: moveArwX-left .4s cubic-bezier(.215,.61,.355,1) 1;
+        @keyframes  moveArwX-left{
+          0% { transform: translateX(0);}
+          50% { opacity: 0; transform: translateX(-20%);}
+          51% { opacity: 1; transform: translateX(20%);}
+          100% { transform: translateX(0);}
+        }
+      }       
+    }
+  }
+
+  .c-ctrl__next{
+    img{
+      &:hover{
+        animation: moveArwX-right .4s cubic-bezier(.215,.61,.355,1) 1;
+        @keyframes  moveArwX-right{
+          0% { transform: translateX(0);}
+          50% { opacity: 0; transform: translateX(20%);}
+          51% { opacity: 1; transform: translateX(-20%);}
+          100% { transform: translateX(0);}
+        }
+      }       
+    }
+  }
+}
 
 //- モーダル開くアイコン
 .c-modalOpenIcon{
@@ -182,7 +280,7 @@
   height: auto;
   mask-image: url(../images/common/icon-open.svg);
   -webkit-mask-image: url(../images/common/icon-open.svg);
-  mask-size: contain;
+  mask-size: cover;
   background-color: #888888;
 
   &--dark{ background-color: #666666;}
@@ -210,7 +308,7 @@
     aspect-ratio: 1;
     mask-image: url(../images/common/icon-close.svg);
     -webkit-mask-image: url(../images/common/icon-close.svg);
-    mask-size: contain;
+    mask-size: cover;
     background: $bk;
   }
 
@@ -222,6 +320,18 @@
 
     &-icon{
       width: 10px;
+    }
+
+    // hover 
+    &-icon{
+      transition: .2s;
+    }
+
+    &:hover{
+      .c-modalCloseIcon__btn-icon{
+        transition: .2s;
+        rotate: 90deg;
+      }
     }
   }
 }
@@ -237,6 +347,33 @@
   &__summary{
     color: #888888;
   }
+
+  // hover 
+  @include mq(pc){
+    &__main_img, &__title{
+      transition: .2s;
+    }
+
+    &__main_img{
+      overflow: hidden;
+      img{
+        transition: .2s;
+      }
+    }
+    &:hover{
+      .c-thumbnail__main_img{
+        filter: grayscale(100%);
+
+        img{
+          transition: .2s ;
+          scale: 1.03;
+        }
+      }
+      .c-thumbnail__title{
+        color: $ylw;
+      }   
+    }
+  }
 }
 
 // LOAD MORE 
@@ -250,6 +387,7 @@
   font-size: vw(28);
   display: flex;
   border: vw(2) solid $bk;
+  letter-spacing: -0.02em;
 
   @include mq(pc){
     margin: 58px auto 79px;
@@ -258,40 +396,45 @@
     font-size:12px;
     border: 1px solid $bk;
   }
+
+  // hover 
+  @include mq(pc){
+    transition: .2s;
+
+    &:hover{
+      background: #e1e1e1;
+    }
+  }
 }
 
 // 外部リンクのアイコン
-a{
-  &.is-external{
-    position: relative;
-    padding-right: vw(31);
-    color: $ylw;
-    text-decoration: underline;
-    width: fit-content;
+a[target="_blank"]:not(:has(img)){
+  position: relative;
+  padding-right: vw(31);
+  width: fit-content;
+
+  &::after{
+    position: absolute;
+    content: '';
+    width: vw(18);
+    height: auto;
+    aspect-ratio: 1/1;
+    mask-image: url(../images/common/icon-external.svg);
+    -webkit-mask-image: url(../images/common/icon-external.svg);
+    mask-size: cover;
+    background: $ylw;
+    top: 50%;
+    translate: 0 -50%;
+    right: vw(8);
+  }
+
+  @include mq(pc){
+    padding-right: 18px;
 
     &::after{
-      position: absolute;
-      content: '';
-      width: vw(18);
-      height: auto;
-      aspect-ratio: 1/1;
-      mask-image: url(../images/common/icon-external.svg);
-      -webkit-mask-image: url(../images/common/icon-external.svg);
-      mask-size: contain;
-      background: $ylw;
-      top: 50%;
-      translate: 0 -50%;
-      right: vw(8);
-    }
-
-    @include mq(pc){
-      padding-right: 18px;
-
-      &::after{
-        width: 10px;
-        right: 4px;
-      }      
-    }
+      width: 10px;
+      right: 4px;
+    }      
   }
 }
 
@@ -300,16 +443,18 @@ a{
 //- ーーーーーーーーーーーーーーーーーーー
 //- モーダルの大枠
 .l-modal{
-  width: 100vw;
-  height: 100vh;
-  display: none;
+  // width: 100vw;
+  // height: 100dvh;
+  // display: none;
   // z-index: 200; 
   // top: 0;
   // left: 0;
+  opacity: 0;
+  pointer-events: none;
 
   &__bg{
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     background: rgba(255,255,255,0.9);
     position: fixed;
     z-index: 200;
@@ -319,9 +464,9 @@ a{
   
   &__container{
     position: absolute;
-    width: 100%;
+    width: 100vw;
     height: fit-content;
-    max-height: 100vh;
+    max-height: 100dvh;
     top:50%;
     left:0;
     translate: 0 -50%;
@@ -333,13 +478,20 @@ a{
 
   &__wrapper{
     overflow-y: scroll;
-    max-height: calc(100vh - vw(76));
+    max-height: calc(100dvh - vw(76));
     background: $bk;
     position: relative;
     width: 100%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar{
+      display: none;
+    }
   }
 
   &__inner{
+    // background: $bk;
     position: relative;
     width: 100%;
     padding: vw(20);
@@ -371,7 +523,7 @@ a{
       aspect-ratio: 1/1;
       mask-image: url(../images/common/icon-close.svg);
       -webkit-mask-image: url(../images/common/icon-close.svg);
-      mask-size: contain;
+      mask-size: cover;
       background: #888888;
       margin-right: vw(16);
     }
@@ -380,6 +532,11 @@ a{
       color: #888888;
       font-size: vw(20);
     }
+  }
+
+  &.is-open{
+    opacity: 1;
+    pointer-events: auto;
   }
 
   @include mq(pc){
@@ -393,7 +550,7 @@ a{
       }
 
       &__wrapper{
-        max-height: 100vh;
+        max-height: 100dvh;
       }
 
       &__inner{
@@ -426,6 +583,16 @@ a{
           font-size: 12px;
         }
       }
+
+      // hover 
+      &__bottom{
+        transition: .2s;
+
+        &:hover{
+          transition: .2s;
+          background: #333;
+        }
+      }      
     }
   }
 }

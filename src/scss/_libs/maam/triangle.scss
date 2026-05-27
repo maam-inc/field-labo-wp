@@ -6,7 +6,7 @@
 実際のサイズは別途指定してください。
 
 例: 黒い3:2比率の下向き三角形を作る
-@include triangle(#000,3,2,'bottom');
+@include triangle($bk,3,2,'bottom');
 
 方向の指定方法は以下。
 top     =>  上向き（初期値）

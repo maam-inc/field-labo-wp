@@ -6,7 +6,6 @@ export default class CommonModal {
     this.mq_pc = `(min-width: 768px)`;
     this.cmd = { isPc: this.mq_pc, isSp: this.mq_sp };
 
-    // this.modal = document.getElementById('l-modal');
     this.header = document.querySelector('.l-header');
     this.headerH = this.header.offsetHeight;
   }
@@ -17,7 +16,7 @@ export default class CommonModal {
 
   // TOP / FAQ の共通モーダル専用
   modalUi(){
-    const elm = document.querySelector(`.l-modal`)
+    const elm = document.querySelector(`.l-modal`);
     if(!elm) return;
     document.querySelectorAll('.btn-open').forEach((item) => {
       item.addEventListener('click', () => {
@@ -31,53 +30,33 @@ export default class CommonModal {
       });
     });
   }
-
-  freezeScroll() {
-    const scrollY = window.scrollY;
-    // this.savedScrollY = scrollY;
-    modal.style.position = 'fixed';
-    // this.modal.style.top = `-${scrollY}px`;
-    modal.style.top = `0`;
-    modal.style.left = '0';
-    modal.style.right = '0';
-    modal.style.width = '100%';
-  }
   
   openModal(modal){
-    modal.classList.toggle('is-open')
+    modal.classList.add('is-open')
     if(!modal) return;
 
-    // document.body.style.overflow = 'hidden';
-    const modalContainer = modal.querySelector('.l-modal__container');
-    const modalBtn = modal.querySelector('.l-modal__btn');
-
-    gsap.set(modal, { display: "block"});
-    // this.freezeScroll(modal);
-    gsap.to(modal, { opacity: 1, duration: 0.5, ease: "power3.out" });
-
-    // gsap.set(modalContainer, { scale: 1 });
-    // gsap.set(modalBtn, { scale: 0.5, opacity: 0 });
-    // gsap.to(modalBtn, { opacity: 1, duration: 0.5, ease: "power3.out", delay: 0.3 });
-    // gsap.to(modalBtn, { scale: 1, duration: 0.5, ease: "back.out(2)", delay: 0.3 });
-
-    // gsap.set(modalContainer, { scrollTo: 70 });
-    // gsap.to(modalContainer, { duration: 0.85, ease: "power4.out", scrollTo: 0 });
+    document.body.style.overflow = 'hidden';
+    const c = modal.querySelector('.l-modal__wrapper') 
+    const bg = modal.querySelector('.l-modal__bg') 
+    const btn = modal.querySelector('.l-modal__btn') 
+    gsap.set(c, {opacity:0, y: 30})
+    gsap.set([bg, btn], {opacity:0,})
+    gsap.to(c, {opacity:1, y: 0, duration: 0.2, ease: "linear", })    
+    gsap.to([bg, btn], {opacity:1, duration: 0.2, ease: "linear", })    
   }
 
   closeModal(modal){
-    modal.classList.toggle('is-open')
     if(!modal) return;
+    const c = modal.querySelector('.l-modal__wrapper');
+    const bg = modal.querySelector('.l-modal__bg');
+    const btn = modal.querySelector('.l-modal__btn') 
 
-    // document.body.style.overflow = 'auto';
-    const modalContainer = modal.querySelector('.l-modal__container');
-    const modalBtn = modal.querySelector('.l-modal__btn');
-
-    gsap.to(modal, { opacity: 1, duration: 0.5, ease: "power3.out" });
-    gsap.to(modal, {
-      opacity: 0,
-      duration: 0.5,
-      ease: "power3.out",
-      onComplete: () => { gsap.set(modal, { display: "none" }); }
+    gsap.to(c,  { opacity: 0, y: 30, duration: 0.2, ease: "linear" });
+    gsap.to([bg, btn], { opacity: 0, duration: 0.2, ease: "linear",
+      onComplete: () => {
+        modal.classList.remove('is-open');
+        document.body.style.overflow = 'auto';
+      }
     });
   }
 }

@@ -50,7 +50,7 @@
 @mixin f-noto-B {
   font-family: "Noto Sans JP", "Inter", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 900;
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -60,5 +60,5 @@
 .f-noto-T { @include f-noto-T; }
 .f-noto-R { @include f-noto-R; }
 .f-noto-M { @include f-noto-M; }
-.f-noto-SB { @include f-noto-SB; }
+.f-noto-B { @include f-noto-SB; }
 .f-noto-B { @include f-noto-B; }

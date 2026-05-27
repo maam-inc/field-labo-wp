@@ -7,7 +7,7 @@ mixin c-breadcrumbs(crumb, faq)
   .c-breadcrumbs
     -if(faq)
       .c-breadcrumbs__item
-        a.c-breadcrumbs__page.f-inter-B(href="../about-contact/index.html") ABOUT & CONTACT
+        a.c-breadcrumbs__page.f-inter-B(href="/about-contact/") ABOUT & CONTACT
       .c-breadcrumbs__item
         h1.c-breadcrumbs__page.f-inter-B FAQ
     -else
@@ -17,17 +17,24 @@ mixin c-breadcrumbs(crumb, faq)
 //- FIELD LABOのロゴ 
 mixin c-logo(bk)
   -if(bk === true) 
-    .c-logo(class=`black`)
+    span.c-logo(class=`black`)
   -else
-    .c-logo(class=`white`)
+    span.c-logo(class=`white`)
 
-//- SNS 
-mixin c-sns(className, footer)
-  ul.c-sns(class=className ? className : '' class=footer ? 'type-footer' : '')
-    li: a(href="#"): img(src=`${IMG_DIR}common/icon-instagram.svg` alt="instagram")
-    li: a(href="#"): img(src=`${IMG_DIR}common/icon-facebook.svg` alt="facebook")
-    li: a(href="#"): img(src=`${IMG_DIR}common/icon-pinterest.svg` alt="pinterest")
-    li: a(href="#"): img(src=`${IMG_DIR}common/icon-home.svg` alt="home")
+//- ヘッダーナビ
+mixin c-nav
+  nav.c-nav.f-inter-B
+    a.c-nav__list(href="/blog/") BLOG & NOTE
+    a.c-nav__list(href="/projects/") PROJECTS
+    a.c-nav__list(href="/about-contact/") ABOUT & CONTACT
+
+//- SNS
+mixin c-sns(footer)
+  ul.c-sns(class=footer ? 'c-sns--footer' : '')
+    li: a(href="https://www.instagram.com/field_labo/" target="_blank"): img(src=`${IMG_DIR}common/icon-instagram.svg` alt="instagram")
+    li: a(href="https://www.facebook.com/fieldlabo/" target="_blank"): img(src=`${IMG_DIR}common/icon-facebook.svg` alt="facebook")
+    li: a(href="https://jp.pinterest.com/field_labo/" target="_blank"): img(src=`${IMG_DIR}common/icon-pinterest.svg` alt="pinterest")
+    li: a(href="https://www.houzz.jp/pro/field-labo" target="_blank"): img(src=`${IMG_DIR}common/icon-home.svg` alt="home")
 
 //- 上に戻るボタン
 mixin c-toTop(fixed)
@@ -64,20 +71,20 @@ mixin c-thumbnail(className, type, i, idx)
     -if(type=='top')
       .c-thumbnail__main_img: img(src=`${DUMMY_DIR}top/gallery${idx+1}.jpg`)
       .c-thumbnail__text-wrapper
-        .c-thumbnail__title.f-inter-B: p!=i.title
+        p.c-thumbnail__title.f-inter-B!=i.title
         .c-thumbnail__open: +c-modalOpenIcon(false)
     //- 一覧ページ　
     -else if(type==='projects' || type==='blog')
       .c-thumbnail__main_img: img(src=`${DUMMY_DIR}${type}/list${idx+1}.jpg`)
       .c-thumbnail__text-wrapper
-        .c-thumbnail__title.f-inter-B: p!=i.title
-        .c-thumbnail__summary.f-noto-M: p!=i.summary
+        p.c-thumbnail__title.f-inter-B!=i.title
+        p.c-thumbnail__summary.f-noto-M!=i.summary
     //- 記事埋め込みパーツ
     -else if(type=='page')
       .c-thumbnail__main_img: img(src=`${DUMMY_DIR}${type}/thumb.jpg`)
       .c-thumbnail__text-wrapper
-        .c-thumbnail__title.f-inter-B: p!=i.title
-        .c-thumbnail__summary.f-noto-M: p!=i.summary
+        p.c-thumbnail__title.f-inter-B!=i.title
+        p.c-thumbnail__summary.f-noto-M!=i.summary
         .c-thumbnail__viewmore
           .c-thumbnail__viewmore-icon: img(src=`${IMG_DIR}common/icon-link.svg` alt="viewmore")
           p.c-thumbnail__viewmore-text.f-inter-B view more

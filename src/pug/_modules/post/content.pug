@@ -1,146 +1,131 @@
-.l-content
-  .l-content__wrapper 
-    .article#article
-      main.main
-        //- メイン画像　
-        .main__img: img(src=`${DUMMY_DIR}page/main.jpg`)
-        //- タイトル
-        p.main__title.f-inter-B Minamiaoyama office-M  
-        //- ジャンル・日付　
-        p.main__info.f-inter-B (     #{parts.genre}, #{parts.date}     )
+main
+  article.article#article
+    .l-content
+      .l-content__wrapper 
+            .main
+              //- メイン画像　
+              .main__img: img(src=`${DUMMY_DIR}page/main.jpg`)
+              //- タイトル
+              h1.main__title.f-inter-B Minamiaoyama office-M  
+              //- ジャンル・日付　
+              p.main__info.f-inter-B #{parts.genre},&ensp;#{parts.date}
 
-      section.contents
-        //- 見出し
-        p.contents__head.f-noto-B!=parts.head
+            .contents
+              //- 見出し
+              h2.contents__head.f-noto-B!=parts.head
 
-        //- テキスト
-        p.contents__text.f-noto-M!=parts.text1
+              //- テキスト
+              p.contents__text.f-noto-M!=parts.text1
 
-        //- テキスト
-        //- p.contents__text.f-noto-M!=parts.text2
+              //- w100写真パーツ
+              .contents__img-full
+                .contents__img: img(src=`${DUMMY_DIR}page/full.jpg`)
+                //- キャプション　
+                p.contents__cap.f-noto-M!=parts.cap
+                      
+              //- 見出し
+              h2.contents__head.f-noto-B ディテール
 
-        //- w100写真パーツ
-        .contents__img-full
-          .contents__img: img(src=`${DUMMY_DIR}page/full.jpg`)
-          //- キャプション　
-          p.contents__cap.f-noto-M!=parts.cap
+              //- テキスト
+              p.contents__text.f-noto-M!=parts.text1
+
+              //- 横並び２カラムパーツ(テキスト)
+              .contents__column.contents__column
+                .contents__column-item
+                  .contents__img: img(src=`${DUMMY_DIR}page/culumn-text.jpg`)
+                .contents__column-item
+                  p.contents__text.f-noto-M OSB合板を研磨＋白染色は品の良いラフ感で個人的に最近お気に入りの仕上げ。
+
+              //- 横並び２カラムパーツ
+              .contents__column
+                -for(let i = 0; i < 2; i++)
+                  .contents__column-item(class=`contents__column-item--${i+1}`)
+                    .contents__img
+                      img(src=`${DUMMY_DIR}page/column${i+1}.jpg`)
+                      p.contents__cap.f-noto-M!=parts.cap
+
+              //- 横並び３カラムパーツ
+              .contents__column
+                -for(let i = 0; i < 3; i++)
+                  .contents__column-item(class=`contents__column-item--${i+1}`)
+                    .contents__img
+                      img(src=`${DUMMY_DIR}page/column-three${i+1}.jpg`)
+                      p.contents__cap.f-noto-M!=parts.cap
+
+              //- 横並び２カラムパーツ
+              .contents__column
+                -for(let i = 0; i < 2; i++)
+                  .contents__column-item(class=`contents__column-item--${i+1}`)
+                    .contents__img
+                      img(src=`${DUMMY_DIR}page/column-narrow${i+1}.jpg`)
+                      p.contents__cap.f-noto-M!=parts.cap
+
+
+              //- テキスト
+              p.contents__text.f-noto-M!=parts.text1
+
+              //- 見出し
+              h2.contents__head.f-noto-B まとめ
+
+              //- Before & Afterパーツ　
+              .contents__beforeAfter 
+                //- 見出し
+                h2.contents__head.beforeAfter__head.f-noto-B before
                 
-        //- 見出し
-        p.contents__head.f-noto-B ディテール
+                //- w100写真パーツ
+                .contents__img-full.beforeAfter__img
+                  .contents__img: img(src=`${DUMMY_DIR}page/before_after1.jpg`)
 
-        //- テキスト
-        p.contents__text.f-noto-M!=parts.text1
+                //- 見出し
+                h2.contents__head.beforeAfter__head.f-noto-B after
 
-        //- テキスト
-        //- p.contents__text.f-noto-M!=parts.text2 
+                //- w100写真パーツ
+                .contents__img-full.beforeAfter__img
+                  .contents__img: img(src=`${DUMMY_DIR}page/before_after2.jpg`)
 
-        //- 横並び２カラムパーツ(テキスト)
-        .contents__column.contents__column-text
-          .contents__column-item.contents__column-item--1
-            .contents__img: img(src=`${DUMMY_DIR}page/culumn-text.jpg`)
-          .contents__column-item.contents__column-item--2
-            p.f-noto-M OSB合板を研磨＋白染色は品の良いラフ感で個人的に最近お気に入りの仕上げ。
+                //- テキスト
+                p.contents__text.beforeAfter__text.f-noto-M!=parts.text1
 
 
-        //- テキスト
-        p.contents__text.f-noto-M!=parts.text1
+              //- 見出し
+              h2.contents__head.f-noto-B その他の写真はこちら
 
-        //- テキスト
-        //- p.contents__text.f-noto-M!=parts.text2 
+              //- ギャラリーパーツ　
+              button.contents__gallery
+                -for(let i = 0; i < 8; i++)
+                  .contents__gallery-img.contents__img
+                    img(src=`${DUMMY_DIR}page/gallery${i+1}.jpg`)
+                    .btn
+                      .btn__open.btn__open-gallery
 
-        //- 横並び２カラムパーツ(画像)
-        .contents__column.contents__column
-          -for(let i = 0; i < 2; i++)
-            .contents__column-item(class=`contents__column-item--${i+1}`)
-              .contents__img: img(src=`${DUMMY_DIR}page/column${i+1}.jpg`)
-              p.contents__cap.f-noto-M!=parts.cap
+              //- テキスト
+              p.contents__text.f-noto-M!=parts.text3
 
-        //- 横並び２カラムパーツ(画像)
-        .contents__column.contents__column
-          -for(let i = 0; i < 2; i++)
-            .contents__column-item(class=`contents__column-item--${i+1}`)
-              .contents__img: img(src=`${DUMMY_DIR}page/column-narrow${i+1}.jpg`)
+              //- 記事埋め込みパーツ
+              a.contents__embed(href="#"): +c-thumbnail('', 'page', parts.embed, null)
 
-        //- 横並び３カラムパーツ
-        .contents__column.contents__column-three
-          -for(let i = 0; i < 3; i++)
-            .contents__column-item(class=`contents__column-item--${i+1}`)
-              .contents__img: img(src=`${DUMMY_DIR}page/column-three${i+1}.jpg`)
-              p.contents__cap.f-noto-M!=parts.cap
+              //- 見出し
+              h2.contents__head.f-noto-B DATA
 
-        //- テキスト
-        p.contents__text.f-noto-M!=parts.text1
+              //- DATAパーツ
+              .contents__data
+                .contents__data-infos
+                  dl.table 
+                    -for(let i = 0; i < parts.data.length; i++)
+                      .table__item
+                        dt.table__head.f-noto-B!=parts.data[i].item
+                        dd.table__text.f-noto-M!=parts.data[i].text
+                  
+                  p.contents__text.f-noto-M!=parts.text_data
 
-        //- 見出し
-        p.contents__head.f-noto-B まとめ
+                button.contents__data-img
+                  .contents__img
+                    img(src=`${DUMMY_DIR}page/data.jpg`)
+                    .btn
+                      .btn__open.btn__open-data
 
-        //- テキスト
-        //- p.contents__text.f-noto-M!=parts.text2 
-
-        //- Before & Afterパーツ　
-        .contents__beforeAfter 
-          //- 見出し
-          p.contents__head.beforeAfter__head.f-noto-B before
-          
-          //- w100写真パーツ
-          .contents__img-full.beforeAfter__img
-            .contents__img: img(src=`${DUMMY_DIR}page/before_after1.jpg`)
-
-          //- 見出し
-          p.contents__head.beforeAfter__head.f-noto-B after
-
-          //- w100写真パーツ
-          .contents__img-full.beforeAfter__img
-            .contents__img: img(src=`${DUMMY_DIR}page/before_after2.jpg`)
-
-          //- テキスト
-          p.contents__text.beforeAfter__text.f-noto-M!=parts.text1
-
-
-        //- 見出し
-        p.contents__head.f-noto-B その他の写真はこちら
-
-        //- ギャラリーパーツ　
-        .contents__gallery
-          -for(let i = 0; i < 8; i++)
-            .contents__gallery-img.contents__img
-              img(src=`${DUMMY_DIR}page/gallery${i+1}.jpg`)
-              button.btn
-                .btn__open.btn__open-gallery
-
-        //- テキスト
-        p.contents__text.f-noto-M!=parts.text3
-
-        //- 記事埋め込みパーツ
-        a.contents__embed(href="#"): +c-thumbnail('', 'page', parts.embed, null)
-
-        //- 見出し
-        p.contents__head.f-noto-B DATA
-
-        //- DATAパーツ
-        .contents__data
-          .contents__data-infos
-            table.table 
-              -for(let i = 0; i < parts.data.length; i++)
-                tr
-                  td.table__head.f-noto-B!=parts.data[i].item
-                  td.table__text.f-noto-M!=parts.data[i].text
-
-            .detail.f-noto-M
-              p.detail__shooting After Renovation 撮影 2022年
-              .detail__links
-                p.detail__links-head この事例のその他の写真はこちら
-                a.detail__link(href="#") Photograph [machida-t173]
-                a.detail__link(href="#") Houzz
-          
-          .contents__data-img
-            .contents__img
-              img(src=`${DUMMY_DIR}page/data.jpg`)
-              button.btn
-                .btn__open.btn__open-data
-
-  +c-toTop(true)
-  
+      +c-toTop(true)
+      
 a.bottom(href="../")
   .bottom__icon 
   .bottom__text.f-inter-B Back to index
@@ -149,16 +134,16 @@ a.bottom(href="../")
 .galleryModal#galleryModal
   .galleryModal__bg.galleryModal__close
   .galleryModal__container
-    .galleryModal__img
+    .galleryModal__img.postModal__img 
       img(src="" alt="")
     +c-ctrl-btn('galleryModal__nav')
   +c-modalCloseIcon('galleryModal__btn galleryModal__close')
 
 //- DATAモーダル
-.dataModal#dataModal
+.dataModal#dataModal.postModal
   .dataModal__bg.dataModal__close
   .dataModal__container
-    .dataModal__img
+    .dataModal__img.postModal__img 
       img(src="" alt="")
   +c-modalCloseIcon('dataModal__btn dataModal__close')
 

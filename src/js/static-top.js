@@ -10,6 +10,8 @@ import CommonModal from './_modules/commonModal';
 import MainSwiper from './_modules/MainSwiper';
 import LoadMore from './_modules/LoadMore';
 import MasonryUi from './_modules/MasonryUi';
+import TopSlider from './_modules/TopSlider';
+import OrderCtrl from './_modules/OrderCtrl';
 
 
 if(!window.gsap) window.gsap = gsap;
@@ -32,11 +34,14 @@ const loaded = () => {
   commonModal.init();
   // const mainSwiper = new MainSwiper;
   // mainSwiper.init();
-  // const loadMore = new LoadMore;
-  // loadMore.init();
+  const loadMore = new LoadMore;
+  loadMore.init();
   const masonryUi = new MasonryUi;
   masonryUi.init();
-
+  const topSlider = new TopSlider;
+  topSlider.init();
+  const orderCtrl = new OrderCtrl;
+  orderCtrl.init();
 };
 
 

@@ -1,6 +1,9 @@
 @use '../../_base/settings' as *;
 @use 'sass:math';
 
+#top{
+  padding-block: 4px 0;
+}
 .topMain{
   width: 100%;
 
@@ -23,21 +26,27 @@
       bottom: vw(46);
       left: vw(48);
       color: $wh;
+      width: fit-content;
+      max-width: vw(638);
 
       .title{
         font-size: vw(42);
-        padding: vw(13) vw(22);
+        padding: vw(3) vw(22);
         background: rgba(170,153,119,0.8);
         width: fit-content;
+        max-width: 100%;
         letter-spacing: -0.01em;
+        line-height: 1.5;
       }
 
       .main_summary{
         font-size:vw(24);
-        padding: vw(14) vw(24);
+        padding: vw(9) vw(24);
         background: $bk;
         width: fit-content;
+        max-width: 100%;
         margin-left: vw(41);
+        line-height: 1.75;
       }
     }
 
@@ -70,15 +79,17 @@
       .text-wrapper {
         bottom: 40px;
         left: 68px;
+        max-width: 854px;
 
         .title{
           font-size: 25px;
-          padding: 7px 13px;
+          padding: 3px 13px;
+          letter-spacing: 0.01em;
         }
 
         .main_summary{
           font-size: 12px;
-          padding: 7px 18px;
+          padding: 4px 18px;
           margin-left: 30px;
         }
       }
@@ -89,7 +100,10 @@
     }
   }  
 }
-
+.topMain__mv .swiper-wrapper {
+  // transition-timing-function: cubic-bezier(.95,.83,.8,1.01) !important;
+  transition-timing-function: cubic-bezier(1, 0.817, 0.722, 0.992) !important;
+}
 // hover 
 @include mq(pc){
   .topMain{

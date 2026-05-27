@@ -11,7 +11,7 @@
 };
 
 @function vh($denominator: 0, $molecule: 0){
-  @return math.div(100vh * $denominator, $molecule);
+  @return math.div(100dvh * $denominator, $molecule);
 };
 
 @function per($denominator: 0, $molecule: $w-sp){

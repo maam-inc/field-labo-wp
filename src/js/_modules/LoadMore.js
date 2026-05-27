@@ -8,33 +8,32 @@ export default class LoadMore {
   }
 
   init(){
-    this.loadMoreUi();
+    this.observeNewItems();
   }
 
-  loadMoreUi(){
-    console.log('loadMoreUi')
-    const wrapper = document.querySelector('.jsLoadMoreWrapper');
-      const container = document.querySelector(".jsLoadMoreContainer");
-      const btn = document.querySelector(".jsLoadMoreBtn");
+  observeNewItems(){
+    const container = document.querySelector('.topContents__gallery-wrapper');
+    if (!container) return;
 
-       const step = 1000; // 1回で増やす高さ
-      let current = step;
-      // 初期表示の高さ（例：600px）
-      const limitHeight = 1000;
-
-      const fullHeight = container.scrollHeight;
-
-      wrapper.style.maxHeight = step + "px";
-
-      btn.addEventListener("click", () => {
-        current += step;
-
-        if (current >= fullHeight) {
-          wrapper.style.maxHeight = fullHeight + "px";
-          btn.style.display = "none";
-        } else {
-          wrapper.style.maxHeight = current + "px";
-        }
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((m) => {
+        m.addedNodes.forEach((node) => {
+          if (node.nodeType !== 1) return;
+          if (!node.classList.contains('topContents__item')) return;
+          this.fadeIn(node);
+        });
       });
+    });
+    observer.observe(container, { childList: true });
+  }
+
+  fadeIn(el){
+    el.style.opacity = '0';
+    el.style.transition = 'opacity .6s ease';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        el.style.opacity = '1';
+      });
+    });
   }
 }

@@ -1,14 +1,15 @@
 @use '../../_base/settings' as *;
 @use 'sass:math';
-
 .about {
+  letter-spacing: 0.02em;
+
   &__wrapper {
     margin-top: vw(107);
     padding-inline: vw(22);
   }
 
   &__head {
-    margin-bottom: vw(44);
+    margin-bottom: vw(40);
     font-size: vw(40);
     color: $bk;
     letter-spacing: -0.02em;
@@ -16,7 +17,7 @@
 
   &__text {
     font-size: vw(26);
-    line-height: 1.7;
+    line-height: 1.75;
     color: $bk;
 
     &-link {
@@ -53,7 +54,7 @@
     .text {
       flex: 1;
       font-size: vw(26);
-      line-height: 1.8;
+      line-height: 1.7;
       color: $bk;
     }
   }
@@ -76,11 +77,16 @@
     &__wrapper {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 117px 88px;
+      gap: 117px 0px;
       margin-top: 36px;
       padding: 0;
     }
 
+    &__block{
+      &:nth-child(2n+1){
+        padding-right: 88px;
+      }
+    }
     &__head {
       margin-bottom: 22px;
       font-size: 20px;

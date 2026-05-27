@@ -20,9 +20,9 @@ export default class DataModal {
     this.targets.forEach((target) => {
       target.addEventListener('click', () => {
         if (!this.mq.matches) return;
-
+        document.body.style.overflow = "hidden";
         const img = target.querySelector('img');
-        // if (!img) return;
+        if (!img) return;
         this.open(img.getAttribute('src'));
       });
     });
@@ -30,6 +30,8 @@ export default class DataModal {
     // クローズ
     this.modal.addEventListener('click', (e) => {
       if (e.target.closest('.dataModal__close')) {
+        document.body.style.overflow = "auto";
+
         this.close();
       }
     });

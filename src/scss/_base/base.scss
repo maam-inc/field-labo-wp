@@ -14,7 +14,9 @@ body{
     box-sizing: border-box;
   }
 }
-
+#wrapper{
+  overflow: hidden;
+}
 a{
   text-decoration: inherit;
   color: inherit;
@@ -27,7 +29,14 @@ img,video{
   width: 100%;
   height: auto;
 }
+.scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
 
+.scrollbar::-webkit-scrollbar {
+    display: none;
+}
 
 // responsive
 @include mq(sp) {
