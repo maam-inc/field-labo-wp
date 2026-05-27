@@ -22,10 +22,12 @@
                   <?php while ($query->have_posts()) : $query->the_post(); ?>
                     <?php
                       $images = get_field('main-image');
-                      $img_pc = $images['image_pc'] ?? null;
+                      $images = is_array($images) ? $images : [];
+                      $img_pc = $images['image_pc'] ?? '';
                       $img_sp = $images['image_sp'] ?? $img_pc;
-                      $permalink = get_field('main-url') ?? null;
-                      $text = get_field('main-text') ?? null;
+                      $img_src = $img_sp ?: $img_pc;
+                      $permalink = get_field('main-url') ?: home_url('/');
+                      $text = get_field('main-text') ?? '';
                     ?>
                     <div class="swiper-slide">
                       <a class="inner" href="<?php echo esc_url($permalink); ?>">
@@ -37,7 +39,9 @@
                             <?php if ($img_sp) : ?>
                               <source media="(max-width: 768px)" srcset="<?php echo esc_url($img_sp); ?>"/>
                             <?php endif; ?>
-                            <img src="<?php echo esc_url($img_sp ?: $img_pc); ?>" alt=""/>
+                            <?php if ($img_src) : ?>
+                              <img src="<?php echo esc_url($img_src); ?>" alt=""/>
+                            <?php endif; ?>
                           </picture>
                         </div>
                         <div class="text-wrapper">
