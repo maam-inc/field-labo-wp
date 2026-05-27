@@ -16,7 +16,7 @@
           <div class="about__block about__block--2">
             <h2 class="about__head f-inter-B">about me</h2>
             <div class="about__text-group f-noto-M">
-              <p class="about__name">柴田 茂穂<span class="en f-inter-R">shigeho.shibata</span></p>
+              <p class="about__name f-noto-B">柴田 茂穂<span class="en f-inter-R">shigeho.shibata</span></p>
               <p class="about__text">1971年 東京都生まれ<br><br>学校法人 環境造形学園 ICSカレッジオブアーツ（旧インテリアセンタースクール）を卒業後、<br>1995年 株式会社ヨシノスペースデベロップメントにて大手マンションデベロッパーをクライアントに営業・ショールームの・企画デザイン・工事監督を務める。<br><br>2007年 ゆくい堂株式会社 に転籍、設計デザイナー案件の工事担当・現場監理としてリノベーション案件に関わり、その後同社にて主に個人クライアントの住宅・事業用の賃貸及びリニューアル販売案件のリノベーション設計デザイン・現場監理・工事監督 等の業務を務める。<br><br>2016年 FIELD LABO として活動を開始。<br>[主な業務内容] 住宅（マンション・戸建）店舗・事務所のリノベーションの設計デザイン及び施工監理。<br>オリジナル家具、プロダクトの制作販売。趣味は仕事とスイッチなど小物アイテムの創作。</p>
             </div>
           </div>

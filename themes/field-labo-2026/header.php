@@ -110,9 +110,6 @@
               <button class="l-header__modal-btn l-header__modal-close">
                 <div class="btn-close"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/icon-close.svg" alt="close"></div>
               </button>
-              <div class="l-header__modal-logo">
-                <div class="c-logo black"></div>
-              </div>
               <a class="l-header__modal-logo" href="<?php echo esc_url(home_url('/')); ?>">
                 <span class="c-logo black" aria-label="FIELD LABO"></span>
               </a>

@@ -13,7 +13,7 @@
   }
 ?>
 
-      <div class="l-content">
+      <div class="l-content top" id="top">
         <div class="l-content__wrapper">
           <main class="topMain" id="topMain">
             <div class="topMain__mv swiper js-mainSwiper">
@@ -46,12 +46,8 @@
                           </picture>
                         </div>
                         <div class="text-wrapper">
-                          <div class="title f-inter-B">
-                            <p><?php echo esc_html(get_field('title')); ?></p>
-                          </div>
-                          <div class="main_summary f-noto-B">
-                            <p><?php echo esc_html(get_field('text')); ?></p>
-                          </div>
+                          <p class="title f-inter-B"><?php echo esc_html(get_field('title')); ?></p>
+                          <p class="main_summary f-noto-B"><?php echo esc_html(get_field('text')); ?></p>
                         </div>
                       </a>
                     </div>
@@ -115,9 +111,7 @@
                             </picture>
                           </div>
                           <div class="c-thumbnail__text-wrapper">
-                            <div class="c-thumbnail__title f-noto-B">
-                              <p></p>
-                            </div>
+                            <p class="c-thumbnail__title f-noto-B"></p>
                             <div class="c-thumbnail__open">
                               <div class="c-modalOpenIcon"></div>
                             </div>

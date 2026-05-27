@@ -6,7 +6,9 @@
     $item = get_sub_field('item');
     $desc = get_sub_field('desc');
     ?>
-    <dt class="table__head f-noto-B"><?php echo esc_html($item); ?></dt>
-    <dd class="table__text f-noto-M"><?php echo wp_kses_post($desc); ?></dd>
+    <div class="table__item">
+      <dt class="table__head f-noto-B"><?php echo esc_html($item); ?></dt>
+      <dd class="table__text f-noto-M"><?php echo wp_kses_post($desc); ?></dd>
+    </div>
   <?php endwhile; ?>
 </dl>

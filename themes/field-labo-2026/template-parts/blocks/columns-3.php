@@ -8,7 +8,7 @@ if (!$left_column && !$center_column && !$right_column) {
   return;
 }
 
-$render_col3_column = function($column) {
+$render_col3_column = function($column, $index) {
   if (!$column || !is_array($column)) {
     return;
   }
@@ -41,7 +41,7 @@ $render_col3_column = function($column) {
     return;
   }
   ?>
-  <figure class="contents__column-item">
+  <div class="contents__column-item contents__column-item--<?php echo esc_attr($index); ?>">
     <div class="contents__img">
       <picture>
         <source srcset="<?php echo esc_url($image[0]); ?>.webp" type="image/webp">
@@ -53,17 +53,17 @@ $render_col3_column = function($column) {
           loading="lazy"
         />
       </picture>
+      <?php if ($cap) : ?>
+        <p class="contents__cap f-noto-M"><?php echo nl2br(esc_html($cap)); ?></p>
+      <?php endif; ?>
     </div>
-    <?php if ($cap) : ?>
-      <figcaption class="contents__cap f-noto-M"><?php echo nl2br(esc_html($cap)); ?></figcaption>
-    <?php endif; ?>
-  </figure>
+  </div>
   <?php
 };
 ?>
 
-<div class="contents__column contents__column-three">
-  <?php $render_col3_column($left_column); ?>
-  <?php $render_col3_column($center_column); ?>
-  <?php $render_col3_column($right_column); ?>
+<div class="contents__column">
+  <?php $render_col3_column($left_column, 1); ?>
+  <?php $render_col3_column($center_column, 2); ?>
+  <?php $render_col3_column($right_column, 3); ?>
 </div>

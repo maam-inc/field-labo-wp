@@ -229,7 +229,7 @@ $render_frame_col2 = function($row) use ($render_col2_column) {
       <?php if ($layout === 'frame-heading') : ?>
         <?php $heading = $get_first_scalar($get_value($row, ['heading', 'block_heading'])); ?>
         <?php if ($heading) : ?>
-          <p class="contents__head beforeAfter__head f-noto-B"><?php echo nl2br(esc_html($heading)); ?></p>
+          <h2 class="contents__head beforeAfter__head f-noto-B"><?php echo nl2br(esc_html($heading)); ?></h2>
         <?php endif; ?>
       <?php elseif ($layout === 'frame-text') : ?>
         <?php $text = $get_first_scalar($get_value($row, ['text', 'block_text'])); ?>

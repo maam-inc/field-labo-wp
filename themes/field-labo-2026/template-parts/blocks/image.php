@@ -9,7 +9,7 @@ $cap = get_field('block_img-cap');
 $alt = get_post_meta($img_id, '_wp_attachment_image_alt', true);
 ?>
 
-<figure class="contents__img-full">
+<div class="contents__img-full">
   <div class="contents__img">
     <picture>
       <source srcset="<?php echo esc_url($image[0]); ?>.webp" type="image/webp">
@@ -23,6 +23,6 @@ $alt = get_post_meta($img_id, '_wp_attachment_image_alt', true);
     </picture>
   </div>
   <?php if ($cap) : ?>
-    <figcaption class="contents__cap f-noto-M"><?php echo nl2br(esc_html($cap)); ?></figcaption>
+    <p class="contents__cap f-noto-M"><?php echo nl2br(esc_html($cap)); ?></p>
   <?php endif; ?>
-</figure>
+</div>

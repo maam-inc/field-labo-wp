@@ -193,7 +193,7 @@ export default class Gallery {
       const btn = clone.querySelector('.js-modalOpen')
       const webPimg = clone.querySelector('source')
       const img = clone.querySelector('img')
-      const ttl = clone.querySelector('.c-thumbnail__title p')
+      const ttl = clone.querySelector('.c-thumbnail__title')
 
       if(item) item.dataset.postId = post.id
       if(btn) btn.dataset.post = post.id
@@ -394,7 +394,7 @@ export default class Gallery {
     }
 
     // モーダルの枠だけ表示
-    modal.classList.add('is-active')
+    modal.classList.add('is-open')
     modal.setAttribute('aria-hidden', 'false')
     modal.style.display = 'block'
     document.documentElement.classList.add('is-modal-open')
@@ -468,7 +468,7 @@ export default class Gallery {
     }
 
     // 非表示
-    modal.classList.remove('is-active')
+    modal.classList.remove('is-open')
     modal.setAttribute('aria-hidden', 'true')
     modal.style.display = 'none'
     document.documentElement.classList.remove('is-modal-open')

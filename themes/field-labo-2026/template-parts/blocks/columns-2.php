@@ -7,7 +7,7 @@ if (!$left_column && !$right_column) {
   return;
 }
 
-$render_col2_column = function($column) {
+$render_col2_column = function($column, $index) {
   if (!$column || !is_array($column)) {
     return;
   }
@@ -32,36 +32,34 @@ $render_col2_column = function($column) {
 
     $alt = get_post_meta($img_id, '_wp_attachment_image_alt', true);
     ?>
-    <figure class="columns-2-block__image">
-      <div class="columns-2-block__image-inner">
+    <div class="contents__column-item contents__column-item--<?php echo esc_attr($index); ?>">
+      <div class="contents__img">
         <picture>
           <source srcset="<?php echo esc_url($image[0]); ?>.webp" type="image/webp">
           <img
             width="<?php echo esc_attr($image[1]); ?>"
             height="<?php echo esc_attr($image[2]); ?>"
             src="<?php echo esc_url($image[0]); ?>"
-            class=""
             alt="<?php echo esc_attr($alt); ?>"
             loading="lazy"
           />
         </picture>
-        <?php if ($is_zoom) : ?>
-          <button
-            class="btn js-modalOpen"
-            data-id="imgModal"
-            data-post="<?php echo esc_attr(get_the_ID()); ?>"
-            data-type="inner"
-            data-img="<?php echo esc_url($image[0]); ?>"
-          >
-            <div class="inner"></div>
-          </button>
+        <?php if ($cap) : ?>
+          <p class="contents__cap f-noto-M"><?php echo nl2br(esc_html($cap)); ?></p>
         <?php endif; ?>
       </div>
-
-      <?php if ($cap) : ?>
-        <figcaption><?php echo nl2br(esc_html($cap)); ?></figcaption>
+      <?php if ($is_zoom) : ?>
+        <button
+          class="btn js-modalOpen"
+          data-id="imgModal"
+          data-post="<?php echo esc_attr(get_the_ID()); ?>"
+          data-type="inner"
+          data-img="<?php echo esc_url($image[0]); ?>"
+        >
+          <div class="inner"></div>
+        </button>
       <?php endif; ?>
-    </figure>
+    </div>
     <?php
     return;
   }
@@ -75,7 +73,11 @@ $render_col2_column = function($column) {
       return;
     }
 
-    echo wp_kses_post(str_replace('<p>', '<p class="text-block">', wpautop($text)));
+    ?>
+    <div class="contents__column-item contents__column-item--<?php echo esc_attr($index); ?>">
+      <?php echo wp_kses_post(str_replace('<p>', '<p class="contents__text f-noto-M">', wpautop($text))); ?>
+    </div>
+    <?php
     return;
   }
 
@@ -124,12 +126,7 @@ $render_col2_column = function($column) {
 };
 ?>
 
-<div class="contents__column contents__column-text">
-  <div class="columns-2-block__item">
-    <?php $render_col2_column($left_column); ?>
-  </div>
-
-  <div class="columns-2-block__item">
-    <?php $render_col2_column($right_column); ?>
-  </div>
+<div class="contents__column">
+  <?php $render_col2_column($left_column, 1); ?>
+  <?php $render_col2_column($right_column, 2); ?>
 </div>

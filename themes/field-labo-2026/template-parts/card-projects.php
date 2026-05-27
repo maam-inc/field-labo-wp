@@ -16,12 +16,8 @@
       <?php endif; ?>
     </div>
     <div class="c-thumbnail__text-wrapper">
-      <div class="c-thumbnail__title f-inter-B">
-        <p><?php echo esc_html(get_the_title()); ?></p>
-      </div>
-      <div class="c-thumbnail__summary f-noto-M">
-        <p><?php echo wp_kses_post(field_labo_get_post_summary()); ?></p>
-      </div>
+      <p class="c-thumbnail__title f-inter-B"><?php echo esc_html(get_the_title()); ?></p>
+      <p class="c-thumbnail__summary f-noto-M"><?php echo wp_kses_post(field_labo_get_post_summary()); ?></p>
     </div>
   </div>
 </a>

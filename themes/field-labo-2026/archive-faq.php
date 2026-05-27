@@ -23,13 +23,19 @@
               while (have_posts()) :
               the_post();
             ?>
-            <div class="faq__item">
+            <button
+              class="faq__item js-modalOpen"
+              type="button"
+              data-post="<?php the_ID(); ?>"
+              data-id="faqModal"
+            >
               <div class="question">
-                <button class="question__button btn-open js-modalOpen" data-post="<?php the_ID(); ?>" data-id="faqModal">
-                  <p class="question__text f-noto-M"><?php echo esc_html(get_field('question'));?></p><span class="question__icon"></span>
-                </button>
+                <div class="question__button btn-open">
+                  <p class="question__text f-noto-B"><?php echo esc_html(get_field('question'));?></p>
+                  <div class="question__icon"></div>
+                </div>
               </div>
-            </div>
+            </button>
             <?php endwhile; ?>
             <?php endif; ?>
           </div>
