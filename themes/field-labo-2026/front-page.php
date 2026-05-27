@@ -21,16 +21,11 @@
                 <?php if ($query->have_posts()) : ?>
                   <?php while ($query->have_posts()) : $query->the_post(); ?>
                     <?php
-                      $img_pc = get_field('image_pc');
-                      $img_sp = get_field('image_sp');
-                      $get_url = get_field('post');
-                      $permalink = '#';
-
-                      if (is_object($get_url) && isset($get_url->ID)) {
-                        $permalink = get_permalink($get_url->ID);
-                      } elseif (is_numeric($get_url)) {
-                        $permalink = get_permalink((int) $get_url);
-                      }
+                      $images = get_field('main-image');
+                      $img_pc = $images['image_pc'] ?? null;
+                      $img_sp = $images['image_sp'] ?? $img_pc;
+                      $permalink = get_field('main-url') ?? null;
+                      $text = get_field('main-text') ?? null;
                     ?>
                     <div class="swiper-slide">
                       <a class="inner" href="<?php echo esc_url($permalink); ?>">
@@ -46,8 +41,10 @@
                           </picture>
                         </div>
                         <div class="text-wrapper">
-                          <p class="title f-inter-B"><?php echo esc_html(get_field('title')); ?></p>
-                          <p class="main_summary f-noto-B"><?php echo esc_html(get_field('text')); ?></p>
+                          <p class="title f-inter-B"><?php echo esc_html(the_title()); ?></p>
+                          <?php if($text): ?>
+                            <p class="main_summary f-noto-B"><?php echo esc_html($text); ?></p>
+                          <?php endif; ?>
                         </div>
                       </a>
                     </div>

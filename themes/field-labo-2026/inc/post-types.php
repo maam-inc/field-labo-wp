@@ -120,12 +120,16 @@
   });
 
   add_action('init', function() {
-    $rewrite_version = '20260525_projects_structure_option';
+    $rewrite_version = '20260527_post_type_postname_structures_flushed';
 
     if (get_option('field_labo_rewrite_version') !== $rewrite_version) {
-      if (get_option('projects_structure', false) === false) {
-        $legacy_structure = get_option('project_structure', '/%post_id%/');
-        update_option('projects_structure', $legacy_structure);
+      foreach (['projects', 'blog'] as $post_type) {
+        $option_name = $post_type . '_structure';
+        $current_structure = get_option($option_name, false);
+
+        if ($current_structure === false || trim($current_structure, '/') === '%post_id%') {
+          update_option($option_name, '/%postname%/');
+        }
       }
 
       flush_rewrite_rules(false);
