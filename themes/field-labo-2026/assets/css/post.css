@@ -606,7 +606,7 @@ a[target=_blank]:not(:has(img))::after {
 }
 
 .article .contents__embed .c-thumbnail {
-  align-items: flex-start;
+  align-items: center;
   box-sizing: border-box;
   display: flex;
   flex-direction: row-reverse;
@@ -616,14 +616,13 @@ a[target=_blank]:not(:has(img))::after {
 }
 
 .article .contents__embed .c-thumbnail__main_img {
-  align-self: stretch;
   flex-shrink: 0;
   width: 35.3333333333vw;
 }
 
 .article .contents__embed .c-thumbnail__main_img img {
   -o-object-fit: cover;
-  height: 100%;
+  height: 26.9333333333vw;
   object-fit: cover;
 }
 
@@ -1236,13 +1235,16 @@ html.is-loaded .article .main__img img {
   }
 
   .article .contents__embed .c-thumbnail {
-    align-items: center;
     gap: 28px;
     padding: 10px;
   }
 
   .article .contents__embed .c-thumbnail__main_img {
     width: 48.125%;
+  }
+
+  .article .contents__embed .c-thumbnail__main_img img {
+    height: 194px;
   }
 
   .article .contents__embed .c-thumbnail__text-wrapper {

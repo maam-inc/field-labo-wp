@@ -219,16 +219,15 @@
         // height: vw(244);
         gap: vw(38);
         justify-content: space-between;
-        align-items: flex-start;
+        align-items: center;
 
         &__main_img{
           flex-shrink: 0;
-          align-self: stretch;
           width: vw(265);
 
           img{
             object-fit: cover;
-            height: 100%;
+            height: vw(202);
           }
         }
 
@@ -667,13 +666,15 @@
       //- 記事埋め込みパーツ
       &__embed{
         .c-thumbnail{
-          align-items: center;
           padding: 10px;
-          // height: 215px;
           gap: 28px;
 
           &__main_img{
             width: per(385, 800);
+
+            img{
+              height: 194px;
+            }
           }
 
           &__text-wrapper{
