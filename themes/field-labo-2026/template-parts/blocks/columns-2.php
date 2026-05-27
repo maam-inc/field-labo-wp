@@ -32,8 +32,9 @@ $render_col2_column = function($column, $index) {
 
     $alt = get_post_meta($img_id, '_wp_attachment_image_alt', true);
     ?>
-    <div class="contents__column-item contents__column-item--<?php echo esc_attr($index); ?>">
-      <div class="contents__img">
+    <div class="contents__column-item">
+      <div class="contents__img <?php echo $is_zoom ? 'contents__img--zoom' : ''; ?>">
+        <?php echo $is_zoom ? '<div class="contents__img--zoom-inner">' : ''; ?>
         <picture>
           <source srcset="<?php echo esc_url($image[0]); ?>.webp" type="image/webp">
           <img
@@ -44,12 +45,11 @@ $render_col2_column = function($column, $index) {
             loading="lazy"
           />
         </picture>
-        <?php if ($cap) : ?>
-          <p class="contents__cap f-noto-M"><?php echo nl2br(esc_html($cap)); ?></p>
-        <?php endif; ?>
-      </div>
-      <?php if ($is_zoom) : ?>
-        <button
+        <?php if($is_zoom) : ?>
+          <div class="btn">
+            <div class="btn__open btn__open-data"></div>
+          </div>
+        <!-- <button
           class="btn js-modalOpen"
           data-id="imgModal"
           data-post="<?php echo esc_attr(get_the_ID()); ?>"
@@ -57,8 +57,14 @@ $render_col2_column = function($column, $index) {
           data-img="<?php echo esc_url($image[0]); ?>"
         >
           <div class="inner"></div>
-        </button>
-      <?php endif; ?>
+        </button> -->
+        <?php endif; ?>
+        <?php echo $is_zoom ? '</div>' : ''; ?>
+        <?php if ($cap) : ?>
+          <p class="contents__cap f-noto-M"><?php echo nl2br(esc_html($cap)); ?></p>
+        <?php endif; ?>
+      </div>
+
     </div>
     <?php
     return;
@@ -74,13 +80,15 @@ $render_col2_column = function($column, $index) {
     }
 
     ?>
-    <div class="contents__column-item contents__column-item--<?php echo esc_attr($index); ?>">
+    <div class="contents__column-item">
       <?php echo wp_kses_post(str_replace('<p>', '<p class="contents__text f-noto-M">', wpautop($text))); ?>
     </div>
     <?php
     return;
   }
 
+  // テーブル
+  // ------------------------------
   if ($type === 'table') {
     $table = $column['table'] ?? [];
     $note = $column['table-other'] ?? [];
@@ -89,37 +97,42 @@ $render_col2_column = function($column, $index) {
       return;
     }
     ?>
-    <dl class="table">
-      <?php foreach ($table as $row) : ?>
+    <div class="contents__column-item">
+      <div class="contents__table">
+        <dl class="contents__table-body">
+          <?php foreach ($table as $row) : ?>
+            <?php
+            $item = $row['item'] ?? '';
+            $desc = $row['desc'] ?? '';
+            ?>
+            <dt class="contents__table-head f-noto-B"><?php echo esc_html($item); ?></dt>
+            <dd class="contents__table-text f-noto-M"><?php echo wp_kses_post($desc); ?></dd>
+          <?php endforeach; ?>
+        </dl>
+        <?php if($note) : ?>
         <?php
-        $item = $row['item'] ?? '';
-        $desc = $row['desc'] ?? '';
-        ?>
-        <dt><?php echo esc_html($item); ?></dt>
-        <dd><?php echo wp_kses_post($desc); ?></dd>
-      <?php endforeach; ?>
-    </dl>
-    <?php if($note) : ?>
-    <?php
-      $text = wpautop($note);
-      $text = preg_replace('#</p>\s*<p>#', '<br><br>', $text);
-      $text = preg_replace('#^\s*<p>\s*#', '', $text);
-      $text = preg_replace('#\s*</p>\s*$#', '', $text);
-      $text = preg_replace('#<br\s*/?>#i', '<br>', $text);
+          $text = wpautop($note);
+          $text = preg_replace('#</p>\s*<p>#', '<br><br>', $text);
+          $text = preg_replace('#^\s*<p>\s*#', '', $text);
+          $text = preg_replace('#\s*</p>\s*$#', '', $text);
+          $text = preg_replace('#<br\s*/?>#i', '<br>', $text);
 
-      $allowed_tags = [
-        'a' => [
-          'href'   => true,
-          'target' => true,
-          'rel'    => true,
-          'title'  => true,
-        ],
-        'br' => [],
-      ];
-    ?>
-    <p class="contents__text f-noto-M"><?php echo wp_kses($text, $allowed_tags); ?></p>
+          $allowed_tags = [
+            'a' => [
+              'href'   => true,
+              'target' => true,
+              'rel'    => true,
+              'title'  => true,
+            ],
+            'br' => [],
+          ];
+        ?>
+        <p class="contents__text f-noto-M"><?php echo wp_kses($text, $allowed_tags); ?></p>
+          
+        <?php endif; ?>
+      </div>
       
-    <?php endif; ?>
+    </div>
     <?php
     return;
   }
