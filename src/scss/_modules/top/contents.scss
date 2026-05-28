@@ -52,6 +52,11 @@
         padding-left: vw(20);
         padding-right: vw(25);
         cursor: pointer;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
 
         &:focus{
           outline: none;
@@ -257,6 +262,7 @@
         &__lists{
           font-size: 12px;
           padding-left: 17px;
+          padding-right: 18px;
           color: $wh;
           cursor: pointer;
         }

@@ -117,7 +117,7 @@
       gap: vw(60);
 
       // 横並び２カラムパーツ(テキスト)
-      &--text{
+      &:has(.contents__column-item > .contents__text){
         gap: vw(18);     
       }
     }
@@ -565,7 +565,7 @@
         }
 
         // 横並び２カラムパーツ(テキスト)
-        &--text{
+        &:has(.contents__column-item > .contents__text){
           gap: per(60, 800);
 
           .contents__column-item:has(.contents__img){
