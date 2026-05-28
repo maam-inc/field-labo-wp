@@ -2,10 +2,12 @@
 // 
 import Masonry from 'masonry-layout';
 import CommonModal from '../commonModal';
+import OrderCtrl from '../OrderCtrl';
 
 export default class Gallery {
 
   constructor(){
+    this.isRendered = false;
     this.mm = gsap.matchMedia();
     this.mq_sp = `(max-width: 767px)`;
     this.mq_pc = `(min-width: 768px)`;
@@ -22,7 +24,7 @@ export default class Gallery {
     this.isLoading = false
 
     // SORT
-    this.catSelect = document.querySelector('.js-category')
+    this.catSelect = document.querySelectorAll('.js-category')
     this.currentCat = 'all'
     this.currentSort = 'random'
 
@@ -39,10 +41,10 @@ export default class Gallery {
     this.masonryInit()
     this.bindLoadMore()
     this.bindSort()
-    this.bindSortBtn()
+    this.bindOrder()
     this.bindModal()
     this.bindModalUrl()
-    this.updateSortBtn()
+    this.updateOrderBtn()
     this.openInitialModalFromUrl()
     this.fetchInspoPosts({ page: 1, reset: true })
   }
@@ -72,24 +74,48 @@ export default class Gallery {
   // ソート
   // ------------------------------
   bindSort() {
-    if(!this.catSelect) return
+    if(!this.catSelect.length) return
 
-    this.catSelect.addEventListener('change', () => {
-      this.currentCat = this.catSelect.value || 'all'
+    this.catSelect.forEach(select => {
+      select.addEventListener('change', () => {
+        this.updateSort(select.value)
 
-      // ALLに戻したときは初期状態と同じRANDOM。
-      // それ以外のカテゴリを選んだときはLATEST。
-      this.currentSort = this.currentCat === 'all' ? 'random' : 'latest'
-      this.currentPage = 1
-
-      this.updateSortBtn()
-      this.fetchInspoPosts({ page: 1, reset: true })
+        // const Anim = new OrderCtrl;
+        // Anim.hideGalleryAnim(document.querySelector('.topContents__gallery'))
+        this.fetchInspoPosts({ page: 1, reset: true })
+      })
     })
   }
 
-  bindSortBtn() {
+  updateSort(category = 'all') {
+    this.currentCat = category || 'all'
+
+    // ALLに戻したときは初期状態と同じRANDOM
+    // それ以外のカテゴリを選んだときはLATEST
+    this.currentSort = this.currentCat === 'all' ? 'random' : 'latest'
+    this.currentPage = 1
+
+    this.updateCatSelect()
+    this.updateOrderBtn()
+  }
+
+  updateCatSelect() {
+    if(!this.catSelect.length) return
+
+    this.catSelect.forEach(select => {
+      select.value = this.currentCat
+    })
+  }
+
+  // ------------------------------
+  // 並び替え
+  // ------------------------------
+  bindOrder() {
+    // ソートボタンクリック時の処置
     document.addEventListener('click', (e) => {
-      const btn = e.target.closest('.js-sortBtn')
+      const btn = e.target.closest('.js-orderBtn')
+      // console.log('bindOrder',btn)
+
       if(!btn) return
 
       const sort = btn.dataset.sort
@@ -97,16 +123,18 @@ export default class Gallery {
 
       this.currentSort = sort
       this.currentPage = 1
-      this.updateSortBtn()
+      
+      this.updateOrderBtn()
       this.fetchInspoPosts({ page: 1, reset: true })
     })
   }
 
-  updateSortBtn() {
-    const sortBtns = document.querySelectorAll('.js-sortBtn')
-    if(!sortBtns.length) return
+  updateOrderBtn() {
+    // ソートボタンの状態切り替え
+    const buttons = document.querySelectorAll('.js-orderBtn')
+    if(!buttons.length) return
 
-    sortBtns.forEach(btn => {
+    buttons.forEach(btn => {
       const isActive = btn.dataset.sort === this.currentSort
       btn.classList.toggle('is-active', isActive)
       btn.classList.toggle('active', isActive)
@@ -131,7 +159,19 @@ export default class Gallery {
       })
     })
   }
-  // WPの一覧用データを取得
+  updateMoreBtn() {
+    if(!this.moreBtn) return
+
+    const shouldHide = !this.hasMore
+
+    this.moreBtn.disabled = this.isLoading || shouldHide
+    this.moreBtn.style.display = shouldHide ? 'none' : ''
+  }
+
+  // ------------------------------
+  // WPの一覧用データ loadmore,sort共通
+  // ------------------------------
+  // **** 取得 ****
   async fetchInspoPosts({ page = 1, reset = false } = {}) {
     if(this.isLoading) return
 
@@ -148,7 +188,7 @@ export default class Gallery {
     }
 
     const apiUrl = `/wp-json/field-labo/v1/inspo?${params.toString()}`
-    console.log('[inspo api] request:', apiUrl)
+    // console.log('[inspo api] request:', apiUrl)
 
     this.isLoading = true
     this.updateMoreBtn()
@@ -156,15 +196,12 @@ export default class Gallery {
     try {
       const res = await fetch(apiUrl);
 
-      if(!res.ok) {
-        throw new Error(`API request failed: ${res.status}`)
-      }
-
+      if(!res.ok) throw new Error(`API request failed: ${res.status}`)
       const data = await res.json();
 
-      console.log('[inspo api] response:', data)
-      console.log('[inspo api] posts:', data.posts)
-      console.log('[inspo api] max pages:', data.max_pages)
+      // console.log('[inspo api] response:', data)
+      // console.log('[inspo api] posts:', data.posts)
+      // console.log('[inspo api] max pages:', data.max_pages)
 
       this.currentPage = data.current_page
       this.maxPages = data.max_pages
@@ -179,14 +216,17 @@ export default class Gallery {
       this.updateMoreBtn()
     }
   }
+
+  // **** 描画 ****
   async renderPosts(posts, { reset = false } = {}) {
     const container = this.container
     const template = document.querySelector('#inspo-template')
 
     if(!container || !template) return
 
+    // リセット = 
     if(reset) {
-      container.querySelectorAll('.l-contents__item').forEach(item => item.remove())
+      container.querySelectorAll('.js-galleryItem').forEach(item => item.remove())
     }
     const loadedIds = this.getLoadedIds()
 
@@ -219,10 +259,21 @@ export default class Gallery {
     if(this.msnry) {
       this.msnry.reloadItems()
       this.msnry.layout()
+      
+      // 初回以外は並び替えアニメーション
+      if(this.isRendered) {
+        const Anim = new OrderCtrl
+        Anim.cardAppearAnim(document.querySelectorAll('.js-galleryItem'))
+      } else {
+        this.isRendered = true;
+      }
+
+      ScrollTrigger.refresh()
     }
 
   }
 
+  // **** WPの一覧を描画 ****
   normalizeImage(image) {
     if(!image) {
       return { url: '', width: '', height: '' }
@@ -239,25 +290,9 @@ export default class Gallery {
     }
   }
 
-  updateMoreBtn() {
-    if(!this.moreBtn) return
-
-    const shouldHide = !this.hasMore
-
-    this.moreBtn.disabled = this.isLoading || shouldHide
-    this.moreBtn.style.display = shouldHide ? 'none' : ''
-  }
 
   filterByCategory(category) {
-    this.currentCat = category || 'all'
-    this.currentSort = this.currentCat === 'all' ? 'random' : 'latest'
-    this.currentPage = 1
-
-    if(this.catSelect) {
-      this.catSelect.value = this.currentCat
-    }
-
-    this.updateSortBtn()
+    this.updateSort(category)
     this.fetchInspoPosts({ page: 1, reset: true })
 
     const contents = document.querySelector('#l-contents')

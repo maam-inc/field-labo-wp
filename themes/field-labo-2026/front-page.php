@@ -66,36 +66,7 @@
               
               <div class="topContents__head">
                 <h1 class="topContents__title f-inter-B">PHOTO GALLERY</h1>
-                <div class="topContents__ctrl f-inter-B">
-                  <div class="sort ctrl-item">
-                    <p class="sort__item ctrl-item--name">sort :</p>
-                    <select class="sort__lists js-category" name="categorie" required>
-                      <option class="sort__list" value="all">All Photos</option>
-                      <?php
-                        $all_terms = get_terms([
-                          'taxonomy' => 'categorie',
-                          'hide_empty' => false,
-                          'orderby' => 'name',
-                          'order' => 'ASC',
-                        ]);
-
-                        if (!is_wp_error($all_terms)) {
-                          foreach ($all_terms as $term) {
-                            echo '<option class="sort__list" value="' . esc_attr($term->slug) . '">' . esc_html($term->name) . '</option>';
-                          }
-                        }
-                      ?>
-                    </select>
-                    <div class="sort__toggle"></div>
-                  </div>
-                  <div class="order ctrl-item">
-                    <p class="order__item ctrl-item--name">order :</p>
-                    <div class="order__ctrl">
-                      <button class="order__ctrl-random order__ctrl-name js-sortBtn is-active" type="button" data-sort="random">random</button>
-                      <button class="order__ctrl-latest order__ctrl-name js-sortBtn" type="button" data-sort="latest">latest</button>
-                    </div>
-                  </div>
-                </div>
+                <?php get_template_part('template-parts/select-sort', null, [ 'is_fixed' => false, ]); ?>
               </div>
 
               <!-- ▼▼ TEMPLATE ▼▼ -->
@@ -132,39 +103,7 @@
               </div>
 
               <?php get_template_part('template-parts/loadmore'); ?>
-
-
-              <div class="topContents__ctrl f-inter-B topContents__ctrl--fixed">
-                <div class="sort ctrl-item">
-                  <p class="sort__item ctrl-item--name">sort :</p>
-                  <select class="sort__lists js-category" name="categorie" required>
-                    <option class="sort__list" value="all">All Photos</option>
-                    <?php
-                      $all_terms = get_terms([
-                        'taxonomy' => 'categorie',
-                        'hide_empty' => false,
-                        'orderby' => 'name',
-                        'order' => 'ASC',
-                      ]);
-
-                      if (!is_wp_error($all_terms)) {
-                        foreach ($all_terms as $term) {
-                          echo '<option class="sort__list" value="' . esc_attr($term->slug) . '">' . esc_html($term->name) . '</option>';
-                        }
-                      }
-                    ?>
-                  </select>
-                  <div class="sort__toggle"></div>
-                </div>
-                <div class="order ctrl-item">
-                  <p class="order__item ctrl-item--name">order :</p>
-                  <div class="order__ctrl">
-                    <button class="order__ctrl-random order__ctrl-name js-sortBtn is-active" type="button" data-sort="random">random</button>
-                    <button class="order__ctrl-latest order__ctrl-name js-sortBtn" type="button" data-sort="latest">latest</button>
-                  </div>
-                </div>
-              </div>
-
+              <?php get_template_part('template-parts/select-sort', null, [ 'is_fixed' => true, ]); ?>
 
               <?php
                 get_template_part('template-parts/modal-frame', null, [

@@ -82,4 +82,28 @@ export default class OrderCtrl {
       },
     });
   }
+
+
+  hideGalleryAnim(gallery) {
+    console.log('hideGalleryAnim')
+    gsap.to(gallery, {
+      opacity: 0,
+      duration: 0.2,
+      ease: 'power1.out',
+    })
+  }
+
+  cardAppearAnim(cards) {
+    console.log('cardAppearAnim')
+    gsap.fromTo(cards, {
+      opacity: 0,
+      y: 5,
+    },{
+      opacity: 1,
+      y: 0,
+      duration: 0.3,
+      ease: 'power1.out',
+      stagger: 0.07,
+    });
+  }
 }
