@@ -7,7 +7,7 @@ import Masonry from 'masonry-layout';
 
 import UiManager from './_modules/UiManager';
 import MainSwiper from './_modules/MainSwiper';
-import Gallery from './_modules/wp-gallery';
+import Gallery from './_modules/wp/gallery';
 import TopSlider from './_modules/TopSlider';
 
 

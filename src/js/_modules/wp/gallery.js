@@ -1,7 +1,7 @@
 // WPで使用
 // 
 import Masonry from 'masonry-layout';
-import CommonModal from './commonModal';
+import CommonModal from '../commonModal';
 
 export default class Gallery {
 
@@ -36,7 +36,7 @@ export default class Gallery {
     console.log('masonryUi init')
     if(!this.container) return
 
-    this.masonryUi()
+    this.masonryInit()
     this.bindLoadMore()
     this.bindSort()
     this.bindSortBtn()
@@ -50,7 +50,7 @@ export default class Gallery {
   // ------------------------------
   // 初期メイソンリー
   // ------------------------------
-  masonryUi(){
+  masonryInit(){
     this.mm.add( this.cmd,
       (context) => {
         const { isPc, isSp } = context.conditions;
@@ -62,6 +62,10 @@ export default class Gallery {
         });        
       }
     );
+
+    this.msnry.once('layoutComplete', () => {
+      console.log('maisonty layoutComplete')
+    })
   }
 
   // ------------------------------
