@@ -21,7 +21,7 @@
         transform: scale(1.07);
         filter: grayscale(100%);
         transition: transform 3s $ease-out-expo, filter 3s $ease-out-cubic;
-        // transition-delay: .5s;
+        //- transition-delay: .5s;
       }
     }
 
@@ -89,20 +89,20 @@
       margin-top: vw(40);
     }
 
-    //- 見出し
+    // 見出し
     &__head{
       font-size: vw(32);
       color: $bk;
     }
 
-    //- テキスト
+    // テキスト
     &__text{
       font-size: vw(26);
       color: $bk;
       line-height: 175%;
     }
 
-    //- キャプション
+    // キャプション
     &__cap{
       margin-top: vw(20);
       font-size: vw(22);
@@ -111,47 +111,18 @@
       letter-spacing: 0.03em;
     }
 
-    // 横並びカラム
     &__column{
       display: flex;
       flex-direction: column;
       gap: vw(60);
 
-      // &-item{
-      //   &:not(:last-child){
-      //     margin-bottom: vw(60);
-      //   }
-      // }
-
       // 横並び２カラムパーツ(テキスト)
-      &:has(.contents__text){
-        gap: vw(0);
-
-        .contents__column-item{
-          &:nth-child(1){
-            margin-bottom: 0;
-          }
-          .contents__text{
-            margin-top: vw(18); 
-          }
-        }
-      }
-
-      // 横並び２カラムパーツ(DATA)
-      &:has(.contents__data){
-        .contents__column-item{
-          &:nth-child(1){
-            margin-bottom: vw(60);
-          }
-
-          .contents__text{
-            margin-top: 0;
-          }
-        }
+      &--text{
+        gap: vw(18);     
       }
     }
 
-    //- Before & Afterパーツ
+    // Before & Afterパーツ
     &__beforeAfter{
       border-top: vw(4) solid $bk;
       border-bottom: vw(4) solid $bk;
@@ -176,24 +147,25 @@
       }
     }
 
-    //- ギャラリーパーツ
+    // ギャラリーパーツ
     &__gallery{
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      // flex-wrap: wrap;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: vw(15);
 
       &-img{
-        width: calc((100% - (vw(15)*2))/3);
+        // width: calc((100% - (vw(15)*2))/3);
+        width: 100%;
         aspect-ratio: 1/1;
         position: relative;
         height: auto;
         cursor: pointer;
+        overflow: hidden;
 
         img{
-          width: 100%;
-          height: auto;
           object-fit: cover;
-          aspect-ratio: 1/1;
+          height: 100%;
         }
 
         .btn{
@@ -206,7 +178,7 @@
       }
     }
 
-    //- 記事埋め込みパーツ
+    // 記事埋め込みパーツ
     &__embed{
       display: block;
       text-decoration-line: none;
@@ -288,8 +260,8 @@
       
     }
 
-    //- DATAパーツ
-    &__data{
+    // tableパーツ
+    &__table{
       .table{
         width: 100%;
         display: grid;
@@ -554,17 +526,17 @@
         margin-top: 30px;
       }
 
-      //- 見出し
+      // 見出し
       &__head{
         font-size: 24px;
       }
 
-      //- テキスト
+      // テキスト
       &__text{
         font-size: 16px;
       }
 
-      //- キャプション
+      // キャプション
       &__cap{
         margin-top: 9px;
         font-size: 12px;
@@ -575,58 +547,48 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-start;
-        gap: per(18, 800);
+        gap: 0;
 
+        // 通常カラム
         &-item{
-          flex: 1;
-          flex-shrink: 0;
-
-          &:not(:last-child){
-            margin-bottom: 0;
+          &:has(.contents__img) {
+              width: per(390,800);
+              flex-shrink: 0;
           }
+        }
+
+        // 3カラム
+        &:has(.contents__column-item:nth-of-type(3)) {
+            .contents__column-item {
+              width: per(254,800);
+            }
         }
 
         // 横並び２カラムパーツ(テキスト)
-        &:has(.contents__text){
+        &--text{
           gap: per(60, 800);
 
-          .contents__column-item{
-            flex: none;
+          .contents__column-item:has(.contents__img){
+            width: 333px;
+          }
 
-            &:nth-child(1){
-              width: 333px;
-              flex-shrink: 0;
-            }
-
-            &:nth-child(2){
-              flex-shrink: 1;
-            }
-
-            .contents__text{
-              margin-top: 0; 
-            }
+          .contents__column-item:has(.contents__text){
+            flex-shrink: 1;
+            width: 100%;
           }
         }
 
-        // 横並び２カラムパーツ(DATA)
-        &:has(.contents__data){
+        // table含むコンテンツ
+        &:has(.contents__column-item > .contents__table){
           gap: 20px;
 
-          .contents__column-item{
-            &:nth-child(1){
-              margin-bottom: 80px;
-              width: auto;
-              flex-shrink: 1;
-            }
-            &:nth-child(2){
-              width: 333px;
-              flex-shrink: 0;
-            }
+          .contents__column-item:has(.contents__img){
+            width: 333px;
           }
         }
       }
 
-      //- Before & Afterパーツ
+      // Before & Afterパーツ
       &__beforeAfter{
         border: 2px solid $bk;
         padding-block: 60px;
@@ -646,12 +608,13 @@
         }
       }
 
-      //- ギャラリーパーツ
+      // ギャラリーパーツ
       &__gallery{
-        gap: per(10, 800);
+        gap: 10px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 
         &-img{
-          width: per(152, 800);
+          // width: per(152, 800);
 
           .btn{
             width: 18px;
@@ -663,7 +626,7 @@
         }
       }
 
-      //- 記事埋め込みパーツ
+      // 記事埋め込みパーツ
       &__embed{
         .c-thumbnail{
           padding: 10px;
@@ -712,8 +675,8 @@
         
       }
 
-      //- DATAパーツ
-      &__data{
+      // tableパーツ
+      &__table{
         .table{
           column-gap: 29px;
           margin-bottom: 80px;
@@ -732,23 +695,9 @@
             padding-block:2px;
           }
         }
-
-        .contents__img--zoom{
-          margin-top: 0;
-          width: per(333, 800);
-          flex-shrink: 0;
-
-          .btn{
-            width: 18px;
-
-            &__open{
-              width: 10px;
-            }
-          }
-        }
       }
 
-      //- 拡大画像
+      // 拡大画像
       &__img--zoom{
         cursor: pointer;
 
@@ -835,7 +784,7 @@
 @include mq(pc){
   .article{
     .contents{
-      //- ギャラリーパーツ
+      // ギャラリーパーツ
       &__gallery{
         
         &-img{
@@ -857,7 +806,7 @@
         }
       }
 
-      //- 拡大画像
+      // 拡大画像
       &__img--zoom{
         overflow: hidden;
 

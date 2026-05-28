@@ -1,20 +1,20 @@
 @use '../../_base/settings' as *;
 @use 'sass:math';
 
-//- ーーーーーーーーーーーーーーーーーーー
-//- ページロード時のフェードイン
-//- ーーーーーーーーーーーーーーーーーーー
+// ーーーーーーーーーーーーーーーーーーー
+// ページロード時のフェードイン
+// ーーーーーーーーーーーーーーーーーーー
 html.is-loading body {
   opacity: 0;
 }
 body {
   opacity: 1;
-  transition: opacity .5s linear;
+  transition: opacity .2s linear;
 }
 
-//- ーーーーーーーーーーーーーーーーーーー
-//- 共通パーツ
-//- ーーーーーーーーーーーーーーーーーーー
+// ーーーーーーーーーーーーーーーーーーー
+// 共通パーツ
+// ーーーーーーーーーーーーーーーーーーー
 // 大枠
 .l-content { 
   padding-block: vw(10) vw(74);
@@ -108,7 +108,7 @@ body {
   &.white{ background-color: $wh;}
 }
 
-//- ヘッダーナビ
+// ヘッダーナビ
 .c-nav{
   display: flex;
 
@@ -193,7 +193,7 @@ body {
   }
 }
 
-//- 上に戻るボタン
+// 上に戻るボタン
 .c-toTop{
   width: 100%;
   height: auto;
@@ -248,7 +248,7 @@ body {
   }
 }
 
-//- 切り替えのボタン
+// 切り替えのボタン
 .c-ctrl__prev, .c-ctrl__next {
   height: auto;
   aspect-ratio: 1/1;
@@ -260,37 +260,7 @@ body {
     display: none;
   }
 }
-// @include mq(pc){
-//   .c-ctrl__prev{
-//     img{
-//       &:hover{
-//         animation: moveArwX-left .4s cubic-bezier(.215,.61,.355,1) 1;
-//         @keyframes  moveArwX-left{
-//           0% { transform: translateX(0);}
-//           50% { opacity: 0; transform: translateX(-20%);}
-//           51% { opacity: 1; transform: translateX(20%);}
-//           100% { transform: translateX(0);}
-//         }
-//       }       
-//     }
-//   }
-
-//   .c-ctrl__next{
-//     img{
-//       &:hover{
-//         animation: moveArwX-right .4s cubic-bezier(.215,.61,.355,1) 1;
-//         @keyframes  moveArwX-right{
-//           0% { transform: translateX(0);}
-//           50% { opacity: 0; transform: translateX(20%);}
-//           51% { opacity: 1; transform: translateX(-20%);}
-//           100% { transform: translateX(0);}
-//         }
-//       }       
-//     }
-//   }
-// }
-
-//- モーダル開くアイコン
+// モーダル開くアイコン
 .c-modalOpenIcon{
   aspect-ratio: 1/1;
   height: auto;
@@ -302,7 +272,7 @@ body {
   &--dark{ background-color: #666666;}
 }
 
-//- モーダル閉じるアイコン
+// モーダル閉じるアイコン
 .c-modalCloseIcon__btn{
   position: absolute;
 
@@ -352,7 +322,7 @@ body {
   }
 }
 
-//- サムネイル
+// サムネイル
 .c-thumbnail{
   background: $bk;
 
@@ -458,17 +428,11 @@ a[target="_blank"]:not(:has(img)){
   }
 }
 
-//- ーーーーーーーーーーーーーーーーーーー
-//- TOPとFAQ共通モーダル
-//- ーーーーーーーーーーーーーーーーーーー
-//- モーダルの大枠
+// ーーーーーーーーーーーーーーーーーーー
+// TOPとFAQ共通モーダル
+// ーーーーーーーーーーーーーーーーーーー
+// モーダルの大枠
 .l-modal{
-  // width: 100vw;
-  // height: 100dvh;
-  // display: none;
-  // z-index: 200; 
-  // top: 0;
-  // left: 0;
   opacity: 0;
   pointer-events: none;
 
@@ -531,7 +495,6 @@ a[target="_blank"]:not(:has(img)){
     display: block;
     width: 100%;
     height: vw(113);
-    // margin-left: vw(-20);
     border-top: #333333 solid vw(2);
     display: flex;
     justify-content: center;
@@ -590,7 +553,6 @@ a[target="_blank"]:not(:has(img)){
 
       &__bottom{
         max-width: per(990, 950);
-        // margin-left: per(-18,990);
         height: 95px;
         border-top: #333333 solid 1px;
 

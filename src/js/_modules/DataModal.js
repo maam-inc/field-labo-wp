@@ -10,7 +10,7 @@ export default class DataModal {
     this.modal = document.getElementById('dataModal');
     if (!this.modal) return;
 
-    this.targets = document.querySelectorAll('.contents__data-img');
+    this.targets = document.querySelectorAll('.contents__table-img');
     if (this.targets.length === 0) return;
 
     this.modalImg = this.modal.querySelector('.dataModal__img img');
