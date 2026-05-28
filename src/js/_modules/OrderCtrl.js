@@ -67,8 +67,14 @@ export default class OrderCtrl {
         gsap.set(items, { opacity: 0 });
 
         // 2. 上から順番に stagger でフェードイン
-        this._showTween = gsap.to(items, {
+        this._showTween = gsap.fromTo(items, 
+        {
+          opacity: 0,
+          y: 5,
+        },       
+        {
           opacity: 1,
+          y: 0,
           duration: 0.3,
           ease: 'power1.out',
           stagger: 0.07,
