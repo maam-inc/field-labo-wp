@@ -50,9 +50,10 @@
   <div class="bottom__text f-inter-B">Back to index</div>
 </a>
 
-<div class="galleryModal" id="galleryModal">
-  <div class="galleryModal__bg galleryModal__close"></div>
-  <div class="galleryModal__container">
+<div class="galleryModal postModal" id="galleryModal">
+  <div class="galleryModal__bg galleryModal__close postModal__bg"> </div>
+  <div class="galleryModal__container postModal__container">
+
     <div class="galleryModal__img postModal__img"><img src="" alt=""></div>
     <div class="c-ctrl__prev swiper-button-prev galleryModal__nav--prev"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/icon-prev.svg" alt="prev"/></div>
     <div class="c-ctrl__next swiper-button-next galleryModal__nav--next"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/icon-next.svg" alt="next"/></div>
@@ -65,8 +66,8 @@
 </div>
 
 <div class="dataModal postModal" id="dataModal">
-  <div class="dataModal__bg dataModal__close"></div>
-  <div class="dataModal__container">
+  <div class="dataModal__bg dataModal__close postModal__bg"> </div>
+  <div class="dataModal__container postModal__container">
     <div class="dataModal__img postModal__img"><img src="" alt=""></div>
   </div>
   <button class="c-modalCloseIcon__btn btn-close dataModal__btn dataModal__close">

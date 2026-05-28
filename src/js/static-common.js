@@ -22,7 +22,7 @@ const domContentLoaded = () => {
 };
 
 const loaded = () => {
-
+  document.documentElement.classList.add('is-loaded');
 };
 
 

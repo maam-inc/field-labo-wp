@@ -98,15 +98,15 @@ $render_col2_column = function($column, $index) {
     }
     ?>
     <div class="contents__column-item">
-      <div class="contents__table">
-        <dl class="contents__table-body">
+      <div class="contents__data">
+        <dl class="table"> 
           <?php foreach ($table as $row) : ?>
             <?php
             $item = $row['item'] ?? '';
             $desc = $row['desc'] ?? '';
             ?>
-            <dt class="contents__table-head f-noto-B"><?php echo esc_html($item); ?></dt>
-            <dd class="contents__table-text f-noto-M"><?php echo wp_kses_post($desc); ?></dd>
+            <dt class="table__head f-noto-B"><?php echo esc_html($item); ?></dt>
+            <dd class="table__text f-noto-M"><?php echo wp_kses_post($desc); ?></dd>
           <?php endforeach; ?>
         </dl>
         <?php if($note) : ?>

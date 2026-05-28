@@ -2,6 +2,17 @@
 @use 'sass:math';
 
 //- ーーーーーーーーーーーーーーーーーーー
+//- ページロード時のフェードイン
+//- ーーーーーーーーーーーーーーーーーーー
+html.is-loading body {
+  opacity: 0;
+}
+body {
+  opacity: 1;
+  transition: opacity .5s linear;
+}
+
+//- ーーーーーーーーーーーーーーーーーーー
 //- 共通パーツ
 //- ーーーーーーーーーーーーーーーーーーー
 // 大枠
@@ -50,7 +61,9 @@
 
   &:has(a){
     a{
+      transition: .2s;
       &:hover{
+        transition: .2s;
         color: $ylw;
       }        
     }
@@ -170,7 +183,10 @@
   // hover
   @include mq(pc){
     a{
+      transition: .2s;
+
       &:hover{
+        transition: .2s;
         opacity: 0.7;
       }
     }
@@ -200,11 +216,11 @@
     z-index: 100;
     opacity: 0;
     pointer-events: none;
-    transform: translateY(80%);
-    transition: transform .4s linear, opacity .2s linear;
+    transform: translateY(40%);
+    transition: all .3s $ease-out-cubic;
 
     &.is-show{
-      transition: transform .4s linear, opacity .4s linear;
+      transition: all .3s $ease-out-cubic;
       pointer-events: auto;
       opacity: 1;
       pointer-events: auto;
@@ -244,35 +260,35 @@
     display: none;
   }
 }
-@include mq(pc){
-  .c-ctrl__prev{
-    img{
-      &:hover{
-        animation: moveArwX-left .4s cubic-bezier(.215,.61,.355,1) 1;
-        @keyframes  moveArwX-left{
-          0% { transform: translateX(0);}
-          50% { opacity: 0; transform: translateX(-20%);}
-          51% { opacity: 1; transform: translateX(20%);}
-          100% { transform: translateX(0);}
-        }
-      }       
-    }
-  }
+// @include mq(pc){
+//   .c-ctrl__prev{
+//     img{
+//       &:hover{
+//         animation: moveArwX-left .4s cubic-bezier(.215,.61,.355,1) 1;
+//         @keyframes  moveArwX-left{
+//           0% { transform: translateX(0);}
+//           50% { opacity: 0; transform: translateX(-20%);}
+//           51% { opacity: 1; transform: translateX(20%);}
+//           100% { transform: translateX(0);}
+//         }
+//       }       
+//     }
+//   }
 
-  .c-ctrl__next{
-    img{
-      &:hover{
-        animation: moveArwX-right .4s cubic-bezier(.215,.61,.355,1) 1;
-        @keyframes  moveArwX-right{
-          0% { transform: translateX(0);}
-          50% { opacity: 0; transform: translateX(20%);}
-          51% { opacity: 1; transform: translateX(-20%);}
-          100% { transform: translateX(0);}
-        }
-      }       
-    }
-  }
-}
+//   .c-ctrl__next{
+//     img{
+//       &:hover{
+//         animation: moveArwX-right .4s cubic-bezier(.215,.61,.355,1) 1;
+//         @keyframes  moveArwX-right{
+//           0% { transform: translateX(0);}
+//           50% { opacity: 0; transform: translateX(20%);}
+//           51% { opacity: 1; transform: translateX(-20%);}
+//           100% { transform: translateX(0);}
+//         }
+//       }       
+//     }
+//   }
+// }
 
 //- モーダル開くアイコン
 .c-modalOpenIcon{
@@ -378,7 +394,7 @@
 
 // LOAD MORE 
 .c-loadMore{
-  margin: vw(81) auto vw(47);
+  margin: vw(81) auto 0; 
   width: vw(520);
   height: vw(98);
   justify-content: center;
@@ -390,7 +406,7 @@
   letter-spacing: -0.02em;
 
   @include mq(pc){
-    margin: 58px auto 79px;
+    margin: 58px auto 0;
     width: 497px;
     height: 49px;
     font-size:12px;
@@ -402,7 +418,11 @@
     transition: .2s;
 
     &:hover{
-      background: #e1e1e1;
+      background: $bk;
+
+      p{
+        color: $wh;
+      }
     }
   }
 }

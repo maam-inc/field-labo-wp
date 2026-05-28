@@ -67,8 +67,8 @@
   z-index: 100;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(-100%);
-  transition: transform .4s linear, opacity .4s linear;
+  transform: translateY(-20%);
+  transition: all .3s $ease-out-cubic;
 
   &.is-show{
     opacity: 1;
@@ -162,7 +162,7 @@
     height: 65px;
     top: 7px;
     left: 50%;
-    transform: translate(-50%, -150%);
+    transform: translate(-50%, -25%);
 
     &.is-show{
       transform: translate(-50%, 0);
@@ -195,7 +195,7 @@
             padding-right: 23px;
 
             &::before{
-              right: -11px;
+              right: 8px;
             }
           }
         }
@@ -229,43 +229,46 @@
 .l-header__modal{
   width: 100vw;
   height: 100dvh;
-  // display: none;
   position: fixed;
   z-index: 150;
   top: 0;
   left: 0;
   opacity: 0;
   pointer-events: none;
-  // transform: translateY(-80%);
-  transition: opacity .4s linear;   
+  transition: .3s;
 
   &.is-open{
     pointer-events: auto;
     opacity: 1;
-    pointer-events: auto;
-    // transform: translateY(0%);
-    transition: opacity .4s linear;   
 
     .l-header__modal-container{
-      transition: transform .4s linear, opacity .4s linear;
+      opacity: 1;
+      transition: all .3s $ease-out-sine;
       transform: translateY(0);
-      
     }
+
+    .l-header__modal-bg{
+      opacity: 1;
+      transition: opacity .3s $ease-out-cubic;
+    } 
   }
   
   &-bg{
+    transition: opacity .3s $ease-out-cubic; 
+    opacity: 0;
     width: 100%;
     height: 100%;
     background: #00000080;
   } 
   
   &-container{
+    opacity: 0;
     position: absolute;
     width: 100%;
     top: 0;
     right: 0;
-    transform: translateY(-80%);
-    transition: transform .4s linear, opacity .4s linear;    
+    transform: translateY(-10%);
+    transition: all .3s $ease-out-sine;
   }
 
   &-inner{
@@ -377,9 +380,10 @@
 @include mq(pc){
   .l-header .c-nav__list,
   .l-headerFixed .c-nav__list{
-    // transition: .2s;
+    transition: .2s;
 
     &:hover{
+      transition: .2s;
       color: $ylw;
     }
   }

@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import PostModal from './_modules/PostModal';
+import PostAnim from './_modules/PostAnim';
 
 if(!window.gsap) window.gsap = gsap;
 if(!window.ScrollTrigger) window.ScrollTrigger = ScrollTrigger;
@@ -17,7 +18,7 @@ const domContentLoaded = () => {
 };
 
 const loaded = () => {
-
+  new PostAnim().init();
 };
 
 

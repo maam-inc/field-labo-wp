@@ -7,7 +7,7 @@ mixin c-breadcrumbs(crumb, faq)
   .c-breadcrumbs
     -if(faq)
       .c-breadcrumbs__item
-        a.c-breadcrumbs__page.f-inter-B(href="/about-contact/") ABOUT & CONTACT
+        a.c-breadcrumbs__page.f-inter-B(href=pagePath('/about-contact/')) ABOUT & CONTACT
       .c-breadcrumbs__item
         h1.c-breadcrumbs__page.f-inter-B FAQ
     -else
@@ -24,9 +24,9 @@ mixin c-logo(bk)
 //- ヘッダーナビ
 mixin c-nav
   nav.c-nav.f-inter-B
-    a.c-nav__list(href="/blog/") BLOG & NOTE
-    a.c-nav__list(href="/projects/") PROJECTS
-    a.c-nav__list(href="/about-contact/") ABOUT & CONTACT
+    a.c-nav__list(href=pagePath('/blog/')) BLOG & NOTE
+    a.c-nav__list(href=pagePath('/projects/')) PROJECTS
+    a.c-nav__list(href=pagePath('/about-contact/')) ABOUT & CONTACT
 
 //- SNS
 mixin c-sns(footer)
@@ -86,7 +86,7 @@ mixin c-thumbnail(className, type, i, idx)
         p.c-thumbnail__title.f-inter-B!=i.title
         p.c-thumbnail__summary.f-noto-M!=i.summary
         .c-thumbnail__viewmore
-          .c-thumbnail__viewmore-icon: img(src=`${IMG_DIR}common/icon-link.svg` alt="viewmore")
+          .c-thumbnail__viewmore-icon: .c-thumbnail__viewmore-mask
           p.c-thumbnail__viewmore-text.f-inter-B view more
 
 //- LOAD MORE 
@@ -137,7 +137,7 @@ mixin topModalContent
           -for(let i = 0; i < modal.article.length; i++)
             li.related_article
               a.related_article-inner(href="#")
-                .related_article-icon: img(src=`${IMG_DIR}common/icon-arrow-box.svg`)
+                .related_article-icon: .related_article-mask
                 .related_article-text.f-inter-B: p!=modal.article[i].title
                 p.related_article-genre.f-inter-M (#{`${modal.article[i].genre}`})
 

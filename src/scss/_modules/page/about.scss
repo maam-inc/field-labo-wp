@@ -24,6 +24,7 @@
       display: inline-block;
       width: fit-content;
       color: $ylw;
+      text-decoration-line: underline;
     }
   }
 
@@ -56,6 +57,10 @@
       font-size: vw(26);
       line-height: 1.7;
       color: $bk;
+
+      a, span{
+        display: inline;
+      }
     }
   }
 
@@ -95,6 +100,12 @@
     &__text {
       font-size: 14px;
       line-height: 1.7;
+
+      &-link {
+        &:hover{
+          text-decoration-line: none;
+        }
+      }      
     }
 
     &__name {
