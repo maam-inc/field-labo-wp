@@ -140,4 +140,134 @@
   }
   add_action( 'admin_bar_menu', 'remove_admin_bar', 999 );
 
+  function field_labo_get_all_photos_term() {
+    $term = get_term_by('slug', 'all-photos', 'categorie');
+
+    if (!$term || is_wp_error($term)) {
+      return null;
+    }
+
+    return $term;
+  }
+
+  // InspoからAllを消す
+  // ブロックエディタのカテゴリ取得から除外
+  add_filter('rest_categorie_query', function($args, $request) {
+    $all_term = field_labo_get_all_photos_term();
+
+    if ($all_term) {
+      $args['exclude'] = array_merge(
+        isset($args['exclude']) ? (array) $args['exclude'] : [],
+        [$all_term->term_id]
+      );
+    }
+
+    return $args;
+  }, 10, 2);
+
+  // クラシック側のカテゴリチェックリストから除外
+  add_filter('wp_terms_checklist_args', function($args, $post_id) {
+    if (($args['taxonomy'] ?? '') !== 'categorie') {
+      return $args;
+    }
+
+    $post_type = $post_id ? get_post_type($post_id) : '';
+
+    if ($post_type && $post_type !== 'inspo') {
+      return $args;
+    }
+
+    $all_term = field_labo_get_all_photos_term();
+
+    if ($all_term) {
+      $args['exclude'] = array_merge(
+        isset($args['exclude']) ? (array) $args['exclude'] : [],
+        [$all_term->term_id]
+      );
+    }
+
+    return $args;
+  }, 10, 2);
+
+  add_action('admin_enqueue_scripts', function($hook_suffix) {
+    if (!in_array($hook_suffix, ['post.php', 'post-new.php'], true)) {
+      return;
+    }
+
+    $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+
+    if (!$screen || $screen->post_type !== 'inspo') {
+      return;
+    }
+
+    $all_term = field_labo_get_all_photos_term();
+
+    if (!$all_term) {
+      return;
+    }
+
+    wp_register_script(
+      'field-labo-admin-inspo-categorie',
+      false,
+      ['wp-data', 'wp-dom-ready'],
+      '1.0',
+      true
+    );
+    wp_enqueue_script('field-labo-admin-inspo-categorie');
+    wp_add_inline_script(
+      'field-labo-admin-inspo-categorie',
+      sprintf(
+        'wp.domReady(function() {
+          const termId = %d;
+          const termName = %s;
+          const taxonomy = "categorie";
+
+          const removeTerm = function() {
+            const editorSelect = wp.data.select("core/editor");
+            const editorDispatch = wp.data.dispatch("core/editor");
+
+            if (!editorSelect || !editorDispatch) return;
+
+            const selectedTerms = editorSelect.getEditedPostAttribute(taxonomy);
+
+            if (!Array.isArray(selectedTerms) || !selectedTerms.includes(termId)) return;
+
+            editorDispatch.editPost({
+              [taxonomy]: selectedTerms.filter(function(id) {
+                return id !== termId;
+              })
+            });
+          };
+
+          const hideTerm = function() {
+            document.querySelectorAll("#in-categorie-" + termId + ", #in-categorie-" + termId + "-2").forEach(function(element) {
+              const item = element.closest("li") || element.parentElement;
+              if (item) item.style.display = "none";
+            });
+
+            document.querySelectorAll(".components-checkbox-control__label").forEach(function(label) {
+              if (label.textContent.trim() !== termName) return;
+
+              const item = label.closest(".components-checkbox-control") || label.closest(".components-base-control") || label.parentElement;
+              if (item) item.style.display = "none";
+            });
+          };
+
+          removeTerm();
+          hideTerm();
+
+          wp.data.subscribe(removeTerm);
+
+          const observer = new MutationObserver(hideTerm);
+          observer.observe(document.body, {
+            childList: true,
+            subtree: true
+          });
+        });',
+        (int) $all_term->term_id,
+        wp_json_encode($all_term->name)
+      )
+    );
+  });
+
 ?>

@@ -1,12 +1,15 @@
 <?php
 $is_fixed = $args['is_fixed'] ?? false;
+$all_term = get_term_by('slug','all-photos','categorie');
+$all_term = ($all_term && !is_wp_error($all_term)) ? $all_term : null;
+$all_label = $all_term ? $all_term->name : 'All Photos';
 ?>
 
 <div class="topContents__ctrl f-inter-B <?php echo $is_fixed ? 'topContents__ctrl--fixed' : ''; ?>">
   <div class="sort ctrl-item">
     <p class="sort__item ctrl-item--name">sort :</p>
     <select class="sort__lists js-category" name="categorie" required>
-      <option class="sort__list" value="all">All Photos</option>
+      <option class="sort__list" value="all"><?php echo esc_html( $all_label ); ?></option>
       <?php
         $all_terms = get_terms([
           'taxonomy' => 'categorie',
@@ -14,6 +17,7 @@ $is_fixed = $args['is_fixed'] ?? false;
           'hide_empty' => true,
           'orderby' => 'name',
           'order' => 'ASC',
+          'exclude' => $all_term ? [(int) $all_term->term_id] : [],
         ]);
 
         if (!is_wp_error($all_terms)) {

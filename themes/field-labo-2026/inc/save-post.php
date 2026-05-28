@@ -24,14 +24,16 @@
           continue;
         }
 
+        if ($term->slug === 'all-photos') {
+          continue;
+        }
+
         if ($term->parent != 0) {
           $child_terms[] = $term->term_id;
         }
       }
 
-      if (!empty($child_terms)) {
-        wp_set_post_terms($post_id, $child_terms, 'categorie', false);
-      }
+      wp_set_post_terms($post_id, $child_terms, 'categorie', false);
     }
   }, 10, 3);
 
