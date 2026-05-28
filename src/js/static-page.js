@@ -4,8 +4,9 @@ import { gsap } from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import UiManager from './_modules/UiManager';
-import CommonModal from './_modules/commonModal';
+import DummyUi from './_modules/DummyUi';
+
+import CommonModalAnim from './_modules/commonModalAnim';
 
 if(!window.gsap) window.gsap = gsap;
 if(!window.ScrollTrigger) window.ScrollTrigger = ScrollTrigger;
@@ -15,15 +16,18 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 const domContentLoaded = () => {
-  console.log("[static-page]domContentLoaded")
-
 };
 
 const loaded = () => {
-  const uiManager = new UiManager;
-  uiManager.init();
-  const commonModal = new CommonModal;
-  commonModal.init();
+  // ↓↓↓↓↓↓↓↓↓↓↓↓アニメーション↓↓↓↓↓↓↓↓↓↓↓↓
+  // TOP・FAQのモーダルアニメーション
+  const commonModalAnim = new CommonModalAnim;
+  // ↑↑↑↑↑↑↑↑↑↑↑↑アニメーション↑↑↑↑↑↑↑↑↑↑↑↑
+
+  // ↓↓↓↓↓↓↓↓↓↓↓↓静的用JS↓↓↓↓↓↓↓↓↓↓↓↓
+  const dummyUi = new DummyUi({ commonModalAnim });
+  dummyUi.init(); 
+  // ↑↑↑↑↑↑↑↑↑↑↑↑静的用JS↑↑↑↑↑↑↑↑↑↑↑↑
 };
 
 

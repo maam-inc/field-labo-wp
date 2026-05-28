@@ -4,14 +4,13 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import Masonry from 'masonry-layout';
-
-import UiManager from './_modules/UiManager';
-import CommonModal from './_modules/commonModal';
-import MainSwiper from './_modules/MainSwiper';
-import LoadMore from './_modules/LoadMore';
 import MasonryUi from './_modules/MasonryUi';
 import TopSlider from './_modules/TopSlider';
-import OrderCtrl from './_modules/OrderCtrl';
+import DummyUi from './_modules/DummyUi';
+
+import CommonModalAnim from './_modules/commonModalAnim';
+import OrderCtrlAnim from './_modules/OrderCtrlAnim';
+import LoadMoreAnim from './_modules/LoadMoreAnim';
 
 
 if(!window.gsap) window.gsap = gsap;
@@ -22,26 +21,28 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 const domContentLoaded = () => {
-  console.log("[static-top]domContentLoaded")
   
 };
 
 const loaded = () => {
-  console.log('top js loaded')
-  const uiManager = new UiManager;
-  uiManager.init();
-  const commonModal = new CommonModal;
-  commonModal.init();
-  // const mainSwiper = new MainSwiper;
-  // mainSwiper.init();
-  const loadMore = new LoadMore;
-  loadMore.init();
   const masonryUi = new MasonryUi;
   masonryUi.init();
   const topSlider = new TopSlider;
   topSlider.init();
-  const orderCtrl = new OrderCtrl;
-  orderCtrl.init();
+
+  // ↓↓↓↓↓↓↓↓↓↓↓↓アニメーション↓↓↓↓↓↓↓↓↓↓↓↓
+  // TOP・FAQのモーダルアニメーション
+  const commonModalAnim = new CommonModalAnim;
+  // TOPの並び替えアニメーション
+  const orderCtrlAnim = new OrderCtrlAnim;
+  // loadmore表示アニメーション
+  const loadMoreAnim = new LoadMoreAnim;
+  // ↑↑↑↑↑↑↑↑↑↑↑↑アニメーション↑↑↑↑↑↑↑↑↑↑↑↑
+
+  // ↓↓↓↓↓↓↓↓↓↓↓↓静的用JS↓↓↓↓↓↓↓↓↓↓↓↓
+  const dummyUi = new DummyUi({ commonModalAnim, orderCtrlAnim, loadMoreAnim });
+  dummyUi.init();
+  // ↑↑↑↑↑↑↑↑↑↑↑↑静的用JS↑↑↑↑↑↑↑↑↑↑↑↑
 };
 
 

@@ -1,36 +1,4 @@
-export default class CommonModal {
-
-  constructor(){
-    this.mm = gsap.matchMedia();
-    this.mq_sp = `(max-width: 767px)`;
-    this.mq_pc = `(min-width: 768px)`;
-    this.cmd = { isPc: this.mq_pc, isSp: this.mq_sp };
-
-    this.header = document.querySelector('.l-header');
-    this.headerH = this.header.offsetHeight;
-  }
-
-  init(){
-    this.modalUi();
-  }
-
-  // TOP / FAQ の共通モーダル専用
-  modalUi(){
-    const elm = document.querySelector(`.l-modal`);
-    if(!elm) return;
-    document.querySelectorAll('.btn-open').forEach((item) => {
-      item.addEventListener('click', () => {
-        this.openModal(elm);
-      });
-    });
-
-    document.querySelectorAll('.btn-close').forEach((item) => {
-      item.addEventListener('click', () => {
-        this.closeModal(elm);
-      });
-    });
-  }
-  
+export default class CommonModalAnim {
   openModal(modal){
     modal.classList.add('is-open')
     if(!modal) return;

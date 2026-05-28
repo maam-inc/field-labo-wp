@@ -412,12 +412,6 @@ a[target=_blank]:not(:has(img))::after {
   pointer-events: auto;
 }
 
-.article a {
-  color: #a97;
-  display: inline;
-  text-decoration: underline;
-}
-
 .article .main {
   border-bottom: .5333333333vw solid #222;
   padding-bottom: 7.4666666667vw;
@@ -513,6 +507,12 @@ a[target=_blank]:not(:has(img))::after {
   line-height: 175%;
 }
 
+.article .contents__text a {
+  color: #a97;
+  display: inline;
+  text-decoration: underline;
+}
+
 .article .contents__cap {
   color: #999;
   font-size: 2.9333333333vw;
@@ -585,7 +585,6 @@ a[target=_blank]:not(:has(img))::after {
 
 .article .contents__embed {
   display: block;
-  text-decoration-line: none;
 }
 
 .article .contents__embed .c-thumbnail {
@@ -1065,14 +1064,6 @@ html.is-loaded .article .main__img img {
     transition: .2s;
   }
 
-  .article a {
-    text-decoration: underline;
-  }
-
-  .article a:hover {
-    text-decoration: none;
-  }
-
   .article .main {
     border-bottom: 2px solid #222;
     padding-bottom: 32px;
@@ -1124,6 +1115,10 @@ html.is-loaded .article .main__img img {
 
   .article .contents__text {
     font-size: 16px;
+  }
+
+  .article .contents__text a:hover {
+    text-decoration: none;
   }
 
   .article .contents__cap {

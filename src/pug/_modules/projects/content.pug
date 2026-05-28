@@ -1,14 +1,13 @@
-.projects#projects
-  .l-content
-    .l-content__wrapper
-      +c-breadcrumbs('PROJECTS', false)
-      .projects__gallery
-        .projects__gallery-wrapper
-          -for(let i = 0; i < contents.gallery.length; i++)
-            a.projects__gallery-item(href="./page")
-              +c-thumbnail('projects__gallery-thumbnail', 'projects', contents.gallery[i], i)
-        
+.l-content
+  .l-content__wrapper
+    +c-breadcrumbs('PROJECTS', false)
+    .projects__gallery
+      .projects__gallery-wrapper
+        -for(let i = 0; i < contents.gallery.length; i++)
+          a.projects__gallery-item(href="./page")
+            +c-thumbnail('projects__gallery-thumbnail', 'projects', contents.gallery[i], i)
+      
 
-      +c-loadMore('')
+    +c-loadMore('')
 
-    +c-toTop(true)
+  +c-toTop(true)

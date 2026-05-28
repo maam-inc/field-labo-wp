@@ -2,12 +2,6 @@
 @use 'sass:math';
 
 .article{
-  a{
-    display: inline;
-    color: $ylw;
-    text-decoration: underline;
-  }
-
   .main{
     padding-bottom: vw(56);
     border-bottom: vw(4) solid $bk;
@@ -100,6 +94,12 @@
       font-size: vw(26);
       color: $bk;
       line-height: 175%;
+
+      a{
+        display: inline;
+        color: $ylw;
+        text-decoration: underline;
+      }
     }
 
     // キャプション
@@ -181,7 +181,6 @@
     // 記事埋め込みパーツ
     &__embed{
       display: block;
-      text-decoration-line: none;
 
       .c-thumbnail{
         display: flex;
@@ -471,14 +470,6 @@
 
 @include mq(pc){
   .article{
-    a{
-      text-decoration: underline;
-
-      &:hover{
-        text-decoration: none;
-      }
-    }
-
     .main{
       padding-bottom: 32px;
       border-bottom: 2px solid $bk;
@@ -534,6 +525,12 @@
       // テキスト
       &__text{
         font-size: 16px;
+
+        a{
+          &:hover{
+            text-decoration: none;
+          }
+        }
       }
 
       // キャプション
