@@ -564,7 +564,7 @@
       width: 100%;
 
       img{
-        max-height: 100dvh;
+        max-height: calc(100dvh - (15px*2));
         object-fit: contain;
         background: #2b2b2b;
       }

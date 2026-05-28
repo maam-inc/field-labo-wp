@@ -3,40 +3,40 @@ main
     .l-content
       .l-content__wrapper 
         .main
-          //- メイン画像　
+          // メイン画像　
           .main__img: img(src=`${DUMMY_DIR}page/main.jpg`)
-          //- タイトル
+          // タイトル
           h1.main__title.f-inter-B Minamiaoyama office-M  
-          //- ジャンル・日付　
+          // ジャンル・日付　
           p.main__info.f-inter-B #{parts.genre},&ensp;#{parts.date}
 
         .contents
-          //- 見出し
+          // 見出し
           h2.contents__head.f-noto-B!=parts.head
 
-          //- テキスト
+          // テキスト
           p.contents__text.f-noto-M!=parts.text1
 
-          //- w100写真パーツ
+          // w100写真パーツ
           .contents__img-full
             .contents__img: img(src=`${DUMMY_DIR}page/full.jpg`)
-            //- キャプション　
+            // キャプション　
             p.contents__cap.f-noto-M!=parts.cap
                   
-          //- 見出し
+          // 見出し
           h2.contents__head.f-noto-B ディテール
 
-          //- テキスト
+          // テキスト
           p.contents__text.f-noto-M!=parts.text1
 
-          //- 横並び２カラムパーツ(テキスト)
-          .contents__column.contents__column
+          // 横並び２カラムパーツ(テキスト) ※modifier追加しました！！
+          .contents__column.contents__column--text
             .contents__column-item
               .contents__img: img(src=`${DUMMY_DIR}page/culumn-text.jpg`)
             .contents__column-item
               p.contents__text.f-noto-M OSB合板を研磨＋白染色は品の良いラフ感で個人的に最近お気に入りの仕上げ。
 
-          //- 横並び２カラムパーツ
+          // 横並び２カラムパーツ
           .contents__column
             -for(let i = 0; i < 2; i++)
               .contents__column-item
@@ -44,7 +44,7 @@ main
                   img(src=`${DUMMY_DIR}page/column${i+1}.jpg`)
                   p.contents__cap.f-noto-M!=parts.cap
 
-          //- 横並び３カラムパーツ
+          // 横並び３カラムパーツ
           .contents__column
             -for(let i = 0; i < 3; i++)
               .contents__column-item
@@ -52,7 +52,7 @@ main
                   img(src=`${DUMMY_DIR}page/column-three${i+1}.jpg`)
                   p.contents__cap.f-noto-M!=parts.cap
 
-          //- 横並び２カラムパーツ
+          // 横並び２カラムパーツ
           .contents__column
             -for(let i = 0; i < 2; i++)
               .contents__column-item
@@ -61,36 +61,36 @@ main
                   p.contents__cap.f-noto-M!=parts.cap
 
 
-          //- テキスト
+          // テキスト
           p.contents__text.f-noto-M!=parts.text1
 
-          //- 見出し
+          // 見出し
           h2.contents__head.f-noto-B まとめ
 
-          //- Before & Afterパーツ　
+          // Before & Afterパーツ　
           .contents__beforeAfter 
-            //- 見出し
+            // 見出し
             h2.contents__head.beforeAfter__head.f-noto-B before
             
-            //- w100写真パーツ
+            // w100写真パーツ
             .contents__img-full.beforeAfter__img
               .contents__img: img(src=`${DUMMY_DIR}page/before_after1.jpg`)
 
-            //- 見出し
+            // 見出し
             h2.contents__head.beforeAfter__head.f-noto-B after
 
-            //- w100写真パーツ
+            // w100写真パーツ
             .contents__img-full.beforeAfter__img
               .contents__img: img(src=`${DUMMY_DIR}page/before_after2.jpg`)
 
-            //- テキスト
+            // テキスト
             p.contents__text.beforeAfter__text.f-noto-M!=parts.text1
 
 
-          //- 見出し
+          // 見出し
           h2.contents__head.f-noto-B その他の写真はこちら
 
-          //- ギャラリーパーツ　
+          // ギャラリーパーツ　
           button.contents__gallery
             -for(let i = 0; i < 8; i++)
               .contents__gallery-img.contents__img
@@ -98,20 +98,20 @@ main
                 .btn
                   .btn__open.btn__open-gallery
 
-          //- テキスト
+          // テキスト
           p.contents__text.f-noto-M!=parts.text3
 
-          //- 記事埋め込みパーツ
+          // 記事埋め込みパーツ
           a.contents__embed(href="#"): +c-thumbnail('', 'page', parts.embed, null)
 
-          //- 見出し
+          // 見出し
           h2.contents__head.f-noto-B DATA
 
-          //- 横並び２カラムパーツ(DATA)
+          // 横並び２カラムパーツ(DATA)
           .contents__column.contents__column
             .contents__column-item
-              //- DATAパーツ
-              .contents__data
+              // tableパーツ
+              .contents__table
                 dl.table 
                   -for(let i = 0; i < parts.data.length; i++)
                     dt.table__head.f-noto-B!=parts.data[i].item
@@ -127,23 +127,6 @@ main
                     .btn__open.btn__open-data
                 p.contents__cap.f-noto-M!=parts.cap
 
-          //- //- DATAパーツ
-          //- .contents__data
-          //-   .contents__data-infos
-          //-     dl.table 
-          //-       -for(let i = 0; i < parts.data.length; i++)
-          //-         dt.table__head.f-noto-B!=parts.data[i].item
-          //-         dd.table__text.f-noto-M!=parts.data[i].text
-              
-          //-     p.contents__text.f-noto-M!=parts.text_data
-
-          //-   //- button.contents__data-img
-          //-   .contents__img.contents__img--zoom
-          //-     .contents__img--zoom-inner
-          //-       img(src=`${DUMMY_DIR}page/data.jpg`)
-          //-       .btn
-          //-         .btn__open.btn__open-data
-          //-     p.contents__cap.f-noto-M!=parts.cap
 
       +c-toTop(true)
       
@@ -151,7 +134,7 @@ a.bottom(href="../")
   .bottom__icon 
   .bottom__text.f-inter-B Back to index
 
-//- ギャラリーモーダル
+// ギャラリーモーダル
 .galleryModal#galleryModal.postModal
   .galleryModal__bg.galleryModal__close.postModal__bg 
   .galleryModal__container.postModal__container
@@ -160,7 +143,7 @@ a.bottom(href="../")
     +c-ctrl-btn('galleryModal__nav')
   +c-modalCloseIcon('galleryModal__btn galleryModal__close')
 
-//- DATAモーダル
+// DATAモーダル
 .dataModal#dataModal.postModal
   .dataModal__bg.dataModal__close.postModal__bg 
   .dataModal__container.postModal__container

@@ -12,14 +12,11 @@ main.faq#faq
             |よくある質問形式にまとめてみました。
         .faq__items
           //- - const faqList = [0, 1, 2, 3]
-          -for(let i = 0; i < 20; i++)
+          -for(let i = 0; i < modal.q.length; i++)
             button.faq__item
               .question
                 .question__button.btn-open
-                  -if(i === 0 )
-                    p.question__text.f-inter-B ユニットバスではないタイル張りのすてきなバスルームをつくりたい！
-                  -else
-                    p.question__text.f-inter-B 他のリノベーション会社との違いは何でしょうか？
+                  p.question__text.f-inter-B!=modal.q[i]
                   .question__icon
         .faq__return
           a.faq__return-link(href=pagePath('/about-contact/'))
