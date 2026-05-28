@@ -527,7 +527,7 @@ a[target=_blank]:not(:has(img))::after {
   gap: 8vw;
 }
 
-.article .contents__column--text {
+.article .contents__column:has(.contents__column-item>.contents__text) {
   gap: 2.4vw;
 }
 
@@ -1147,15 +1147,15 @@ html.is-loaded .article .main__img img {
     width: 31.75%;
   }
 
-  .article .contents__column--text {
+  .article .contents__column:has(.contents__column-item>.contents__text) {
     gap: 7.5%;
   }
 
-  .article .contents__column--text .contents__column-item:has(.contents__img) {
+  .article .contents__column:has(.contents__column-item>.contents__text) .contents__column-item:has(.contents__img) {
     width: 333px;
   }
 
-  .article .contents__column--text .contents__column-item:has(.contents__text) {
+  .article .contents__column:has(.contents__column-item>.contents__text) .contents__column-item:has(.contents__text) {
     flex-shrink: 1;
     width: 100%;
   }

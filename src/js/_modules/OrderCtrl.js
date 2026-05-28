@@ -2,9 +2,6 @@ import { gsap } from 'gsap';
 
 export default class OrderCtrl {
   constructor() {
-    this.hideDuration = 0.4; // sec
-    this.showDuration = 1; // sec
-    this.stagger = 0.08;     // sec
   }
 
   init() {
@@ -56,7 +53,7 @@ export default class OrderCtrl {
     // 1. ギャラリー全体をフェードアウト
     this._hideTween = gsap.to(this.gallery, {
       opacity: 0,
-      duration: this.hideDuration,
+      duration: 0.2,
       ease: 'power1.out',
       onComplete: () => {
         // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 入れ替えの処理 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓
@@ -72,9 +69,9 @@ export default class OrderCtrl {
         // 2. 上から順番に stagger でフェードイン
         this._showTween = gsap.to(items, {
           opacity: 1,
-          duration: this.showDuration,
+          duration: 0.3,
           ease: 'power1.out',
-          stagger: this.stagger,
+          stagger: 0.07,
         });
       },
     });
