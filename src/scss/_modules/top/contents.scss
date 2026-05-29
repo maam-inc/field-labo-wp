@@ -1,6 +1,32 @@
 @use '../../_base/settings' as *;
 @use 'sass:math';
 
+.js-modalLoading {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  pointer-events: none;
+  background: rgba(255,255,255,0.9);
+  color: $bk;
+  font-size: vw(20);
+
+  &.is-active {
+    opacity: 1;
+  }
+}
+
+.l-modal.is-loading {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.js-modalContent {
+}
+
+
 .topContents{
   margin-top: vw(12);
   width: 100%;

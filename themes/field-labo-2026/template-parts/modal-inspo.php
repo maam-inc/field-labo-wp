@@ -51,7 +51,9 @@
     <template id="inspo-modal-article-template">
       <li class="related_article">
         <a class="related_article-inner" href="" target="_blank">
-          <div class="related_article-icon"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/icon-arrow-box.svg" alt=""></div>
+          <div class="related_article-icon">
+            <div class="related_article-mask"></div>
+          </div>
           <div class="related_article-text f-inter-B">
             <p></p>
           </div>

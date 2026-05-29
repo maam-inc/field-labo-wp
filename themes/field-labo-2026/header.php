@@ -46,7 +46,7 @@
 
     <?php wp_head();?>
   </head>
-  <body<?php echo is_front_page() ? ' id="top"' : ''; ?>>
+  <body<?php echo is_post_type_archive('projects') ? ' class="project"' : ''; ?><?php echo is_front_page() ? ' id="top"' : (is_post_type_archive('projects') ? ' id="project"' : ''); ?>>
     <div class="wrapper" id="wrapper">
         
         <!-- Header -->

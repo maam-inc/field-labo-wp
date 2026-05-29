@@ -437,26 +437,11 @@ export default class Gallery {
     const modalContent = this.ensureModalContent(modal)
     if(!modalContent) return
 
-    if(updateUrl) {
-      this.updateModalUrl(postId)
-    }
-
-    // CommonModal.openModal() は display:none の解除までは行わないため、
-    // WP側で非表示出力しているモーダルだけ先に表示状態へ戻す。
-    // modal.style.display = 'block'
-    // modal.setAttribute('aria-hidden', 'false')
-    // document.documentElement.classList.add('is-modal-open')
-    const ModalFunc = new CommonModalAnim;
-    ModalFunc.openModal(modal)
-
-    // loadingの表示ルール：
-    const loadingDelay = 500
+    const loadingDelay = 300
     const minLoadingDuration = 1000
     let loadingShownAt = null
-
     const loadingTimer = setTimeout(() => {
-      console.log('[modal] show loading')
-      this.showModalLoading(modalContent)
+      this.showModalLoadingFrame(modal)
       loadingShownAt = Date.now()
     }, loadingDelay)
 
@@ -464,41 +449,40 @@ export default class Gallery {
       // 1. APIからモーダル用データを取得する
       const data = await this.fetchModalPost(postId)
 
-      // 2. 本番表示前に、仮コンテナへDOM生成する。ここでまだ画面には表示しない。
-      const buffer = document.createElement('div')
-      this.renderModal(data, buffer)
+      // 2. 非表示状態のモーダルへDOMを差し込む
+      this.clearModalContent(modalContent)
+      this.renderModal(data, modalContent)
 
-      // 3. 仮コンテナ内の画像読み込み完了を待つ
-      // API取得が終わっていても、画像が未読み込みならloading対象にする。
+      // 3. 差し込んだ画像の読み込み完了を待ってからモーダルを開く
       console.log('[modal] wait images')
-      await this.waitImages(buffer)
+      await this.waitImages(modalContent)
       console.log('[modal] images loaded')
 
       clearTimeout(loadingTimer)
 
-      // loadingがすでに表示されている場合は、最低表示時間を満たすまで待つ
       if(loadingShownAt) {
         const loadingElapsed = Date.now() - loadingShownAt
         const remaining = minLoadingDuration - loadingElapsed
 
-        console.log('[modal] loading elapsed:', loadingElapsed)
-
         if(remaining > 0) {
-          console.log('[modal] wait minimum loading duration:', remaining)
           await this.wait(remaining)
         }
       }
 
-      // 4. loadingまたは空の状態から、完成済みDOMへ差し替える
-      this.clearModalContent(modalContent)
-      while(buffer.firstChild) {
-        this.appendModalContent(modalContent, buffer.firstChild)
+      this.hideModalLoadingFrame(modal)
+
+      if(updateUrl) {
+        this.updateModalUrl(postId)
       }
+
+      const ModalFunc = new CommonModalAnim;
+      ModalFunc.openModal(modal)
 
       console.log('[modal] render complete')
 
     } catch(err) {
       clearTimeout(loadingTimer)
+      this.hideModalLoadingFrame(modal)
       console.error('[modal api] error:', err)
       this.showModalError(modalContent, '読み込みに失敗しました。時間をおいて再度お試しください。')
     }
@@ -595,6 +579,31 @@ export default class Gallery {
     return new Promise(resolve => {
       setTimeout(resolve, duration)
     })
+  }
+
+  showModalLoadingFrame(modal) {
+    if(!modal) return
+
+    const loading = modal.querySelector('.js-modalLoading')
+    if(!loading) return
+
+    modal.classList.add('is-loading')
+    loading.classList.add('is-active')
+    loading.setAttribute('aria-live', 'polite')
+    loading.setAttribute('aria-busy', 'true')
+    loading.textContent = 'Loading...'
+  }
+
+  hideModalLoadingFrame(modal) {
+    if(!modal) return
+
+    const loading = modal.querySelector('.js-modalLoading')
+    if(!loading) return
+
+    modal.classList.remove('is-loading')
+    loading.classList.remove('is-active')
+    loading.removeAttribute('aria-busy')
+    loading.textContent = ''
   }
 
   // モーダル内loading表示
@@ -704,8 +713,8 @@ export default class Gallery {
       articleContainer.style.display = 'none'
     }
 
-    container.innerHTML = ''
-    container.appendChild(clone)
+    this.clearModalContent(container)
+    this.appendModalContent(container, clone)
   }
 
 }
