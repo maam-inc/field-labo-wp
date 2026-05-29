@@ -76,11 +76,7 @@
         width: vw(11);
         height: auto;
         aspect-ratio: 11/17;
-        mask-image: url(../images/common/icon-arrow-r.svg);
-        -webkit-mask-image: url(../images/common/icon-arrow-r.svg);
-        mask-size: cover;
-        background-color: $bk;
-        mask-repeat: no-repeat;
+        @include mask-icon('../images/common/icon-arrow-r.svg', $bk);
         pointer-events: none;
       }
     }
@@ -123,18 +119,7 @@
       bottom: vw(19);
       z-index: 100;
       background: $wh;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(40%);
-      transition: all .3s $ease-out-cubic;
-
-      &.is-show{
-        transition: all .3s $ease-out-cubic;
-        pointer-events: auto;
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
-      }
+      @include fixed-toggle(translateY(40%));
 
       .sort{
         &::after{
@@ -493,11 +478,7 @@
       width: vw(17);
       aspect-ratio: 1;
       height: auto;
-      mask-image: url(../images/common/icon-arrow-r_2.svg);
-      -webkit-mask-image: url(../images/common/icon-arrow-r_2.svg);
-      mask-size: cover;
-      background-color: $bk;
-      mask-repeat: no-repeat;
+      @include mask-icon('../images/common/icon-arrow-r_2.svg', $bk);
     }
 
     &-text{
@@ -657,12 +638,8 @@
     .sort{
       &:hover{
         &::after{
-          animation: moveArwY-down .3s cubic-bezier(.215,.61,.355,1) 1;
-          @keyframes  moveArwY-down{
-            0% { transform: rotate(90deg) translateX(0);}
-            50% { transform: rotate(90deg) translateX(50%);}
-            100% { transform: rotate(90deg) translateX(0);}
-          }
+          animation: moveArwY-down .3s $ease-out-cubic 1;
+          @include kf-bounceX(moveArwY-down, 50%, 90deg);
         }
       }
     }
@@ -697,16 +674,9 @@
           }
 
           .related_article-mask{
-            // background-color: $ylw;
-            // transition: .2s;
-            animation: moveArwX .3s cubic-bezier(.215,.61,.355,1) 1;
-            @keyframes  moveArwX{
-              0% { transform: translateX(0);}
-              50% { opacity: 0; transform: translateX(30%);}
-              51% { opacity: 1; transform: translateX(-30%);}
-              100% { transform: translateX(0);}
-            }
-          }          
+            animation: moveArwX .3s $ease-out-cubic 1;
+            @include kf-arrowX(moveArwX, 30%);
+          }
         }
       }
 

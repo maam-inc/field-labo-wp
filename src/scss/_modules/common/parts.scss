@@ -7,7 +7,7 @@
 html.is-loading body {
   opacity: 0;
 }
-body {
+body.is-loaded{
   opacity: 1;
   transition: opacity .2s linear;
 }
@@ -100,10 +100,8 @@ body {
   display: block;
   aspect-ratio: 272/55;
   height: auto;
-  mask-image: url(../images/common/logo.svg);
-  -webkit-mask-image: url(../images/common/logo.svg);
-  mask-size: cover;
-  
+  @include mask-icon('../images/common/logo.svg');
+
   &.black{ background-color: $bk;}
   &.white{ background-color: $wh;}
 }
@@ -214,24 +212,13 @@ body {
     bottom: vw(19);
     right: vw(24);
     z-index: 100;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(40%);
-    transition: all .3s $ease-out-cubic;
-
-    &.is-show{
-      transition: all .3s $ease-out-cubic;
-      pointer-events: auto;
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
+    @include fixed-toggle(translateY(40%));
 
     @include mq(pc){
       width: 33px;
       bottom: 19px;
       right: 20px;
-    }  
+    }
   }
 }
 @include mq(pc){
@@ -264,10 +251,7 @@ body {
 .c-modalOpenIcon{
   aspect-ratio: 1/1;
   height: auto;
-  mask-image: url(../images/common/icon-open.svg);
-  -webkit-mask-image: url(../images/common/icon-open.svg);
-  mask-size: cover;
-  background-color: #888888;
+  @include mask-icon('../images/common/icon-open.svg', #888888);
 
   &--dark{ background-color: #666666;}
 }
@@ -292,10 +276,7 @@ body {
     width: vw(17);
     height: auto;
     aspect-ratio: 1;
-    mask-image: url(../images/common/icon-close.svg);
-    -webkit-mask-image: url(../images/common/icon-close.svg);
-    mask-size: cover;
-    background: $bk;
+    @include mask-icon('../images/common/icon-close.svg', $bk);
   }
 
   @include mq(pc){
@@ -409,10 +390,7 @@ a[target="_blank"]:not(:has(img)){
     width: vw(18);
     height: auto;
     aspect-ratio: 1/1;
-    mask-image: url(../images/common/icon-external.svg);
-    -webkit-mask-image: url(../images/common/icon-external.svg);
-    mask-size: cover;
-    background: $ylw;
+    @include mask-icon('../images/common/icon-external.svg', $ylw);
     top: 50%;
     translate: 0 -50%;
     right: vw(8);
@@ -504,10 +482,7 @@ a[target="_blank"]:not(:has(img)){
       width: vw(12);
       height: auto;
       aspect-ratio: 1/1;
-      mask-image: url(../images/common/icon-close.svg);
-      -webkit-mask-image: url(../images/common/icon-close.svg);
-      mask-size: cover;
-      background: #888888;
+      @include mask-icon('../images/common/icon-close.svg', #888888);
       margin-right: vw(16);
     }
 

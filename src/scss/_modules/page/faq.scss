@@ -57,12 +57,7 @@
         width: 100%;
         height: 100%;
         margin: auto;
-        background-color: $bk;
-        webkit-mask-image: url('../images/common/icon-back.svg');
-        mask-image: url('../images/common/icon-back.svg');
-        -webkit-mask-size: cover;
-        mask-size: cover;
-        mask-repeat: no-repeat;
+        @include mask-icon('../images/common/icon-back.svg', $bk);
       }
     }
 
@@ -89,12 +84,7 @@
       top: 50%;
       right: vw(33);
       position: absolute;
-      webkit-mask-image: url('../images/common/icon-open.svg');
-      mask-image: url('../images/common/icon-open.svg');
-      -webkit-mask-size: cover;
-      mask-size: cover;
-      mask-repeat: no-repeat;
-      background: #666666;
+      @include mask-icon('../images/common/icon-open.svg', #666666);
       width: vw(28);
       height: auto;
       aspect-ratio: 1;
@@ -324,14 +314,9 @@
           transition: .2s;
         }
         .icon {
-          animation: moveArwX .4s cubic-bezier(.215,.61,.355,1) 1;
-          @keyframes  moveArwX{
-            0% { transform: translateX(0);}
-            50% { opacity: 0; transform: translateX(-50%);}
-            51% { opacity: 1; transform: translateX(50%);}
-            100% { transform: translateX(0);}
-          }              
-        }        
+          animation: moveArwX .4s $ease-out-cubic 1;
+          @include kf-arrowX(moveArwX, -50%);
+        }
       }
     }
   }
