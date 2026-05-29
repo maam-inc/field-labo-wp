@@ -1,7 +1,7 @@
 // WPで使用
 // 
 import Masonry from 'masonry-layout';
-import CommonModal from '../commonModal';
+import CommonModalAnim from '../commonModalAnim';
 import OrderCtrl from '../OrderCtrl';
 
 export default class Gallery {
@@ -265,10 +265,11 @@ export default class Gallery {
         const Anim = new OrderCtrl
 
         if(reset) {
-          const targets = document.querySelectorAll('.js-galleryItem')
+          const targets = document.querySelectorAll('.js-galleryItem--hide')
           Anim.cardAppearAnim(targets)
         } else {
-
+          const targets = document.querySelectorAll('.js-galleryItem.is-added')
+          Anim.cardAppearAnim(targets)
         }
       } else {
         this.isRendered = true;
@@ -445,7 +446,7 @@ export default class Gallery {
     // modal.style.display = 'block'
     // modal.setAttribute('aria-hidden', 'false')
     // document.documentElement.classList.add('is-modal-open')
-    const ModalFunc = new CommonModal;
+    const ModalFunc = new CommonModalAnim;
     ModalFunc.openModal(modal)
 
     // loadingの表示ルール：
@@ -518,7 +519,7 @@ export default class Gallery {
 
     // modal.setAttribute('aria-hidden', 'true')
     // document.documentElement.classList.remove('is-modal-open')
-    const ModalFunc = new CommonModal;
+    const ModalFunc = new CommonModalAnim;
     ModalFunc.closeModal(modal)
     // window.setTimeout(() => {
     //   if(modal.classList.contains('is-open')) return

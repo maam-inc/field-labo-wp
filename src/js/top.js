@@ -1,7 +1,7 @@
 // TOP用
-import { gsap } from 'gsap';
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// import { gsap } from 'gsap';
+// import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import Masonry from 'masonry-layout';
 
@@ -9,13 +9,13 @@ import UiManager from './_modules/UiManager';
 import MainSwiper from './_modules/MainSwiper';
 import Gallery from './_modules/wp/gallery';
 import TopSlider from './_modules/TopSlider';
+import PageLoaded from './_modules/wp/pageLoaded'
 
+// if(!window.gsap) window.gsap = gsap;
+// if(!window.ScrollTrigger) window.ScrollTrigger = ScrollTrigger;
 
-if(!window.gsap) window.gsap = gsap;
-if(!window.ScrollTrigger) window.ScrollTrigger = ScrollTrigger;
-
-gsap.registerPlugin(ScrollToPlugin);
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollToPlugin);
+// gsap.registerPlugin(ScrollTrigger);
 
 
 const domContentLoaded = () => {
@@ -27,6 +27,7 @@ const domContentLoaded = () => {
   const topSlider = new TopSlider;
   topSlider.init();
 
+  PageLoaded.getInstance().init();
 };
 
 const loaded = () => {

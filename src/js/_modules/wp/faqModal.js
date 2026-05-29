@@ -1,4 +1,4 @@
-import CommonModal from "./commonModal";
+import CommonModalAnim from "../commonModalAnim";
 
 export default class FaqModal {
   static #instance = null;
@@ -60,7 +60,7 @@ export default class FaqModal {
     // this.content.innerHTML = '<p>読み込み中です。</p>';
     this.clearModalContent();
     // 開く処理 仮
-    const modalFunc = new CommonModal;
+    const modalFunc = new CommonModalAnim;
     modalFunc.openModal(this.modal)
     // this.modal.classList.add('is-open')
 

@@ -1,3 +1,5 @@
+import LoadMoreAnim from '../LoadMoreAnim'
+
 // WPで使用
 export default class LoadMore {
   static #instance = null;
@@ -56,13 +58,18 @@ export default class LoadMore {
           const template = document.createElement('template');
           template.innerHTML = data.html;
 
+          const newItem = Array.from(template.content.querySelectorAll('[data-post-id]'))
           template.content.querySelectorAll('[data-post-id]').forEach((item) => {
+            item.classList.add('is-add')
             if (loadedIds.includes(item.dataset.postId)) {
               item.remove();
             }
           });
-
           this.list.appendChild(template.content);
+
+          const anim = new LoadMoreAnim;
+          anim.fadeIn(newItem)
+          // anim.fadeIn(document.querySelectorAll('.is-add'))
         }
 
         this.list.dataset.currentPage = String(nextPage);

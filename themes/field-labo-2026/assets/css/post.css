@@ -54,11 +54,11 @@
   font-weight: 700;
 }
 
-html.is-loading body {
+body {
   opacity: 0;
 }
 
-body {
+.is-loaded body {
   opacity: 1;
   transition: opacity .2s linear;
 }
