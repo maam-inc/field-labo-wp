@@ -52,10 +52,6 @@
 
 @include mq(pc){
   .blog{
-    .l-content{
-      padding-block: 5px 0px;
-    }
-    
     &__gallery{
       margin: 5px auto 0;
 
