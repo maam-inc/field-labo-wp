@@ -263,7 +263,13 @@ export default class Gallery {
       // 初回以外は並び替えアニメーション
       if(this.isRendered) {
         const Anim = new OrderCtrl
-        Anim.cardAppearAnim(document.querySelectorAll('.js-galleryItem'))
+
+        if(reset) {
+          const targets = document.querySelectorAll('.js-galleryItem')
+          Anim.cardAppearAnim(targets)
+        } else {
+
+        }
       } else {
         this.isRendered = true;
       }
