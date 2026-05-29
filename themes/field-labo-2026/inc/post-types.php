@@ -34,7 +34,7 @@
     // TOP用
     // **********
     register_post_type('top', [
-      'label' => '[TOP]スライダー',
+      'label' => 'TOPスライダー',
       'public' => true,
       'publicly_queryable' => false,
       'exclude_from_search' => true,
@@ -45,7 +45,7 @@
     ]);
     
     register_post_type('inspo', [
-      'label' => '[TOP]Photo Gallery',
+      'label' => 'Photo Gallery',
       'public' => true,
       'show_in_rest' => true,
       'has_archive' => false,

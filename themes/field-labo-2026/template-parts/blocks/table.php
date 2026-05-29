@@ -1,6 +1,6 @@
 <?php if (!have_rows('block_table')) return; ?>
 
-<div class="contents__data">
+<div class="contents__table">
   <dl class="table"> 
     <?php while (have_rows('block_table')) : the_row(); ?>
       <?php

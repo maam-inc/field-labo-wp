@@ -98,7 +98,7 @@ $render_col2_column = function($column, $index) {
     }
     ?>
     <div class="contents__column-item">
-      <div class="contents__data">
+      <div class="contents__table">
         <dl class="table"> 
           <?php foreach ($table as $row) : ?>
             <?php
