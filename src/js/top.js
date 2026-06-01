@@ -6,7 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Masonry from 'masonry-layout';
 
 import UiManager from './_modules/UiManager';
-import MainSwiper from './_modules/MainSwiper';
+// import MainSwiper from './_modules/MainSwiper';
 import Gallery from './_modules/wp-gallery';
 
 if(!window.gsap) window.gsap = gsap;

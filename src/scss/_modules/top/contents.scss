@@ -462,7 +462,7 @@
     &-inner{
       display: flex;
       justify-content: left;
-      align-items: flex-end;      
+      align-items: baseline;     
     }
     &-icon{
       width: vw(26);
@@ -472,6 +472,7 @@
       justify-content: center;
       align-items: center;
       background: $wh;
+      flex-shrink: 0;
     }
 
     &-mask{
@@ -486,6 +487,11 @@
       margin-left: vw(19);
       color: $wh;
       width: fit-content;
+
+      p{
+        line-height: 1.65;
+        display: inline;
+      }
     }
 
     &-genre{
@@ -493,6 +499,7 @@
       color: #888888;
       margin: 0 auto auto vw(6);
       width: fit-content;
+      display: inline;
     }
 
     &:not(:first-child){
@@ -512,15 +519,6 @@
     }
 
     &-item{
-      // display: flex;
-      // justify-content: center;
-      // align-items: center;
-      // padding: 0 vw(21);
-      // height: vw(37);
-      // background: $wh;
-      // border-radius: 999px;
-      // font-size: vw(24);
-
       a{
         display: flex;
         justify-content: center;
@@ -565,8 +563,10 @@
 
     .topContents__flex{
       flex-direction: row;
-      max-width: 912px;
-      padding-bottom: per(67, 990);
+      // max-width: 912px;
+      width: 100%;
+      padding-bottom: 67px;
+      gap: 60px;
 
       &-item{
         width: 50%;

@@ -6,11 +6,8 @@ export default class UiManager {
     this.header = document.querySelector('.l-header');
     this.headerFixed = document.querySelector('.l-headerFixed');
     this.headerH = this.header.offsetHeight;
-    this.topTrigger = document.querySelector('.topContents');
-    this.otherTrigger = document.querySelector('.l-content')
-    this.trigger = this.topTrigger ? this.topTrigger : this.otherTrigger;
-
-    this.flag = true;
+    this.headerFixedH = this.headerFixed.offsetHeight;
+    this.trigger = document.querySelector('.l-content');
   }
 
   init(){
@@ -58,8 +55,8 @@ export default class UiManager {
     if(!fixedCtrl) return;
     if(this.mq.matches){
       ScrollTrigger.create({
-        trigger: this.trigger,
-        start: "top top",
+        trigger: '.topContents',
+        start: `top top+=${this.headerFixedH}px`,
         onEnter: () => fixedCtrl.classList.add('is-show'),
         onEnterBack: () => fixedCtrl.classList.add('is-show'),
         onLeaveBack: () => fixedCtrl.classList.remove('is-show'),
@@ -67,9 +64,9 @@ export default class UiManager {
       })
     } else {
       ScrollTrigger.create({
-        trigger: this.trigger,
+        trigger: '.topContents__ctrl',
         endTrigger: '.l-footer',
-        start: "top top",
+        start:`top top+=${this.headerFixedH}px`,
         end: "top bottom",
         onEnter: () => fixedCtrl.classList.add('is-show'),
         onEnterBack: () => fixedCtrl.classList.add('is-show'),

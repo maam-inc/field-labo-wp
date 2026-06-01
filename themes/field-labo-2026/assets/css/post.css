@@ -54,7 +54,7 @@
   font-weight: 700;
 }
 
-html.is-loading body {
+body {
   opacity: 0;
 }
 
@@ -329,7 +329,6 @@ a[target=_blank]:not(:has(img))::after {
 }
 
 .l-modal {
-  opacity: 0;
   pointer-events: none;
 }
 
@@ -343,7 +342,29 @@ a[target=_blank]:not(:has(img))::after {
   z-index: 200;
 }
 
+.l-modal__loading {
+  align-items: center;
+  aspect-ratio: 31/33;
+  box-sizing: border-box;
+  display: flex;
+  height: auto;
+  justify-content: space-between;
+  left: 50%;
+  position: fixed;
+  top: 50%;
+  transform: -50% -50%;
+  width: 4.1333333333vw;
+  z-index: 201;
+}
+
+.l-modal__loading .line {
+  background: #222;
+  height: 100%;
+  width: .6666666667vw;
+}
+
 .l-modal__container {
+  display: block;
   height: -moz-fit-content;
   height: fit-content;
   left: 0;
@@ -416,9 +437,80 @@ a[target=_blank]:not(:has(img))::after {
   font-size: 2.6666666667vw;
 }
 
+.l-modal__wrapper {
+  transform: translateY(30px);
+}
+
+.l-modal__wrapper,
+.l-modal__bg,
+.l-modal__btn,
+.l-modal__loading {
+  opacity: 0;
+  transition: .3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
 .l-modal.is-open {
   opacity: 1;
   pointer-events: auto;
+}
+
+.l-modal.is-open .l-modal__bg {
+  opacity: 1;
+  transition: .3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.l-modal.is-loading .l-modal__loading {
+  opacity: 1;
+  transition: .3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.l-modal.is-loading .l-modal__loading .line {
+  animation: loading 1s steps(1, end) both infinite;
+  transform-origin: center;
+}
+
+.l-modal.is-loading .l-modal__loading .line:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.l-modal.is-loading .l-modal__loading .line:nth-child(2) {
+  animation-delay: .1s;
+}
+
+.l-modal.is-loading .l-modal__loading .line:nth-child(3) {
+  animation-delay: .2s;
+}
+
+@keyframes loading {
+  0% {
+    transform: scaleY(0.3);
+  }
+
+  12.5% {
+    transform: scaleY(0.6);
+  }
+
+  25% {
+    transform: scaleY(1);
+  }
+
+  37.5% {
+    transform: scaleY(0.6);
+  }
+
+  50%, 100% {
+    transform: scaleY(0.3);
+  }
+}
+
+.l-modal.is-loaded .l-modal__btn,
+.l-modal.is-loaded .l-modal__wrapper {
+  opacity: 1;
+  transition: .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+.l-modal.is-loaded .l-modal__wrapper {
+  transform: translateY(0);
 }
 
 .article .main {
@@ -844,7 +936,7 @@ a[target=_blank]:not(:has(img))::after {
   opacity: 1;
 }
 
-html.is-loaded .article .main__img img {
+body.is-loaded .main__img img {
   filter: grayscale(0);
   transform: scale(1);
 }
@@ -988,12 +1080,20 @@ html.is-loaded .article .main__img img {
     width: 10px;
   }
 
+  .l-modal .l-modal__loading {
+    width: 18px;
+  }
+
+  .l-modal .l-modal__loading .line {
+    width: 3px;
+  }
+
   .l-modal .l-modal__container {
     left: 50%;
     max-width: 990px;
     padding-top: 0;
     translate: -50% -50%;
-    width: 77.34375%;
+    width: 91.4972273567%;
   }
 
   .l-modal .l-modal__wrapper {
@@ -1118,7 +1218,7 @@ html.is-loaded .article .main__img img {
   }
 
   .article .contents__column:has(.contents__column-item>.contents__text) {
-    gap: 7.5%;
+    gap: 60px;
   }
 
   .article .contents__column:has(.contents__column-item>.contents__text) .contents__column-item:has(.contents__img) {
@@ -1254,7 +1354,7 @@ html.is-loaded .article .main__img img {
   .bottom {
     height: 65px;
     margin: 40px auto 40px;
-    max-width: 800px;
+    width: 98.7654320988%;
   }
 
   .bottom__icon {
@@ -1444,4 +1544,10 @@ html.is-loaded .article .main__img img {
       transform: translateX(0);
     }
 }
+}
+
+@media screen and (min-width: 769px)and (min-width: 810px) {
+  .bottom {
+    max-width: 800px;
+  }
 }

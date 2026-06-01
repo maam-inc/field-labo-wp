@@ -25,7 +25,12 @@ export default class MasonryiUi {
           itemSelector: '.topContents__item',
           percentPosition: true,
           gutter: ".gutter-sizer",
-        });        
+        });
+
+        if(window.ScrollTrigger){
+          msnry.on('layoutComplete', () => window.ScrollTrigger.refresh());
+          window.ScrollTrigger.refresh();
+        }
       }
     );
 

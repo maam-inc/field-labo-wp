@@ -16,18 +16,6 @@
     <meta name="twitter:title" content="FAQ | ABOUT & CONTACT | FIELD LABO | フィールドラボ">
     <meta name="twitter:description" content="FIELD LABO のリノベーションについてQ&A形式にまとめました。">
     <meta name="twitter:image" content="http://field-labo.com//asset/image/og.png">
-    <script>
-      document.documentElement.classList.add('is-loading');
-      window.addEventListener('load', function () {
-        document.documentElement.classList.remove('is-loading');
-        document.documentElement.classList.add('is-loaded');
-      });
-      setTimeout(function () {
-        document.documentElement.classList.remove('is-loading');
-        document.documentElement.classList.add('is-loaded');
-      }, 8000);
-      
-    </script>
     <link href="../themes/field-labo-2026/assets/css/common.css" rel="stylesheet" type="text/css">
     <link href="../themes/field-labo-2026/assets/css/page.css" rel="stylesheet" type="text/css"><link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -257,6 +245,11 @@
         </div>
         <div class="l-modal">
           <div class="l-modal__bg btn-close"></div>
+          <div class="l-modal__loading"> 
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
           <div class="l-modal__container">
             <div class="l-modal__wrapper">
               <div class="l-modal__inner">
@@ -304,6 +297,5 @@
     <script src="../themes/field-labo-2026/assets/js/static-common.js"></script>
     <script src="../themes/field-labo-2026/assets/js/static.js"></script>
     <script src="../themes/field-labo-2026/assets/js/static-page.js"></script>
-    <script src="../themes/field-labo-2026/assets/js/page.js"></script>
   </body>
 </html>

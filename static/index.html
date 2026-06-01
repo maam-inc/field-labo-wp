@@ -16,18 +16,6 @@
     <meta name="twitter:title" content="FIELD LABO | フィールドラボ">
     <meta name="twitter:description" content="東京、首都圏、多摩地区で個性的なリノベーションの設計デザイン・工事を行うFIELD LABO(フィールドラボ)のホームページです。">
     <meta name="twitter:image" content="http://field-labo.com//asset/image/og.png">
-    <script>
-      document.documentElement.classList.add('is-loading');
-      window.addEventListener('load', function () {
-        document.documentElement.classList.remove('is-loading');
-        document.documentElement.classList.add('is-loaded');
-      });
-      setTimeout(function () {
-        document.documentElement.classList.remove('is-loading');
-        document.documentElement.classList.add('is-loaded');
-      }, 8000);
-      
-    </script>
     <link href="./themes/field-labo-2026/assets/css/common.css" rel="stylesheet" type="text/css">
     <link href="./themes/field-labo-2026/assets/css/top.css" rel="stylesheet" type="text/css"><link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -734,6 +722,11 @@
                     </div>
           <div class="l-modal">
             <div class="l-modal__bg btn-close"></div>
+            <div class="l-modal__loading"> 
+              <div class="line"></div>
+              <div class="line"></div>
+              <div class="line"></div>
+            </div>
             <div class="l-modal__container">
               <div class="l-modal__wrapper">
                 <div class="l-modal__inner">
@@ -753,16 +746,24 @@
                               </div>
                               <div class="related_article-text f-inter-B">
                                 <p>Jingumae Office M</p>
-                              </div>
-                              <p class="related_article-genre f-inter-M">(projects)</p></a></li>
+                                <p class="related_article-genre f-inter-M">(projects)</p>
+                              </div></a></li>
                           <li class="related_article"><a class="related_article-inner" href="#">
                               <div class="related_article-icon">
                                 <div class="related_article-mask"></div>
                               </div>
                               <div class="related_article-text f-inter-B">
                                 <p>ステンシルペイントが気になる</p>
+                                <p class="related_article-genre f-inter-M">(blog &amp; note)</p>
+                              </div></a></li>
+                          <li class="related_article"><a class="related_article-inner" href="#">
+                              <div class="related_article-icon">
+                                <div class="related_article-mask"></div>
                               </div>
-                              <p class="related_article-genre f-inter-M">(blog &amp; note)</p></a></li>
+                              <div class="related_article-text f-inter-B">
+                                <p>American Switch Plate [ Black Steel ] -アメリカンスイッチプレートをリメイク２</p>
+                                <p class="related_article-genre f-inter-M">(blog &amp; note)</p>
+                              </div></a></li>
                         </ul>
                       </div>
                       <div class="tag f-inter-B topContents__flex-item">
@@ -770,6 +771,14 @@
                         <ul class="tag-wrapper">
                           <li class="tag-item f-inter-B"><a href="#">kitchen</a></li>
                           <li class="tag-item f-inter-B"><a href="#">inovation</a></li>
+                          <li class="tag-item f-inter-B"><a href="#">Switch & Outlet</a></li>
+                          <li class="tag-item f-inter-B"><a href="#">Door & Window</a></li>
+                          <li class="tag-item f-inter-B"><a href="#">Color & Pattern</a></li>
+                          <li class="tag-item f-inter-B"><a href="#">Built-in</a></li>
+                          <li class="tag-item f-inter-B"><a href="#">DIY</a></li>
+                          <li class="tag-item f-inter-B"><a href="#">IKEA</a></li>
+                          <li class="tag-item f-inter-B"><a href="#">Hobby</a></li>
+                          <li class="tag-item f-inter-B"><a href="#">FIELD</a></li>
                         </ul>
                       </div>
                     </div>
@@ -815,7 +824,6 @@
     </div>
     <script src="./themes/field-labo-2026/assets/js/static-common.js"></script>
     <script src="./themes/field-labo-2026/assets/js/static.js"></script>
-    <script src="./themes/field-labo-2026/assets/js/static-top.js"></script>
     <script src="./themes/field-labo-2026/assets/js/static-top.js"></script>
     <script src="minimasonry.min.js"></script>
   </body>

@@ -10,12 +10,12 @@ if(!window.ScrollTrigger) window.ScrollTrigger = ScrollTrigger;
 gsap.registerPlugin(ScrollToPlugin);
 gsap.registerPlugin(ScrollTrigger);
 
-import FaqModal from './_modules/faqModal';
+// import FaqModal from './_modules/faqModal';
 
 
 const domContentLoaded = () => {
   console.log("[page.js]domContentLoaded")
-  FaqModal.getInstance().init()
+  // FaqModal.getInstance().init()
 };
 
 const loaded = () => {

@@ -370,8 +370,8 @@
           opacity: 0.7;
         }
         .l-header__modal-top-arrow{
-          animation: moveArwY-down .3s $ease-out-cubic 1;
-          @include kf-bounceX(moveArwY-down, 50%);
+          animation: moveArwY-right .3s $ease-out-cubic 1;
+          @include kf-bounceX(moveArwY-right, 50%);
         }
       }
     }

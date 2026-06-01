@@ -514,7 +514,7 @@
 
         // 横並び２カラムパーツ(テキスト)
         &:has(.contents__column-item > .contents__text){
-          gap: per(60, 800);
+          gap: 60px;
 
           .contents__column-item:has(.contents__img){
             width: 333px;
@@ -667,7 +667,13 @@
   .bottom{
     height: 65px;
     margin: 40px auto 40px;
-    max-width: 800px;
+    width: per(800, 810);
+
+    @media screen and (min-width: 810px) {
+      max-width: 800px;
+    }
+    
+
 
     &__icon{
       width: 11px;
@@ -822,9 +828,11 @@
 }
 
 // ページ読み込み完了後のアニメーション
-html.is-loaded .article{
-  .main__img img{
-    transform: scale(1);
-    filter: grayscale(0);
+body {
+  &.is-loaded{
+    .main__img img{
+      transform: scale(1);
+      filter: grayscale(0);
+    }    
   }
 }

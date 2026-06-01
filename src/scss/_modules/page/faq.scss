@@ -182,6 +182,11 @@
         width: per(398, 490);
       }
     }
+
+    .l-modal__container{
+      max-width: 800px;
+      width: per(800, 889);
+    }  
   }
 }
 
@@ -242,7 +247,7 @@
 
     &__contents{
       padding-top: 27px;
-      width: 730px;
+      width: 100%;
 
       // 規定アキ
       > * + *{
@@ -269,13 +274,6 @@
     }    
   }
 }
-
-.faq{
-  .l-modal__container{
-    max-width: 800px;
-  }  
-}
-
 
 // hover 
 @include mq(pc){
