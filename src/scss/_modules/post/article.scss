@@ -242,11 +242,7 @@
             width: vw(17);
             aspect-ratio: 1;
             height: auto;
-            mask-image: url(../images/common/icon-arrow-r_2.svg);
-            -webkit-mask-image: url(../images/common/icon-arrow-r_2.svg);
-            mask-size: cover;
-            background-color: $bk;
-            mask-repeat: no-repeat;            
+            @include mask-icon('../images/common/icon-arrow-r_2.svg', $bk);
           }
 
           &-text{
@@ -304,10 +300,7 @@
         &__open{
           height: auto;
           aspect-ratio: 1/1;
-          mask-image: url(../images/common/icon-open.svg);
-          -webkit-mask-image: url(../images/common/icon-open.svg);
-          mask-size: cover;
-          background: $wh;
+          @include mask-icon('../images/common/icon-open.svg', $wh);
         }
       }    
     }
@@ -324,10 +317,7 @@
   width: 100%;
 
   &__icon{
-    mask-image: url(../images/common/icon-back.svg);
-    -webkit-mask-image: url(../images/common/icon-back.svg);
-    mask-size: cover;
-    background: $wh;
+    @include mask-icon('../images/common/icon-back.svg', $wh);
     width: vw(19);
     aspect-ratio: 1;
     height: auto;
@@ -341,59 +331,8 @@
 }
 
 // ギャラリーモーダル
-.galleryModal{
-  position: relative;
-  z-index: 200;
-
-  &__bg{
-    position: fixed;
-    background: $bk;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100dvh;
-  }
-
-  &__container{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-    width: calc(100vw - vw(40));
-    height: fit-content;
-    max-height: calc(100dvh - vw(40));
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  &__img{
-    img{
-      width: calc(100vw - vw(40));
-      height: auto;
-      max-height: calc(100dvh - vw(40));
-      object-fit: contain;
-    }
-  }
-
-  &__btn{
-    position: fixed;
-    top: vw(20);
-    right: vw(20);
-  }
-
-  &__nav{
-    &--prev{
-      left: vw(-18);
-    }
-    &--next{
-      right: vw(-18);
-    }
-  }
-}
-
-// DATAモーダル
+// ギャラリーモーダル / DATAモーダル（共通）
+.galleryModal,
 .dataModal{
   position: relative;
   z-index: 200;
@@ -434,6 +373,18 @@
     position: fixed;
     top: vw(20);
     right: vw(20);
+  }
+}
+
+// ギャラリーモーダルのみ：前後ナビ
+.galleryModal{
+  &__nav{
+    &--prev{
+      left: vw(-18);
+    }
+    &--next{
+      right: vw(-18);
+    }
   }
 }
 
@@ -563,7 +514,7 @@
 
         // 横並び２カラムパーツ(テキスト)
         &:has(.contents__column-item > .contents__text){
-          gap: per(60, 800);
+          gap: 60px;
 
           .contents__column-item:has(.contents__img){
             width: 333px;
@@ -716,7 +667,13 @@
   .bottom{
     height: 65px;
     margin: 40px auto 40px;
-    max-width: 800px;
+    width: per(800, 810);
+
+    @media screen and (min-width: 810px) {
+      max-width: 800px;
+    }
+    
+
 
     &__icon{
       width: 11px;
@@ -729,35 +686,7 @@
   }
 
   // ギャラリーモーダル
-  .galleryModal{
-    &__container{
-      width: calc(100vw - per((197 + 197), 1280));
-      height: calc(100dvh - 20px);
-    }
-
-    &__img{
-      img{
-        width: 100%;
-        height: calc(100dvh - 20px);
-      }
-    }
-
-    &__btn{
-      top: 20px;
-      right: 20px;
-    }
-
-    &__nav{
-      &--prev{
-        left: -72px;
-      }
-      &--next{
-        right: -72px;
-      }
-    }
-  }
-
-  // DATAモーダル
+  .galleryModal,
   .dataModal{
     &__container{
       width: calc(100vw - per((197 + 197), 1280));
@@ -775,7 +704,19 @@
       top: 20px;
       right: 20px;
     }
-  }  
+  }
+
+  // ギャラリーモーダルのみ：前後ナビ
+  .galleryModal{
+    &__nav{
+      &--prev{
+        left: -72px;
+      }
+      &--next{
+        right: -72px;
+      }
+    }
+  }
 }
 // hover  
 @include mq(pc){
@@ -836,14 +777,9 @@
       &__embed{
         &:hover{
           .c-thumbnail__viewmore-mask{
-            animation: moveArw .3s cubic-bezier(.215,.61,.355,1) 1;
-            @keyframes  moveArw{
-              0% { transform: translateX(0);}
-              50% { opacity: 0; transform: translateX(30%);}
-              51% { opacity: 1; transform: translateX(-30%);}
-              100% { transform: translateX(0);}
-            }
-          }          
+            animation: moveArw .3s $ease-out-cubic 1;
+            @include kf-arrowX(moveArw, 30%);
+          }
         }        
       }
     }
@@ -860,13 +796,8 @@
 
       .bottom__icon{
         background: $bk;
-        animation: moveArwX .4s cubic-bezier(.215,.61,.355,1) 1;
-        @keyframes  moveArwX{
-          0% { transform: translateX(0);}
-          50% { opacity: 0; transform: translateX(-40%);}
-          51% { opacity: 1; transform: translateX(40%);}
-          100% { transform: translateX(0);}
-        }
+        animation: moveArwX .4s $ease-out-cubic 1;
+        @include kf-arrowX(moveArwX, -40%);
       }
 
       .bottom__text{
@@ -879,27 +810,17 @@
     .c-ctrl__prev{
       img{
         &:hover{
-          animation: moveArwX-left .4s cubic-bezier(.215,.61,.355,1) 1;
-          @keyframes  moveArwX-left{
-            0% { transform: translateX(0);}
-            50% { opacity: 0; transform: translateX(-20%);}
-            51% { opacity: 1; transform: translateX(20%);}
-            100% { transform: translateX(0);}
-          }
-        }       
+          animation: moveArwX-left .4s $ease-out-cubic 1;
+          @include kf-arrowX(moveArwX-left, -20%);
+        }
       }
     }
 
     .c-ctrl__next{
       img{
         &:hover{
-          animation: moveArwX-right .4s cubic-bezier(.215,.61,.355,1) 1;
-          @keyframes  moveArwX-right{
-            0% { transform: translateX(0);}
-            50% { opacity: 0; transform: translateX(20%);}
-            51% { opacity: 1; transform: translateX(-20%);}
-            100% { transform: translateX(0);}
-          }
+          animation: moveArwX-right .4s $ease-out-cubic 1;
+          @include kf-arrowX(moveArwX-right, 20%);
         }
       }
     }
@@ -907,9 +828,11 @@
 }
 
 // ページ読み込み完了後のアニメーション
-html.is-loaded .article{
-  .main__img img{
-    transform: scale(1);
-    filter: grayscale(0);
+body {
+  &.is-loaded{
+    .main__img img{
+      transform: scale(1);
+      filter: grayscale(0);
+    }    
   }
 }

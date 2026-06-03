@@ -51,9 +51,6 @@
 
 @include mq(pc){
   .projects{
-    .l-content{
-      padding-block: 5px 0px;
-    }
     &__gallery{
       margin: 5px auto 0;
 

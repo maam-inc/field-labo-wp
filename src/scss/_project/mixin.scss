@@ -2,3 +2,42 @@
 @use '../_libs/maam/mixin' as *;
 @use '../_libs/maam/easings' as *;
 @use '../_libs/maam/breakpoint' as *;
+
+@mixin mask-icon($url, $color: null) {
+  mask-image: url($url);
+  -webkit-mask-image: url($url);
+  mask-size: cover;
+  mask-repeat: no-repeat;
+  background-color: $color;
+}
+
+@mixin kf-arrowX($name, $shift) {
+  @keyframes #{$name} {
+    0%   { transform: translateX(0); }
+    50%  { opacity: 0; transform: translateX($shift); }
+    51%  { opacity: 1; transform: translateX(-$shift); }
+    100% { transform: translateX(0); }
+  }
+}
+
+@mixin kf-bounceX($name, $shift, $rotate: 0deg) {
+  @keyframes #{$name} {
+    0%   { transform: rotate($rotate) translateX(0); }
+    50%  { transform: rotate($rotate) translateX($shift); }
+    100% { transform: rotate($rotate) translateX(0); }
+  }
+}
+
+@mixin fixed-toggle($from, $to: translate(0, 0)) {
+  opacity: 0;
+  pointer-events: none;
+  transform: $from;
+  transition: all .3s $ease-out-cubic;
+
+  &.is-show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: $to;
+    transition: all .3s $ease-out-cubic;
+  }
+}

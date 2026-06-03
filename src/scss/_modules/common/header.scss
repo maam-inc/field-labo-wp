@@ -1,6 +1,30 @@
 @use '../../_base/settings' as *;
 @use 'sass:math';
 
+@mixin hbg-menu($display) {
+  position: absolute;
+  width: vw(26);
+  top: 50%;
+  transform: translateY(-50%);
+  right: vw(33);
+
+  &-inner{
+    display: $display;
+    width: 100%;
+    height: vw(20);
+
+    .line{
+      width: 100%;
+      height: vw(4);
+      background-color: $wh;
+
+      &:not(:first-child){
+        margin-top: vw(4);
+      }
+    }
+  }
+}
+
 .l-header{
   width:100%;
   height: vw(296);
@@ -33,27 +57,7 @@
   }
 
   &__menu{
-    position: absolute;
-    width: vw(26);
-    top: 50%;
-    transform: translateY(-50%);
-    right: vw(33);
-
-    &-inner{
-      display: none;
-      width: 100%;
-      height: vw(20);
-
-      .line{
-        width: 100%;
-        height: vw(4);
-        background-color: $wh;
-
-        &:not(:first-child){
-          margin-top: vw(4);
-        }
-      }
-    }
+    @include hbg-menu(none);
   }
 
 }
@@ -65,16 +69,7 @@
   height: vw(100);
   background: $bk;
   z-index: 100;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-20%);
-  transition: all .3s $ease-out-cubic;
-
-  &.is-show{
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-  }
+  @include fixed-toggle(translateY(-20%));
 
   &__inner{
     position: relative;
@@ -95,27 +90,7 @@
   }
 
   &__menu{
-    position: absolute;
-    width: vw(26);
-    top: 50%;
-    transform: translateY(-50%);
-    right: vw(33);
-
-    &-inner{
-      display: block;
-      width: 100%;
-      height: vw(20);
-
-      .line{
-        width: 100%;
-        height: vw(4);
-        background-color: $wh;
-
-        &:not(:first-child){
-          margin-top: vw(4);
-        }
-      }
-    }
+    @include hbg-menu(block);
   }
 }
 @include mq(pc){
@@ -395,13 +370,9 @@
           opacity: 0.7;
         }
         .l-header__modal-top-arrow{
-          animation: moveArwY-down .3s cubic-bezier(.215,.61,.355,1) 1;
-          @keyframes  moveArwY-down{
-            0% { transform: translateX(0);}
-            50% { transform: translateX(50%);}
-            100% { transform: translateX(0);}
-          }         
-        }        
+          animation: moveArwY-right .3s $ease-out-cubic 1;
+          @include kf-bounceX(moveArwY-right, 50%);
+        }
       }
     }
 

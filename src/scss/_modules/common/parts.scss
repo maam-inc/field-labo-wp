@@ -6,10 +6,11 @@
 // ーーーーーーーーーーーーーーーーーーー
 body {
   opacity: 0;
-}
-.is-loaded body {
-  opacity: 1;
-  transition: opacity .2s linear;
+
+  &.is-loaded{
+    opacity: 1;
+    transition: opacity .2s linear;
+  }
 }
 
 // ーーーーーーーーーーーーーーーーーーー
@@ -100,10 +101,8 @@ body {
   display: block;
   aspect-ratio: 272/55;
   height: auto;
-  mask-image: url(../images/common/logo.svg);
-  -webkit-mask-image: url(../images/common/logo.svg);
-  mask-size: cover;
-  
+  @include mask-icon('../images/common/logo.svg');
+
   &.black{ background-color: $bk;}
   &.white{ background-color: $wh;}
 }
@@ -214,24 +213,13 @@ body {
     bottom: vw(19);
     right: vw(24);
     z-index: 100;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(40%);
-    transition: all .3s $ease-out-cubic;
-
-    &.is-show{
-      transition: all .3s $ease-out-cubic;
-      pointer-events: auto;
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
+    @include fixed-toggle(translateY(40%));
 
     @include mq(pc){
       width: 33px;
       bottom: 19px;
       right: 20px;
-    }  
+    }
   }
 }
 @include mq(pc){
@@ -260,14 +248,12 @@ body {
     display: none;
   }
 }
+
 // モーダル開くアイコン
 .c-modalOpenIcon{
   aspect-ratio: 1/1;
   height: auto;
-  mask-image: url(../images/common/icon-open.svg);
-  -webkit-mask-image: url(../images/common/icon-open.svg);
-  mask-size: cover;
-  background-color: #888888;
+  @include mask-icon('../images/common/icon-open.svg', #888888);
 
   &--dark{ background-color: #666666;}
 }
@@ -292,10 +278,7 @@ body {
     width: vw(17);
     height: auto;
     aspect-ratio: 1;
-    mask-image: url(../images/common/icon-close.svg);
-    -webkit-mask-image: url(../images/common/icon-close.svg);
-    mask-size: cover;
-    background: $bk;
+    @include mask-icon('../images/common/icon-close.svg', $bk);
   }
 
   @include mq(pc){
@@ -409,10 +392,7 @@ a[target="_blank"]:not(:has(img)){
     width: vw(18);
     height: auto;
     aspect-ratio: 1/1;
-    mask-image: url(../images/common/icon-external.svg);
-    -webkit-mask-image: url(../images/common/icon-external.svg);
-    mask-size: cover;
-    background: $ylw;
+    @include mask-icon('../images/common/icon-external.svg', $ylw);
     top: 50%;
     translate: 0 -50%;
     right: vw(8);
@@ -433,7 +413,7 @@ a[target="_blank"]:not(:has(img)){
 // ーーーーーーーーーーーーーーーーーーー
 // モーダルの大枠
 .l-modal{
-  opacity: 0;
+  // opacity: 0;
   pointer-events: none;
 
   &__bg{
@@ -445,8 +425,30 @@ a[target="_blank"]:not(:has(img)){
     top: 0;
     left: 0;
   } 
+
+  &__loading{
+    top: 50%;
+    left: 50%;
+    transform: -50% -50%;
+    width: vw(31);
+    height: auto;
+    aspect-ratio: 31/33;
+    position: fixed;
+    z-index: 201;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+
+    .line{
+      width: vw(5);
+      height: 100%;
+      background: $bk;
+    }
+  }
   
   &__container{
+    display: block;
     position: absolute;
     width: 100vw;
     height: fit-content;
@@ -504,10 +506,7 @@ a[target="_blank"]:not(:has(img)){
       width: vw(12);
       height: auto;
       aspect-ratio: 1/1;
-      mask-image: url(../images/common/icon-close.svg);
-      -webkit-mask-image: url(../images/common/icon-close.svg);
-      mask-size: cover;
-      background: #888888;
+      @include mask-icon('../images/common/icon-close.svg', #888888);
       margin-right: vw(16);
     }
 
@@ -517,18 +516,21 @@ a[target="_blank"]:not(:has(img)){
     }
   }
 
-  &.is-open{
-    opacity: 1;
-    pointer-events: auto;
-  }
-
   @include mq(pc){
     .l-modal{
+      &__loading{
+        width: 18px;
+
+        .line{
+          width: 3px;
+        }
+      }
+
       &__container{
         max-width: 990px;
         left:50%;
         translate: -50% -50%;
-        width: per(990, 1280);
+        width: per(990, 1082);
         padding-top: 0;
       }
 
@@ -576,5 +578,59 @@ a[target="_blank"]:not(:has(img)){
         }
       }      
     }
+  }
+
+  // モーダル開閉のanimation 
+  &__wrapper{
+    transform: translateY(30px);
+  }
+
+  &__wrapper, &__bg, &__btn, &__loading{
+    transition: .3s $ease-out-cubic;
+    opacity: 0;
+  }
+
+  &.is-open{
+    opacity: 1;
+    pointer-events: auto;
+
+    .l-modal__bg{
+      opacity: 1;
+      transition: .3s $ease-out-cubic;    
+    }
+  }
+
+  &.is-loading{
+    .l-modal__loading{
+      transition: .3s $ease-out-cubic;
+      opacity: 1;
+
+      .line{
+        transform-origin: center;
+        animation: loading 1s steps(1, end) both infinite;
+
+        &:nth-child(1){ animation-delay: 0s;}
+        &:nth-child(2){ animation-delay: .1s;}
+        &:nth-child(3){ animation-delay: .2s;}
+
+        @keyframes loading {
+          0% { transform: scaleY(.3);}
+          12.5% { transform: scaleY(.6);}
+          25% { transform: scaleY(1);}
+          37.5% { transform: scaleY(.6);}
+          50%, 100% { transform: scaleY(.3);}
+        }
+      }
+    }
+  }  
+
+  &.is-loaded{
+    .l-modal__btn, .l-modal__wrapper{
+      opacity: 1;
+      transition: .3s $ease-out-sine;
+    }
+    .l-modal__wrapper{
+      transform: translateY(0);
+    }    
   }
 }

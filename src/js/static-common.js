@@ -15,14 +15,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 const domContentLoaded = () => {
-  console.log("[static-common]domContentLoaded")
-  const uiManager = new UiManager;
-  uiManager.init();
-  new Menu().init();
 };
 
 const loaded = () => {
-  document.documentElement.classList.add('is-loaded');
+  document.body.classList.add('is-loaded');
+  const uiManager = new UiManager;
+  uiManager.init();
+  new Menu().init();
 };
 
 
