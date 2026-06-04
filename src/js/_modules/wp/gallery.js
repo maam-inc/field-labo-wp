@@ -171,6 +171,8 @@ export default class Gallery {
         page: nextPage,
         reset: false
       })
+
+      ScrollTrigger.refresh()
     })
   }
   updateMoreBtn() {
@@ -522,12 +524,18 @@ export default class Gallery {
 
     this.closeModalFrame(modal)
     this.modalRequestId += 1
+    const closeRequestId = this.modalRequestId
 
-    // closeボタンを残して中身だけクリア
-    const modalContent = modal.querySelector('.js-modalContent')
-    if(modalContent) {
-      this.clearModalContent(modalContent)
-    }
+    // 閉じるアニメーション後に中身を消す。閉じている途中で再度開いた場合は消さない。
+    window.setTimeout(() => {
+      if(!this.isCurrentModalRequest(closeRequestId)) return
+      if(modal.classList.contains('is-open')) return
+
+      const modalContent = modal.querySelector('.js-modalContent')
+      if(modalContent) {
+        this.clearModalContent(modalContent)
+      }
+    }, 300)
   }
 
   openModalFrame(modal) {

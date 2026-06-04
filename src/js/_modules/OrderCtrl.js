@@ -106,6 +106,9 @@ export default class OrderCtrl {
       duration: 0.3,
       ease: 'power1.out',
       stagger: 0.07,
+      onComplete: () => {
+        ScrollTrigger.refresh()
+      }
     });
   }
 }
