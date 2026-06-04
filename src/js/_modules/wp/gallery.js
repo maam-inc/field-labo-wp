@@ -2,6 +2,7 @@
 // 
 import Masonry from 'masonry-layout';
 import OrderCtrl from '../OrderCtrl';
+import PageLoaded from './pageLoaded'
 
 export default class Gallery {
 
@@ -76,6 +77,7 @@ export default class Gallery {
 
     this.msnry.once('layoutComplete', () => {
       console.log('maisonty layoutComplete')
+      PageLoaded.getInstance().init();
     })
   }
 
