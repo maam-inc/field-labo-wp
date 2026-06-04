@@ -187,6 +187,10 @@
       max-width: 800px;
       width: per(800, 889);
     }  
+
+    .l-modal__btn{
+      right: max(calc((min(100vw * 800 / 889, 800px) - 100vw) / 4 - 12.5px), -35px);
+    }
   }
 }
 
