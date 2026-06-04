@@ -18,7 +18,7 @@
           class="blog__gallery-wrapper js-load-list"
           data-post-type="<?php echo esc_attr($post_type); ?>"
           data-current-page="<?php echo esc_attr($current_page); ?>"
-          data-per-page="4"
+          data-per-page="18"
           data-max-page="<?php echo esc_attr($wp_query->max_num_pages); ?>"
         >
           <?php if(have_posts()) : ?>

@@ -20,7 +20,7 @@
 
     // blog一覧の初期表示件数
     if ($query->is_post_type_archive('blog')) {
-      $query->set('posts_per_page', 18);
+      $query->set('posts_per_page', 12);
       $query->set('orderby', [
         'date' => 'DESC',
         'ID' => 'DESC',

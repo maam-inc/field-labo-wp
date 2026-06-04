@@ -390,11 +390,13 @@
 
     wp_reset_postdata();
 
+    $returned_count = (int) $query->post_count;
+
     return [
       'html' => ob_get_clean(),
       'current_page' => $page,
       'max_page' => (int) $query->max_num_pages,
-      'has_more' => (int) $query->max_num_pages > 1,
+      'has_more' => $exclude_ids ? $returned_count >= $per_page && (int) $query->max_num_pages > 1 : $page < (int) $query->max_num_pages,
     ];
   }
 

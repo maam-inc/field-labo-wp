@@ -38,7 +38,6 @@ export default class LoadMore {
       const currentPage = Number(this.list.dataset.currentPage);
       const nextPage = currentPage + 1;
       const perPage = Number(this.list.dataset.perPage);
-      const maxPage = Number(this.list.dataset.maxPage);
       const loadedIds = this.getLoadedIds();
 
       this.button.disabled = true;
@@ -72,9 +71,10 @@ export default class LoadMore {
           // anim.fadeIn(document.querySelectorAll('.is-add'))
         }
 
-        this.list.dataset.currentPage = String(nextPage);
+        this.list.dataset.currentPage = String(data.current_page || nextPage);
+        this.list.dataset.maxPage = String(data.max_page || this.list.dataset.maxPage || '');
 
-        if (!data.has_more || nextPage >= maxPage) {
+        if (!data.has_more) {
           this.button.remove();
         } else {
           this.button.disabled = false;
