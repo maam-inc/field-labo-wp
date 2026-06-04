@@ -268,6 +268,7 @@ export default class Gallery {
       if(img) {
         // 一覧カードの画像とタイトルをAPIレスポンスで埋める。
         webPimg.srcset = `${post.image}.webp` || ''
+        img.src = post.image || ''
         img.alt = post.title || ''
         if(post.image_width) img.width = post.image_width
         if(post.image_height) img.height = post.image_height

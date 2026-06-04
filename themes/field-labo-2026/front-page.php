@@ -34,9 +34,11 @@
                         <div class="main_img">
                           <picture>
                             <?php if ($img_pc) : ?>
+                              <source media="(min-width: 769px)" srcset="<?php echo esc_url($img_pc); ?>.webp" type="image/webp"/>
                               <source media="(min-width: 769px)" srcset="<?php echo esc_url($img_pc); ?>"/>
                             <?php endif; ?>
                             <?php if ($img_sp) : ?>
+                              <source media="(max-width: 768px)" srcset="<?php echo esc_url($img_sp); ?>.webp" type="image/webp"/>
                               <source media="(max-width: 768px)" srcset="<?php echo esc_url($img_sp); ?>"/>
                             <?php endif; ?>
                             <?php if ($img_src) : ?>
