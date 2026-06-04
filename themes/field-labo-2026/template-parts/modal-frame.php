@@ -5,7 +5,11 @@ $is_hidden = $args['is_hidden'] ?? false;
 ?>
 
 <div class="l-modal <?php echo esc_attr($content_class); ?>" id="<?php echo esc_attr($modal_id); ?>">
-  <div class="js-modalLoading"></div>
+  <div class="l-modal__loading"> 
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
   <div class="l-modal__bg btn-close js-modalClose"></div>
   <div class="l-modal__container">
     <div class="l-modal__wrapper">

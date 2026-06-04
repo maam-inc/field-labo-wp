@@ -21,7 +21,7 @@ export default class PageLoaded {
     return PageLoaded.#instance;
   }
 
-  init(target = document.documentElement) {
+  init(target = document.body) {
     target.classList.add('is-loaded');
   }
 }

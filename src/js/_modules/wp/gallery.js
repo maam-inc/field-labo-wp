@@ -1,22 +1,26 @@
 // WPで使用
 // 
 import Masonry from 'masonry-layout';
-import CommonModalAnim from '../commonModalAnim';
 import OrderCtrl from '../OrderCtrl';
 
 export default class Gallery {
 
   constructor(){
+    // 初回描画済みかどうか。2回目以降だけカード出現アニメーションを走らせる。
     this.isRendered = false;
+
+    // MasonryのレイアウトをSP/PCのメディアクエリ単位で初期化する。
     this.mm = gsap.matchMedia();
     this.mq_sp = `(max-width: 767px)`;
     this.mq_pc = `(min-width: 768px)`;
     this.cmd = { isPc: this.mq_pc, isSp: this.mq_sp };
 
+    // ギャラリー本体。ここにAPIで取得した投稿カードを追加していく。
     this.container = document.querySelector('.js-masonry');
     this.msnry = null;
 
     // LOAD MORE
+    // 一覧APIのページング状態。連打や重複取得を防ぐためにisLoadingも持つ。
     this.moreBtn = document.querySelector('.js-load-more')
     this.currentPage = 1
     this.maxPages = 1
@@ -24,20 +28,24 @@ export default class Gallery {
     this.isLoading = false
 
     // SORT
+    // カテゴリと並び順の現在値。APIリクエスト時のパラメータになる。
     this.catSelect = document.querySelectorAll('.js-category')
     this.currentCat = 'all'
     this.currentSort = 'random'
 
     // MODAL URL
+    // modal=投稿ID をURLに持たせ、直リンク/ブラウザ戻る進むとモーダルを同期する。
     this.modalId = 'inspoModal'
     this.modalQueryKey = 'modal'
     this.isSyncingModalUrl = false
+    this.modalRequestId = 0
   }
 
   init(){
     console.log('masonryUi init')
     if(!this.container) return
 
+    // イベント登録と初期表示をまとめて実行する。
     this.masonryInit()
     this.bindLoadMore()
     this.bindSort()
@@ -56,6 +64,7 @@ export default class Gallery {
     this.mm.add( this.cmd,
       (context) => {
         const { isPc, isSp } = context.conditions;
+        // 画像サイズに応じてカードを詰めるMasonryレイアウトを作成する。
         this.msnry = new Masonry( this.container, {
           percentPosition: true,
           columnWidth: '.js-galleryItem',
@@ -78,6 +87,7 @@ export default class Gallery {
 
     this.catSelect.forEach(select => {
       select.addEventListener('change', () => {
+        // カテゴリ変更時は1ページ目から取り直す。
         this.updateSort(select.value)
 
         // const Anim = new OrderCtrl;
@@ -95,6 +105,7 @@ export default class Gallery {
     this.currentSort = this.currentCat === 'all' ? 'random' : 'latest'
     this.currentPage = 1
 
+    // 同じカテゴリUIが複数あっても状態をそろえる。
     this.updateCatSelect()
     this.updateOrderBtn()
   }
@@ -124,6 +135,7 @@ export default class Gallery {
       this.currentSort = sort
       this.currentPage = 1
       
+      // 並び順変更時も現在の一覧を破棄して1ページ目から取り直す。
       this.updateOrderBtn()
       this.fetchInspoPosts({ page: 1, reset: true })
     })
@@ -164,6 +176,7 @@ export default class Gallery {
 
     const shouldHide = !this.hasMore
 
+    // 読み込み中は連打防止、最終ページまで来たらボタン自体を非表示にする。
     this.moreBtn.disabled = this.isLoading || shouldHide
     this.moreBtn.style.display = shouldHide ? 'none' : ''
   }
@@ -183,6 +196,7 @@ export default class Gallery {
     })
     const loadedIds = this.getLoadedIds()
 
+    // Load more時は既に画面にある投稿IDを除外して、ランダム取得でも重複を避ける。
     if(!reset && loadedIds.length) {
       params.set('exclude', loadedIds.join(','))
     }
@@ -207,6 +221,7 @@ export default class Gallery {
       this.maxPages = data.max_pages
       this.hasMore = Boolean(data.has_more)
 
+      // reset=trueなら一覧差し替え、falseなら末尾に追加する。
       await this.renderPosts(data.posts, { reset })
 
     } catch( error ) {
@@ -224,13 +239,15 @@ export default class Gallery {
 
     if(!container || !template) return
 
-    // リセット = 
+    // リセット時は現在表示中のカードを全削除して、新しい条件の一覧に差し替える。
     if(reset) {
       container.querySelectorAll('.js-galleryItem').forEach(item => item.remove())
     }
     const loadedIds = this.getLoadedIds()
+    const addedItems = []
 
     ;(posts || []).forEach(post => {
+      // 既に描画済みの投稿は追加しない。
       if(loadedIds.includes(String(post.id))) return
 
       const clone = template.content.cloneNode(true)
@@ -242,8 +259,10 @@ export default class Gallery {
       const ttl = clone.querySelector('.c-thumbnail__title')
 
       if(item) item.dataset.postId = post.id
+      if(item) addedItems.push(item)
       if(btn) btn.dataset.post = post.id
       if(img) {
+        // 一覧カードの画像とタイトルをAPIレスポンスで埋める。
         webPimg.srcset = `${post.image}.webp` || ''
         img.alt = post.title || ''
         if(post.image_width) img.width = post.image_width
@@ -257,6 +276,7 @@ export default class Gallery {
     await this.waitImages(container)
 
     if(this.msnry) {
+      // 画像読み込み後にMasonryへ新しいカードを認識させて再配置する。
       this.msnry.reloadItems()
       this.msnry.layout()
       
@@ -264,13 +284,8 @@ export default class Gallery {
       if(this.isRendered) {
         const Anim = new OrderCtrl
 
-        if(reset) {
-          const targets = document.querySelectorAll('.js-galleryItem--hide')
-          Anim.cardAppearAnim(targets)
-        } else {
-          const targets = document.querySelectorAll('.js-galleryItem.is-added')
-          Anim.cardAppearAnim(targets)
-        }
+        // 今回のAPIレスポンスで追加したカードだけをアニメーション対象にする。
+        Anim.cardAppearAnim(addedItems)
       } else {
         this.isRendered = true;
       }
@@ -282,6 +297,7 @@ export default class Gallery {
 
   // **** WPの一覧を描画 ****
   normalizeImage(image) {
+    // モーダルAPIの画像データは文字列/オブジェクト両方を許容して同じ形にそろえる。
     if(!image) {
       return { url: '', width: '', height: '' }
     }
@@ -299,6 +315,7 @@ export default class Gallery {
 
 
   filterByCategory(category) {
+    // モーダル内タグクリック用。選択カテゴリで一覧を更新して、一覧位置へ戻す。
     this.updateSort(category)
     this.fetchInspoPosts({ page: 1, reset: true })
 
@@ -309,6 +326,7 @@ export default class Gallery {
   }
 
   getLoadedIds() {
+    // DOM上のdata-post-idから、現在表示済みの投稿IDだけを集める。
     return Array.from(this.container.querySelectorAll('[data-post-id]'))
       .map(item => item.dataset.postId)
       .filter(Boolean)
@@ -324,6 +342,7 @@ export default class Gallery {
     }
 
     return Promise.all(images.map(img => {
+      // キャッシュ済み画像はloadイベントが発火しないため、そのまま完了扱いにする。
       if(img.complete) {
         return Promise.resolve()
       }
@@ -344,6 +363,7 @@ export default class Gallery {
     if(!modal) return
 
     document.addEventListener('click', (e) => {
+      // 一覧カードのクリックで、投稿IDに対応するモーダル内容をAPIから取得して開く。
       const openBtn = e.target.closest('.js-modalOpen')
       
       if(openBtn && openBtn.dataset.id === this.modalId) {
@@ -357,8 +377,8 @@ export default class Gallery {
         return
       }
 
+      // モーダル内カテゴリタグをクリックしたら、そのカテゴリで一覧を絞り込む。
       const tagLink = e.target.closest('.js-modalTag')
-
       if(tagLink && modal.contains(tagLink)) {
         const category = tagLink.dataset.category
         if(!category) return
@@ -380,6 +400,7 @@ export default class Gallery {
 
   bindModalUrl() {
     window.addEventListener('popstate', () => {
+      // ブラウザの戻る/進むでURLが変わったとき、modalクエリに合わせて表示を同期する。
       const postId = this.getModalPostIdFromUrl()
 
       this.isSyncingModalUrl = true
@@ -395,6 +416,7 @@ export default class Gallery {
   }
 
   openInitialModalFromUrl() {
+    // 初期表示時に ?modal=投稿ID があれば、該当投稿のモーダルを直接開く。
     const postId = this.getModalPostIdFromUrl()
     if(!postId) return
 
@@ -405,6 +427,7 @@ export default class Gallery {
     const params = new URLSearchParams(window.location.search)
     const value = params.get(this.modalQueryKey)
 
+    // 投稿IDとして扱える数字だけを許可する。
     if(value && /^\d+$/.test(value)) return value
 
     return ''
@@ -415,6 +438,7 @@ export default class Gallery {
 
     const url = new URL(window.location.href)
 
+    // 既存のmodalクエリを一度消してから、必要な場合だけ新しい投稿IDをセットする。
     url.searchParams.delete(this.modalQueryKey)
 
     if(postId) {
@@ -424,6 +448,7 @@ export default class Gallery {
     const nextUrl = `${url.pathname}${url.search}${url.hash}`
     if(nextUrl === `${window.location.pathname}${window.location.search}${window.location.hash}`) return
 
+    // ページ遷移はせず、URLだけを更新する。
     window.history.pushState({ modalPostId: postId || null }, '', nextUrl)
   }
 
@@ -437,17 +462,16 @@ export default class Gallery {
     const modalContent = this.ensureModalContent(modal)
     if(!modalContent) return
 
-    const loadingDelay = 300
-    const minLoadingDuration = 1000
-    let loadingShownAt = null
-    const loadingTimer = setTimeout(() => {
-      this.showModalLoadingFrame(modal)
-      loadingShownAt = Date.now()
-    }, loadingDelay)
+    // is-openで背景、is-loadingでローディングを先に表示する。
+    const minLoadingDuration = 600
+    const loadingStartedAt = Date.now()
+    const requestId = ++this.modalRequestId
+    this.openModalFrame(modal)
 
     try {
       // 1. APIからモーダル用データを取得する
       const data = await this.fetchModalPost(postId)
+      if(!this.isCurrentModalRequest(requestId)) return
 
       // 2. 非表示状態のモーダルへDOMを差し込む
       this.clearModalContent(modalContent)
@@ -456,62 +480,95 @@ export default class Gallery {
       // 3. 差し込んだ画像の読み込み完了を待ってからモーダルを開く
       console.log('[modal] wait images')
       await this.waitImages(modalContent)
+      if(!this.isCurrentModalRequest(requestId)) return
       console.log('[modal] images loaded')
 
-      clearTimeout(loadingTimer)
+      const loadingElapsed = Date.now() - loadingStartedAt
+      const remaining = minLoadingDuration - loadingElapsed
 
-      if(loadingShownAt) {
-        const loadingElapsed = Date.now() - loadingShownAt
-        const remaining = minLoadingDuration - loadingElapsed
-
-        if(remaining > 0) {
-          await this.wait(remaining)
-        }
+      if(remaining > 0) {
+        await this.wait(remaining)
       }
-
-      this.hideModalLoadingFrame(modal)
+      if(!this.isCurrentModalRequest(requestId)) return
 
       if(updateUrl) {
         this.updateModalUrl(postId)
       }
 
-      const ModalFunc = new CommonModalAnim;
-      ModalFunc.openModal(modal)
+      // is-loadedでモーダル内部を表示し、表示アニメーション後にloadingを外す。
+      await this.showModalLoaded(modal)
 
-      console.log('[modal] render complete')
+      // console.log('[modal] render complete')
 
     } catch(err) {
-      clearTimeout(loadingTimer)
-      this.hideModalLoadingFrame(modal)
+      if(!this.isCurrentModalRequest(requestId)) return
+
       console.error('[modal api] error:', err)
       this.showModalError(modalContent, '読み込みに失敗しました。時間をおいて再度お試しください。')
+      await this.showModalLoaded(modal)
     }
   }
+
   closeModal({ updateUrl = false } = {}) {
     const modal = document.getElementById(this.modalId)
     if(!modal) return
 
+    // 通常の閉じる操作ではURLからmodalクエリも外す。
     if(updateUrl) {
       this.updateModalUrl('')
     }
+
+    this.closeModalFrame(modal)
+    this.modalRequestId += 1
 
     // closeボタンを残して中身だけクリア
     const modalContent = modal.querySelector('.js-modalContent')
     if(modalContent) {
       this.clearModalContent(modalContent)
     }
+  }
 
-    // modal.setAttribute('aria-hidden', 'true')
-    // document.documentElement.classList.remove('is-modal-open')
-    const ModalFunc = new CommonModalAnim;
-    ModalFunc.closeModal(modal)
-    // window.setTimeout(() => {
-    //   if(modal.classList.contains('is-open')) return
-    //   modal.style.display = 'none'
-    // }, 220)
+  openModalFrame(modal) {
+    if(!modal) return
+
+    const modalInner = modal.querySelector('.l-modal__wrapper')
+
+    modal.classList.remove('is-loaded')
+    modal.classList.add('is-open')
+    modal.classList.add('is-loading')
+    document.body.style.overflow = 'hidden'
+    modal.scrollTop = 0
+    if(modalInner) modalInner.scrollTop = 0
+  }
+
+  async showModalLoaded(modal) {
+    if(!modal) return
+
+    const modalInner = modal.querySelector('.l-modal__wrapper')
+
+    modal.classList.add('is-loaded')
+    modal.scrollTop = 0
+    if(modalInner) modalInner.scrollTop = 0
+
+    await this.wait(300)
+    modal.classList.remove('is-loading')
+  }
+
+  closeModalFrame(modal) {
+    if(!modal) return
+
+    modal.classList.remove('is-loaded')
+    modal.classList.remove('is-loading')
+    modal.classList.remove('is-open')
+    document.body.style.overflow = 'auto'
+  }
+
+  isCurrentModalRequest(requestId) {
+    return requestId === this.modalRequestId
   }
 
   ensureModalContent(modal) {
+    // 既存HTMLに.js-modalContentがなければ、モーダル内側を差し込み先として使う。
     const currentContent = modal.querySelector('.js-modalContent')
     if(currentContent) return currentContent
 
@@ -524,6 +581,7 @@ export default class Gallery {
   }
 
   clearModalContent(container) {
+    // 閉じるボタンなどの固定下部エリアは残し、APIで差し込んだ内容だけ削除する。
     Array.from(container.childNodes).forEach(node => {
       if(node.nodeType === Node.ELEMENT_NODE && node.classList.contains('l-modal__bottom')) return
       node.remove()
@@ -531,11 +589,13 @@ export default class Gallery {
   }
 
   appendModalContent(container, node) {
+    // 固定下部エリアがあれば、その直前に本文を差し込む。
     const bottomBtn = container.querySelector('.l-modal__bottom')
     container.insertBefore(node, bottomBtn || null)
   }
 
   setModalContentHtml(container, html) {
+    // ローディング/エラー表示など、テンプレートを使わない簡易表示用。
     this.clearModalContent(container)
     const bottomBtn = container.querySelector('.l-modal__bottom')
     if(bottomBtn) {
@@ -581,41 +641,6 @@ export default class Gallery {
     })
   }
 
-  showModalLoadingFrame(modal) {
-    if(!modal) return
-
-    const loading = modal.querySelector('.js-modalLoading')
-    if(!loading) return
-
-    modal.classList.add('is-loading')
-    loading.classList.add('is-active')
-    loading.setAttribute('aria-live', 'polite')
-    loading.setAttribute('aria-busy', 'true')
-    loading.textContent = 'Loading...'
-  }
-
-  hideModalLoadingFrame(modal) {
-    if(!modal) return
-
-    const loading = modal.querySelector('.js-modalLoading')
-    if(!loading) return
-
-    modal.classList.remove('is-loading')
-    loading.classList.remove('is-active')
-    loading.removeAttribute('aria-busy')
-    loading.textContent = ''
-  }
-
-  // モーダル内loading表示
-  // アニメーションは後からCSSで追加する想定
-  showModalLoading(container) {
-    this.setModalContentHtml(container, `
-      <div class="modal-loading" aria-live="polite">
-        <p class="modal-loading__text">Loading...</p>
-      </div>
-    `)
-  }
-
   // モーダル内エラー表示
   showModalError(container, message) {
     this.setModalContentHtml(container, `
@@ -633,6 +658,7 @@ export default class Gallery {
     const clone = template.content.cloneNode(true)
 
     // 画像
+    // 複数画像を画像用テンプレートで追加する。
     const imgWrap = clone.querySelector('.js-images')
     const imgTemplate = document.querySelector('#inspo-modal-img-template')
     if(data.images && imgTemplate && imgWrap) {
@@ -666,6 +692,7 @@ export default class Gallery {
     
 
     // カテゴリ
+    // カテゴリタグはクリックで一覧絞り込みに使うため、slugをdata-categoryへ持たせる。
     const tagContainer = clone.querySelector('.js-tagContainer')
     const tagWrap = clone.querySelector('.js-tagWrapper')
     const tagTemplate = document.querySelector('#inspo-modal-tag-template')
@@ -690,6 +717,7 @@ export default class Gallery {
     }
 
     // 関連記事
+    // 関連記事がない場合はセクションごと非表示にする。
     const articleContainer = clone.querySelector('.js-articleContainer')
     const articleWrap = clone.querySelector('.js-articleWrapper')
     const articleTemplate = document.querySelector('#inspo-modal-article-template')
@@ -713,6 +741,7 @@ export default class Gallery {
       articleContainer.style.display = 'none'
     }
 
+    // 生成したモーダル本文を、固定下部エリアの前へ反映する。
     this.clearModalContent(container)
     this.appendModalContent(container, clone)
   }

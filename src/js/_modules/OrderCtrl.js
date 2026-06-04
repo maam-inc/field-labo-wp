@@ -95,6 +95,8 @@ export default class OrderCtrl {
 
   cardAppearAnim(cards) {
     console.log('cardAppearAnim')
+    if(!cards || !cards.length) return
+
     gsap.fromTo(cards, {
       opacity: 0,
       y: 5,
