@@ -26,7 +26,9 @@
           <?php if ($thumb_pc || $thumb_sp) : ?>
             <div class="main__img">
               <picture>
+                <source srcset="<?php echo esc_url($thumb_pc); ?>.webp" media="(min-width: 769px)" type="image/webp">
                 <source srcset="<?php echo esc_url($thumb_pc); ?>" media="(min-width: 769px)">
+                <source srcset="<?php echo esc_url($thumb_sp); ?>.webp" type="image/webp">
                 <img src="<?php echo esc_url($thumb_sp); ?>" alt="<?php echo esc_attr(get_the_title()); ?>"/>
               </picture>
             </div>
@@ -54,7 +56,13 @@
   <div class="galleryModal__bg galleryModal__close postModal__bg"> </div>
   <div class="galleryModal__container postModal__container">
 
-    <div class="galleryModal__img postModal__img"><img src="" alt=""></div>
+    <div class="galleryModal__img postModal__img">
+      <picture>
+        <source srcset="" type="image/webp">
+        <img src="" alt="">
+      </picture>
+      <!-- <img src="" alt=""> -->
+    </div>
     <div class="c-ctrl__prev swiper-button-prev galleryModal__nav--prev"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/icon-prev.svg" alt="prev"/></div>
     <div class="c-ctrl__next swiper-button-next galleryModal__nav--next"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/icon-next.svg" alt="next"/></div>
   </div>
