@@ -465,7 +465,7 @@ a[target=_blank]:not(:has(img))::after {
 }
 
 .l-modal.is-loading .l-modal__loading .line {
-  animation: loading 1s steps(1, end) both infinite;
+  animation: loading 1s linear both infinite;
   transform-origin: center;
 }
 
@@ -1111,7 +1111,7 @@ body.is-loaded .main__img img {
   }
 
   .l-modal .l-modal__btn {
-    right: -35px;
+    right: max((min(91.4972273567vw,990px) - 100vw)/4 - 12.5px,-35px);
     top: 16px;
   }
 

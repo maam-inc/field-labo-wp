@@ -549,8 +549,14 @@ a[target="_blank"]:not(:has(img)){
       }
 
       &__btn{
+        // コンテナ可変中(viewport < 1082px)は __wrapper右端と viewport右端の中央へ
+        // コンテナが max(990px) に達した以降(>= 1082px)は -35px で固定
+        //   親(.l-modal__container)幅 = min(91.4972vw, 990px)
+        //   gap = (100vw - 親幅), btn幅(PC) = 25px
+        //   centered: right = (親幅 - 100vw)/4 - 12.5px
+        //   接続点(vw=1082)で式は -35.5px → max(-35px) でクランプ
         top: 16px;
-        right: -35px;
+        right: max(calc((min(100vw * 990 / 1082, 990px) - 100vw) / 4 - 12.5px), -35px);
       }
 
       &__bottom{
@@ -607,7 +613,8 @@ a[target="_blank"]:not(:has(img)){
 
       .line{
         transform-origin: center;
-        animation: loading 1s steps(1, end) both infinite;
+        animation: loading 1s linear both infinite;
+        // animation: loading 1s steps(1, end) both infinite;
 
         &:nth-child(1){ animation-delay: 0s;}
         &:nth-child(2){ animation-delay: .1s;}

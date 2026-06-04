@@ -535,9 +535,12 @@
 
 @include mq(pc){
   .topContents__modal{
+    .l-modal__btn{
+      right: max(calc((min(100vw * 990 / 1082, 990px) - 100vw) / 4 - 12.5px), -35px);
+    }
     // モーダル内個別
     &-imgs{
-      margin-bottom: 35px;
+      margin-bottom: 25px;
 
       > *:nth-child(n+2){
         margin-top: 27px;
@@ -558,18 +561,20 @@
       font-size: 14px;
       padding-inline: 20px;
       width: 100%;
-      margin-bottom: per(63, 990);
+      margin-bottom: 55px;
     }
 
     .topContents__flex{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       flex-direction: row;
       // max-width: 912px;
-      width: 100%;
-      padding-bottom: 67px;
-      gap: 60px;
+      width: per(912, 954);
+      gap: 41px;
+      padding-bottom: 61px;
 
       &-item{
-        width: 50%;
+        width: auto;
       }
 
       &-head{
@@ -581,7 +586,7 @@
       margin-bottom: 0;
 
       &-head{
-        margin-bottom: 20px;
+        margin-bottom: 9px;
       }
     }
 
@@ -605,7 +610,7 @@
       }
 
       &:not(:first-child){
-        margin-top: 12px;
+        margin-top: 1px;
       }
     }
 
