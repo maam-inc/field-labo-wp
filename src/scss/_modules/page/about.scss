@@ -84,7 +84,12 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 117px 0px;
       margin-top: 36px;
-      padding: 0;
+      padding: 0 ;
+
+      @media screen and (max-width: 1020px) {
+        padding: 0 28px;
+        
+      }
     }
 
     &__block{

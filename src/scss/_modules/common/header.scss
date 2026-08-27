@@ -97,7 +97,7 @@
   .l-header{
     margin-top: 5px;
     margin-inline: auto;
-    max-width: 990px;
+    width: min(calc(100% - 20px),990px);
     height: 99px;
 
     &__inner{
