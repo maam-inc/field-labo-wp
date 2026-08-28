@@ -12,7 +12,34 @@ export default class PostModal {
     const el = document.getElementById(id);
     if (!el) return null;
     const img = el.querySelector('img');
-    return img ? { el, img } : null;
+    if (!img) return null;
+    const source = this.ensureWebpSource(img);
+    return { el, img, source };
+  }
+
+  ensureWebpSource(img) {
+    const picture = img.closest('picture');
+    if (picture) {
+      let source = picture.querySelector('source[type="image/webp"]');
+      if (!source) {
+        source = document.createElement('source');
+        source.setAttribute('type', 'image/webp');
+        picture.insertBefore(source, img);
+      }
+      return source;
+    }
+
+    const source = document.createElement('source');
+    source.setAttribute('type', 'image/webp');
+    const newPicture = document.createElement('picture');
+    img.parentNode.insertBefore(newPicture, img);
+    newPicture.appendChild(source);
+    newPicture.appendChild(img);
+    return source;
+  }
+
+  getWebpSrc(src) {
+    return src ? `${src}.webp` : '';
   }
 
   init() {
@@ -58,7 +85,7 @@ export default class PostModal {
     const len = this.sources.length;
     if (!len) return;
     this.index = (i + len) % len;
-    this.gallery.img.setAttribute('src', this.sources[this.index]);
+    this.setImage(this.gallery, this.sources[this.index]);
     this.replay();
   }
 
@@ -71,7 +98,7 @@ export default class PostModal {
 
   open({ el, img }, src) {
     document.body.style.overflow = 'hidden';
-    img.setAttribute('src', src);
+    this.setImage({ img, source: this.ensureWebpSource(img) }, src);
     el.classList.add('is-open');
     const c = el.querySelector('.postModal__img');
     const bg = el.querySelector('.postModal__bg');
@@ -95,6 +122,11 @@ export default class PostModal {
     gsap.to(btn, {opacity: 0, duration: 0.3, ease: "sine.out", })
 
     el.classList.remove('is-open');
-    img.setAttribute('src', '');
+    this.setImage({ img, source: this.ensureWebpSource(img) }, '');
+  }
+
+  setImage({ img, source }, src) {
+    if (source) source.setAttribute('srcset', this.getWebpSrc(src));
+    img.setAttribute('src', src);
   }
 }
