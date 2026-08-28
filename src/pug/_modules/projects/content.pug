@@ -4,9 +4,14 @@
     .projects__gallery
       .projects__gallery-wrapper
         -for(let i = 0; i < contents.gallery.length; i++)
-          a.projects__gallery-item(href="./page")
-            +c-thumbnail('projects__gallery-thumbnail', 'projects', contents.gallery[i], i)
-      
+          -if(i === 0)
+            a.projects__gallery-item(href="./page")
+                +c-thumbnail('projects__gallery-thumbnail', 'slider', contents.gallery[i], i)
+          
+          -else  
+            a.projects__gallery-item(href="./page")
+              +c-thumbnail('projects__gallery-thumbnail', 'projects', contents.gallery[i], i)
+        
 
     +c-loadMore('')
 

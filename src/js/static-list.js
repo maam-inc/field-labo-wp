@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import DummyUi from './_modules/DummyUi';
 import LoadMoreAnim from './_modules/LoadMoreAnim';
+import ThumbSlider from './_modules/ThumbSlider';
 
 if(!window.gsap) window.gsap = gsap;
 if(!window.ScrollTrigger) window.ScrollTrigger = ScrollTrigger;
@@ -26,6 +27,8 @@ const loaded = () => {
   // ↓↓↓↓↓↓↓↓↓↓↓↓静的用JS↓↓↓↓↓↓↓↓↓↓↓↓
   const dummyUi = new DummyUi({ loadMoreAnim });
   dummyUi.init();
+  const thumbSlider = new ThumbSlider;
+  thumbSlider.init();
   // ↑↑↑↑↑↑↑↑↑↑↑↑静的用JS↑↑↑↑↑↑↑↑↑↑↑↑
 };
 

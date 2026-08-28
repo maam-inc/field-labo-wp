@@ -73,12 +73,26 @@ mixin c-thumbnail(className, type, i, idx)
       .c-thumbnail__text-wrapper
         p.c-thumbnail__title.f-inter-B!=i.title
         .c-thumbnail__open: +c-modalOpenIcon(false)
+
     //- 一覧ページ　
     -else if(type==='projects' || type==='blog')
       .c-thumbnail__main_img: img(src=`${DUMMY_DIR}${type}/list${idx+1}.jpg`)
       .c-thumbnail__text-wrapper
         p.c-thumbnail__title.f-inter-B!=i.title
         p.c-thumbnail__summary.f-noto-M!=i.summary
+
+    //- project 一覧ページ && 切り替え　
+    -else if(type==='slider')
+      .c-thumbnail__main_img
+        .swiper.projects__gallery-swiper
+          .swiper-wrapper 
+            -for(let s = 0; s < i.slide; s++)
+              .swiper-slide: img(src=`${DUMMY_DIR}projects/list${idx+1}-${s+1}.jpg`)
+          +c-ctrl-btn('projects__gallery')
+      .c-thumbnail__text-wrapper
+        p.c-thumbnail__title.f-inter-B!=i.title
+        p.c-thumbnail__summary.f-noto-M!=i.summary
+        
     //- 記事埋め込みパーツ
     -else if(type=='page')
       .c-thumbnail__main_img: img(src=`${DUMMY_DIR}${type}/thumb.jpg`)

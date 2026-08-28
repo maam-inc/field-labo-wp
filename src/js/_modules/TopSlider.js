@@ -58,7 +58,7 @@ export default class TopSlider {
         delay: 6000,
         disableOnInteraction: false,
       },
-      speed: 800,
+      speed: 600,
       effect: 'slide',
       slidesPerView: 1,
       navigation: {

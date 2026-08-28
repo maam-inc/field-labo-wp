@@ -46,6 +46,22 @@
         margin-top: vw(10);
       }
     }
+
+    &--prev, &--next{
+      width: vw(52);
+
+      img{
+        aspect-ratio: 1 !important;
+      }
+    }
+
+    &--prev{
+      left: 0;
+    }
+
+    &--next{
+      right: 0;
+    }
   }
 }
 
@@ -89,6 +105,51 @@
 
         &:not(:first-child){
           margin-top: 5px;
+        }
+      }
+
+      .swiper-slide{
+        overflow: hidden;
+      }
+      
+      &--prev, &--next{
+        width: 36px;
+      }
+    }
+  }  
+}
+
+// hover 
+@include mq(pc){
+  .projects{
+    &__gallery{
+      &--prev, &--next{
+        width: 36px;
+      }
+
+      &--prev, &--next{
+        transition:  .4s;
+        opacity: 0;
+      }
+      &--prev{
+        left: -36px
+      }
+
+      &--next{
+        right: -36px
+      }
+
+      &:hover{
+        .projects__gallery--prev, .projects__gallery--next{
+          opacity: 1;
+        }
+        .projects__gallery--prev{
+          left: 0px
+          
+        }
+
+        .projects__gallery--next{
+          right: 0px
         }
       }
     }
